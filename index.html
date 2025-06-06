@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatronica | Speculative Design Studio</title>
+    <meta name="description" content="Relatronica is a speculative design studio exploring ethical futures through innovative design approaches.">
+    <meta name="keywords" content="speculative design, futures thinking, ethical futures, design fiction, critical design">
+    <meta name="author" content="Relatronica Design Studio">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+   <header>
+    <div class="logo">
+        <h1>Relatronica</h1>
+    </div>
+    <div class="theme-toggle">
+        <button id="theme-toggle-btn" aria-label="Toggle dark mode">
+            <span class="toggle-icon light">☀️</span>
+            <span class="toggle-icon dark">🌙</span>
+        </button>
+    </div>
+</header>
+
+    <main class="layout">
+        <!-- Left column: Interactive graph navigation -->
+        <section class="graph-navigation">
+            <div class="graph-container" id="graph-container">
+                <!-- Graph will be rendered here by JavaScript -->
+                <div class="graph-placeholder">
+                    <p>Interactive Navigation Graph</p>
+                    <div class="node-placeholder primary">Mission & Vision</div>
+                    <div class="node-placeholder">Research Areas</div>
+                    <div class="node-placeholder">Toolbox for Ethical Futures</div>
+                    <div class="node-placeholder">Scenario Generator</div>
+                    <div class="node-placeholder">People & Inspirations</div>
+                    <div class="node-placeholder">Bibliography</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Center column: Main content area -->
+        <section class="content-area">
+            <div class="content-container">
+                <!-- Content sections -->
+                <section id="mission-vision" class="content-section active">
+                    <h1 class="gradient-text">Mission & Vision</h1>
+                    <div class="section-content">
+                        <article class="mission">
+                              <h4><i class="fa-solid fa-bullseye gradient-icon"></i> Our Mission</h4>
+                            <p>Relatronica exists to  <span class="gradient-text">explore the complex relationships</span> between emerging technologies, social systems, and human experiences through speculative design. We create provocative artifacts, scenarios, and experiences that challenge assumptions about possible futures, stimulating critical dialogue about the trajectories we collectively shape.</p>
+                            
+                            <p>As a studio, we operate at the intersection of design, technology, and futures thinking—crafting speculative scenarios that illuminate potential consequences of current trends and decisions. Our work serves as a catalyst for meaningful conversations about which futures we want to create and which we wish to avoid.</p>
+                        </article>
+                        
+                        <article class="vision">
+                            <h4><i class="fa-solid fa-eye gradient-icon"></i> Our Vision</h4>
+                            <p>We envision a world where speculative design becomes an essential tool for navigating complexity and uncertainty. Where the exploration of alternative futures informs more thoughtful, ethical, and inclusive decision-making in technology development, policy creation, and social innovation.</p>
+                            
+                            <p>Relatronica strives to be a leading voice in expanding the boundaries of design practice—moving beyond problem-solving to problem-finding, beyond immediate constraints to long-term implications, and beyond singular solutions to multiple possibilities.</p>
+                        </article>
+                        
+                        <article class="philosophy">
+                              <h4><i class="fa-solid fa-brain gradient-icon"></i> Our Philosophy</h4>
+                                <div class="philosophy-cards">
+                                    <div class="card">
+                                    <h4>Critical Inquiry</h4>
+                                    <p>We question assumptions embedded in technological and social systems, examining <span class="gradient-text">how they shape our understanding</span> of what's possible.</p>
+                                    </div>
+                                    <div class="card">
+                                    <h4>Pluralistic Futures</h4>
+                                    <p>We reject deterministic narratives about the future, instead <span class="gradient-text">exploring multiple potential scenarios</span> that reflect diverse perspectives and possibilities.</p>
+                                    </div>
+                                    <div class="card">
+                                    <h4>Tangible Speculation</h4>
+                                    <p>We believe in making abstract futures tangible through <span class="gradient-text">designed artifacts, experiences, and narratives</span> that can be engaged with in the present.</p>
+                                    </div>
+                                    <div class="card">
+                                    <h4>Ethical Consideration</h4>
+                                    <p>We approach speculation with an awareness of its <span class="gradient-text">ethical dimensions</span>, considering whose futures we're imagining and the implications of our design choices.</p>
+                                    </div>
+                                    <div class="card">
+                                    <h4>Interdisciplinary Collaboration</h4>
+                                    <p>We bring together diverse expertise and perspectives, recognizing that the most compelling speculative work emerges from the <span class="gradient-text">collision of different disciplines</span>.</p>
+                                    </div>
+                                </div>
+                                </article>
+                        
+                        <blockquote class="manifesto">
+                            "At Relatronica, we don't predict the future—we explore possibilities, challenge assumptions, and create spaces for critical reflection about the futures we might create together."
+                        </blockquote>
+                    </div>
+                </section>
+
+                <section id="research-areas" class="content-section">
+                    <h2>Research Areas</h2>
+                    <div class="section-content">
+                        <p class="intro">Relatronica explores multiple domains where speculative design can illuminate potential futures and challenge existing paradigms. Our research areas represent the intersections where emerging technologies meet social, cultural, and environmental systems.</p>
+                        
+                        <div class="research-area">
+                            <h3>Post-Anthropocene Ecologies</h3>
+                            <p>Exploring more-than-human futures and alternative relationships between technology, nature, and ecological systems. This research area examines how speculative design can help us reimagine our relationship with the planet beyond extractive paradigms.</p>
+                            <ul>
+                                <li>Interspecies collaboration and communication systems</li>
+                                <li>Regenerative technologies and circular design approaches</li>
+                                <li>Climate adaptation scenarios and resilient infrastructures</li>
+                                <li>Biodiversity-centered design frameworks</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="research-area">
+                            <h3>Algorithmic Societies</h3>
+                            <p>Investigating the social implications of algorithmic decision-making, artificial intelligence, and automated systems. This research area uses speculative scenarios to examine how these technologies might reshape social structures, governance, and human agency.</p>
+                            <ul>
+                                <li>Alternative models of algorithmic governance</li>
+                                <li>Speculative data practices and infrastructures</li>
+                                <li>Human-machine collaboration frameworks</li>
+                                <li>Ethical dimensions of artificial intelligence</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="research-area">
+                            <h3>Embodied Futures</h3>
+                            <p>Examining how emerging technologies might transform human embodiment, perception, and identity. This research area explores potential futures of the body, senses, and cognition through speculative artifacts and experiences.</p>
+                            <ul>
+                                <li>Extended sensory capabilities and perceptual augmentation</li>
+                                <li>Biotechnological interventions and their social implications</li>
+                                <li>Alternative models of health, care, and well-being</li>
+                                <li>Evolving notions of identity in technologically-mediated environments</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="research-area">
+                            <h3>Alternative Economics</h3>
+                            <p>Exploring speculative economic systems, value exchange mechanisms, and resource distribution models. This research area uses design to imagine alternatives to current economic paradigms and their technological manifestations.</p>
+                            <ul>
+                                <li>Post-scarcity scenarios and their implications</li>
+                                <li>Alternative currencies and value systems</li>
+                                <li>Cooperative technological infrastructures</li>
+                                <li>Speculative models of labor, production, and consumption</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="research-area">
+                            <h3>Pluralistic Knowledge Systems</h3>
+                            <p>Investigating how different ways of knowing and understanding the world might inform technological development and design practices. This research area explores the integration of diverse epistemologies into speculative design approaches.</p>
+                            <ul>
+                                <li>Indigenous futurisms and technological sovereignty</li>
+                                <li>Decolonial approaches to speculative design</li>
+                                <li>Integration of traditional knowledge with emerging technologies</li>
+                                <li>Alternative models of education and knowledge transmission</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="research-area">
+                            <h3>Speculative Methodologies</h3>
+                            <p>Developing new approaches, tools, and frameworks for speculative design practice. This meta-research area focuses on evolving the discipline itself through methodological innovation and critical reflection.</p>
+                            <ul>
+                                <li>Participatory and community-based speculative design methods</li>
+                                <li>Evaluation frameworks for speculative design impact</li>
+                                <li>Integration of speculative approaches with other design disciplines</li>
+                                <li>Critical examination of speculative design's limitations and potentials</li>
+                            </ul>
+                        </div>
+                        
+                        <p class="outro">These research areas are not isolated domains but interconnected territories that inform and influence each other. Our projects often span multiple areas, creating rich intersections where the most provocative speculative work emerges.</p>
+                    </div>
+                </section>
+
+                <section id="toolbox" class="content-section">
+                    <h2>Toolbox for Ethical Futures</h2>
+                    <div class="section-content">
+                        <p class="intro">At Relatronica, we believe that speculative design must be grounded in ethical considerations. Our toolbox represents a collection of methodologies, frameworks, and approaches that help navigate the complex ethical dimensions of imagining and designing potential futures.</p>
+                        
+                        <div class="methodology">
+                            <h3>Ethical Frameworks</h3>
+                            <p>Core principles and approaches that guide our speculative design practice:</p>
+                            <ul>
+                                <li><strong>Pluralistic Ethics</strong>: Acknowledging multiple ethical perspectives rather than imposing a single moral framework</li>
+                                <li><strong>Consequentialist Exploration</strong>: Examining potential consequences of technological and social developments across different timeframes</li>
+                                <li><strong>Distributive Justice</strong>: Considering how benefits and harms might be distributed across different communities and populations</li>
+                                <li><strong>Non-Identity Resistance</strong>: Protecting individual and collective identities in design processes</li>
+                                <li><strong>Intergenerational Responsibility</strong>: Accounting for impacts on future generations</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="methodology">
+                            <h3>Critical Reflection Tools</h3>
+                            <p>Methods for examining assumptions and implications in speculative design work:</p>
+                            <ul>
+                                <li><strong>Ethical Impact Assessment</strong>: Structured evaluation of potential ethical implications across different scenarios</li>
+                                <li><strong>Positionality Mapping</strong>: Examining how designer perspectives and privileges shape speculative outcomes</li>
+                                <li><strong>Stakeholder Constellation</strong>: Identifying affected parties across different temporal and spatial scales</li>
+                                <li><strong>Value Tension Analysis</strong>: Surfacing conflicts between different values and principles in speculative scenarios</li>
+                                <li><strong>Ethical Uncertainty Exploration</strong>: Deliberately engaging with ethical ambiguities and dilemmas</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="methodology">
+                            <h3>Participatory Methods</h3>
+                            <p>Approaches for involving diverse perspectives in speculative design processes:</p>
+                            <ul>
+                                <li><strong>Pluralistic Scenario Building</strong>: Co-creating future scenarios with diverse stakeholders</li>
+                                <li><strong>Community Futures Workshops</strong>: Engaging communities in speculative design processes</li>
+                                <li><strong>Expert Elicitation Protocols</strong>: Structured methods for incorporating specialized knowledge</li>
+                                <li><strong>Marginalized Futures Amplification</strong>: Centering perspectives often excluded from futures discourse</li>
+                                <li><strong>Intergenerational Dialogue</strong>: Creating exchanges between different age groups about preferred futures</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="methodology">
+                            <h3>Futures Literacy Techniques</h3>
+                            <p>Methods for developing capacity to imagine and engage with alternative futures:</p>
+                            <ul>
+                                <li><strong>Assumption Archaeology</strong>: Unearthing hidden assumptions about the future</li>
+                                <li><strong>Temporal Perspective-Taking</strong>: Adopting different timeframes for considering implications</li>
+                                <li><strong>Alternative History Exploration</strong>: Examining how different past decisions might have led to different presents</li>
+                                <li><strong>Weak Signal Amplification</strong>: Identifying and exploring emerging trends and possibilities</li>
+                                <li><strong>Counterfactual Scenario Development</strong>: Creating scenarios that challenge dominant narratives</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="methodology">
+                            <h3>Implementation Approaches</h3>
+                            <p>Strategies for applying ethical considerations in speculative design practice:</p>
+                            <ul>
+                                <li><strong>Ethics-by-Design Protocol</strong>: Integrating ethical considerations throughout the design process</li>
+                                <li><strong>Ethical Implications Documentation</strong>: Transparent communication of potential ethical dimensions</li>
+                                <li><strong>Reflexive Practice Journal</strong>: Ongoing documentation of ethical reflections and decisions</li>
+                                <li><strong>External Ethics Review</strong>: Seeking outside perspectives on ethical dimensions of speculative work</li>
+                                <li><strong>Impact Evaluation Framework</strong>: Assessing how speculative design interventions influence discourse and decision-making</li>
+                            </ul>
+                        </div>
+                        
+                        <blockquote class="principle">
+                            "Ethical speculation is not about predicting the 'right' future, but about creating spaces for critical reflection on which futures we collectively want to create and which we wish to avoid."
+                        </blockquote>
+                        
+                        <p class="outro">These tools and approaches are not prescriptive solutions but rather starting points for ethical engagement with speculative design practice. We continuously evolve our toolbox through critical reflection, collaborative dialogue, and practical application.</p>
+                    </div>
+                </section>
+
+                <section id="scenario-generator" class="content-section">
+                    <h2>Scenario Generator</h2>
+                    <div class="section-content">
+                        <p class="intro">The Relatronica Scenario Generator is an interactive tool for exploring and creating speculative future scenarios. Based on established futures methodologies and enhanced with our unique approach to speculative design, this tool helps users navigate the complex terrain of possible futures.</p>
+                        
+                        <div class="generator-concept">
+                            <h3>The Futures Cone Framework</h3>
+                            <p>Our scenario generator is built on the Futures Cone model, which categorizes potential futures across a spectrum of possibility:</p>
+                            
+                            <ul>
+                                <li><strong>Probable Futures</strong>: Scenarios likely to occur based on current trends and trajectories</li>
+                                <li><strong>Plausible Futures</strong>: Scenarios that could happen given what we currently know</li>
+                                <li><strong>Possible Futures</strong>: Scenarios that might happen according to our current understanding of how the world works</li>
+                                <li><strong>Preferable Futures</strong>: Scenarios we would like to see happen based on values and goals</li>
+                                <li><strong>Preposterous Futures</strong>: Scenarios that seem impossible but challenge our assumptions</li>
+                            </ul>
+                            
+                            <p>By exploring this spectrum, users can break free from limited thinking about the future and engage with a wider range of possibilities.</p>
+                        </div>
+                        
+                        <div class="generator-components">
+                            <h3>Interactive Components</h3>
+                            <p>The Scenario Generator consists of several interconnected elements:</p>
+                            
+                            <ol>
+                                <li><strong>Trend Explorer</strong>: Examine emerging technological, social, environmental, and economic trends that might shape future scenarios</li>
+                                <li><strong>Variable Matrix</strong>: Combine different variables and factors to generate unexpected scenario combinations</li>
+                                <li><strong>Timeline Constructor</strong>: Map potential developments across different timeframes, from near-term to far-future</li>
+                                <li><strong>Perspective Shifter</strong>: View scenarios from different stakeholder perspectives and value systems</li>
+                                <li><strong>Artifact Imaginer</strong>: Visualize potential artifacts, services, or systems that might exist in different scenarios</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="generator-methodology">
+                            <h3>Methodological Approach</h3>
+                            <p>Our scenario generation methodology follows these key steps:</p>
+                            
+                            <ol>
+                                <li><strong>Identify Focal Issues</strong>: Define the central questions or challenges to explore</li>
+                                <li><strong>Map Driving Forces</strong>: Identify key factors that could influence how the focal issues evolve</li>
+                                <li><strong>Determine Critical Uncertainties</strong>: Identify which factors have both high impact and high uncertainty</li>
+                                <li><strong>Develop Scenario Logics</strong>: Create frameworks that connect different possible outcomes</li>
+                                <li><strong>Elaborate Scenarios</strong>: Build detailed narratives around the scenario frameworks</li>
+                                <li><strong>Identify Implications</strong>: Explore the consequences and meanings of different scenarios</li>
+                                <li><strong>Generate Strategic Insights</strong>: Develop actionable insights based on scenario exploration</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="participatory-approach">
+                            <h3>Participatory Futures</h3>
+                            <p>The Scenario Generator is designed as a participatory tool that can be used in various contexts:</p>
+                            
+                            <ul>
+                                <li><strong>Workshop Format</strong>: Facilitated sessions for organizations and communities</li>
+                                <li><strong>Educational Setting</strong>: Learning tool for students exploring futures thinking</li>
+                                <li><strong>Policy Development</strong>: Supporting long-term planning and policy creation</li>
+                                <li><strong>Design Process</strong>: Informing speculative and anticipatory design work</li>
+                                <li><strong>Public Engagement</strong>: Involving diverse stakeholders in futures conversations</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="interactive-element">
+                            <h3>Try the Generator</h3>
+                            <p>In the interactive version of our website, this section features a simplified version of our Scenario Generator tool. Users can:</p>
+                            
+                            <ul>
+                                <li>Select from different trend categories and specific trends</li>
+                                <li>Adjust timeline parameters from near-term to far-future</li>
+                                <li>Choose perspective lenses through which to view scenarios</li>
+                                <li>Generate scenario outlines based on selected parameters</li>
+                                <li>Save and share generated scenarios</li>
+                            </ul>
+                            
+                            <p class="note">The full version of our Scenario Generator is available for workshops and collaborative projects. Contact us to learn more about how we can customize this tool for your specific needs.</p>
+                        </div>
+                        
+                        <blockquote class="insight">
+                            "The future is not a destination—it's a multitude of possibilities shaped by our collective choices, values, and imagination."
+                        </blockquote>
+                    </div>
+                </section>
+
+                <section id="people" class="content-section">
+                    <h2>People & Inspirations</h2>
+                    <div class="section-content">
+                        <p class="intro">Founded by Giuseppe Aceto, former researcher and designer at <span class="gradient-text">CERN</span>, Relatronica draws on a unique blend of scientific inquiry and speculative design.
+
+                                            The studio is inspired by a rich lineage of thinkers, theorists, and practitioners—but it also forges its own path, exploring uncharted intersections between emerging technologies, social systems, and human futures.
+
+                                            Relatronica’s work seeks not to predict the future, but to open critical dialogues about the directions we are collectively shaping—by <span class="gradient-text">making possibilities tangible</span>, and questioning what we take for granted.</p>
+                        
+                        <div class="inspirations">
+                            <h3>Our Inspirations</h3>
+                            
+                            <div class="inspiration">
+                                <h4>Anthony Dunne & Fiona Raby</h4>
+                                <p>Pioneers of speculative design who have fundamentally shaped the field through their practice and writing. Their book "Speculative Everything" (2013) articulates how design can be used to create not just products but ideas about potential futures. Their approach challenges traditional design paradigms focused on making technology easy to use and consumable, instead proposing design as a tool for speculation about alternative possibilities.</p>
+                            </div>
+                            
+                            <div class="inspiration">
+                                <h4>Superflux</h4>
+                                <p>London-based design studio that translates future uncertainties into tangible experiences. Their projects, such as the SAFE Project (2022) and their Vienna Biennale installation featuring fire-blackened pine trees, exemplify how speculative design can make complex issues like climate change "tangible, relatable, and comprehensible." Their approach to blending critical foresight with experiential design has been particularly influential to our work.</p>
+                            </div>
+                            
+                            <div class="inspiration">
+                                <h4>Benjamin H. Bratton</h4>
+                                <p>Theorist who offers critical perspectives on speculative design and examines how design complicates speculative models in global economies. His work challenges us to consider the broader systemic implications of design interventions and to engage with the complex interplay between technology, governance, and planetary systems.</p>
+                            </div>
+                            
+                            <div class="inspiration">
+                                <h4>Experimental Design Schools</h4>
+                                <p>We draw inspiration from emerging educational initiatives that support speculative design methods and foster new generations of practitioners. These spaces are crucial for developing the field and exploring new methodological approaches to speculative practice.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="collaborators">
+                            <h3>Collaborators & Network</h3>
+                            <p>Relatronica operates as a node within a broader network of practitioners, researchers, and organizations exploring speculative futures. We regularly collaborate with:</p>
+                            
+                            <ul>
+                                <li>Academic research groups focused on futures studies and speculative design</li>
+                                <li>Cultural institutions interested in exploring alternative futures through exhibitions and public programs</li>
+                                <li>Policy labs and government innovation units working on anticipatory governance</li>
+                                <li>Community organizations seeking to engage diverse stakeholders in futures conversations</li>
+                                <li>Technology companies interested in responsible innovation and ethical foresight</li>
+                            </ul>
+                        </div>
+                        
+                        <blockquote class="philosophy">
+                            "We see ourselves not as isolated visionaries but as part of an evolving ecosystem of practitioners working to expand the possibilities of what design can be and do in the world."
+                        </blockquote>
+                    </div>
+                </section>
+
+                <section id="bibliography" class="content-section">
+                    <h2>Bibliography & Resources</h2>
+                    <div class="section-content">
+                        <p class="intro">This curated collection of resources reflects our approach to speculative design and provides a foundation for those interested in exploring the field further. We regularly update this list to include emerging voices and perspectives.</p>
+                        
+                        <div class="books">
+                            <h3>Essential Books</h3>
+                            
+                            <div class="book">
+                                <h4>Speculative Everything: Design, Fiction, and Social Dreaming</h4>
+                                <p class="author">Anthony Dunne and Fiona Raby</p>
+                                <p class="publisher">MIT Press, 2013</p>
+                                <p class="description">A foundational text that offers a tour through the emerging landscape of speculative design ideas and approaches. The book explores how design can be used to create not just things, but ideas about alternative possibilities.</p>
+                            </div>
+                            
+                            <div class="book">
+                                <h4>Discursive Design: Critical, Speculative, and Alternative Things</h4>
+                                <p class="author">Bruce and Stephanie Tharp</p>
+                                <p class="publisher">MIT Press, 2019</p>
+                                <p class="description">Surveys critical design practices and proposes a more inclusive field of socially minded design practice, offering a comprehensive examination of the emerging field of discursive design.</p>
+                            </div>
+                            
+                            <div class="book">
+                                <h4>Speculative Futures: Design Approaches to Navigate Change, Foster Resilience, and Co-Create the Cities We Need</h4>
+                                <p class="author">Liam Young and Kate Davies</p>
+                                <p class="publisher">Routledge, 2021</p>
+                                <p class="description">Focuses on design strategies for addressing future challenges and urban development, exploring how speculative approaches can inform more resilient and equitable city planning.</p>
+                            </div>
+                            
+                            <div class="book">
+                                <h4>Not Here, Not Now: Speculative Thought, Impossibility, and the Design Imagination</h4>
+                                <p class="author">James Auger</p>
+                                <p class="publisher">Bloomsbury, 2020</p>
+                                <p class="description">Explores the theoretical foundations of speculative design thinking, examining how designers can engage with the impossible as a creative strategy.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="journals">
+                            <h3>Academic Journals</h3>
+                            
+                            <ul>
+                                <li><strong>Journal of Futures Studies</strong> - Publishes research on futures thinking and speculative design, with a focus on reimagining present contexts through future scenarios.</li>
+                                <li><strong>Design Issues</strong> - Features articles on design history, theory, and criticism, including speculative approaches.</li>
+                                <li><strong>Design Studies</strong> - Explores the processes and theories of design, including speculative methodologies.</li>
+                                <li><strong>International Journal of Design</strong> - Publishes research on all aspects of design, including speculative and critical design.</li>
+                                <li><strong>She Ji: The Journal of Design, Economics, and Innovation</strong> - Examines design's role in addressing complex social and technological challenges.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="online-resources">
+                            <h3>Online Resources</h3>
+                            
+                            <ul>
+                                <li><strong><a href="https://speculativeedu.eu/">SpeculativeEdu</a></strong> - An educational platform providing resources, case studies, and methodologies for speculative design practice and education.</li>
+                                <li><strong><a href="https://www.critical.design/">School of Critical Design</a></strong> - Offers online courses on speculative design in business and organizational contexts.</li>
+                                <li><strong><a href="https://github.com/SpeculativeEdu/toolkit">SpeculativeEdu GitHub Repository</a></strong> - An open-source toolkit for 21st-century design skills and speculative approaches.</li>
+                                <li><strong><a href="https://futurice.com/blog/speculative-design">Futurice Speculative Design Resources</a></strong> - Collection of tools and methods for applying speculative design in various contexts.</li>
+                                <li><strong><a href="https://www.anticipatorygovernance.community/post/introduction-to-speculative-design">Speculative Futures</a></strong> - A global community with local chapters focused on futures thinking and speculative design.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="conferences-events">
+                            <h3>Conferences & Events</h3>
+                            
+                            <ul>
+                                <li><strong>Future Friends Conference</strong> - A five-day event combining educational sessions, workshops, and open discussions, hosted by the Institute for Transmedia Design.</li>
+                                <li><strong>Speculative Climate Design (MIT)</strong> - Series of events challenging traditional design perceptions, focusing on design beyond aesthetics and marketability.</li>
+                                <li><strong>Speculative Futures Meetups</strong> - International community with local chapters hosting regular events on speculative design, design fiction, and strategic foresight.</li>
+                                <li><strong>Future Café (University of Chicago)</strong> - Recurring event for imagining utopian possibilities and long-term futures.</li>
+                                <li><strong>Primer Conference</strong> - Annual gathering focused on speculative design, futures thinking, and strategic foresight.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tools">
+                            <h3>Tools & Frameworks</h3>
+                            
+                            <ul>
+                                <li><strong>Futures Cone Framework</strong> - A conceptual tool for categorizing different types of futures based on their probability and plausibility.</li>
+                                <li><strong>Scenario Planning Templates</strong> - Structured approaches for developing and exploring alternative future scenarios.</li>
+                                <li><strong>Design Fiction Toolkits</strong> - Resources for creating narrative artifacts that explore potential futures.</li>
+                                <li><strong>Speculative Ethnography Methods</strong> - Approaches for studying potential future social and cultural contexts.</li>
+                                <li><strong>Critical Artefact Methods</strong> - Techniques for creating provocative objects that challenge assumptions and stimulate discussion.</li>
+                            </ul>
+                        </div>
+                        
+                        <p class="outro">This collection represents just a starting point for exploring speculative design. We encourage you to engage critically with these resources and to seek out diverse perspectives that might not be represented in mainstream design discourse.</p>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Right column: Drawer for filtering and future events -->
+        <section class="drawer">
+            <div class="drawer-toggle">
+               <button id="drawer-toggle-btn" aria-label="Toggle drawer" aria-expanded="false">
+                    <i class="fa-solid fa-rocket drawer-icon"></i>
+                </button>
+            </div>
+            <div class="drawer-content">
+                <div class="filters">
+                    <h3>Filters</h3>
+                    <div class="filter-options">
+                        <div class="filter-group">
+                            <h4>Themes</h4>
+                            <label><input type="checkbox" name="theme" value="climate"> Climate Futures</label>
+                            <label><input type="checkbox" name="theme" value="ai"> AI Ethics</label>
+                            <label><input type="checkbox" name="theme" value="society"> Social Systems</label>
+                        </div>
+                        <div class="filter-group">
+                            <h4>Timeframes</h4>
+                            <label><input type="checkbox" name="timeframe" value="near"> Near Future</label>
+                            <label><input type="checkbox" name="timeframe" value="mid"> Mid Future</label>
+                            <label><input type="checkbox" name="timeframe" value="far"> Far Future</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="future-events">
+                    <h3>Future Events</h3>
+                    <div class="event-carousel" id="event-carousel">
+                        <!-- Events will be populated by JavaScript -->
+                        <div class="event">
+                            <h4>Speculative Design Workshop</h4>
+                            <p class="event-date">August 15, 2035</p>
+                            <p>Exploring post-anthropocentric design methodologies</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Relatronica Speculative Design Studio</p>
+    </footer>
+
+    <!-- JavaScript files -->
+    <script src="js/main.js" defer></script>
+    <script src="js/graph.js" defer></script>
+    <script src="js/drawer.js" defer></script>
+</body>
+</html>
