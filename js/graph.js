@@ -17,21 +17,19 @@ function initGraphVisualization() {
     { id: "toolbox", name: "Toolbox for Ethical Futures", group: 3 },
     { id: "scenario-generator", name: "Scenario Generator", group: 4 },
     { id: "people", name: "People & Inspirations", group: 5 },
-    { id: "bibliography", name: "Bibliography & Resources", group: 6 }
+    { id: "bibliography", name: "Bibliography & Resources", group: 6 },
+    { id: "projects", name: "Projects", group: 7 }
   ];
 
   // Define links (edges) between nodes, with a "value" used for line thickness
   const links = [
-    { source: 0, target: 1, value: 3 },
-    { source: 0, target: 2, value: 2 },
-    { source: 1, target: 2, value: 2 },
-    { source: 1, target: 3, value: 2 },
-    { source: 2, target: 3, value: 3 },
-    { source: 2, target: 4, value: 1 },
-    { source: 3, target: 5, value: 1 },
-    { source: 4, target: 5, value: 2 },
-    { source: 0, target: 4, value: 1 },
-    { source: 1, target: 5, value: 1 }
+  { source: 0, target: 1, value: 3 }, // Mission → Research Areas
+  { source: 1, target: 4, value: 1 }, // Research → People
+  { source: 1, target: 5, value: 1 }, // Research → Bibliography
+  { source: 4, target: 5, value: 2 }, // People → Bibliography
+  { source: 6, target: 2, value: 1 }, // Projects → Toolbox
+  { source: 6, target: 3, value: 1 }, // Projects → Scenario Generator
+  { source: 6, target: 1, value: 3 }, // Projects → Mission
   ];
 
   // Set up graph dimensions

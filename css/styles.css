@@ -25,7 +25,7 @@
   
   /* Common Variables */
   --header-height: 60px;
-  --drawer-width: 420px;
+  --drawer-width: 380px;
   --graph-width: 45%;
   --content-width: calc(100% - var(--graph-width) - var(--drawer-width));
   --border-radius: 8px;
@@ -520,7 +520,6 @@ footer {
   top: var(--header-height);
   right: 0;
   bottom: 0;
-  width: 480px;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
   z-index: 90;
@@ -731,4 +730,77 @@ footer {
   color: transparent; /* fallback */
   display: inline-block;
   margin-right: 8px;
+}
+
+.chip {
+  display: inline-block;
+  background: linear-gradient(90deg, #6366f1, #a78bfa); /* violet-blue gradient */
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.6rem;
+  margin: 0.25rem 0.25rem 0 0;
+  border-radius: 9999px;
+  text-transform: capitalize;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chip:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 0.75rem; /* rounded corners */
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.research-areas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Stile per la card del progetto */
+.book.card {
+    position: relative; /* Necessario per posizionare gli elementi interni */
+    overflow: hidden; /* Assicura che la barra di progresso non esca dai bordi */
+}
+
+/* Stile per la versione del progetto */
+.project-version {
+    position: absolute;
+    top: 10px; /* Distanza dall'alto */
+    right: 10px; /* Distanza da destra */
+    background-color: #f0f0f0; /* Sfondo chiaro per la versione */
+    color: #333; /* Colore del testo */
+    padding: 3px 8px; /* Spaziatura interna */
+    border-radius: 5px; /* Bordi arrotondati */
+    font-size: 0.8em; /* Dimensione del font leggermente più piccola */
+    font-weight: bold;
+    z-index: 10; /* Assicura che sia sopra altri elementi */
+}
+
+/* Contenitore della barra di avanzamento */
+.progress-bar-container {
+    width: calc(100% - 20px); /* Larghezza del contenitore (sottraendo il padding orizzontale della card) */
+    height: 8px; /* Altezza della barra */
+    background-color: #e0e0e0; /* Colore di sfondo della barra vuota */
+    border-radius: 4px; /* Bordi arrotondati */
+    margin: 15px 10px 10px 10px; /* Margine superiore, destro, inferiore, sinistro */
+    overflow: hidden; /* Nasconde la parte della barra che esce */
+}
+
+/* La barra di avanzamento vera e propria */
+.progress-bar {
+    height: 100%; /* Occupa tutta l'altezza del contenitore */
+    background: linear-gradient(to right, #4CAF50, #8BC34A); /* Gradiente di colore verde */
+    border-radius: 4px; /* Bordi arrotondati */
+    transition: width 0.5s ease-in-out; /* Animazione fluida per il cambiamento della larghezza */
 }

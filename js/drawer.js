@@ -114,64 +114,66 @@ function createFilterUI() {
   // Clear existing content
   filtersContainer.innerHTML = `
     <h3>Future Explorations</h3>
-    
-    <div class="filter-group">
-      <h4>Categories</h4>
-      <div class="tag-filters" id="category-filters">
-        <button class="tag-filter active" data-category="all">All</button>
-        <button class="tag-filter" data-category="technology">Technology</button>
-        <button class="tag-filter" data-category="environment">Environment</button>
-        <button class="tag-filter" data-category="society">Society</button>
-        <button class="tag-filter" data-category="politics">Politics</button>
-        <button class="tag-filter" data-category="health">Health</button>
-        <button class="tag-filter" data-category="science">Science</button>
-        <button class="tag-filter" data-category="transportation">Transportation</button>
-      </div>
+<p class="subtitle">A creative invitation to imagine, explore, and reflect on possible futures.</p>
+
+<div class="filter-group">
+  <h4>Categories</h4>
+  <div class="tag-filters" id="category-filters">
+    <button class="tag-filter active" data-category="all">All</button>
+    <button class="tag-filter" data-category="technology">Technology</button>
+    <button class="tag-filter" data-category="environment">Environment</button>
+    <button class="tag-filter" data-category="society">Society</button>
+    <button class="tag-filter" data-category="politics">Politics</button>
+    <button class="tag-filter" data-category="health">Health</button>
+    <button class="tag-filter" data-category="science">Science</button>
+    <button class="tag-filter" data-category="transportation">Transportation</button>
+  </div>
+</div>
+
+<div class="filter-group">
+  <h4>Year Range</h4>
+  <div class="range-slider">
+    <div class="range-values">
+      <span id="year-min">2025</span>
+      <span id="year-max">2055</span>
     </div>
-    
-    <div class="filter-group">
-      <h4>Year Range</h4>
-      <div class="range-slider">
-        <div class="range-values">
-          <span id="year-min">2025</span>
-          <span id="year-max">2055</span>
-        </div>
-        <div class="slider-container">
-          <input type="range" id="year-range-min" min="2025" max="2055" value="2025" class="range">
-          <input type="range" id="year-range-max" min="2025" max="2055" value="2055" class="range">
-        </div>
-      </div>
+    <div class="slider-container">
+      <input type="range" id="year-range-min" min="2025" max="2055" value="2025" class="range">
+      <input type="range" id="year-range-max" min="2025" max="2055" value="2055" class="range">
     </div>
-    
-    <div class="filter-group">
-      <h4>Probability Rating</h4>
-      <div class="rating-filter">
-        <div class="rating-stars" id="probability-rating">
-          <span class="star active" data-value="1">★</span>
-          <span class="star active" data-value="2">★</span>
-          <span class="star active" data-value="3">★</span>
-          <span class="star active" data-value="4">★</span>
-          <span class="star active" data-value="5">★</span>
-        </div>
-        <span class="rating-label">Any probability</span>
-      </div>
+  </div>
+</div>
+
+<div class="filter-group">
+  <h4>Probability Rating</h4>
+  <div class="rating-filter">
+    <div class="rating-stars" id="probability-rating">
+      <span class="star active" data-value="1">★</span>
+      <span class="star active" data-value="2">★</span>
+      <span class="star active" data-value="3">★</span>
+      <span class="star active" data-value="4">★</span>
+      <span class="star active" data-value="5">★</span>
     </div>
-    
-    <div class="filter-group">
-      <h4>Impact Rating</h4>
-      <div class="rating-filter">
-        <div class="rating-stars" id="impact-rating">
-          <span class="star active" data-value="1">★</span>
-          <span class="star active" data-value="2">★</span>
-          <span class="star active" data-value="3">★</span>
-          <span class="star active" data-value="4">★</span>
-          <span class="star active" data-value="5">★</span>
-        </div>
-        <span class="rating-label">Any impact</span>
-      </div>
+    <span class="rating-label">Any probability</span>
+  </div>
+</div>
+
+<div class="filter-group">
+  <h4>Impact Rating</h4>
+  <div class="rating-filter">
+    <div class="rating-stars" id="impact-rating">
+      <span class="star active" data-value="1">★</span>
+      <span class="star active" data-value="2">★</span>
+      <span class="star active" data-value="3">★</span>
+      <span class="star active" data-value="4">★</span>
+      <span class="star active" data-value="5">★</span>
     </div>
-    
-    <button id="reset-filters" class="reset-button">Reset Filters</button>
+    <span class="rating-label">Any impact</span>
+  </div>
+</div>
+
+<button id="reset-filters" class="reset-button">Reset Filters</button>
+
   `;
   
   // Add styles for the new filter UI
