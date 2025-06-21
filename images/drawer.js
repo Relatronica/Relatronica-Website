@@ -129,7 +129,7 @@ function createFilterUI() {
   
   // Clear existing content
  filtersContainer.innerHTML = `
-    <h3>Future Explorations</h3>
+  <h3>Future Explorations</h3>
 <p class="subtitle">
   A creative invitation to imagine, explore, and reflect on possible futures.
 </p>
