@@ -18,7 +18,8 @@ function initGraphVisualization() {
     { id: "scenario-generator", name: "Scenario Generator", group: 4 },
     { id: "people", name: "People & Inspirations", group: 5 },
     { id: "bibliography", name: "Bibliography & Resources", group: 6 },
-    { id: "projects", name: "Projects", group: 7 }
+    { id: "projects", name: "Projects", group: 7 },
+    { id: "philosophy-of-mind", name: "Philosophy of Mind Atlas", group: 8 }
   ];
 
   // Define links (edges) between nodes, with a "value" used for line thickness
@@ -30,11 +31,14 @@ function initGraphVisualization() {
   { source: 6, target: 2, value: 1 }, // Projects → Toolbox
   { source: 6, target: 3, value: 1 }, // Projects → Scenario Generator
   { source: 6, target: 1, value: 3 }, // Projects → Mission
+  { source: 1, target: 7, value: 2 }, // Research → Philosophy of Mind
+  { source: 5, target: 7, value: 1 }, // Bibliography → Philosophy of Mind
+  { source: 6, target: 7, value: 2 }, // Projects → Philosophy of Mind
   ];
 
   // Set up graph dimensions
-  const width = graphContainer.clientWidth;
-  const height = graphContainer.clientHeight;
+  const width = Math.max(graphContainer.clientWidth, 360);
+  const height = Math.max(graphContainer.clientHeight, 320);
 
   // Create an SVG element with zoom and accessibility features
   const svg = d3.create("svg")
@@ -63,10 +67,10 @@ function initGraphVisualization() {
 
   // Initialize the force simulation
   const simulation = d3.forceSimulation(sections)
-    .force("link", d3.forceLink(links).id(d => d.index).distance(100))
-    .force("charge", d3.forceManyBody().strength(-400))
+    .force("link", d3.forceLink(links).id(d => d.index).distance(150).strength(0.4))
+    .force("charge", d3.forceManyBody().strength(-500))
     .force("center", d3.forceCenter(width / 2, height / 2))
-    .force("collide", d3.forceCollide().radius(60));
+    .force("collide", d3.forceCollide().radius(70).iterations(2));
 
   // Draw the links between nodes
   g.append("g").attr("class", "links")
@@ -210,10 +214,13 @@ function initGraphVisualization() {
 
   // Resize behavior on window resize
   function updateGraphSize() {
-    const newWidth = graphContainer.clientWidth;
-    const newHeight = graphContainer.clientHeight;
+    const newWidth = Math.max(graphContainer.clientWidth, 360);
+    const newHeight = Math.max(graphContainer.clientHeight, 320);
     svg.attr("viewBox", [0, 0, newWidth, newHeight]);
-    simulation.force("center", d3.forceCenter(newWidth / 2, newHeight / 2)).alpha(0.3).restart();
+    simulation
+      .force("center", d3.forceCenter(newWidth / 2, newHeight / 2))
+      .force("link").distance(Math.min(newWidth, newHeight) / 2.5);
+    simulation.alpha(0.6).restart();
   }
 
   // Drag behavior setup for each node

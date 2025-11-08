@@ -23,15 +23,41 @@ document.addEventListener('DOMContentLoaded', () => {
 function initDrawer() {
   const drawerToggleBtn = document.getElementById('drawer-toggle-btn');
   const drawer = document.querySelector('.drawer');
+  if (!drawerToggleBtn || !drawer) return;
+
+  const icon = drawerToggleBtn.querySelector('.drawer-icon');
+  const syncLayoutWithDrawer = (isOpen) => {
+    document.body.classList.toggle('drawer-collapsed', !isOpen);
+  };
+
+  const setDrawerState = (shouldOpen) => {
+    drawer.classList.toggle('open', shouldOpen);
+    drawerToggleBtn.setAttribute('aria-expanded', shouldOpen);
+    syncLayoutWithDrawer(shouldOpen);
+
+    if (icon) {
+      icon.className = shouldOpen
+        ? 'fa-solid fa-chevron-left drawer-icon'
+        : 'fa-solid fa-rocket drawer-icon';
+    }
+
+    if (shouldOpen) {
+      window.requestAnimationFrame(() => {
+        window.dispatchEvent(new Event('resize'));
+      });
+    }
+  };
+
+  const isDesktopView = () => window.innerWidth > 992;
+
+  // Initialize drawer state based on viewport
+  setDrawerState(isDesktopView());
+
+  let wasMobileView = !isDesktopView();
 
   drawerToggleBtn.addEventListener('click', () => {
-    drawer.classList.toggle('open');
-
     const isOpen = drawer.classList.contains('open');
-    drawerToggleBtn.setAttribute('aria-expanded', isOpen);
-
-    const icon = drawerToggleBtn.querySelector('.drawer-icon');
-    icon.className = isOpen ? 'fa-solid fa-chevron-left drawer-icon' : 'fa-solid fa-rocket drawer-icon';
+    setDrawerState(!isOpen);
   });
 
   document.addEventListener('click', (event) => {
@@ -40,23 +66,20 @@ function initDrawer() {
     const isClickOnToggleBtn = drawerToggleBtn.contains(event.target);
 
     if (isDrawerOpen && !isClickInsideDrawer && !isClickOnToggleBtn && window.innerWidth <= 768) {
-      drawer.classList.remove('open');
-      drawerToggleBtn.setAttribute('aria-expanded', false);
-
-      const icon = drawerToggleBtn.querySelector('.drawer-icon');
-      icon.className = 'fa-solid fa-rocket drawer-icon';
+      setDrawerState(false);
     }
   });
 
   // Update drawer state on resize
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-      drawer.classList.remove('open');
-      drawerToggleBtn.setAttribute('aria-expanded', false);
+    const isCurrentlyDesktop = isDesktopView();
+    const isCurrentlyMobile = !isCurrentlyDesktop;
 
-      const icon = drawerToggleBtn.querySelector('.drawer-icon');
-      icon.className = 'fa-solid fa-rocket drawer-icon';
+    if (isCurrentlyMobile && !wasMobileView) {
+      setDrawerState(false);
     }
+
+    wasMobileView = isCurrentlyMobile;
   });
   
   
@@ -129,75 +152,84 @@ function createFilterUI() {
   
   // Clear existing content
  filtersContainer.innerHTML = `
-    <h3>Future Explorations</h3>
-<p class="subtitle">
-  A creative invitation to imagine, explore, and reflect on possible futures.
-</p>
-<p>
-  <em>Your mind is the engine. This tool is just the spark.</em><br><br>
-  Welcome to a speculative sandbox where imagination isn’t escapism — it’s resistance.  
-  We don’t predict the future here. We challenge it.<br><br>
-  Pick a year, adjust the impact, stretch the probability — each choice unlocks a possible world: desirable, dangerous, or just different enough to matter.<br><br>
-  This is for those who don’t ask “what will be,” but <strong>“what could we dare to make real?”</strong>
-</p>
-
-  <div class="filter-group">
-    <h4>Categories</h4>
-    <div class="tag-filters" id="category-filters">
-      <button class="tag-filter active" data-category="all">All</button>
-      <button class="tag-filter" data-category="technology">Technology</button>
-      <button class="tag-filter" data-category="environment">Environment</button>
-      <button class="tag-filter" data-category="society">Society</button>
-      <button class="tag-filter" data-category="politics">Politics</button>
-      <button class="tag-filter" data-category="health">Health</button>
-      <button class="tag-filter" data-category="science">Science</button>
-      <button class="tag-filter" data-category="transportation">Transportation</button>
-    </div>
-  </div>
-
-  <div class="filter-group">
-    <h4>Year Range</h4>
-    <div class="range-slider">
-      <div class="range-values">
-        <span id="year-min">2025</span>
-        <span id="year-max">2055</span>
+    <div class="filter-header">
+      <div>
+        <h3>Future Explorations</h3>
+        <p class="subtitle">Fine-tune the scenarios with quick filters.</p>
       </div>
-      <div class="slider-container">
-        <input type="range" id="year-range-min" min="2025" max="2055" value="2025" class="range">
-        <input type="range" id="year-range-max" min="2025" max="2055" value="2055" class="range">
+      <button id="reset-filters" class="reset-button" type="button">Reset</button>
+    </div>
+
+    <details class="filter-description">
+      <summary>How it works</summary>
+      <p>
+        Toggle tags to shift the thematic focus, narrow the timeline, and use stars to set minimum probability or impact. Event cards below update instantly.
+      </p>
+    </details>
+
+    <div class="filter-grid">
+      <div class="filter-card">
+        <h4>Category</h4>
+        <div class="tag-filters" id="category-filters">
+          <button class="tag-filter active" data-category="all">All</button>
+          <button class="tag-filter" data-category="technology">Technology</button>
+          <button class="tag-filter" data-category="environment">Environment</button>
+          <button class="tag-filter" data-category="society">Society</button>
+          <button class="tag-filter" data-category="politics">Politics</button>
+          <button class="tag-filter" data-category="health">Health</button>
+          <button class="tag-filter" data-category="science">Science</button>
+          <button class="tag-filter" data-category="transportation">Mobility</button>
+        </div>
+      </div>
+
+      <div class="filter-card">
+        <h4>Timeline</h4>
+        <div class="range-slider">
+          <div class="range-values">
+            <span id="year-min" class="range-chip">2025</span>
+            <span id="year-max" class="range-chip">2055</span>
+          </div>
+          <div class="slider-container">
+            <div class="slider-track">
+              <div class="slider-range" id="year-range-highlight"></div>
+            </div>
+            <input type="range" id="year-range-min" min="2025" max="2055" value="2025" class="range" aria-label="Minimum year">
+            <input type="range" id="year-range-max" min="2025" max="2055" value="2055" class="range" aria-label="Maximum year">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="filter-grid">
+      <div class="filter-card">
+        <h4>Probability</h4>
+        <div class="rating-filter">
+          <div class="rating-stars" id="probability-rating" role="radiogroup" aria-label="Filter by minimum probability">
+            <span class="star active" data-value="1" role="radio" aria-checked="false">★</span>
+            <span class="star active" data-value="2" role="radio" aria-checked="false">★</span>
+            <span class="star active" data-value="3" role="radio" aria-checked="false">★</span>
+            <span class="star active" data-value="4" role="radio" aria-checked="false">★</span>
+            <span class="star active" data-value="5" role="radio" aria-checked="false">★</span>
+          </div>
+          <span class="rating-label">Any probability</span>
+        </div>
+      </div>
+
+      <div class="filter-card">
+        <h4>Impact</h4>
+        <div class="rating-filter">
+          <div class="rating-stars" id="impact-rating" role="radiogroup" aria-label="Filter by minimum impact">
+            <span class="star active" data-value="1" role="radio" aria-checked="false">★</span>
+            <span class="star active" data-value="2" role="radio" aria-checked="false">★</span>
+            <span class="star active" data-value="3" role="radio" aria-checked="false">★</span>
+            <span class="star active" data-value="4" role="radio" aria-checked="false">★</span>
+            <span class="star active" data-value="5" role="radio" aria-checked="false">★</span>
+          </div>
+          <span class="rating-label">Any impact</span>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="filter-group">
-    <h4>Probability Rating</h4>
-    <div class="rating-filter">
-      <div class="rating-stars" id="probability-rating">
-        <span class="star active" data-value="1">★</span>
-        <span class="star active" data-value="2">★</span>
-        <span class="star active" data-value="3">★</span>
-        <span class="star active" data-value="4">★</span>
-        <span class="star active" data-value="5">★</span>
-      </div>
-      <span class="rating-label">Any probability</span>
-    </div>
-  </div>
-
-  <div class="filter-group">
-    <h4>Impact Rating</h4>
-    <div class="rating-filter">
-      <div class="rating-stars" id="impact-rating">
-        <span class="star active" data-value="1">★</span>
-        <span class="star active" data-value="2">★</span>
-        <span class="star active" data-value="3">★</span>
-        <span class="star active" data-value="4">★</span>
-        <span class="star active" data-value="5">★</span>
-      </div>
-      <span class="rating-label">Any impact</span>
-    </div>
-  </div>
-
-  <button id="reset-filters" class="reset-button">Reset Filters</button>
 `;
 
   
@@ -216,64 +248,171 @@ function addFilterStyles() {
   styleElement.id = 'drawer-filter-styles';
   
   styleElement.textContent = `
-    .filters h3 {
-      margin-bottom: 1.5rem;
+    .filters {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .filter-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    
+    .filter-header h3 {
+      margin-bottom: 0.1rem;
       color: var(--color-accent-primary);
     }
     
-    .filter-group {
-      margin-bottom: 1.5rem;
-    }
-    
-    .filter-group h4 {
-      margin-bottom: 0.75rem;
-      font-size: 1rem;
+    .filter-header .subtitle {
+      margin: 0;
+      font-size: 0.85rem;
       color: var(--color-text-secondary);
     }
     
-    .tag-filters {
+    .filter-description {
+      background-color: var(--color-bg-tertiary);
+      border-radius: var(--border-radius);
+      border-left: 3px solid var(--color-accent-primary);
+      padding: 0.65rem 0.85rem;
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+    }
+    
+    .filter-description summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
+      list-style: none;
+    }
+    
+    .filter-description summary::-webkit-details-marker {
+      display: none;
+    }
+    
+    .filter-description summary::after {
+      content: '▼';
+      font-size: 0.65rem;
+      margin-left: 0.5rem;
+      transform: rotate(-90deg);
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    
+    .filter-description[open] summary::after {
+      transform: rotate(0deg);
+    }
+    
+    .filter-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(220px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .filter-card {
+      background-color: var(--color-bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      padding: 0.85rem;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
+      flex-direction: column;
+      gap: 0.6rem;
+      box-shadow: 0 2px 6px var(--color-shadow);
+      min-height: 0;
+    }
+    
+    .filter-card h4 {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+    }
+    
+    .tag-filters {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.4rem;
     }
     
     .tag-filter {
       background-color: var(--color-bg-tertiary);
       border: 1px solid var(--color-border);
-      border-radius: 20px;
-      padding: 0.25rem 0.75rem;
-      font-size: 0.85rem;
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.8rem;
       cursor: pointer;
       transition: all 0.2s ease;
+      text-align: center;
     }
     
     .tag-filter:hover {
-      background-color: var(--color-accent-primary);
-      color: white;
+      border-color: var(--color-accent-primary);
+      color: var(--color-accent-primary);
     }
     
     .tag-filter.active {
       background-color: var(--color-accent-primary);
-      color: white;
+      color: #fff;
+      border-color: transparent;
     }
     
     .range-slider {
-      padding: 0 0.5rem;
+      padding: 0 0.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
     
     .range-values {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
     }
     
+    .range-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(98, 0, 238, 0.12), rgba(3, 218, 198, 0.18));
+      color: var(--color-text-primary);
+      font-size: 0.8rem;
+      font-weight: 500;
+      box-shadow: inset 0 0 0 1px rgba(98, 0, 238, 0.12);
+    }
+
     .slider-container {
       position: relative;
       height: 40px;
+      display: flex;
+      align-items: center;
     }
     
+    .slider-track {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--color-border);
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .slider-range {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-secondary));
+      transition: left 0.2s ease, width 0.2s ease;
+    }
+
     input[type="range"].range {
       position: absolute;
       width: 100%;
@@ -286,45 +425,53 @@ function addFilterStyles() {
       transform: translateY(-50%);
       background: var(--color-border);
       outline: none;
+      z-index: 2;
     }
     
     input[type="range"].range::-webkit-slider-thumb {
       pointer-events: auto;
       appearance: none;
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
       background: var(--color-accent-primary);
       cursor: pointer;
+      box-shadow: 0 0 0 4px rgba(98, 0, 238, 0.15);
     }
     
     input[type="range"].range::-moz-range-thumb {
       pointer-events: auto;
       appearance: none;
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
       background: var(--color-accent-primary);
       cursor: pointer;
+      box-shadow: 0 0 0 4px rgba(98, 0, 238, 0.15);
     }
     
     .rating-filter {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
     }
     
     .rating-stars {
-      display: flex;
-      gap: 0.25rem;
-      margin-bottom: 0.25rem;
+      display: inline-flex;
+      gap: 0.15rem;
     }
     
     .rating-stars .star {
-      font-size: 1.25rem;
+      font-size: 1rem;
       cursor: pointer;
       color: var(--color-border);
-      transition: color 0.2s ease;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    
+    .rating-stars .star:hover {
+      transform: scale(1.1);
     }
     
     .rating-stars .star.active {
@@ -332,21 +479,21 @@ function addFilterStyles() {
     }
     
     .rating-label {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: var(--color-text-secondary);
+      white-space: nowrap;
     }
     
     .reset-button {
+      white-space: nowrap;
+      align-self: flex-start;
       background-color: var(--color-bg-tertiary);
       border: 1px solid var(--color-border);
-      border-radius: var(--border-radius);
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.8rem;
       cursor: pointer;
       transition: all 0.2s ease;
-      display: block;
-      width: 100%;
-      margin-top: 1rem;
     }
     
     .reset-button:hover {
@@ -354,27 +501,42 @@ function addFilterStyles() {
       color: var(--color-text-primary);
     }
     
+    @media (max-width: 1024px) {
+      .filter-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    
+      .filter-grid {
+        grid-template-columns: 1fr;
+      }
+    
+      .tag-filters {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      }
+    }
+    
     /* Future Events Styling */
     .future-events {
-      margin-top: 2rem;
+      margin-top: 1.5rem;
     }
     
     .future-events h3 {
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       color: var(--color-accent-primary);
     }
     
     .event-carousel {
       position: relative;
-      min-height: 200px;
+      min-height: 160px;
     }
     
     .event {
-      padding: 1.25rem;
-      margin-bottom: 1rem;
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.75rem;
       background-color: var(--color-bg-tertiary);
       border-radius: var(--border-radius);
-      border-left: 4px solid var(--color-accent-primary);
+      border-left: 3px solid var(--color-accent-primary);
       transition: opacity 0.5s ease, transform 0.5s ease;
       position: absolute;
       width: 100%;
@@ -390,27 +552,30 @@ function addFilterStyles() {
     }
     
     .event h4 {
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
       color: var(--color-text-primary);
+      font-size: 1rem;
+      line-height: 1.3;
     }
     
     .event-meta {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 0.75rem;
-      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.75rem;
       color: var(--color-text-secondary);
     }
     
     .event-description {
-      margin-bottom: 0.75rem;
-      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      line-height: 1.4;
     }
     
     .event-ratings {
       display: flex;
       justify-content: space-between;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: var(--color-text-secondary);
     }
     
@@ -427,17 +592,17 @@ function addFilterStyles() {
     .event-navigation {
       display: flex;
       justify-content: space-between;
-      margin-top: 1rem;
+      margin-top: 0.75rem;
     }
     
     .event-nav-button {
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       color: var(--color-text-secondary);
       cursor: pointer;
       transition: color 0.2s ease;
-      padding: 0.25rem 0.5rem;
+      padding: 0.2rem 0.4rem;
     }
     
     .event-nav-button:hover {
@@ -490,8 +655,29 @@ function setupFilterListeners() {
   const yearMaxSlider = document.getElementById('year-range-max');
   const yearMinDisplay = document.getElementById('year-min');
   const yearMaxDisplay = document.getElementById('year-max');
+  const rangeHighlight = document.getElementById('year-range-highlight');
 
   if (yearMinSlider && yearMaxSlider && yearMinDisplay && yearMaxDisplay) {
+    const sliderMin = parseInt(yearMinSlider.min, 10);
+    const sliderMax = parseInt(yearMaxSlider.max, 10);
+
+    const updateYearRangeVisuals = () => {
+      const minVal = parseInt(yearMinSlider.value, 10);
+      const maxVal = parseInt(yearMaxSlider.value, 10);
+
+      yearMinDisplay.textContent = minVal;
+      yearMaxDisplay.textContent = maxVal;
+
+      if (rangeHighlight) {
+        const minPercent = ((minVal - sliderMin) / (sliderMax - sliderMin)) * 100;
+        const maxPercent = ((maxVal - sliderMin) / (sliderMax - sliderMin)) * 100;
+        rangeHighlight.style.left = `${Math.max(Math.min(minPercent, 100), 0)}%`;
+        rangeHighlight.style.width = `${Math.max(Math.min(maxPercent, 100) - Math.max(Math.min(minPercent, 100), 0), 0)}%`;
+      }
+    };
+
+    updateYearRangeVisuals();
+
     yearMinSlider.addEventListener('input', () => {
       let minVal = parseInt(yearMinSlider.value);
       let maxVal = parseInt(yearMaxSlider.value);
@@ -500,7 +686,7 @@ function setupFilterListeners() {
         yearMinSlider.value = maxVal;
         minVal = maxVal;
       }
-      yearMinDisplay.textContent = minVal;
+      updateYearRangeVisuals();
       if (typeof applyFilters === 'function') applyFilters();
     });
 
@@ -512,7 +698,7 @@ function setupFilterListeners() {
         yearMaxSlider.value = minVal;
         maxVal = minVal;
       }
-      yearMaxDisplay.textContent = maxVal;
+      updateYearRangeVisuals();
       if (typeof applyFilters === 'function') applyFilters();
     });
   }
@@ -528,7 +714,9 @@ function setupFilterListeners() {
 
       probabilityStars.forEach(s => {
         const starValue = parseInt(s.getAttribute('data-value'));
-        s.classList.toggle('active', starValue <= probabilityRating || probabilityRating === 0);
+        const isActive = probabilityRating === 0 || starValue <= probabilityRating;
+        s.classList.toggle('active', isActive);
+        s.setAttribute('aria-checked', probabilityRating !== 0 && starValue === probabilityRating ? 'true' : 'false');
       });
 
       const label = star.parentElement?.nextElementSibling;
@@ -553,7 +741,9 @@ function setupFilterListeners() {
 
       impactStars.forEach(s => {
         const starValue = parseInt(s.getAttribute('data-value'));
-        s.classList.toggle('active', starValue <= impactRating || impactRating === 0);
+        const isActive = impactRating === 0 || starValue <= impactRating;
+        s.classList.toggle('active', isActive);
+        s.setAttribute('aria-checked', impactRating !== 0 && starValue === impactRating ? 'true' : 'false');
       });
 
       const label = star.parentElement?.nextElementSibling;
@@ -583,13 +773,17 @@ function setupFilterListeners() {
       if (yearMinSlider && yearMaxSlider && yearMinDisplay && yearMaxDisplay) {
         yearMinSlider.value = yearMinSlider.min;
         yearMaxSlider.value = yearMaxSlider.max;
-        yearMinDisplay.textContent = yearMinSlider.min;
-        yearMaxDisplay.textContent = yearMaxSlider.max;
+        const updateEvent = new Event('input');
+        yearMinSlider.dispatchEvent(updateEvent);
+        yearMaxSlider.dispatchEvent(updateEvent);
       }
 
       // Reset probability rating
       probabilityRating = 0;
-      probabilityStars.forEach(s => s.classList.add('active'));
+      probabilityStars.forEach(s => {
+        s.classList.add('active');
+        s.setAttribute('aria-checked', 'false');
+      });
       if (probabilityStars.length > 0) {
         const label = probabilityStars[0].parentElement?.nextElementSibling;
         if (label) label.textContent = 'Any probability';
@@ -597,7 +791,10 @@ function setupFilterListeners() {
 
       // Reset impact rating
       impactRating = 0;
-      impactStars.forEach(s => s.classList.add('active'));
+      impactStars.forEach(s => {
+        s.classList.add('active');
+        s.setAttribute('aria-checked', 'false');
+      });
       if (impactStars.length > 0) {
         const label = impactStars[0].parentElement?.nextElementSibling;
         if (label) label.textContent = 'Any impact';
@@ -614,6 +811,13 @@ function setupFilterListeners() {
  * Load future events from JSON file or fallback to hardcoded events
  */
 function loadFutureEvents() {
+  if (window.location.protocol === 'file:') {
+    const fallbackEvents = getFallbackFutureEvents();
+    window.futureEvents = fallbackEvents;
+    initEventDisplay(fallbackEvents);
+    return;
+  }
+
   fetch('assets/data/future_events.json')
     .then(response => {
       if (!response.ok) {
@@ -633,36 +837,71 @@ function loadFutureEvents() {
     .catch(error => {
       console.error('Error loading future events:', error);
 
-      const fallbackEvents = [
-        {
-          title: "First Neural Mesh Network City",
-          description: "Singapore becomes the first city to implement a citywide neural mesh network, allowing buildings, infrastructure, and natural systems to communicate and adapt in real-time to environmental changes and human needs.",
-          year: 2035,
-          category: "technology",
-          probability: 3,
-          impact: 5
-        },
-        {
-          title: "Global Carbon Sequestration Treaty",
-          description: "Following decades of climate crisis, 175 nations sign the Mumbai Accord, committing 2% of global GDP to atmospheric carbon capture and sequestration technologies, marking the first serious attempt to reverse climate change rather than just mitigate it.",
-          year: 2042,
-          category: "environment",
-          probability: 4,
-          impact: 5
-        },
-        {
-          title: "Universal Basic Purpose Program",
-          description: "As automation reaches 65% of traditional employment sectors, the European Union launches the first Universal Basic Purpose program, providing citizens with both basic income and access to meaningful project-based work in community development, environmental restoration, and care economies.",
-          year: 2038,
-          category: "society",
-          probability: 3,
-          impact: 4
-        }
-      ];
-
+      const fallbackEvents = getFallbackFutureEvents();
       window.futureEvents = fallbackEvents;
       initEventDisplay(fallbackEvents);
     });
+}
+
+function getFallbackFutureEvents() {
+  return [
+    {
+      title: "First Neural Mesh Network City",
+      description: "Singapore becomes the first city to implement a citywide neural mesh network, allowing buildings, infrastructure, and natural systems to communicate and adapt in real-time to environmental changes and human needs.",
+      year: 2035,
+      category: "technology",
+      probability: 3,
+      impact: 5
+    },
+    {
+      title: "Global Carbon Sequestration Treaty",
+      description: "Following decades of climate crisis, 175 nations sign the Mumbai Accord, committing 2% of global GDP to atmospheric carbon capture and sequestration technologies, marking the first serious attempt to reverse climate change rather than just mitigate it.",
+      year: 2042,
+      category: "environment",
+      probability: 4,
+      impact: 5
+    },
+    {
+      title: "Universal Basic Purpose Program",
+      description: "As automation reaches 65% of traditional employment sectors, the European Union launches the first Universal Basic Purpose program, providing citizens with both basic income and access to meaningful project-based work in community development, environmental restoration, and care economies.",
+      year: 2038,
+      category: "society",
+      probability: 3,
+      impact: 4
+    },
+    {
+      title: "Algorithmic Truth and Reconciliation Courts",
+      description: "Post-conflict nations adopt algorithmic truth and reconciliation courts where AI mediators surface suppressed narratives and propose reparative futures, blending restorative justice with anticipatory governance.",
+      year: 2033,
+      category: "politics",
+      probability: 3,
+      impact: 4
+    },
+    {
+      title: "Whole-Body Digital Twins",
+      description: "Integrated bio-sensing and simulation platforms create continuously updated whole-body digital twins, allowing clinicians to run preventative interventions in simulation before applying microscopic nanotherapy swarms.",
+      year: 2035,
+      category: "health",
+      probability: 3,
+      impact: 5
+    },
+    {
+      title: "Ambient Planetary Sensor Web",
+      description: "A breakthrough in bio-compatible nanomaterials enables the world's first ambient planetary sensor web, allowing scientists to monitor ecosystem health through self-powered micro-sentinels embedded in soil, ice, and oceans.",
+      year: 2030,
+      category: "science",
+      probability: 3,
+      impact: 5
+    },
+    {
+      title: "Amphibious Megalopolis Transit Grid",
+      description: "Coastal adaptation coalitions commission an amphibious transit grid of semi-submersible pods that knit together floating neighbourhoods with inland districts, redefining mobility in tidal cities.",
+      year: 2039,
+      category: "transportation",
+      probability: 3,
+      impact: 5
+    }
+  ];
 }
 
 

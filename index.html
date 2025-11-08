@@ -23,9 +23,9 @@
 </head>
 <body>
    <header>
-    <div class="logo">
+    <a class="logo" href="#mission-vision" aria-label="Relatronica home">
         <h1>Relatronica</h1>
-    </div>
+    </a>
     <div class="header-controls">
         <button id="drawer-toggle-btn" aria-label="Toggle navigation drawer">
             <i class="fa-solid fa-rocket drawer-icon" aria-hidden="true"></i>
@@ -400,7 +400,100 @@
                             </div>
                         </div>
                     </section>
-    
+
+                    <section id="philosophy-of-mind" class="content-section">
+                        <h1 class="gradient-text">Philosophy of Mind Atlas</h1>
+                        <div class="section-content philosophy-mind-layout">
+                            <div class="mind-overview card mind-controls">
+                                <h4><i class="fa-solid fa-brain gradient-icon" aria-hidden="true"></i> Navigate &amp; Filter the Atlas</h4>
+                                <p>
+                                    This atlas invites you to explore how philosophers, theories, and key concepts intertwine across
+                                    the debates on mind, consciousness, and cognition. Traverse the graph, follow lineages of ideas,
+                                    and surface productive tensions between schools of thought.
+                                </p>
+                                <p>
+                                    Combine filters to foreground specific traditions or historical moments, or search directly for a
+                                    concept. Every selection reconfigures the network, revealing how perspectives resonate—or collide.
+                                </p>
+                                <div class="mind-overview-filters">
+                                    <div class="mind-legend">
+                                        <span class="legend-chip legend-philosopher">Philosopher</span>
+                                        <span class="legend-chip legend-theory">Theory</span>
+                                        <span class="legend-chip legend-concept">Concept</span>
+                                    </div>
+                                    <div class="filter-grid">
+                                        <label class="filter-field">
+                                            <span>Search</span>
+                                            <input type="search" id="mind-filter-search" placeholder="Search thinkers or concepts">
+                                        </label>
+                                    </div>
+                                    <div class="mind-overview-actions">
+                                        <button type="button" id="mind-filter-reset" class="reset-button">Reset filters</button>
+                                        <p class="filter-hint">
+                                            Tip: combine filters to surface hidden connections. Hover nodes to inspect detail, click to keep
+                                            them active.
+                                        </p>
+                                    </div>
+                                    <div id="mind-filter-feedback" class="filter-feedback" role="status" aria-live="polite"></div>
+                                </div>
+                            </div>
+                            <div class="mind-graph card">
+                                <div class="graph-header">
+                                    <h4><i class="fa-solid fa-network-wired" aria-hidden="true"></i> Interactive Graph</h4>
+                                    <button type="button" id="mind-zoom-reset" class="ghost-button">Reset view</button>
+                                </div>
+                                <div class="graph-legend" aria-hidden="true">
+                                    <div class="legend-group legend-group--nodes">
+                                        <span class="legend-label">Nodes</span>
+                                        <button type="button" class="legend-item legend-chip" data-type="all">
+                                            <i class="fa-solid fa-globe"></i> All
+                                        </button>
+                                        <button type="button" class="legend-item legend-chip" data-type="philosopher">
+                                            <i class="fa-solid fa-user-graduate"></i> Philosopher
+                                        </button>
+                                        <button type="button" class="legend-item legend-chip" data-type="theory">
+                                            <i class="fa-solid fa-lightbulb"></i> Theory
+                                        </button>
+                                        <button type="button" class="legend-item legend-chip" data-type="concept">
+                                            <i class="fa-solid fa-brain"></i> Concept
+                                        </button>
+                                        <div class="legend-dropwrap">
+                                            <div class="icon-select graph-filter-select" data-filter="relation">
+                                                <span class="sr-only">Filter by relation type</span>
+                                                <button type="button" class="icon-select-toggle" data-target="mind-relation-options">
+                                                    <span class="icon-select-label"><i class="fa-solid fa-globe"></i> All relations</span>
+                                                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                                                </button>
+                                                <ul id="mind-relation-options" class="icon-select-options" role="listbox"></ul>
+                                            </div>
+                                            <div class="icon-select graph-filter-select" data-filter="tradition">
+                                                <span class="sr-only">Filter by tradition</span>
+                                                <button type="button" class="icon-select-toggle" data-target="mind-tradition-options">
+                                                    <span class="icon-select-label"><i class="fa-solid fa-globe"></i> All traditions</span>
+                                                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                                                </button>
+                                                <ul id="mind-tradition-options" class="icon-select-options" role="listbox"></ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="legend-group">
+                                        <span class="legend-label">Relations</span>
+                                        <span class="legend-line legend-line-strong">Primary influence</span>
+                                        <span class="legend-line legend-line-medium">Development / response</span>
+                                        <span class="legend-line legend-line-light">Peripheral link</span>
+                                    </div>
+                                </div>
+                                <div class="graph-wrapper" id="philosophy-graph" aria-label="Philosophy of mind interactive graph"></div>
+                                <div class="graph-footnote">
+                                    <p>
+                                        Data curated by Relatronica. Edges indicate conceptual influence, critique, or thematic
+                                        resonance. Last update: <span class="update-pill">November 2025</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
 <section id="projects" class="content-section">
             <h1 class="gradient-text">Projects</h1>
             <div class="section-content">
@@ -413,9 +506,32 @@
                 <div class="research-areas-grid">
 
                     <div class="book card">
+                        <span class="project-version">v1.3</span>
+                        <div class="project-header">
+                            <div class="project-icon accent-teal">
+                                <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+                            </div>
+                            <h4>Segno — Ethical Process Cartography</h4>
+                        </div>
+                        <p class="description">
+                            Segno captures complex organisational processes as interactive maps, then layers ethical heuristics, dilemmas, and stakeholder perspectives on top of each pathway. It helps design and innovation teams surface hidden frictions, forecast unintended consequences, and rehearse ethical responses before solutions ship.
+                        </p>
+                        <br>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 95%;"></div>
+                        </div>
+                        <br>
+                        <a href="https://segno.app/" class="chip" target="_blank" rel="noopener">Visit Segno</a>
+                    </div>
+
+                    <div class="book card">
                         <span class="project-version">v1.2</span>
-                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp4199395.jpg&f=1&nofb=1&ipt=da3b82bbf842124dd9a5b36c2a7e5f73a1ae36788e26bb835ef68534d4a3de17" alt="Mapping Thought" class="project-image">
-                        <h4><i class="fa-solid fa-lightbulb gradient-icon" aria-hidden="true"></i> Mapping Thought: A Philosophical Exploration Tool</h4>
+                        <div class="project-header">
+                            <div class="project-icon accent-gold">
+                                <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                            </div>
+                            <h4>Mapping Thought: A Philosophical Exploration Tool</h4>
+                        </div>
                         <p class="description">
                             An interactive platform designed to help users explore complex philosophical concepts through visual mapping,
                             cross-referencing, and guided pathways inspired by major thinkers.
@@ -430,8 +546,12 @@
 
                     <div class="book card">
                         <span class="project-version">v1.0</span>
-                         <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp6490685.jpg&f=1&nofb=1&ipt=fd42d3876c166d430ae5433a3709e0cac69b8c2aac3d4e88d396e0538d8bceb8" alt="Sci-Fi Tech Atlas" class="project-image">
-                        <h4><i class="fa-solid fa-robot gradient-icon" aria-hidden="true"></i> Sci-Fi Tech Atlas</h4>
+                        <div class="project-header">
+                            <div class="project-icon accent-cyan">
+                                <i class="fa-solid fa-robot" aria-hidden="true"></i>
+                            </div>
+                            <h4>Sci-Fi Tech Atlas</h4>
+                        </div>
                         <p class="description">
                             A dynamic and visual database of science fiction works that categorizes and connects technologies, ideas,
                             and narratives to highlight the speculative power of fiction.
@@ -446,8 +566,12 @@
 
                     <div class="book card">
                         <span class="project-version">v0.8 Beta</span>
-                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Faf%2Fa2%2Fa8%2Fafa2a887dca921805b28b070266723ff.jpg&f=1&nofb=1&ipt=d3c04400dd90b2e55668b4eb8bd797c3c97ba8ca823fc9f37db57d4e60bf4193" alt="Scenario Generator" class="project-image">
-                        <h4><i class="fa-solid fa-sitemap gradient-icon" aria-hidden="true"></i> Scenario Generator</h4>
+                        <div class="project-header">
+                            <div class="project-icon accent-magenta">
+                                <i class="fa-solid fa-sitemap" aria-hidden="true"></i>
+                            </div>
+                            <h4>Scenario Generator</h4>
+                        </div>
                         <p class="description">
                             A creative tool to generate and reflect on plausible future scenarios, encouraging critical thinking
                             on uncertainty, ethical dilemmas, and long-term change.
@@ -462,8 +586,12 @@
 
                     <div class="book card">
                         <span class="project-version">v1.1</span>
-                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp4199384.png&f=1&nofb=1&ipt=b4eca97ae7cc646b271028f068c6c32b9acb65174586d4e304ca710cdabcd06b" alt="Data Sense" class="project-image">
-                        <h4><i class="fa-solid fa-database gradient-icon" aria-hidden="true"></i> Data Sense</h4>
+                        <div class="project-header">
+                            <div class="project-icon accent-indigo">
+                                <i class="fa-solid fa-database" aria-hidden="true"></i>
+                            </div>
+                            <h4>Data Sense</h4>
+                        </div>
                         <p class="description">
                             A project to raise awareness about data in everyday life, using visualizations, stories, and interactive
                             tools to promote digital literacy and informed decision-making.
@@ -478,8 +606,12 @@
 
                     <div class="book card">
                         <span class="project-version">v0.5 Alpha</span>
-                         <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpreview.redd.it%2Fnlyhkbk5vdu11.png%3Fauto%3Dwebp%26s%3De6e8c965aade5766a3539007a89fc7d4ef49861a&f=1&nofb=1&ipt=f8d895f7e7bfd8f9c0b95be66c4aaa8d86b6eb4b773210eb9d75fec6a5cd378a" alt="Political Systems Simulator" class="project-image">
-                        <h4><i class="fa-solid fa-landmark gradient-icon" aria-hidden="true"></i> Political Systems Simulator</h4>
+                        <div class="project-header">
+                            <div class="project-icon accent-amber">
+                                <i class="fa-solid fa-landmark" aria-hidden="true"></i>
+                            </div>
+                            <h4>Political Systems Simulator</h4>
+                        </div>
                         <p class="description">
                             An interactive simulator designed for civics education workshops, allowing users to experiment with different
                             political structures, policies, and their societal impacts in a safe, dynamic environment.
@@ -505,7 +637,7 @@
         <div class="drawer">
             <div class="tab-header">
                 <button class="tab-button active" data-tab="graph-tab">Navigation</button>
-                <button class="tab-button" data-tab="tools-tab">Tools</button>
+                <button class="tab-button" data-tab="foresight-tab">Foresight Lab</button>
             </div>
             <div class="tab-content">
                 <!-- Graph Navigation Tab -->
@@ -535,6 +667,7 @@
                             <div class="node-placeholder">Research Areas</div>
                             <div class="node-placeholder">Toolbox for Ethical Futures</div>
                             <div class="node-placeholder">Scenario Generator</div>
+                            <div class="node-placeholder">Philosophy of Mind Atlas</div>
                             <div class="node-placeholder">People & Inspirations</div>
                             <div class="node-placeholder">Bibliography</div>
                         </div>
@@ -542,7 +675,7 @@
                 </div>
                 
                 <!-- Tools Tab -->
-                <div id="tools-tab" class="tab-pane">
+                <div id="foresight-tab" class="tab-pane">
                     <div class="drawer-content">
                         <div class="filters">
                             <h3 class="gradient-text">Explore by Filters</h3>
@@ -613,6 +746,8 @@
 
     <!-- JavaScript files - ORDINE CORRETTO -->
     <script src="js/graph.js"></script>
+    <script src="js/data/philosophyMindData.js"></script>
+    <script src="js/philosophyGraph.js"></script>
     <script src="js/drawer.js"></script>
     <script src="js/main.js"></script>
 </body>

@@ -25,6 +25,14 @@
       "impact": 4
     },
     {
+      "title": "Intercultural Foresight Commons",
+      "description": "Six global cities launch an intercultural foresight commons where residents co-create long-term civic scenarios. Gameplay-inspired deliberation credits become a new social currency for participating in collective futures work.",
+      "year": 2041,
+      "category": "society",
+      "probability": 3,
+      "impact": 5
+    },
+    {
       "title": "Quantum Computing Accessibility Milestone",
       "description": "Quantum computing reaches a critical accessibility threshold, with cloud-based quantum processing becoming available to small businesses and educational institutions, democratizing access to previously elite computational capabilities.",
       "year": 2029,
@@ -73,11 +81,27 @@
       "impact": 4
     },
     {
+      "title": "Subsurface Hyperloop Freight Spine",
+      "description": "A consortium of coastal megacities completes the first subsurface hyperloop freight spine, linking Atlantic shipping hubs with frictionless underground logistics and removing 40% of heavy truck traffic from surface streets.",
+      "year": 2032,
+      "category": "transportation",
+      "probability": 3,
+      "impact": 5
+    },
+    {
       "title": "Interspecies Communication Protocol",
       "description": "Researchers establish the first standardized communication protocol with non-human species, beginning with cetaceans and great apes, fundamentally challenging human-centric ethical frameworks and legal systems.",
       "year": 2048,
       "category": "science",
       "probability": 2,
+      "impact": 5
+    },
+    {
+      "title": "Ambient Planetary Sensor Web",
+      "description": "A breakthrough in bio-compatible nanomaterials enables the world's first ambient planetary sensor web, allowing scientists to monitor ecosystem health through self-powered micro-sentinels embedded in soil, ice, and oceans.",
+      "year": 2030,
+      "category": "science",
+      "probability": 3,
       "impact": 5
     },
     {
@@ -103,6 +127,70 @@
       "category": "health",
       "probability": 3,
       "impact": 4
+    },
+    {
+      "title": "Adaptive Microbiome Symbionts",
+      "description": "Adaptive microbiome symbionts enter mainstream healthcare, with programmable living therapeutics that dynamically tune human immune responses to fluctuating environmental stressors.",
+      "year": 2044,
+      "category": "health",
+      "probability": 2,
+      "impact": 5
+    },
+    {
+      "title": "Planetary Charter Assembly",
+      "description": "Facing compounding planetary crises, the first citizen-led Planetary Charter Assembly drafts a binding framework for shared stewardship of global commons, establishing a senate of regions that co-governs climate adaptation resources.",
+      "year": 2046,
+      "category": "politics",
+      "probability": 2,
+      "impact": 5
+    },
+    {
+      "title": "Algorithmic Truth and Reconciliation Courts",
+      "description": "Post-conflict nations adopt algorithmic truth and reconciliation courts where AI mediators surface suppressed narratives and propose reparative futures, blending restorative justice with anticipatory governance.",
+      "year": 2033,
+      "category": "politics",
+      "probability": 3,
+      "impact": 4
+    },
+    {
+      "title": "Whole-Body Digital Twins",
+      "description": "Integrated bio-sensing and simulation platforms create continuously updated whole-body digital twins, allowing clinicians to run preventative interventions in simulation before applying microscopic nanotherapy swarms.",
+      "year": 2035,
+      "category": "health",
+      "probability": 3,
+      "impact": 5
+    },
+    {
+      "title": "Collective Dream Archives",
+      "description": "Neuroscience institutes establish collective dream archives, pooling anonymized nocturnal cognition to map emergent cultural archetypes and accelerate breakthroughs in empathy-centered therapeutics.",
+      "year": 2047,
+      "category": "science",
+      "probability": 2,
+      "impact": 4
+    },
+    {
+      "title": "Amphibious Megalopolis Transit Grid",
+      "description": "Coastal adaptation coalitions commission an amphibious transit grid of semi-submersible pods that knit together floating neighbourhoods with inland districts, redefining mobility in tidal cities.",
+      "year": 2039,
+      "category": "transportation",
+      "probability": 3,
+      "impact": 5
+    },
+    {
+      "title": "Solar Sail Cargo Corridors",
+      "description": "Space agencies and post-carbon logistics firms inaugurate solar sail cargo corridors, sending materials between orbital depots and lunar industries without propellant, catalyzing a cislunar circular economy.",
+      "year": 2050,
+      "category": "transportation",
+      "probability": 2,
+      "impact": 5
+    },
+    {
+      "title": "Fractal Forest Restoration Initiative",
+      "description": "Bioacoustic scientists and indigenous technologists co-create fractal forest restoration patterns generated by quantum ecological models, repairing biodiversity hotspots with self-tuning ecosystems.",
+      "year": 2032,
+      "category": "science",
+      "probability": 3,
+      "impact": 5
     },
     {
       "title": "Bioregional Economic Zones",
