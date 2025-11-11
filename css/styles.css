@@ -154,6 +154,24 @@
           gap: 10px;
         }
 
+.mobile-menu-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-tertiary);
+  transition: background-color var(--transition-speed) ease;
+}
+
+.mobile-menu-toggle:hover,
+.mobile-menu-toggle:focus-visible {
+  background-color: var(--color-border);
+}
+
 
 main.layout {
             display: flex;
@@ -533,14 +551,17 @@ main.layout {
             .layout {
                 flex-direction: column;
             }
+
+            #drawer-toggle-btn {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
             
             .drawer {
-                position: static;
-                top: auto;
-                width: 100%;
-                height: auto;
-                border-left: none;
-                border-top: 1px solid var(--color-border);
+                display: none;
             }
             
             .graph-navigation {
@@ -1730,25 +1751,11 @@ footer {
   }
 }
 
-/* Stile per mobile */
+/* Mobile drawer replacement */
 @media (max-width: 992px) {
-  .drawer {
-    position: fixed;
-    top: var(--header-height);
-    right: 0;
-    bottom: 0;
-    width: 80%;
-    max-width: 400px;
-    transform: translateX(100%);
-    transition: transform var(--transition-speed) ease;
-    z-index: 99;
-    pointer-events: none;
-    flex: 0 0 auto;
-  }
-
+  .drawer,
   .drawer.open {
-    transform: translateX(0);
-    pointer-events: auto;
+    display: none;
   }
 }
 
@@ -1885,4 +1892,120 @@ footer {
 
 .legend-line-light::before {
   background: rgba(98, 0, 238, 0.28);
+}
+
+body.mobile-menu-open {
+  overflow: hidden;
+}
+
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-speed) ease;
+}
+
+.mobile-nav-overlay.is-open {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.mobile-nav-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 18, 18, 0.45);
+  opacity: 0;
+  transition: opacity var(--transition-speed) ease;
+}
+
+.mobile-nav-overlay.is-open .mobile-nav-backdrop {
+  opacity: 1;
+}
+
+.mobile-nav-panel {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 110%);
+  width: min(420px, calc(100% - 2rem));
+  background: var(--color-bg-secondary);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.28);
+  transition: transform var(--transition-speed) ease;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+
+.mobile-nav-overlay.is-open .mobile-nav-panel {
+  transform: translate(-50%, 0);
+}
+
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mobile-nav-eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.mobile-nav-close {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  transition: background-color var(--transition-speed) ease;
+}
+
+.mobile-nav-close:hover,
+.mobile-nav-close:focus-visible {
+  background: var(--color-border);
+}
+
+.mobile-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 1.1rem 1.25rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-nav-link {
+  width: 100%;
+  text-align: left;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:focus-visible {
+  background: var(--color-border);
+  transform: translateY(-1px);
+}
+
+.mobile-nav-link.is-active {
+  background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-secondary));
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(98, 0, 238, 0.35);
 }

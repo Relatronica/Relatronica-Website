@@ -2,6 +2,19 @@
 // Graph Navigation JavaScript - Enhanced UX + Accessibility
 
 // Wait for the DOM to fully load before initializing the graph
+const GRAPH_SECTIONS = [
+  { id: "mission-vision", name: "Mission & Vision", group: 1 },
+  { id: "research-areas", name: "Research Areas", group: 2 },
+  { id: "toolbox", name: "Toolbox for Ethical Futures", group: 3 },
+  { id: "scenario-generator", name: "Scenario Generator", group: 4 },
+  { id: "people", name: "People & Inspirations", group: 5 },
+  { id: "bibliography", name: "Bibliography & Resources", group: 6 },
+  { id: "projects", name: "Projects", group: 7 },
+  { id: "philosophy-of-mind", name: "Philosophy of Mind Atlas", group: 8 }
+];
+
+window.graphSections = GRAPH_SECTIONS;
+
 document.addEventListener('DOMContentLoaded', () => {
   initGraphVisualization();
 });
@@ -10,17 +23,8 @@ function initGraphVisualization() {
   const graphContainer = document.getElementById('graph-container');
   graphContainer.innerHTML = ''; // Clear any previous content
 
-  // Define the graph nodes (sections) with unique IDs and group identifiers
-  const sections = [
-    { id: "mission-vision", name: "Mission & Vision", group: 1 },
-    { id: "research-areas", name: "Research Areas", group: 2 },
-    { id: "toolbox", name: "Toolbox for Ethical Futures", group: 3 },
-    { id: "scenario-generator", name: "Scenario Generator", group: 4 },
-    { id: "people", name: "People & Inspirations", group: 5 },
-    { id: "bibliography", name: "Bibliography & Resources", group: 6 },
-    { id: "projects", name: "Projects", group: 7 },
-    { id: "philosophy-of-mind", name: "Philosophy of Mind Atlas", group: 8 }
-  ];
+  // Create local copies so the force simulation can mutate them safely
+  const sections = GRAPH_SECTIONS.map(section => ({ ...section }));
 
   // Define links (edges) between nodes, with a "value" used for line thickness
   const links = [
@@ -210,6 +214,7 @@ function initGraphVisualization() {
       .classed("active", true)
       .attr("fill", "url(#activeNodeGradient)");
     node.attr("aria-pressed", d => d.id === sectionId);
+    window.dispatchEvent(new CustomEvent('graph:activeChange', { detail: { sectionId } }));
   }
 
   // Resize behavior on window resize
