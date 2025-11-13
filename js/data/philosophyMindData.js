@@ -1535,4 +1535,33 @@ const PHILOSOPHY_MIND_GRAPH_DATA = {
 };
 
 window.PHILOSOPHY_MIND_GRAPH_DATA = PHILOSOPHY_MIND_GRAPH_DATA;
+window.MIND_GRAPH_TYPE_META = {
+  philosopher: {
+    label: 'Philosopher',
+    icon: '\uf501',
+    iconClass: 'fa-user-graduate',
+    color: '#3f51b5',
+    baseRadius: 10,
+    activeRadius: 14,
+    iconFontSize: '0.58rem'
+  },
+  theory: {
+    label: 'Theory',
+    icon: '\uf0eb',
+    iconClass: 'fa-lightbulb',
+    color: '#009688',
+    baseRadius: 14,
+    activeRadius: 18,
+    iconFontSize: '0.68rem'
+  },
+  concept: {
+    label: 'Concept',
+    icon: '\uf5dc',
+    iconClass: 'fa-brain',
+    color: '#ff9800',
+    baseRadius: 14,
+    activeRadius: 18,
+    iconFontSize: '0.68rem'
+  }
+};
 

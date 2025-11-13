@@ -69,6 +69,39 @@ const DEFAULT_LABEL_SETTINGS = {
   baselineOffset: -2
 };
 
+const DEFAULT_TYPE_META = {
+  philosopher: {
+    label: 'Philosopher',
+    icon: '\uf501',
+    iconClass: 'fa-user-graduate',
+    color: '#3f51b5',
+    baseRadius: 10,
+    activeRadius: 14,
+    iconFontSize: '0.58rem'
+  },
+  theory: {
+    label: 'Theory',
+    icon: '\uf0eb',
+    iconClass: 'fa-lightbulb',
+    color: '#009688',
+    baseRadius: 14,
+    activeRadius: 18,
+    iconFontSize: '0.68rem'
+  },
+  concept: {
+    label: 'Concept',
+    icon: '\uf5dc',
+    iconClass: 'fa-brain',
+    color: '#ff9800',
+    baseRadius: 14,
+    activeRadius: 18,
+    iconFontSize: '0.68rem'
+  }
+};
+
+const FALLBACK_TYPE_COLORS = ['#8e44ad', '#1abc9c', '#e67e22', '#16a085', '#c0392b', '#2980b9', '#f39c12', '#2c3e50'];
+let ACTIVE_TYPE_META = { ...DEFAULT_TYPE_META };
+
 function computeRadialOffsets(count, spacing = NODE_CLUSTER_SPACING) {
   if (count <= 1) {
     return [{ x: 0, y: 0 }];
@@ -86,6 +119,59 @@ function computeRadialOffsets(count, spacing = NODE_CLUSTER_SPACING) {
   }
 
   return offsets;
+}
+
+function normalizeTypeValue(value) {
+  if (value === null || value === undefined) return '';
+  if (typeof value === 'string') {
+    return value.trim().toLowerCase();
+  }
+  return String(value || '').trim().toLowerCase();
+}
+
+function buildTypeMeta(rawData) {
+  const metadataOverrides = rawData?.metadata?.typeMeta || {};
+  const globalOverrides = window.MIND_GRAPH_TYPE_META || {};
+  const overrides = { ...metadataOverrides, ...globalOverrides };
+
+  const nodes = Array.isArray(rawData?.nodes) ? rawData.nodes : [];
+  const types = new Set(
+    nodes
+      .map((node) => normalizeTypeValue(node.type))
+      .filter(Boolean)
+  );
+
+  Object.keys(overrides).forEach((key) => {
+    const normalized = normalizeTypeValue(key);
+    if (normalized) {
+      types.add(normalized);
+    }
+  });
+
+  if (types.size === 0) {
+    return { ...DEFAULT_TYPE_META };
+  }
+
+  let colorIndex = 0;
+  const meta = {};
+
+  types.forEach((type) => {
+    const base = DEFAULT_TYPE_META[type] || {};
+    const override = overrides[type] || {};
+    const color = override.color || base.color || FALLBACK_TYPE_COLORS[colorIndex % FALLBACK_TYPE_COLORS.length] || '#607d8b';
+    colorIndex += 1;
+    meta[type] = {
+      label: override.label || base.label || titleCase(type.replace(/[-_]/g, ' ')),
+      icon: override.icon || base.icon || '\uf128',
+      iconClass: override.iconClass || base.iconClass || 'fa-circle',
+      color,
+      baseRadius: Number(override.baseRadius ?? base.baseRadius ?? 12),
+      activeRadius: Number(override.activeRadius ?? base.activeRadius ?? 16),
+      iconFontSize: override.iconFontSize || base.iconFontSize || '0.62rem'
+    };
+  });
+
+  return meta;
 }
 
 function normalizeEraValue(value) {
@@ -136,6 +222,8 @@ function initPhilosophyMindGraph() {
     detailOverlay,
     rawData: dataset,
     detailContainer: document.getElementById('mind-detail-panel'),
+    typeMeta: buildTypeMeta(dataset),
+    typeDomain: [],
     filters: {
       type: 'all',
       era: 'all',
@@ -157,6 +245,9 @@ function initPhilosophyMindGraph() {
     currentNodes: [],
     currentLinks: []
   };
+
+  state.typeDomain = Object.keys(state.typeMeta || {});
+  ACTIVE_TYPE_META = state.typeMeta;
 
   populateDynamicFilters(state);
   bindFilterEvents(state);
@@ -284,8 +375,11 @@ function applyMindGraphFilters(state) {
     relationNodeSet.add(link.target);
   });
 
+  const typeFilterValue = filters.type === 'all' ? 'all' : normalizeTypeValue(filters.type);
+
   const filteredNodes = rawData.nodes.filter((node) => {
-    const matchesType = filters.type === 'all' || node.type === filters.type;
+    const nodeTypeKey = normalizeTypeValue(node.type);
+    const matchesType = typeFilterValue === 'all' || nodeTypeKey === typeFilterValue;
     const matchesEra = filters.era === 'all' || node.era === filters.era;
     const matchesTradition =
       filters.tradition === 'all' ||
@@ -406,9 +500,25 @@ function renderGraph(state, nodes, links) {
 
   svg.call(zoom);
 
+  const typeMetaMap = state.typeMeta && Object.keys(state.typeMeta).length ? state.typeMeta : ACTIVE_TYPE_META;
+  const typeDomainSet = new Set();
+  nodesCopy.forEach((node) => {
+    const typeKey = normalizeTypeValue(node.type);
+    if (typeKey) {
+      typeDomainSet.add(typeKey);
+      node._typeKey = typeKey;
+    } else {
+      node._typeKey = '';
+    }
+  });
+  if (typeDomainSet.size === 0) {
+    Object.keys(typeMetaMap).forEach((type) => typeDomainSet.add(type));
+  }
+  const typeDomain = Array.from(typeDomainSet);
   const colorScale = d3.scaleOrdinal()
-    .domain(['philosopher', 'theory', 'concept'])
-    .range(['#3f51b5', '#009688', '#ff9800']);
+    .domain(typeDomain)
+    .range(typeDomain.map((type) => typeMetaMap[type]?.color || '#607d8b'))
+    .unknown('#607d8b');
 
   const mapPaddingX = Math.max(110, width * 0.1);
   const mapPaddingY = Math.max(80, height * 0.12);
@@ -631,9 +741,13 @@ function renderGraph(state, nodes, links) {
       const base = 'mind-node';
       return state.focusedNodeId === d.id ? `${base} focused` : base;
     })
+    .attr('data-node-type', (d) => d._typeKey || '')
     .attr('tabindex', 0)
     .attr('role', 'button')
-    .attr('aria-label', (d) => `${d.label}, ${titleCase(d.type)}`)
+    .attr('aria-label', (d) => {
+      const meta = getTypeMeta(d.type);
+      return meta ? `${d.label}, ${meta.label}` : d.label;
+    })
     .on('click', (event, d) => {
       event.stopPropagation();
       state.focusedNodeId = state.focusedNodeId === d.id ? null : d.id;
@@ -653,7 +767,7 @@ function renderGraph(state, nodes, links) {
   node.append('circle')
     .attr('r', (d) => getNodeRadius(d, state.focusedNodeId === d.id))
     .attr('class', 'mind-node-circle')
-    .attr('fill', (d) => colorScale(d.type));
+    .attr('fill', (d) => colorScale(d._typeKey || normalizeTypeValue(d.type)));
 
   node.append('text')
     .attr('class', 'mind-node-icon')
@@ -1213,26 +1327,27 @@ function formatCitation(entry) {
 }
 
 function getNodeRadius(nodeData, isActive) {
-  const baseRadius = nodeData.type === 'philosopher' ? 10 : 14;
-  const activeRadius = nodeData.type === 'philosopher' ? 14 : 18;
+  const typeKey = nodeData?._typeKey || normalizeTypeValue(nodeData?.type);
+  const meta = ACTIVE_TYPE_META[typeKey] || DEFAULT_TYPE_META[typeKey];
+  const fallbackBase = typeKey === 'philosopher' ? 10 : 14;
+  const baseRadius = Number(meta?.baseRadius ?? fallbackBase);
+  const activeRadius = Number(meta?.activeRadius ?? (baseRadius + 4));
   return isActive ? activeRadius : baseRadius;
 }
 
 function getIconForType(type) {
-  switch (type) {
-    case 'philosopher':
-      return '\uf501'; // fa-user-graduate
-    case 'theory':
-      return '\uf0eb'; // fa-lightbulb
-    case 'concept':
-      return '\uf5dc'; // fa-brain
-    default:
-      return '\uf128'; // fa-question
-  }
+  const typeKey = normalizeTypeValue(type);
+  const meta = ACTIVE_TYPE_META[typeKey] || DEFAULT_TYPE_META[typeKey];
+  return meta?.icon || '\uf128';
 }
 
 function getIconFontSize(nodeData) {
-  return nodeData.type === 'philosopher' ? '0.58rem' : '0.68rem';
+  const typeKey = nodeData?._typeKey || normalizeTypeValue(nodeData?.type);
+  const meta = ACTIVE_TYPE_META[typeKey] || DEFAULT_TYPE_META[typeKey];
+  if (meta?.iconFontSize) {
+    return meta.iconFontSize;
+  }
+  return typeKey === 'philosopher' ? '0.58rem' : '0.68rem';
 }
 
 function getIconOffset(nodeData, isActive) {
@@ -1307,7 +1422,8 @@ function setupTypeIconSelect(state) {
   const container = document.querySelector('.icon-select[data-filter="type"]');
   if (!container) return;
   initializeIconSelect(container, (value) => {
-    state.filters.type = value;
+    const normalizedValue = value === 'all' ? 'all' : normalizeTypeValue(value);
+    state.filters.type = normalizedValue;
     applyMindGraphFilters(state);
   });
   setIconSelectValue('type', state.filters.type || 'all');
@@ -1317,18 +1433,46 @@ function updateTypeChips(value) {
   const chips = document.querySelectorAll('.legend-chip');
   if (!chips.length) return;
   chips.forEach((chip) => {
-    const chipValue = chip.dataset.type || 'all';
+    const rawValue = chip.dataset.type || 'all';
+    const chipValue = rawValue === 'all' ? 'all' : normalizeTypeValue(rawValue);
     chip.classList.toggle('active', chipValue === value);
   });
 }
 
 function setupLegendTypeChips(state) {
-  const chips = document.querySelectorAll('.legend-chip');
+  const container = document.getElementById('philosophy-of-mind');
+  if (!container) return;
+
+  const chips = container.querySelectorAll('.legend-chip');
   if (!chips.length) return;
+
+  const typeMetaMap = ACTIVE_TYPE_META || DEFAULT_TYPE_META;
+
+  chips.forEach((chip) => {
+    const rawValue = chip.dataset.type || 'all';
+    if (rawValue === 'all') {
+      chip.innerHTML = '<i class="fa-solid fa-globe"></i> All';
+      chip.style.background = '';
+      return;
+    }
+    const typeKey = normalizeTypeValue(rawValue);
+    const meta = typeMetaMap[typeKey];
+    const iconClass = meta?.iconClass || 'fa-circle';
+    const label = meta?.label || titleCase(typeKey.replace(/[-_]/g, ' '));
+    chip.innerHTML = `<i class="fa-solid ${iconClass}"></i> ${label}`;
+    if (meta?.color) {
+      chip.style.background = meta.color;
+    }
+    const iconEl = chip.querySelector('i');
+    if (iconEl) {
+      iconEl.style.color = '#ffffff';
+    }
+  });
 
   chips.forEach((chip) => {
     chip.addEventListener('click', () => {
-      const chipValue = chip.dataset.type || 'all';
+      const rawValue = chip.dataset.type || 'all';
+      const chipValue = rawValue === 'all' ? 'all' : normalizeTypeValue(rawValue);
       const nextValue = state.filters.type === chipValue && chipValue !== 'all' ? 'all' : chipValue;
       state.filters.type = nextValue;
       setIconSelectValue('type', nextValue);
@@ -1569,7 +1713,24 @@ function getTraditionMeta(value) {
     'indigenous': { icon: 'fa-feather', label: 'Indigenous' },
     'south_asian': { icon: 'fa-hands-praying', label: 'South Asian' },
     'oceanic': { icon: 'fa-water', label: 'Oceanic' },
-    'neurodiversity': { icon: 'fa-infinity', label: 'Neurodiversity' }
+    'neurodiversity': { icon: 'fa-infinity', label: 'Neurodiversity' },
+    'proto_scifi': { icon: 'fa-feather', label: 'Proto-SF' },
+    'british': { icon: 'fa-crown', label: 'British' },
+    'american': { icon: 'fa-flag-usa', label: 'American' },
+    'european': { icon: 'fa-earth-europe', label: 'European' },
+    'gothic': { icon: 'fa-moon', label: 'Gothic' },
+    'golden_age': { icon: 'fa-sun', label: 'Golden Age' },
+    'new_wave': { icon: 'fa-water', label: 'New Wave' },
+    'cyberpunk': { icon: 'fa-microchip', label: 'Cyberpunk' },
+    'television': { icon: 'fa-tv', label: 'Television' },
+    'speculative_technology': { icon: 'fa-atom', label: 'Speculative Technology' },
+    'social_design': { icon: 'fa-people-roof', label: 'Social Design' },
+    'cultural_movement': { icon: 'fa-people-group', label: 'Cultural Movement' },
+    'cosmic_sociology': { icon: 'fa-satellite', label: 'Cosmic Sociology' },
+    'chinese_scifi': { icon: 'fa-dragon', label: 'Chinese SF' },
+    'philosophy': { icon: 'fa-book', label: 'Philosophy' },
+    'philosophy_of_science': { icon: 'fa-flask', label: 'Philosophy of Science' },
+    'afrofuturism': { icon: 'fa-globe-africa', label: 'Afrofuturism' }
   };
   return map[value] || { icon: 'fa-layer-group', label: titleCase(value.replace(/[-_]/g, ' ')) };
 }
@@ -1626,23 +1787,59 @@ function getTopicMeta(value) {
     'enactivism': { icon: 'fa-chess-board', label: 'Enactivism' },
     'sense_making': { icon: 'fa-puzzle-piece', label: 'Sense-Making' },
     'cognition': { icon: 'fa-brain', label: 'Cognition' },
-    'methodology': { icon: 'fa-flask-vial', label: 'Methodology' }
+    'methodology': { icon: 'fa-flask-vial', label: 'Methodology' },
+    'artificial_intelligence': { icon: 'fa-robot', label: 'Artificial Intelligence' },
+    'robotics': { icon: 'fa-gears', label: 'Robotics' },
+    'teleportation': { icon: 'fa-bolt', label: 'Teleportation' },
+    'time_travel': { icon: 'fa-hourglass-half', label: 'Time Travel' },
+    'planetary_exploration': { icon: 'fa-rocket', label: 'Planetary Exploration' },
+    'cyberspace': { icon: 'fa-network-wired', label: 'Cyberspace' },
+    'biotech': { icon: 'fa-dna', label: 'Biotechnology' },
+    'first_contact': { icon: 'fa-handshake', label: 'First Contact' },
+    'posthumanism': { icon: 'fa-user-gear', label: 'Posthumanism' },
+    'afrofuturism': { icon: 'fa-globe-africa', label: 'Afrofuturism' },
+    'dark_forest': { icon: 'fa-tree', label: 'Dark Forest' },
+    'alien_consciousness': { icon: 'fa-meteor', label: 'Alien Consciousness' },
+    'synthetic_life': { icon: 'fa-heart-pulse', label: 'Synthetic Life' },
+    'social_speculation': { icon: 'fa-people-group', label: 'Social Speculation' },
+    'adaptation': { icon: 'fa-shuffle', label: 'Adaptation' },
+    'adventure': { icon: 'fa-compass', label: 'Adventure' },
+    'anthropology': { icon: 'fa-person-rays', label: 'Anthropology' },
+    'automation': { icon: 'fa-industry', label: 'Automation' },
+    'communication': { icon: 'fa-comments', label: 'Communication' },
+    'cosmic_sociology': { icon: 'fa-satellite', label: 'Cosmic Sociology' },
+    'creation': { icon: 'fa-seedling', label: 'Creation' },
+    'diplomacy': { icon: 'fa-handshake', label: 'Diplomacy' },
+    'engineering': { icon: 'fa-gear', label: 'Engineering' },
+    'epistemology': { icon: 'fa-lightbulb', label: 'Epistemology' },
+    'ethics': { icon: 'fa-scale-balanced', label: 'Ethics' },
+    'genealogy': { icon: 'fa-tree', label: 'Genealogy' },
+    'geoscience': { icon: 'fa-mountain', label: 'Geoscience' },
+    'governance': { icon: 'fa-landmark-flag', label: 'Governance' },
+    'grand_scale': { icon: 'fa-chart-line', label: 'Grand Scale' },
+    'identity': { icon: 'fa-id-badge', label: 'Identity' },
+    'labour': { icon: 'fa-person-digging', label: 'Labour' },
+    'media': { icon: 'fa-broadcast-tower', label: 'Media' },
+    'media_history': { icon: 'fa-timeline', label: 'Media History' },
+    'philosophy_of_science': { icon: 'fa-flask', label: 'Philosophy of Science' },
+    'psychology': { icon: 'fa-brain', label: 'Psychology' },
+    'risk': { icon: 'fa-triangle-exclamation', label: 'Risk' },
+    'space': { icon: 'fa-user-astronaut', label: 'Space' },
+    'transport': { icon: 'fa-truck-fast', label: 'Transport' },
+    'temporal': { icon: 'fa-clock', label: 'Temporal' },
+    'utopia': { icon: 'fa-city', label: 'Utopia' }
   };
   return map[value] || { icon: 'fa-circle', label: titleCase(value.replace(/[-_]/g, ' ')) };
 }
 
 function getTypeMeta(type) {
-  const normalized = (type || '').toLowerCase();
-  switch (normalized) {
-    case 'philosopher':
-      return { icon: 'fa-user-graduate', label: 'Philosopher' };
-    case 'theory':
-      return { icon: 'fa-lightbulb', label: 'Theory' };
-    case 'concept':
-      return { icon: 'fa-brain', label: 'Concept' };
-    default:
-      return null;
-  }
+  const typeKey = normalizeTypeValue(type);
+  const meta = ACTIVE_TYPE_META[typeKey] || DEFAULT_TYPE_META[typeKey];
+  if (!meta) return null;
+  return {
+    icon: meta.iconClass || 'fa-circle',
+    label: meta.label || titleCase(typeKey.replace(/[-_]/g, ' '))
+  };
 }
 
 function computeLabelLayout(state, node) {

@@ -24,18 +24,22 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 function initTheme() {
   const themeToggleBtn = document.getElementById('theme-toggle-btn');
-  
+  const broadcastThemeChange = (theme) => {
+    const atlasFrame = document.getElementById('science-fiction-atlas');
+    if (atlasFrame && atlasFrame.contentWindow) {
+      atlasFrame.contentWindow.postMessage({ type: 'theme-change', theme }, '*');
+    }
+  };
+
   // Check for saved theme preference or prefer-color-scheme
   const savedTheme = localStorage.getItem('theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
+  const initialTheme = savedTheme === 'dark' || (!savedTheme && prefersDark) ? 'dark' : 'light';
+
   // Set initial theme
-  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'light');
-  }
-  
+  document.documentElement.setAttribute('data-theme', initialTheme);
+  broadcastThemeChange(initialTheme);
+
   // Theme toggle button event listener
   themeToggleBtn.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -43,6 +47,7 @@ function initTheme() {
     
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    broadcastThemeChange(newTheme);
   });
 }
 

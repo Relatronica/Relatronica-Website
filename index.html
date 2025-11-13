@@ -332,6 +332,97 @@
                         </div>
                     </section>
     
+                    <section id="agi-ethics-configurator" class="content-section">
+                        <h1 class="gradient-text">AGI Ethics Configurator</h1>
+                        <div class="section-content">
+                            <p class="intro">
+                                A curatorial tool for speculative designers, policy strategists, and researchers: select the emerging capabilities of an AGI and receive high-complexity ethical concerns, research prompts, and liminal scenarios to interrogate with PhD-level depth.
+                            </p>
+
+                            <div class="agi-configurator-grid">
+                                <div class="agi-configurator-panel card card--compact">
+                                    <h4><i class="fa-solid fa-microchip gradient-icon" aria-hidden="true"></i> Capability Stack</h4>
+                                    <p class="panel-intro">Activate one or more capabilities to compose the AGI functional profile. Each selection updates the ethical-strategic tapestry.</p>
+                                    <div id="agi-capability-chips" class="agi-chip-list" role="group" aria-label="AGI capability selection"></div>
+                                </div>
+
+                                <div class="agi-configurator-panel card card--compact agi-controls">
+                                    <h4><i class="fa-solid fa-compass-drafting gradient-icon" aria-hidden="true"></i> Analytic Lens</h4>
+                                    <p class="panel-intro">Choose the analytic lens and calibrate systemic volatility to modulate the severity of the assessment.</p>
+                                    <div id="agi-lens-options" class="agi-lens-options" role="radiogroup" aria-label="Analytic lens selector"></div>
+
+                                    <label class="agi-slider-wrapper" for="agi-volatility">
+                                        <span class="slider-label">Volatility Gradient</span>
+                                        <input id="agi-volatility" type="range" min="1" max="4" step="1" value="3" aria-describedby="agi-volatility-hint">
+                                        <span id="agi-volatility-hint" class="slider-hint">1 = Regulated context, 4 = speculative worldbuilding edge.</span>
+                                    </label>
+
+                                    <div id="agi-feedback" class="agi-feedback" role="status" aria-live="polite"></div>
+                                </div>
+                            </div>
+
+                            <div class="agi-results-grid">
+                                <article class="agi-summary card card--compact" id="agi-summary">
+                                    <h4><i class="fa-solid fa-satellite gradient-icon" aria-hidden="true"></i> Synthesis Brief</h4>
+                                    <p class="summary-placeholder">Seleziona almeno una capacità per generare una sintesi multi-vettore.</p>
+                                </article>
+                                <div class="agi-output-columns">
+                                    <div class="agi-output-column">
+                                        <article class="agi-output card card--compact">
+                                            <div class="agi-output-header">
+                                                <i class="fa-solid fa-scale-balanced gradient-icon" aria-hidden="true"></i>
+                                                <div>
+                                                    <h4>Ethical Doubts</h4>
+                                                    <p class="agi-output-hint">Critical inflection to interrogate before operationalising.</p>
+                                                </div>
+                                            </div>
+                                            <ul class="agi-output-list" data-output="doubts"></ul>
+                                        </article>
+                                        <article class="agi-output card card--compact">
+                                            <div class="agi-output-header">
+                                                <i class="fa-solid fa-question gradient-icon" aria-hidden="true"></i>
+                                                <div>
+                                                    <h4>Research Questions</h4>
+                                                    <p class="agi-output-hint">Inquiry tracks for advisory boards, policy labs, and ethics committees.</p>
+                                                </div>
+                                            </div>
+                                            <ul class="agi-output-list" data-output="questions"></ul>
+                                        </article>
+                                    </div>
+                                    <div class="agi-output-column">
+                                        <article class="agi-output card card--compact">
+                                            <div class="agi-output-header">
+                                                <i class="fa-solid fa-earth-europe gradient-icon" aria-hidden="true"></i>
+                                                <div>
+                                                    <h4>Reflective Scenarios</h4>
+                                                    <p class="agi-output-hint">Speculative micro-scripts for upcoming stakeholder workshops.</p>
+                                                </div>
+                                            </div>
+                                            <ul class="agi-output-list" data-output="scenarios"></ul>
+                                        </article>
+                                        <article class="agi-output card card--compact">
+                                            <div class="agi-output-header">
+                                                <i class="fa-solid fa-layer-group gradient-icon" aria-hidden="true"></i>
+                                                <div>
+                                                    <h4>Volatility Signals</h4>
+                                                    <p class="agi-output-hint">Additional indicators on institutional and speculative thresholds.</p>
+                                                </div>
+                                            </div>
+                                            <ul class="agi-output-list" data-output="signals"></ul>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="agi-footnotes">
+                                <p>
+                                    <strong>Methodological note:</strong> The tool aggregates epistemic patterns, governance tactics, and multidisciplinary speculative repertoires.
+                                    Outputs are crafted to seed academic workshops, advisory boards, and critical worldbuilding practices.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
                     <section id="people" class="content-section">
                         <h1 class="gradient-text">People & Inspirations</h1>
                         <div class="section-content">
@@ -498,136 +589,90 @@
                         </div>
                     </section>
 
+                    <section id="science-fiction" class="content-section">
+                        <h1 class="gradient-text">Science Fiction Tech Atlas</h1>
+                        <div class="section-content">
+                            <div class="philosophy-mind-layout">
+                                <div class="mind-overview card">
+                                    <h4><i class="fa-solid fa-rocket gradient-icon" aria-hidden="true"></i> Explore speculative lineages</h4>
+                                    <p>
+                                        Una costellazione di autori, opere e tecnologie che hanno plasmato l'immaginario fantascientifico.
+                                        Segui la prima apparizione del teletrasporto, confronta come l'intelligenza artificiale viene reinventata,
+                                        oppure metti in luce genealogie afrofuturiste e sovietiche.
+                                    </p>
+                                    <p>
+                                        Passa il cursore sui nodi per scoprire riassunti rapidi, clicca per fissare il profilo completo
+                                        (con fonti e dibattiti), usa il reset per riorganizzare il grafo. Stiamo ampliando la mappa con cinema,
+                                        fumetto e media interattivi: feedback e suggerimenti sono benvenuti.
+                                    </p>
+                                </div>
+                                <div class="mind-graph card">
+                                    <div class="graph-header">
+                                        <h4><i class="fa-solid fa-network-wired" aria-hidden="true"></i> Interactive Graph</h4>
+                                        <button type="button" id="scifi-zoom-reset" class="ghost-button">Reset view</button>
+                                    </div>
+                                    <div class="graph-legend">
+                                    <div class="legend-group legend-group--nodes">
+                                        <span class="legend-label">Nodes</span>
+                                        <button type="button" class="legend-item legend-chip" data-type="all">
+                                            <i class="fa-solid fa-globe"></i> All
+                                        </button>
+                                        <button type="button" class="legend-item legend-chip legend-philosopher" data-type="philosopher">
+                                            <i class="fa-solid fa-user-astronaut"></i> Author
+                                        </button>
+                                        <button type="button" class="legend-item legend-chip legend-theory" data-type="theory">
+                                            <i class="fa-solid fa-book-open"></i> Work
+                                        </button>
+                                        <button type="button" class="legend-item legend-chip legend-concept" data-type="concept">
+                                            <i class="fa-solid fa-atom"></i> Technology / Concept
+                                        </button>
+                                    </div>
+                                        <div class="legend-group">
+                                            <span class="legend-label">Relations</span>
+                                            <span class="legend-line legend-line-strong">Origin / Foundational</span>
+                                            <span class="legend-line legend-line-medium">Development / Popularisation</span>
+                                            <span class="legend-line legend-line-light">Reference / Resonance</span>
+                                        </div>
+                                    </div>
+                                    <div class="graph-wrapper" id="science-fiction-graph" aria-label="Science fiction interactive graph"></div>
+                                    <div class="graph-footnote">
+                                        <p>
+                                            Data curated by Relatronica. Edges highlight where technologies originate, evolve, or gain resonance across works.
+                                            Last update: <span class="update-pill">November 2025</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <section class="science-fiction-notes card">
+                                <h3 class="gradient-text">Reading Suggestions</h3>
+                                <ul>
+                                    <li><strong>Compare lineages:</strong> Follow how teleportation, AI, or colonial themes travel from proto-SF magazines to contemporary franchises.</li>
+                                    <li><strong>Map global shifts:</strong> Combine genres and eras (Afrofuturism, Soviet New Wave, Golden Age) to see how speculative ideas mutate across contexts.</li>
+                                    <li><strong>Trace AI anxieties:</strong> Start with Mary Shelley’s bioethical caution, move through Gibson’s networked paranoia, and end with Liu Cixin’s cosmic risk analysis.</li>
+                                </ul>
+                            </section>
+                        </div>
+                    </section>
+
 <section id="projects" class="content-section">
             <h1 class="gradient-text">Projects</h1>
             <div class="section-content">
                 <p class="intro">
-                    This curated collection of projects reflects our approach to speculative design and critical futures thinking.
-                    Each project explores the intersection between knowledge, imagination, and ethical innovation.
-                    We are continuously developing new ideas to expand this ecosystem and invite reflection on alternative futures.
+                    A concise overview of our active initiatives: consistent metadata, compact layout, instant comparison.
+                    Each project bridges research and prototyping to probe speculative, ethical, and participatory futures.
                 </p>
 
-                <div class="research-areas-grid">
-
-                    <div class="book card">
-                        <span class="project-version">v1.3</span>
-                        <div class="project-header">
-                            <div class="project-icon accent-teal">
-                                <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
-                            </div>
-                            <h4>Segno — Ethical Process Cartography</h4>
-                        </div>
-                        <p class="description">
-                            Segno captures complex organisational processes as interactive maps, then layers ethical heuristics, dilemmas, and stakeholder perspectives on top of each pathway. It helps design and innovation teams surface hidden frictions, forecast unintended consequences, and rehearse ethical responses before solutions ship.
+                <div class="projects-grid" data-projects-grid>
+                    <article class="project-card project-card--placeholder">
+                        <h4 class="project-card__title">Segno — Ethical Process Cartography</h4>
+                        <p class="project-card__description">
+                            Mapping organisational workflows while layering ethical heuristics to surface hidden tensions.
                         </p>
-                        <br>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" style="width: 95%;"></div>
+                        <div class="project-card__meta">
+                            <span class="project-card__pill">v1.3</span>
+                            <span class="project-card__pill project-card__pill--status">Live</span>
                         </div>
-                        <br>
-                        <a href="https://segno.app/" class="chip" target="_blank" rel="noopener">Visit Segno</a>
-                    </div>
-
-                    <div class="book card">
-                        <span class="project-version">v1.2</span>
-                        <div class="project-header">
-                            <div class="project-icon accent-gold">
-                                <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-                            </div>
-                            <h4>Mapping Thought: A Philosophical Exploration Tool</h4>
-                        </div>
-                        <p class="description">
-                            An interactive platform designed to help users explore complex philosophical concepts through visual mapping,
-                            cross-referencing, and guided pathways inspired by major thinkers.
-                        </p>
-                        <br>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" style="width: 80%;"></div>
-                        </div>
-                        <br>
-                        <a href="#" class="chip">Coming Soon</a>
-                    </div>
-
-                    <div class="book card">
-                        <span class="project-version">v1.0</span>
-                        <div class="project-header">
-                            <div class="project-icon accent-cyan">
-                                <i class="fa-solid fa-robot" aria-hidden="true"></i>
-                            </div>
-                            <h4>Sci-Fi Tech Atlas</h4>
-                        </div>
-                        <p class="description">
-                            A dynamic and visual database of science fiction works that categorizes and connects technologies, ideas,
-                            and narratives to highlight the speculative power of fiction.
-                        </p>
-                        <br>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" style="width: 70%;"></div>
-                        </div>
-                        <br>
-                        <a href="#" class="chip">Coming Soon</a>
-                    </div>
-
-                    <div class="book card">
-                        <span class="project-version">v0.8 Beta</span>
-                        <div class="project-header">
-                            <div class="project-icon accent-magenta">
-                                <i class="fa-solid fa-sitemap" aria-hidden="true"></i>
-                            </div>
-                            <h4>Scenario Generator</h4>
-                        </div>
-                        <p class="description">
-                            A creative tool to generate and reflect on plausible future scenarios, encouraging critical thinking
-                            on uncertainty, ethical dilemmas, and long-term change.
-                        </p>
-                        <br>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" style="width: 50%;"></div>
-                        </div>
-                        <br>
-                        <a href="#" class="chip">Coming Soon</a>
-                    </div>
-
-                    <div class="book card">
-                        <span class="project-version">v1.1</span>
-                        <div class="project-header">
-                            <div class="project-icon accent-indigo">
-                                <i class="fa-solid fa-database" aria-hidden="true"></i>
-                            </div>
-                            <h4>Data Sense</h4>
-                        </div>
-                        <p class="description">
-                            A project to raise awareness about data in everyday life, using visualizations, stories, and interactive
-                            tools to promote digital literacy and informed decision-making.
-                        </p>
-                        <br>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" style="width: 90%;"></div>
-                        </div>
-                        <br>
-                        <a href="#" class="chip">Coming Soon</a>
-                    </div>
-
-                    <div class="book card">
-                        <span class="project-version">v0.5 Alpha</span>
-                        <div class="project-header">
-                            <div class="project-icon accent-amber">
-                                <i class="fa-solid fa-landmark" aria-hidden="true"></i>
-                            </div>
-                            <h4>Political Systems Simulator</h4>
-                        </div>
-                        <p class="description">
-                            An interactive simulator designed for civics education workshops, allowing users to experiment with different
-                            political structures, policies, and their societal impacts in a safe, dynamic environment.
-                        </p>
-                        <br>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" style="width: 30%;"></div>
-                        </div>
-                        <br>
-                        <a href="#" class="chip">Coming Soon</a>
-                    </div>
-
+                    </article>
                 </div>
             </div>
         </section>
@@ -671,6 +716,7 @@
                             <div class="node-placeholder">Research Areas</div>
                             <div class="node-placeholder">Toolbox for Ethical Futures</div>
                             <div class="node-placeholder">Scenario Generator</div>
+                            <div class="node-placeholder">AGI Ethics Configurator</div>
                             <div class="node-placeholder">Philosophy of Mind Atlas</div>
                             <div class="node-placeholder">People & Inspirations</div>
                             <div class="node-placeholder">Bibliography</div>
@@ -749,9 +795,15 @@
     </footer>
 
     <!-- JavaScript files - ORDINE CORRETTO -->
+    <script src="js/data/projectsData.js"></script>
+    <script src="js/data/agiEthicsData.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/agiConfigurator.js"></script>
     <script src="js/graph.js"></script>
     <script src="js/mobileMenu.js"></script>
+    <script src="js/data/scienceFictionData.js"></script>
     <script src="js/data/philosophyMindData.js"></script>
+    <script src="js/scienceFictionGraph.js"></script>
     <script src="js/philosophyGraph.js"></script>
     <script src="js/drawer.js"></script>
     <script src="js/main.js"></script>

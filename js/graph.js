@@ -7,10 +7,12 @@ const GRAPH_SECTIONS = [
   { id: "research-areas", name: "Research Areas", group: 2 },
   { id: "toolbox", name: "Toolbox for Ethical Futures", group: 3 },
   { id: "scenario-generator", name: "Scenario Generator", group: 4 },
-  { id: "people", name: "People & Inspirations", group: 5 },
-  { id: "bibliography", name: "Bibliography & Resources", group: 6 },
-  { id: "projects", name: "Projects", group: 7 },
-  { id: "philosophy-of-mind", name: "Philosophy of Mind Atlas", group: 8 }
+  { id: "agi-ethics-configurator", name: "AGI Ethics Configurator", group: 5 },
+  { id: "people", name: "People & Inspirations", group: 6 },
+  { id: "bibliography", name: "Bibliography & Resources", group: 7 },
+  { id: "projects", name: "Projects", group: 8 },
+  { id: "philosophy-of-mind", name: "Philosophy of Mind Atlas", group: 9 },
+  { id: "science-fiction", name: "Sci-Fi Tech Atlas", group: 10 }
 ];
 
 window.graphSections = GRAPH_SECTIONS;
@@ -28,16 +30,23 @@ function initGraphVisualization() {
 
   // Define links (edges) between nodes, with a "value" used for line thickness
   const links = [
-  { source: 0, target: 1, value: 3 }, // Mission → Research Areas
-  { source: 1, target: 4, value: 1 }, // Research → People
-  { source: 1, target: 5, value: 1 }, // Research → Bibliography
-  { source: 4, target: 5, value: 2 }, // People → Bibliography
-  { source: 6, target: 2, value: 1 }, // Projects → Toolbox
-  { source: 6, target: 3, value: 1 }, // Projects → Scenario Generator
-  { source: 6, target: 1, value: 3 }, // Projects → Mission
-  { source: 1, target: 7, value: 2 }, // Research → Philosophy of Mind
-  { source: 5, target: 7, value: 1 }, // Bibliography → Philosophy of Mind
-  { source: 6, target: 7, value: 2 }, // Projects → Philosophy of Mind
+    { source: 0, target: 1, value: 3 }, // Mission → Research Areas
+    { source: 1, target: 5, value: 1 }, // Research → People
+    { source: 1, target: 6, value: 1 }, // Research → Bibliography
+    { source: 5, target: 6, value: 2 }, // People → Bibliography
+    { source: 7, target: 2, value: 1 }, // Projects → Toolbox
+    { source: 7, target: 3, value: 1 }, // Projects → Scenario Generator
+    { source: 7, target: 1, value: 3 }, // Projects → Mission
+    { source: 1, target: 8, value: 2 }, // Research → Philosophy of Mind
+    { source: 6, target: 8, value: 1 }, // Bibliography → Philosophy of Mind
+    { source: 7, target: 8, value: 2 }, // Projects → Philosophy of Mind
+    { source: 1, target: 4, value: 3 }, // Research → AGI Configurator
+    { source: 2, target: 4, value: 2 }, // Toolbox → AGI Configurator
+    { source: 3, target: 4, value: 2 }, // Scenario Generator → AGI Configurator
+    { source: 4, target: 8, value: 2 }, // AGI Configurator → Philosophy of Mind
+    { source: 4, target: 7, value: 1 }, // AGI Configurator → Projects
+    { source: 4, target: 6, value: 1 }, // AGI Configurator → Bibliography
+    { source: 4, target: 5, value: 1 }  // AGI Configurator → People
   ];
 
   // Set up graph dimensions
