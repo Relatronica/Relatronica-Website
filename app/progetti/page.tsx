@@ -1,10 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Calendar, Network, Sparkles, Brain } from 'lucide-react';
+import { ArrowRight, Calendar, Network, Sparkles, Brain, Scale } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
+import { StructuredData } from '@/components/StructuredData';
 
 export default function ProgettiPage() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://relatronica.com';
+  
   const progetti = [
     {
       id: 'nexthuman',
@@ -27,14 +30,14 @@ export default function ProgettiPage() {
       color: 'purple',
     },
     {
-      id: 'coming-soon-1',
-      title: 'Progetto in Sviluppo',
-      subtitle: 'Prossimamente',
-      description: 'Nuovi progetti che esplorano l\'intersezione tra design speculativo, tecnologia civica e mappatura della conoscenza.',
-      tags: ['In Sviluppo'],
+      id: 'civica',
+      title: 'Civica',
+      subtitle: 'Configuratore di sistemi politici',
+      description: 'Una piattaforma interattiva per esplorare, confrontare e configurare diversi sistemi politici. Permette di comprendere le implicazioni delle scelte istituzionali attraverso visualizzazioni e scenari comparativi.',
+      tags: ['Civic Tech', 'Speculative Design', 'Education', 'In Sviluppo'],
       href: null,
-      icon: Sparkles,
-      color: 'green',
+      icon: Scale,
+      color: 'orange',
     },
   ];
 
@@ -43,22 +46,46 @@ export default function ProgettiPage() {
       blue: 'bg-blue-50 text-blue-600',
       purple: 'bg-purple-50 text-purple-600',
       green: 'bg-green-50 text-green-600',
+      orange: 'bg-orange-50 text-orange-600',
     };
     return colors[color as keyof typeof colors] || colors.blue;
   };
 
+  const progettiPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Progetti - Relatronica",
+    "description": "Esplorazioni al confine tra design speculativo, civic tech e knowledge mapping.",
+    "url": `${siteUrl}/progetti`,
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": progetti.map((progetto, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "CreativeWork",
+          "name": progetto.title,
+          "description": progetto.description,
+          "url": progetto.href ? (progetto.href.startsWith('http') ? progetto.href : `${siteUrl}${progetto.href}`) : undefined,
+        }
+      }))
+    }
+  };
+
   return (
-    <DotBoard>
+    <>
+      <StructuredData data={progettiPageSchema} />
+      <DotBoard>
       <div className="min-h-screen pt-32 pb-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-24">
             <h1 className="text-6xl font-bold mb-6 text-slate-900">Progetti</h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
               Esplorazioni al confine tra design speculativo, civic tech e knowledge mapping
             </p>
           </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {progetti.map((progetto) => {
             const Icon = progetto.icon;
             const isComingSoon = !progetto.href;
@@ -111,8 +138,8 @@ export default function ProgettiPage() {
           })}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-8 shadow-sm max-w-2xl mx-auto">
+        <div className="mt-20 text-center">
+          <div className="rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-10 shadow-sm max-w-2xl mx-auto">
             <h2 className="text-2xl font-bold mb-4 text-slate-900">Hai un progetto in mente?</h2>
             <p className="text-slate-600 mb-6 text-[15px] leading-relaxed">
               Siamo sempre interessati a collaborare su progetti che esplorano il futuro 
@@ -126,6 +153,7 @@ export default function ProgettiPage() {
         </div>
       </div>
     </DotBoard>
+    </>
   );
 }
 

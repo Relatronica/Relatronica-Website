@@ -13,10 +13,10 @@ export function DotBoard({ children, className = '' }: DotBoardProps) {
       className={`relative min-h-screen ${className}`}
       style={{
         backgroundImage: `
-          radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px)
+          radial-gradient(circle, rgba(148, 163, 184, 0.15) 1.5px, transparent 0)
         `,
         backgroundSize: '24px 24px',
-        backgroundPosition: '0 0'
+        backgroundPosition: 'center'
       }}
     >
       <div className="relative z-10">

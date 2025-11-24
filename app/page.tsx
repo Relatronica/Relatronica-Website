@@ -1,29 +1,24 @@
-'use client';
+import type { Metadata } from "next";
+import { HomeClient } from "./HomeClient";
 
-import { useState } from 'react';
-import { VisionaryView } from '@/components/VisionaryView';
-import { DotBoard } from '@/components/DotBoard';
-import { FilterState } from '@/types/deadline';
+export const metadata: Metadata = {
+  title: "NextHuman - Calendario delle Scadenze per l'Umanità",
+  description: "Una piattaforma interattiva che visualizza le scadenze probabilistiche che attendono l'umanità, combinando knowledge mapping, scenari speculativi e visualizzazioni temporali.",
+  openGraph: {
+    title: "NextHuman - Calendario delle Scadenze per l'Umanità",
+    description: "Una piattaforma interattiva che visualizza le scadenze probabilistiche che attendono l'umanità.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NextHuman - Calendario delle Scadenze per l'Umanità",
+    description: "Una piattaforma interattiva che visualizza le scadenze probabilistiche che attendono l'umanità.",
+  },
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
-  const [filters, setFilters] = useState<FilterState>({
-    themes: [],
-    probabilities: [],
-  });
-
-  const handleFilterChange = (newFilters: FilterState) => {
-    setFilters(newFilters);
-  };
-
-  return (
-    <DotBoard>
-      {/* Main Workspace */}
-      <main className="pt-6 pb-20 px-6">
-        <div className="max-w-[1920px] mx-auto">
-          <VisionaryView filters={filters} onFilterChange={handleFilterChange} />
-        </div>
-      </main>
-    </DotBoard>
-  );
+  return <HomeClient />;
 }
-

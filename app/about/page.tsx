@@ -2,6 +2,7 @@
 
 import { Sparkles, Users, Network, Lightbulb, Target, Globe, Info } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
+import { StructuredData } from '@/components/StructuredData';
 import { useState } from 'react';
 
 interface InfoTooltipProps {
@@ -34,20 +35,44 @@ function InfoTooltip({ term, definition }: InfoTooltipProps) {
 }
 
 export default function AboutPage() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://relatronica.com';
+  
+  const aboutPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About - Relatronica",
+    "description": "Relatronica è uno studio di progettazione che unisce speculative design, civic tech e knowledge mapping per esplorare scenari futuri.",
+    "url": `${siteUrl}/about`,
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Relatronica",
+      "description": "Studio di progettazione che esplora il futuro attraverso design speculativo, civic tech e knowledge mapping",
+      "knowsAbout": [
+        "Speculative Design",
+        "Civic Tech",
+        "Knowledge Mapping",
+        "Data Visualization",
+        "Future Scenarios"
+      ]
+    }
+  };
+
   return (
-    <DotBoard>
+    <>
+      <StructuredData data={aboutPageSchema} />
+      <DotBoard>
       <div className="min-h-screen pt-32 pb-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-24">
             <h1 className="text-6xl font-bold mb-6 text-slate-900">Relatronica</h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
               Studio di progettazione che esplora il futuro attraverso design speculativo, civic tech e knowledge mapping
             </p>
           </div>
 
-        <div className="space-y-8">
+        <div className="space-y-10">
           {/* Mission Section */}
-          <section className="rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-8 shadow-sm">
+          <section className="rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-10 shadow-sm">
             <div className="flex items-start gap-5">
               <div className="p-3 rounded-xl bg-blue-50 flex-shrink-0">
                 <Target className="w-6 h-6 text-blue-600" />
@@ -77,7 +102,7 @@ export default function AboutPage() {
           </section>
 
           {/* Three Pillars */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             <div className="rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="p-3 rounded-xl bg-purple-50 w-fit mb-4">
                 <Sparkles className="w-5 h-5 text-purple-600" />
@@ -116,7 +141,7 @@ export default function AboutPage() {
           </div>
 
           {/* Approach Section */}
-          <section className="rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-8 shadow-sm">
+          <section className="rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-10 shadow-sm">
             <div className="flex items-start gap-5">
               <div className="p-3 rounded-xl bg-indigo-50 flex-shrink-0">
                 <Lightbulb className="w-6 h-6 text-indigo-600" />
@@ -149,7 +174,7 @@ export default function AboutPage() {
           </section>
 
           {/* NextHuman Section */}
-          <section className="rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-8 shadow-sm">
+          <section className="rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-10 shadow-sm">
             <div className="flex items-start gap-5">
               <div className="p-3 rounded-xl bg-rose-50 flex-shrink-0">
                 <Globe className="w-6 h-6 text-rose-600" />
@@ -170,6 +195,7 @@ export default function AboutPage() {
         </div>
       </div>
     </DotBoard>
+    </>
   );
 }
 

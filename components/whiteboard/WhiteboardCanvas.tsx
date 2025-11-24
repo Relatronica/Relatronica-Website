@@ -359,19 +359,16 @@ export function WhiteboardCanvas({
                   )}
                   type="button"
                 >
-                {!isNote && (
-                  <div className="flex items-center justify-between mb-2 flex-shrink-0">
-                     {!isSticky && (
-                       <span className={cn(
-                         "text-[10px] font-bold uppercase tracking-wider",
-                         isEvent ? "text-slate-400" : "text-slate-400"
-                       )}>
-                         {item.meta}
-                       </span>
-                     )}
-                     {item.probability !== undefined && !isSticky && (
-                        <div className="flex h-2 w-2 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
-                     )}
+                {!isNote && !isSticky && item.meta && (
+                  <div className="absolute top-2 right-2 flex-shrink-0">
+                    <span className={cn(
+                      "text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded-full",
+                      isEvent 
+                        ? "bg-slate-700/80 text-slate-200" 
+                        : "bg-slate-100 text-slate-600"
+                    )}>
+                      {item.meta}
+                    </span>
                   </div>
                 )}
                 
@@ -401,35 +398,18 @@ export function WhiteboardCanvas({
                   </a>
                 )}
 
-                <h3 className={cn(
-                  "font-bold leading-tight flex-shrink-0",
-                  isSticky ? "font-handwriting text-[9px] mb-0.5 line-clamp-2" : "text-sm mb-2 line-clamp-2",
-                  isNote && "text-xl text-slate-400 font-medium italic"
-                )}>
-                  {item.title}
-                </h3>
-
-                {item.description && !isNote && (
-                  <p className={cn(
-                    "leading-tight flex-shrink-0",
-                    isSticky ? "text-[8px] mb-0 text-amber-800/70 line-clamp-1" : "text-xs mb-2 line-clamp-2 leading-relaxed",
-                    isEvent ? "text-slate-300" : "text-slate-600"
+                <div className="flex items-center justify-start h-full">
+                  <h3 className={cn(
+                    "font-bold leading-tight text-left",
+                    isSticky ? "font-handwriting text-[9px] line-clamp-2" : "text-lg line-clamp-3",
+                    isNote && "text-xl text-slate-400 font-medium italic"
                   )}>
-                    {item.description}
-                  </p>
-                )}
+                    {item.title}
+                  </h3>
+                </div>
 
-                {item.tags && item.tags.length > 0 && !isSticky && (
-                  <div className="flex flex-wrap gap-1.5 mt-auto pt-2 border-t border-slate-100 flex-shrink-0">
-                    {item.tags.slice(0, 2).map(tag => (
-                      <span
-                        key={tag}
-                        className="text-[9px] font-medium uppercase tracking-wider px-1.5 py-0.5 rounded bg-slate-100 text-slate-500"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                {item.probability !== undefined && !isSticky && (
+                  <div className="absolute bottom-2 right-2 flex h-2 w-2 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
                 )}
 
                 </button>
