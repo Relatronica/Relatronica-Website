@@ -10,8 +10,9 @@ export function Toolbar() {
 
   const navItems = [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
+    { href: '/nexthuman', label: 'NextHuman' },
     { href: '/progetti', label: 'Progetti' },
+    { href: '/about', label: 'About' },
   ];
 
   return (

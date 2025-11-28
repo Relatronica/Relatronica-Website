@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: "Relatronica - Design Speculativo, Civic Tech e Knowledge Mapping",
     template: "%s | Relatronica"
   },
-  description: "Studio di progettazione che esplora il futuro attraverso design speculativo, civic tech e knowledge mapping. Calendario delle scadenze probabilistiche per l'umanità.",
+  description: "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli. Calendario delle scadenze probabilistiche per l'umanità.",
   keywords: [
     "design speculativo",
     "civic tech",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Relatronica",
     title: "Relatronica - Design Speculativo, Civic Tech e Knowledge Mapping",
-    description: "Studio di progettazione che esplora il futuro attraverso design speculativo, civic tech e knowledge mapping.",
+    description: "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli.",
     images: [
       {
         url: `${siteUrl}/logo.png`,
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Relatronica - Design Speculativo, Civic Tech e Knowledge Mapping",
-    description: "Studio di progettazione che esplora il futuro attraverso design speculativo, civic tech e knowledge mapping.",
+    description: "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli.",
     images: [`${siteUrl}/logo.png`],
   },
   robots: {
@@ -80,7 +80,7 @@ export default function RootLayout({
     "name": "Relatronica",
     "url": siteUrl,
     "logo": `${siteUrl}/logo.png`,
-    "description": "Studio di progettazione che esplora il futuro attraverso design speculativo, civic tech e knowledge mapping",
+    "description": "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli",
     "sameAs": [],
     "foundingDate": "2024",
     "areaServed": "IT",
@@ -98,7 +98,7 @@ export default function RootLayout({
     "@type": "WebSite",
     "name": "Relatronica",
     "url": siteUrl,
-    "description": "Studio di progettazione che esplora il futuro attraverso design speculativo, civic tech e knowledge mapping",
+    "description": "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli",
     "inLanguage": "it-IT",
     "potentialAction": {
       "@type": "SearchAction",
