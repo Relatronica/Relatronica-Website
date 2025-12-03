@@ -15,7 +15,7 @@ export default function ProgettiPage() {
       subtitle: 'Calendario delle Scadenze per l\'Umanità',
       description: 'Una piattaforma interattiva che visualizza le scadenze probabilistiche che attendono l\'umanità, combinando knowledge mapping, scenari speculativi e visualizzazioni temporali.',
       tags: ['Speculative Design', 'Knowledge Mapping', 'Civic Tech', 'Data Visualization'],
-      href: '/',
+      href: '/nexthuman',
       icon: Calendar,
       color: 'blue',
     },
