@@ -41,12 +41,12 @@ export default function AboutPage() {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "About - Relatronica",
-    "description": "Relatronica è uno studio di progettazione che unisce speculative design, civic tech e knowledge mapping per esplorare scenari futuri. Attivismo per tecnologie responsabili.",
+    "description": "Relatronica è uno studio di progettazione nato in Svizzera nel 2024 da un team di designer e ricercatori che si sono incontrati al CERN. Unisce speculative design, civic tech e knowledge mapping per esplorare scenari futuri e potenziare la partecipazione civica.",
     "url": `${siteUrl}/about`,
     "mainEntity": {
       "@type": "Organization",
       "name": "Relatronica",
-      "description": "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli. Attivismo per tecnologie responsabili.",
+      "description": "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli, ispirandoci allo spirito collaborativo del CERN e alle origini del World Wide Web. Attivismo per tecnologie responsabili e partecipazione civica.",
       "sameAs": [
         "https://www.instagram.com/relatronica",
         "https://www.linkedin.com/company/relatronica/"
@@ -73,7 +73,8 @@ export default function AboutPage() {
           <div className="text-center mb-24">
             <h1 className="text-6xl font-bold mb-6 text-slate-900">Relatronica</h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-              Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli
+              Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli,
+              potenziando la partecipazione civica su temi fondamentali per il nostro futuro collettivo.
             </p>
           </div>
 
@@ -87,7 +88,8 @@ export default function AboutPage() {
               <div>
                 <h2 className="text-2xl font-bold mb-3 text-slate-900">La Nostra Missione</h2>
                 <p className="text-slate-700 leading-relaxed text-[15px]">
-                  Relatronica è uno studio di progettazione che unisce{' '}
+                  Relatronica è uno studio di progettazione nato in Svizzera nel 2024 da un team di designer e ricercatori che
+                  si sono incontrati al CERN, l&apos;Organizzazione europea per la ricerca nucleare. Unisce{' '}
                   <InfoTooltip
                     term="speculative design"
                     definition="Un approccio creativo che immagina scenari futuri possibili per stimolare riflessioni critiche su come le tecnologie e le scelte di oggi possano plasmare il domani."
@@ -102,7 +104,38 @@ export default function AboutPage() {
                     term="knowledge mapping"
                     definition="La visualizzazione delle connessioni tra idee, concetti e dati per rendere la conoscenza più comprensibile e aiutare a identificare relazioni che altrimenti resterebbero nascoste."
                   />{' '}
-                  per esplorare scenari futuri e creare strumenti che aiutano le comunità a comprendere e navigare le complessità del mondo contemporaneo.
+                  per esplorare scenari futuri e creare strumenti che aiutano le comunità a comprendere, discutere e navigare le complessità del mondo contemporaneo,
+                  favorendo una partecipazione informata alle decisioni che riguardano l&apos;umanità.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Origins & Web Heritage Section */}
+          <section className="rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-10 shadow-sm">
+            <div className="flex items-start gap-5">
+              <div className="p-3 rounded-xl bg-sky-50 flex-shrink-0">
+                <Globe className="w-6 h-6 text-sky-600" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold mb-3 text-slate-900">Le Nostre Origini al CERN</h2>
+                <p className="text-slate-700 leading-relaxed mb-4 text-[15px]">
+                  Relatronica nasce in Svizzera nel 2024 dall&apos;incontro, al CERN, tra designer e ricercatori che
+                  condividono la stessa domanda: come possiamo usare tecnologie e dati per coinvolgere davvero le persone
+                  nelle scelte che riguardano il futuro dell&apos;umanità?
+                </p>
+                <p className="text-slate-700 leading-relaxed mb-4 text-[15px]">
+                  Il CERN è uno dei luoghi simbolo della collaborazione scientifica internazionale. Proprio qui, nel 1991,
+                  è nato il <strong>World Wide Web</strong>, pensato come spazio aperto per condividere sapere e rendere
+                  l&apos;informazione accessibile a tutti. Da allora il Web ha rivoluzionato le nostre vite, ma molte
+                  decisioni cruciali – sul clima, l&apos;energia, la ricerca, le infrastrutture – restano ancora percepite
+                  come lontane, tecniche, poco partecipate.
+                </p>
+                <p className="text-slate-700 leading-relaxed text-[15px]">
+                  Con Relatronica vogliamo portare avanti e ampliare quello spirito originario: non solo un Web dove
+                  leggere e informarsi, ma spazi e strumenti in cui le persone possano <strong>capire, discutere e
+                  contribuire</strong>. Trasformiamo temi complessi in percorsi chiari di partecipazione, per avvicinare
+                  cittadinanza, istituzioni e comunità scientifiche.
                 </p>
               </div>
             </div>
