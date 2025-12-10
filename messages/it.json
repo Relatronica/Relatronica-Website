@@ -174,7 +174,14 @@
     "civica": {
       "title": "Civica",
       "subtitle": "Configuratore di sistemi politici",
-      "description": "Una piattaforma interattiva per esplorare, confrontare e configurare diversi sistemi politici. Permette di comprendere le implicazioni delle scelte istituzionali attraverso visualizzazioni e scenari comparativi."
+      "description": "Una piattaforma interattiva per esplorare, confrontare e configurare diversi sistemi politici. Permette di comprendere le implicazioni delle scelte istituzionali attraverso visualizzazioni e scenari comparativi.",
+      "status": "In sviluppo"
+    },
+    "neuralforming": {
+      "title": "Neuralforming",
+      "subtitle": "Gioco ibrido da tavolo per le scuole",
+      "description": "Trasforma la tua classe in un parlamento democratico. Neuralforming è un gioco ibrido da tavolo che coinvolge gli studenti in un'esperienza immersiva di governance dell'IA: propongono leggi, dibattono implicazioni etiche e votano decisioni che plasmeranno il futuro dell'intelligenza artificiale. Un'esperienza educativa che unisce gioco, democrazia e consapevolezza tecnologica.",
+      "status": "In sperimentazione"
     },
     "exploreProject": "Esplora progetto",
     "contact": {

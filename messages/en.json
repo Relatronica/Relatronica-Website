@@ -174,7 +174,14 @@
     "civica": {
       "title": "Civica",
       "subtitle": "Political systems configurator",
-      "description": "An interactive platform to explore, compare and configure different political systems. Allows you to understand the implications of institutional choices through visualizations and comparative scenarios."
+      "description": "An interactive platform to explore, compare and configure different political systems. Allows you to understand the implications of institutional choices through visualizations and comparative scenarios.",
+      "status": "In development"
+    },
+    "neuralforming": {
+      "title": "Neuralforming",
+      "subtitle": "Hybrid board game for schools",
+      "description": "Transform your classroom into a democratic parliament. Neuralforming is a hybrid board game that engages students in an immersive AI governance experience: they propose laws, debate ethical implications and vote on decisions that will shape the future of artificial intelligence. An educational experience that combines play, democracy and technological awareness.",
+      "status": "In experimentation"
     },
     "exploreProject": "Explore project",
     "contact": {

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Calendar, Network, Sparkles, Brain, Scale } from 'lucide-react';
+import { ArrowRight, Calendar, Network, Sparkles, Brain, Scale, Users } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
 import { useI18n } from '@/lib/i18n';
@@ -20,6 +20,7 @@ export default function ProgettiPage() {
       href: '/nexthuman',
       icon: Calendar,
       color: 'blue',
+      status: null,
     },
     {
       id: 'segno',
@@ -30,16 +31,29 @@ export default function ProgettiPage() {
       href: 'https://segno.app/',
       icon: Brain,
       color: 'purple',
+      status: null,
     },
     {
       id: 'civica',
       title: t('projects.civica.title'),
       subtitle: t('projects.civica.subtitle'),
       description: t('projects.civica.description'),
-      tags: ['Civic Tech', 'Speculative Design', 'Education', t('projects.inDevelopment')],
+      tags: ['Civic Tech', 'Speculative Design', 'Education'],
       href: null,
       icon: Scale,
       color: 'orange',
+      status: t('projects.civica.status'),
+    },
+    {
+      id: 'neuralforming',
+      title: t('projects.neuralforming.title'),
+      subtitle: t('projects.neuralforming.subtitle'),
+      description: t('projects.neuralforming.description'),
+      tags: ['Civic Tech', 'Education', 'AI Ethics', 'Gamification'],
+      href: null,
+      icon: Users,
+      color: 'green',
+      status: t('projects.neuralforming.status'),
     },
   ];
 
@@ -91,15 +105,29 @@ export default function ProgettiPage() {
           {progetti.map((progetto) => {
             const Icon = progetto.icon;
             const isComingSoon = !progetto.href;
+            const hasStatus = progetto.status !== null;
             
             const CardContent = (
               <div className={`
                 rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-6 h-full
                 transition-all duration-300 shadow-sm
-                ${isComingSoon ? 'opacity-60' : 'hover:shadow-md hover:-translate-y-1 cursor-pointer'}
+                ${isComingSoon ? '' : 'hover:shadow-md hover:-translate-y-1 cursor-pointer'}
               `}>
-                <div className={`p-3 rounded-xl w-fit mb-4 ${getColorClasses(progetto.color)}`}>
-                  <Icon className="w-5 h-5" />
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`p-3 rounded-xl w-fit ${getColorClasses(progetto.color)}`}>
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  {hasStatus && (
+                    <span className={`
+                      px-3 py-1 text-xs font-semibold rounded-full border
+                      ${progetto.status === t('projects.neuralforming.status') 
+                        ? 'bg-amber-100 text-amber-700 border-amber-200' 
+                        : 'bg-blue-100 text-blue-700 border-blue-200'
+                      }
+                    `}>
+                      {progetto.status}
+                    </span>
+                  )}
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-slate-900">{progetto.title}</h3>
                 <p className="text-sm text-slate-500 mb-3 font-medium">{progetto.subtitle}</p>
@@ -120,7 +148,7 @@ export default function ProgettiPage() {
                     <ArrowRight className="w-4 h-4" />
                   </div>
                 )}
-                {isComingSoon && (
+                {isComingSoon && !hasStatus && (
                   <div className="text-slate-400 text-sm italic">
                     {t('common.comingSoon')}
                   </div>
