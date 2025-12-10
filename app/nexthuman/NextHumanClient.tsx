@@ -6,8 +6,10 @@ import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
 import { NextHumanModal } from '@/components/NextHumanModal';
 import { FilterState } from '@/types/deadline';
+import { useI18n } from '@/lib/i18n';
 
 export function NextHumanClient() {
+  const { t } = useI18n();
   const [filters, setFilters] = useState<FilterState>({
     themes: [],
     probabilities: [],
@@ -22,8 +24,8 @@ export function NextHumanClient() {
   const nextHumanPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "NextHuman - Calendario delle Scadenze per l'Umanità",
-    "description": "Una piattaforma interattiva che visualizza le scadenze probabilistiche che attendono l'umanità, combinando knowledge mapping, scenari speculativi e visualizzazioni temporali.",
+    "name": `${t('nexthuman.title')} - ${t('nexthuman.subtitle')}`,
+    "description": t('projects.nexthuman.description'),
     "url": `${siteUrl}/nexthuman`,
     "applicationCategory": "DataVisualization",
     "operatingSystem": "Web",

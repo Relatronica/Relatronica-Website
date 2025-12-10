@@ -4,6 +4,7 @@ import { useRef, useState, useCallback, useMemo, useEffect } from 'react';
 import type { PointerEvent, WheelEvent } from 'react';
 import { Minus, Plus, RotateCcw, ExternalLink, Layers, CloudRain, Zap, Brain, Users, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useI18n } from '@/lib/i18n';
 
 export type WhiteboardItem = {
   id: string;
@@ -91,6 +92,7 @@ export function WhiteboardCanvas({
   selectedId,
   className,
 }: WhiteboardCanvasProps) {
+  const { t } = useI18n();
   const boardRef = useRef<HTMLDivElement>(null);
   const pointerState = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(0.65);
@@ -391,8 +393,8 @@ export function WhiteboardCanvas({
                       }
                     }}
                     className="absolute top-2 right-2 text-amber-900/60 z-30 hover:text-amber-900 transition-colors cursor-pointer"
-                    aria-label={item.links[0].label || 'Apri link'}
-                    title={item.links[0].label || 'Apri link'}
+                    aria-label={item.links[0].label || t('whiteboard.openLink')}
+                    title={item.links[0].label || t('whiteboard.openLink')}
                   >
                     <ExternalLink className="w-3 h-3" />
                   </a>
@@ -423,7 +425,7 @@ export function WhiteboardCanvas({
         <button
           onClick={() => setZoom(prev => clampZoom(prev - 0.15))}
           className="p-3 hover:bg-gray-100 rounded-full transition-colors"
-          aria-label="Zoom out"
+          aria-label={t('whiteboard.zoomOut')}
         >
           <Minus className="w-4 h-4" />
         </button>
@@ -433,7 +435,7 @@ export function WhiteboardCanvas({
         <button
           onClick={() => setZoom(prev => clampZoom(prev + 0.15))}
           className="p-3 hover:bg-gray-100 rounded-full transition-colors"
-          aria-label="Zoom in"
+          aria-label={t('whiteboard.zoomIn')}
         >
           <Plus className="w-4 h-4" />
         </button>
@@ -441,7 +443,7 @@ export function WhiteboardCanvas({
         <button
           onClick={handleReset}
           className="p-3 hover:bg-gray-100 rounded-full transition-colors flex items-center gap-1 text-xs font-semibold"
-          aria-label="Reset zoom"
+          aria-label={t('whiteboard.resetZoom')}
         >
           <RotateCcw className="w-4 h-4" />
         </button>

@@ -1,0 +1,540 @@
+{
+  "common": {
+    "home": "Home",
+    "nexthuman": "NextHuman",
+    "projects": "Projects",
+    "about": "About",
+    "explore": "Explore",
+    "learnMore": "Learn more",
+    "comingSoon": "Coming soon",
+    "language": "Language",
+    "italian": "Italian",
+    "english": "English"
+  },
+  "home": {
+    "title": "Relatronica",
+    "tagline": "We imagine possible futures and create tools that help communities {understand}, {discuss} and {shape} them",
+    "comprenderli": "understand",
+    "discuterli": "discuss",
+    "plasmarli": "shape",
+    "exploreNextHuman": "Explore NextHuman",
+    "features": {
+      "speculativeDesign": {
+        "title": "Speculative Design",
+        "description": "We design alternative future scenarios to stimulate critical thinking and open conversations about possible futures."
+      },
+      "civicTech": {
+        "title": "Civic Tech",
+        "description": "We develop digital technologies that empower communities and improve access to public information."
+      },
+      "knowledgeMapping": {
+        "title": "Knowledge Mapping",
+        "description": "We visualize relationships between concepts, data and ideas to make knowledge more accessible and understandable."
+      },
+      "responsibleTech": {
+        "title": "Responsible Technologies",
+        "description": "We promote an ethical and responsible approach to technology, oriented towards collective well-being."
+      }
+    },
+    "nexthumanHighlight": {
+      "title": "NextHuman",
+      "description": "A calendar of probabilistic deadlines for humanity. Explore future scenarios through interactive visualizations, knowledge mapping and speculative design.",
+      "cta": "Start exploring"
+    },
+    "cta": {
+      "ourProjects": {
+        "title": "Our Projects",
+        "description": "Explore our explorations at the intersection of speculative design, civic tech and knowledge mapping."
+      },
+      "whoWeAre": {
+        "title": "Who We Are",
+        "description": "Discover our mission, our values and our commitment to responsible technologies."
+      }
+    }
+  },
+  "about": {
+    "title": "Relatronica",
+    "tagline": "We imagine possible futures and create tools that help communities understand, discuss and shape them, empowering civic participation on fundamental issues for our collective future.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "Relatronica is a design studio born in Switzerland in 2024 from a team of designers and researchers who met at CERN, the European Organization for Nuclear Research. It combines {speculativeDesign}, {civicTech} and {knowledgeMapping} to explore future scenarios and create tools that help communities understand, discuss and navigate the complexities of the contemporary world, fostering informed participation in decisions affecting humanity.",
+      "speculativeDesign": "speculative design",
+      "civicTech": "civic tech",
+      "knowledgeMapping": "knowledge mapping",
+      "speculativeDesignTooltip": "A creative approach that imagines possible future scenarios to stimulate critical reflections on how today's technologies and choices might shape tomorrow.",
+      "civicTechTooltip": "Digital technologies created to improve community life, facilitate civic participation and make public information more accessible to everyone.",
+      "knowledgeMappingTooltip": "The visualization of connections between ideas, concepts and data to make knowledge more understandable and help identify relationships that would otherwise remain hidden."
+    },
+    "origins": {
+      "title": "Our Origins at CERN",
+      "paragraph1": "Relatronica was born in Switzerland in 2024 from the meeting, at CERN, between designers and researchers who share the same question: how can we use technologies and data to truly engage people in choices concerning humanity's future?",
+      "paragraph2": "CERN is one of the symbols of international scientific collaboration. It was here, in 1991, that the World Wide Web was born, conceived as an open space to share knowledge and make information accessible to everyone. Since then, the Web has revolutionized our lives, but many crucial decisions – on climate, energy, research, infrastructure – are still perceived as distant, technical, poorly participated.",
+      "paragraph3": "With Relatronica we want to carry forward and expand that original spirit: not just a Web where you read and inform yourself, but spaces and tools where people can understand, discuss and contribute. We transform complex topics into clear paths of participation, to bring citizens, institutions and scientific communities closer together."
+    },
+    "pillars": {
+      "speculativeDesign": {
+        "title": "Speculative Design",
+        "description": "We design alternative future scenarios to stimulate critical thinking and open conversations about possible futures. Through prototypes and narratives, we explore the ethical, social and technological implications of possible developments."
+      },
+      "civicTech": {
+        "title": "Civic Tech",
+        "description": "We develop digital technologies that empower communities and improve access to public information. We create tools that facilitate civic participation and democratic transparency."
+      },
+      "knowledgeMapping": {
+        "title": "Knowledge Mapping",
+        "description": "We visualize relationships between concepts, data and ideas to make knowledge more accessible and understandable. Our mapping tools help navigate complexity and identify hidden connections."
+      }
+    },
+    "approach": {
+      "title": "Our Approach",
+      "intro": "We combine research, design and technology to create projects that:",
+      "points": {
+        "critical": "Stimulate critical thinking about possible futures",
+        "accessible": "Make complex information accessible",
+        "participation": "Foster participation and civic engagement",
+        "ethics": "Explore the ethical implications of emerging technologies"
+      }
+    },
+    "activism": {
+      "title": "Activism for Responsible Technologies",
+      "intro": "We firmly believe that technology must be designed and developed responsibly, ethically and oriented towards collective well-being. Our commitment goes beyond design: we are active in promoting a more aware and critical technological culture.",
+      "ethics": {
+        "title": "Ethics and Humanity",
+        "description": "We promote technologies that put people at the center, respect human rights and foster inclusion and social equity."
+      },
+      "transparency": {
+        "title": "Transparency and Control",
+        "description": "We support transparent, open source and decentralized systems that restore control and autonomy to communities and individuals."
+      },
+      "education": {
+        "title": "Critical Education",
+        "description": "We create tools and resources that help understand the implications of emerging technologies and develop informed critical thinking."
+      },
+      "sustainability": {
+        "title": "Digital Sustainability",
+        "description": "We design solutions that consider environmental impact, energy efficiency and the longevity of digital systems."
+      }
+    },
+    "values": {
+      "title": "Our Values",
+      "intro": "The principles that guide our work and our design choices:",
+      "accessibility": {
+        "title": "Accessibility",
+        "description": "We believe that information and tools must be accessible to everyone, regardless of technical background or available resources."
+      },
+      "participation": {
+        "title": "Participation",
+        "description": "We promote collaborative and inclusive processes that involve communities in defining their own future."
+      },
+      "critical": {
+        "title": "Critical Thinking",
+        "description": "We stimulate deep reflections and uncomfortable questions, avoiding simplistic solutions to complex problems."
+      },
+      "responsibility": {
+        "title": "Responsibility",
+        "description": "We take responsibility for the ethical, social and environmental implications of our creations."
+      },
+      "openness": {
+        "title": "Openness",
+        "description": "We favor open source, transparent and reproducible approaches that promote knowledge sharing."
+      }
+    },
+    "nexthuman": {
+      "title": "NextHuman",
+      "paragraph1": "This project represents an example of our work: a calendar of probabilistic deadlines for humanity. Through interactive visualizations and speculative scenarios, we explore the challenges and opportunities awaiting our collective future, combining knowledge mapping to show relationships between events and civic tech to make this information accessible to everyone.",
+      "paragraph2": "NextHuman is also a manifesto of our approach: we use technology to stimulate awareness, foster public debate and encourage concrete actions towards more desirable futures. Every visualization, every scenario, every mapped connection is an invitation to reflect, discuss and act responsibly."
+    },
+    "collaborate": {
+      "title": "Want to Collaborate?",
+      "description": "We are always interested in collaborations, projects and conversations about speculative design, civic tech, knowledge mapping and responsible technologies. If you share our values and want to explore possible futures together, don't hesitate to contact us.",
+      "tags": {
+        "collaborative": "Collaborative Projects",
+        "research": "Research & Development",
+        "workshops": "Workshops & Training",
+        "consulting": "Ethical Consulting"
+      },
+      "instagram": "Follow Relatronica on Instagram",
+      "linkedin": "Follow Relatronica on LinkedIn"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Explorations at the intersection of speculative design, civic tech and knowledge mapping",
+    "inDevelopment": "In Development",
+    "nexthuman": {
+      "title": "NextHuman",
+      "subtitle": "Calendar of Deadlines for Humanity",
+      "description": "An interactive platform that visualizes the probabilistic deadlines awaiting humanity, combining knowledge mapping, speculative scenarios and temporal visualizations."
+    },
+    "segno": {
+      "title": "SEGNO",
+      "subtitle": "Build your AI scenario",
+      "description": "An interactive platform that allows you to build customized scenarios on AI use and discover the impact. Helps people and businesses understand risks and opportunities through educational notes with regulatory references and best practices."
+    },
+    "civica": {
+      "title": "Civica",
+      "subtitle": "Political systems configurator",
+      "description": "An interactive platform to explore, compare and configure different political systems. Allows you to understand the implications of institutional choices through visualizations and comparative scenarios."
+    },
+    "exploreProject": "Explore project",
+    "contact": {
+      "title": "Have a project in mind?",
+      "description": "We are always interested in collaborating on projects that explore the future through speculative design, civic tech and knowledge mapping.",
+      "cta": "Contact us to discuss possibilities"
+    }
+  },
+  "whiteboard": {
+    "openLink": "Open link",
+    "zoomOut": "Zoom out",
+    "zoomIn": "Zoom in",
+    "resetZoom": "Reset zoom"
+  },
+  "nexthuman": {
+    "title": "NextHuman",
+    "subtitle": "Calendar of Deadlines for Humanity",
+    "modal": {
+      "close": "Close",
+      "whatIs": "What is NextHuman?",
+      "description": "NextHuman is an interactive platform that visualizes the {probabilistic} awaiting humanity. It is not a prediction, but a {speculative} exercise that combines knowledge mapping, future scenarios and temporal visualizations to help understand the complexities of tomorrow.",
+      "probabilistic": "probabilistic deadlines",
+      "speculative": "speculative design",
+      "features": {
+        "deadlines": {
+          "title": "Probabilistic Deadlines",
+          "description": "Future events with probability of occurrence based on analysis and trends"
+        },
+        "mapping": {
+          "title": "Knowledge Mapping",
+          "description": "Visualization of connections between events, themes and scenarios"
+        },
+        "scenarios": {
+          "title": "Speculative Scenarios",
+          "description": "Exploration of possible futures through interactive visualizations"
+        }
+      },
+      "howItWorks": "How It Works?",
+      "steps": {
+        "explore": {
+          "title": "Explore the Board",
+          "description": "Navigate freely in the interactive whiteboard. Each card represents a probabilistic deadline with date, probability and associated themes."
+        },
+        "filters": {
+          "title": "Use Filters",
+          "description": "Filter by {themes} (climate, technology, geopolitics...) or {probabilities} to focus on specific areas of interest.",
+          "themes": "themes",
+          "probabilities": "probabilities"
+        },
+        "scenarios": {
+          "title": "Explore Scenarios",
+          "description": "Select between {optimistic}, {realistic} or {pessimistic} scenarios to see how event probabilities change.",
+          "optimistic": "optimistic",
+          "realistic": "realistic",
+          "pessimistic": "pessimistic"
+        },
+        "connections": {
+          "title": "Discover Connections",
+          "description": "Click on an event to see details, implications and links to in-depth resources. Connections between events show how the future is interconnected."
+        }
+      },
+      "importantNote": {
+        "title": "Important Note",
+        "description": "NextHuman is not a scientific prediction, but a {speculative} tool to stimulate critical reflections on possible futures. Probabilities are indicative and based on trend analysis, not rigorous predictive models.",
+        "speculative": "speculative design"
+      },
+      "dontShowAgain": "Don't show this message again",
+      "startExploring": "Start exploring"
+    },
+    "view": {
+      "noDeadlines": "No deadlines found",
+      "resetFilters": "Reset filters",
+      "scenarios": {
+        "optimistic": "Optimistic",
+        "realistic": "Realistic",
+        "pessimistic": "Pessimistic"
+      },
+      "filters": {
+        "themes": "Themes",
+        "probabilities": "Probabilities",
+        "selectThemes": "Select themes",
+        "selectProbabilities": "Select probabilities",
+        "clear": "Clear",
+        "labels": {
+          "low": "Low",
+          "medium": "Medium",
+          "high": "High",
+          "veryHigh": "Very High"
+        }
+      },
+      "inspector": {
+        "info": "Information",
+        "closeDetails": "Close details",
+        "whatCanYouDo": "What you can do",
+        "actionsDescription": "Discover concrete actions you can take to prepare for or contribute to this future event"
+      },
+      "timeline": {
+        "all": "All"
+      },
+      "groups": {
+        "events": "events",
+        "critical": "critical"
+      },
+      "moreLinks": "more"
+    },
+    "themes": {
+      "clima": "Climate & Planet",
+      "ambiente": "Ecosystems",
+      "tecnologia": "Technology & AI",
+      "energia": "Energy & Renewal",
+      "società": "Society",
+      "demografia": "Populations",
+      "scienza": "Research & Space",
+      "economia": "Global Economy",
+      "salute": "Health & Longevity",
+      "geopolitica": "Geo-dynamics"
+    },
+    "columns": {
+      "climate": {
+        "title": "Climate & Environment",
+        "description": "Climate tipping points and global environmental crises."
+      },
+      "energy": {
+        "title": "Energy & Resources",
+        "description": "Energy transition and natural resource management."
+      },
+      "technology": {
+        "title": "Technology & Science",
+        "description": "AI, scientific research and disruptive technological innovations."
+      },
+      "society": {
+        "title": "Society & Demographics",
+        "description": "Social, demographic transformations and health aspects."
+      },
+      "governance": {
+        "title": "Economy & Geopolitics",
+        "description": "Global economy, geopolitics and change governance."
+      }
+    }
+  },
+  "deadlines": {
+    "card": {
+      "expectedFor": "Expected for:",
+      "probability": "probability",
+      "past": "Past",
+      "sources": "Sources:",
+      "scope": "Scope:",
+      "type": "Type:",
+      "impact": "Impact:",
+      "probabilityLabels": {
+        "low": "Low probability",
+        "medium": "Medium probability",
+        "high": "High probability",
+        "veryHigh": "Very high probability"
+      },
+      "impactLabels": {
+        "local": "Local impact",
+        "regional": "Regional impact",
+        "global": "Global impact"
+      },
+      "categoryLabels": {
+        "milestone": "Important milestone",
+        "threshold": "Critical threshold",
+        "tippingPoint": "Tipping point",
+        "transformation": "Epochal transformation"
+      }
+    },
+    "1": {
+      "title": "Arctic ice tipping point",
+      "description": "Arctic sea ice could reach a tipping point, with irreversible consequences for global climate.",
+      "actions": {
+        "0": {
+          "title": "Reduce personal emissions",
+          "description": "Adopt a low-emission lifestyle",
+          "links": {
+            "Calcolatore impronta carbonica": "Carbon footprint calculator"
+          }
+        },
+        "1": {
+          "title": "Support climate policies",
+          "description": "Vote for and support politicians who promote climate action",
+          "links": {
+            "Climate Action Network": "Climate Action Network"
+          }
+        }
+      }
+    },
+    "2": {
+      "title": "AGI (Artificial General Intelligence) achieved",
+      "description": "Possible achievement of general artificial intelligence, with cognitive capabilities comparable to or superior to human ones.",
+      "actions": {
+        "0": {
+          "title": "Educate yourself on AI",
+          "description": "Understand the implications of AI for society",
+          "links": {
+            "Future of Humanity Institute": "Future of Humanity Institute"
+          }
+        },
+        "1": {
+          "title": "Promote AI governance",
+          "description": "Support ethical regulations for AI",
+          "links": {
+            "Partnership on AI": "Partnership on AI"
+          }
+        }
+      }
+    },
+    "3": {
+      "title": "World population reaches peak",
+      "description": "World population could reach its maximum peak before beginning to decline."
+    },
+    "4": {
+      "title": "Complete transition to renewable energy",
+      "description": "Possible completion of the global energy transition to renewable sources.",
+      "actions": {
+        "0": {
+          "title": "Switch to renewable energy",
+          "description": "Choose a renewable energy provider"
+        },
+        "1": {
+          "title": "Invest in renewables",
+          "description": "Support clean energy projects"
+        }
+      }
+    },
+    "5": {
+      "title": "Collapse of a major marine ecosystem",
+      "description": "Risk of collapse of a critical marine ecosystem (e.g. coral reef, kelp forests).",
+      "actions": {
+        "0": {
+          "title": "Protect the oceans",
+          "description": "Support marine conservation organizations",
+          "links": {
+            "Ocean Conservancy": "Ocean Conservancy"
+          }
+        }
+      }
+    },
+    "6": {
+      "title": "Global water crisis",
+      "description": "Possible global water crisis with over 4 billion people living in areas with severe water scarcity."
+    },
+    "7": {
+      "title": "Achievement of technological singularity",
+      "description": "The moment when technological progress becomes so rapid as to be incomprehensible to humans."
+    },
+    "8": {
+      "title": "Global geopolitical reorganization",
+      "description": "Possible significant reorganization of world geopolitical balances."
+    },
+    "9": {
+      "title": "Mass species extinction",
+      "description": "Risk of acceleration of mass species extinction, with loss of 30-50% of current species.",
+      "actions": {
+        "0": {
+          "title": "Support conservation",
+          "description": "Contribute to organizations for biodiversity protection",
+          "links": {
+            "WWF": "WWF"
+          }
+        }
+      }
+    },
+    "10": {
+      "title": "Global debt crisis",
+      "description": "Possible systemic global debt crisis that could destabilize the world economy."
+    },
+    "11": {
+      "title": "Earth Overshoot Day 2025",
+      "description": "The day when humanity has consumed all the resources that Earth can regenerate in a year. This date comes earlier every year."
+    },
+    "12": {
+      "title": "Achievement of Longevity Escape Velocity",
+      "description": "According to Ray Kurzweil, we will reach the ability to gain more than a year of life expectancy for each year lived, thanks to advances in medicine and AI."
+    },
+    "13": {
+      "title": "Net Zero 2030 target (EU)",
+      "description": "The European Union aims to achieve climate neutrality by 2030, reducing emissions by 55% compared to 1990 levels."
+    },
+    "14": {
+      "title": "First human mission to Mars",
+      "description": "Possible launch of the first human mission to Mars, marking the beginning of humanity's expansion beyond Earth."
+    },
+    "15": {
+      "title": "Quantum Supremacy for practical problems",
+      "description": "Quantum computers could solve practical problems impossible for classical computers, revolutionizing cryptography, pharmaceuticals and finance."
+    },
+    "16": {
+      "title": "Potential demographic crisis",
+      "description": "According to some models, a global demographic crisis could occur if an ecological crisis were to occur that affects available resources."
+    },
+    "17": {
+      "title": "Global Net Zero 2050 target",
+      "description": "Global target to achieve net zero greenhouse gas emissions, crucial to limit global warming to 1.5°C."
+    },
+    "18": {
+      "title": "Gulf Stream collapse",
+      "description": "Risk of slowdown or collapse of the Gulf Stream, which could cause drastic climate changes in Europe and North America."
+    },
+    "19": {
+      "title": "End of the oil era",
+      "description": "Possible end of the oil era as the main energy source, with complete transition to alternative energies."
+    },
+    "20": {
+      "title": "Global urbanization at 70%",
+      "description": "70% of the world's population will live in urban areas, with significant consequences for infrastructure, resources and society."
+    },
+    "21": {
+      "title": "Achievement of human-level AI",
+      "description": "According to expert surveys, 50% probability that AI will reach capabilities comparable to human ones in this period."
+    },
+    "22": {
+      "title": "Disappearance of Alpine glaciers",
+      "description": "Alpine glaciers could disappear completely, with devastating impacts on European water supply."
+    },
+    "23": {
+      "title": "Global food crisis",
+      "description": "Possible global food crisis due to climate change, water scarcity and population growth."
+    },
+    "24": {
+      "title": "Commercial nuclear fusion",
+      "description": "Possible achievement of commercially sustainable nuclear fusion, providing clean and unlimited energy."
+    },
+    "25": {
+      "title": "50% reduction in biodiversity",
+      "description": "Risk of losing 50% of current species if drastic conservation measures are not taken."
+    },
+    "26": {
+      "title": "Global population aging",
+      "description": "For the first time in history, over-65s will outnumber children under 5, with profound social and economic implications."
+    },
+    "27": {
+      "title": "End of the coal era",
+      "description": "Possible end of the use of coal as the main energy source, marking a historic turning point in the energy transition."
+    },
+    "28": {
+      "title": "Global fisheries collapse",
+      "description": "Risk of collapse of global fish stocks if sustainable fishing practices are not implemented."
+    },
+    "29": {
+      "title": "Achievement of SDGs 2030",
+      "description": "Deadline for achieving the United Nations Sustainable Development Goals, including zero poverty, quality education and climate action."
+    },
+    "30": {
+      "title": "Climate refugee crisis",
+      "description": "Possible global crisis with hundreds of millions of climate refugees forced to migrate due to extreme events and sea level rise.",
+      "actions": {
+        "0": {
+          "title": "Support refugee organizations",
+          "description": "Contribute to organizations that help climate refugees",
+          "links": {
+            "UNHCR": "UNHCR"
+          }
+        },
+        "1": {
+          "title": "Promote welcoming policies",
+          "description": "Support policies that address climate migration"
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,540 @@
+{
+  "common": {
+    "home": "Home",
+    "nexthuman": "NextHuman",
+    "projects": "Progetti",
+    "about": "About",
+    "explore": "Esplora",
+    "learnMore": "Scopri di più",
+    "comingSoon": "Prossimamente",
+    "language": "Lingua",
+    "italian": "Italiano",
+    "english": "Inglese"
+  },
+  "home": {
+    "title": "Relatronica",
+    "tagline": "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a {comprenderli}, {discuterli} e {plasmarli}",
+    "comprenderli": "comprenderli",
+    "discuterli": "discuterli",
+    "plasmarli": "plasmarli",
+    "exploreNextHuman": "Esplora NextHuman",
+    "features": {
+      "speculativeDesign": {
+        "title": "Speculative Design",
+        "description": "Progettiamo scenari futuri alternativi per stimolare il pensiero critico e aprire conversazioni su possibili futuri."
+      },
+      "civicTech": {
+        "title": "Civic Tech",
+        "description": "Sviluppiamo tecnologie digitali che potenziano le comunità e migliorano l'accesso alle informazioni pubbliche."
+      },
+      "knowledgeMapping": {
+        "title": "Knowledge Mapping",
+        "description": "Visualizziamo le relazioni tra concetti, dati e idee per rendere la conoscenza più accessibile e comprensibile."
+      },
+      "responsibleTech": {
+        "title": "Tecnologie Responsabili",
+        "description": "Promuoviamo un approccio etico e responsabile alla tecnologia, orientato al benessere collettivo."
+      }
+    },
+    "nexthumanHighlight": {
+      "title": "NextHuman",
+      "description": "Un calendario delle scadenze probabilistiche per l'umanità. Esplora scenari futuri attraverso visualizzazioni interattive, knowledge mapping e design speculativo.",
+      "cta": "Inizia l'esplorazione"
+    },
+    "cta": {
+      "ourProjects": {
+        "title": "I Nostri Progetti",
+        "description": "Esplora le nostre esplorazioni al confine tra design speculativo, civic tech e knowledge mapping."
+      },
+      "whoWeAre": {
+        "title": "Chi Siamo",
+        "description": "Scopri la nostra missione, i nostri valori e il nostro impegno per tecnologie responsabili."
+      }
+    }
+  },
+  "about": {
+    "title": "Relatronica",
+    "tagline": "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli, potenziando la partecipazione civica su temi fondamentali per il nostro futuro collettivo.",
+    "mission": {
+      "title": "La Nostra Missione",
+      "description": "Relatronica è uno studio di progettazione nato in Svizzera nel 2024 da un team di designer e ricercatori che si sono incontrati al CERN, l'Organizzazione europea per la ricerca nucleare. Unisce {speculativeDesign}, {civicTech} e {knowledgeMapping} per esplorare scenari futuri e creare strumenti che aiutano le comunità a comprendere, discutere e navigare le complessità del mondo contemporaneo, favorendo una partecipazione informata alle decisioni che riguardano l'umanità.",
+      "speculativeDesign": "speculative design",
+      "civicTech": "civic tech",
+      "knowledgeMapping": "knowledge mapping",
+      "speculativeDesignTooltip": "Un approccio creativo che immagina scenari futuri possibili per stimolare riflessioni critiche su come le tecnologie e le scelte di oggi possano plasmare il domani.",
+      "civicTechTooltip": "Tecnologie digitali create per migliorare la vita delle comunità, facilitare la partecipazione civica e rendere le informazioni pubbliche più accessibili a tutti.",
+      "knowledgeMappingTooltip": "La visualizzazione delle connessioni tra idee, concetti e dati per rendere la conoscenza più comprensibile e aiutare a identificare relazioni che altrimenti resterebbero nascoste."
+    },
+    "origins": {
+      "title": "Le Nostre Origini al CERN",
+      "paragraph1": "Relatronica nasce in Svizzera nel 2024 dall'incontro, al CERN, tra designer e ricercatori che condividono la stessa domanda: come possiamo usare tecnologie e dati per coinvolgere davvero le persone nelle scelte che riguardano il futuro dell'umanità?",
+      "paragraph2": "Il CERN è uno dei luoghi simbolo della collaborazione scientifica internazionale. Proprio qui, nel 1991, è nato il World Wide Web, pensato come spazio aperto per condividere sapere e rendere l'informazione accessibile a tutti. Da allora il Web ha rivoluzionato le nostre vite, ma molte decisioni cruciali – sul clima, l'energia, la ricerca, le infrastrutture – restano ancora percepite come lontane, tecniche, poco partecipate.",
+      "paragraph3": "Con Relatronica vogliamo portare avanti e ampliare quello spirito originario: non solo un Web dove leggere e informarsi, ma spazi e strumenti in cui le persone possano capire, discutere e contribuire. Trasformiamo temi complessi in percorsi chiari di partecipazione, per avvicinare cittadinanza, istituzioni e comunità scientifiche."
+    },
+    "pillars": {
+      "speculativeDesign": {
+        "title": "Speculative Design",
+        "description": "Progettiamo scenari futuri alternativi per stimolare il pensiero critico e aprire conversazioni su possibili futuri. Attraverso prototipi e narrazioni, esploriamo le implicazioni etiche, sociali e tecnologiche di possibili sviluppi."
+      },
+      "civicTech": {
+        "title": "Civic Tech",
+        "description": "Sviluppiamo tecnologie digitali che potenziano le comunità e migliorano l'accesso alle informazioni pubbliche. Creiamo strumenti che facilitano la partecipazione civica e la trasparenza democratica."
+      },
+      "knowledgeMapping": {
+        "title": "Knowledge Mapping",
+        "description": "Visualizziamo le relazioni tra concetti, dati e idee per rendere la conoscenza più accessibile e comprensibile. I nostri strumenti di mappatura aiutano a navigare complessità e identificare connessioni nascoste."
+      }
+    },
+    "approach": {
+      "title": "Il Nostro Approccio",
+      "intro": "Combiniamo ricerca, design e tecnologia per creare progetti che:",
+      "points": {
+        "critical": "Stimolano il pensiero critico su futuri possibili",
+        "accessible": "Rendono accessibili informazioni complesse",
+        "participation": "Favoriscono la partecipazione e l'engagement civico",
+        "ethics": "Esplorano le implicazioni etiche delle tecnologie emergenti"
+      }
+    },
+    "activism": {
+      "title": "Attivismo per Tecnologie Responsabili",
+      "intro": "Crediamo fermamente che la tecnologia debba essere progettata e sviluppata in modo responsabile, etico e orientato al benessere collettivo. Il nostro impegno va oltre la progettazione: siamo attivi nel promuovere una cultura tecnologica più consapevole e critica.",
+      "ethics": {
+        "title": "Etica e Umanità",
+        "description": "Promuoviamo tecnologie che mettono al centro le persone, rispettano i diritti umani e favoriscono l'inclusione e l'equità sociale."
+      },
+      "transparency": {
+        "title": "Trasparenza e Controllo",
+        "description": "Sosteniamo sistemi trasparenti, open source e decentralizzati che restituiscono controllo e autonomia alle comunità e agli individui."
+      },
+      "education": {
+        "title": "Educazione Critica",
+        "description": "Creiamo strumenti e risorse che aiutano a comprendere le implicazioni delle tecnologie emergenti e a sviluppare un pensiero critico informato."
+      },
+      "sustainability": {
+        "title": "Sostenibilità Digitale",
+        "description": "Progettiamo soluzioni che considerano l'impatto ambientale, l'efficienza energetica e la longevità dei sistemi digitali."
+      }
+    },
+    "values": {
+      "title": "I Nostri Valori",
+      "intro": "I principi che guidano il nostro lavoro e le nostre scelte progettuali:",
+      "accessibility": {
+        "title": "Accessibilità",
+        "description": "Crediamo che l'informazione e gli strumenti debbano essere accessibili a tutti, indipendentemente da background tecnico o risorse disponibili."
+      },
+      "participation": {
+        "title": "Partecipazione",
+        "description": "Promuoviamo processi collaborativi e inclusivi che coinvolgono le comunità nella definizione del proprio futuro."
+      },
+      "critical": {
+        "title": "Pensiero Critico",
+        "description": "Stimoliamo riflessioni profonde e domande scomode, evitando soluzioni semplicistiche a problemi complessi."
+      },
+      "responsibility": {
+        "title": "Responsabilità",
+        "description": "Assumiamo la responsabilità delle implicazioni etiche, sociali e ambientali delle nostre creazioni."
+      },
+      "openness": {
+        "title": "Apertura",
+        "description": "Privilegiamo approcci open source, trasparenti e riproducibili che favoriscono la condivisione della conoscenza."
+      }
+    },
+    "nexthuman": {
+      "title": "NextHuman",
+      "paragraph1": "Questo progetto rappresenta un esempio del nostro lavoro: un calendario delle scadenze probabilistiche per l'umanità. Attraverso visualizzazioni interattive e scenari speculativi, esploriamo le sfide e le opportunità che attendono il nostro futuro collettivo, combinando knowledge mapping per mostrare le relazioni tra eventi e civic tech per rendere queste informazioni accessibili a tutti.",
+      "paragraph2": "NextHuman è anche un manifesto del nostro approccio: utilizziamo la tecnologia per stimolare consapevolezza, favorire il dibattito pubblico e incoraggiare azioni concrete verso futuri più desiderabili. Ogni visualizzazione, ogni scenario, ogni connessione mappata è un invito a riflettere, discutere e agire responsabilmente."
+    },
+    "collaborate": {
+      "title": "Vuoi Collaborare?",
+      "description": "Siamo sempre interessati a collaborazioni, progetti e conversazioni su design speculativo, civic tech, knowledge mapping e tecnologie responsabili. Se condividi i nostri valori e vuoi esplorare insieme possibili futuri, non esitare a contattarci.",
+      "tags": {
+        "collaborative": "Progetti Collaborativi",
+        "research": "Ricerca e Sviluppo",
+        "workshops": "Workshop e Formazione",
+        "consulting": "Consulenza Etica"
+      },
+      "instagram": "Segui Relatronica su Instagram",
+      "linkedin": "Segui Relatronica su LinkedIn"
+    }
+  },
+  "projects": {
+    "title": "Progetti",
+    "subtitle": "Esplorazioni al confine tra design speculativo, civic tech e knowledge mapping",
+    "inDevelopment": "In Sviluppo",
+    "nexthuman": {
+      "title": "NextHuman",
+      "subtitle": "Calendario delle Scadenze per l'Umanità",
+      "description": "Una piattaforma interattiva che visualizza le scadenze probabilistiche che attendono l'umanità, combinando knowledge mapping, scenari speculativi e visualizzazioni temporali."
+    },
+    "segno": {
+      "title": "SEGNO",
+      "subtitle": "Costruisci il tuo scenario AI",
+      "description": "Una piattaforma interattiva che permette di costruire scenari personalizzati sull'uso dell'IA e scoprire l'impatto. Aiuta persone e imprese a comprendere rischi e opportunità attraverso note educative con riferimenti normativi e best practices."
+    },
+    "civica": {
+      "title": "Civica",
+      "subtitle": "Configuratore di sistemi politici",
+      "description": "Una piattaforma interattiva per esplorare, confrontare e configurare diversi sistemi politici. Permette di comprendere le implicazioni delle scelte istituzionali attraverso visualizzazioni e scenari comparativi."
+    },
+    "exploreProject": "Esplora progetto",
+    "contact": {
+      "title": "Hai un progetto in mente?",
+      "description": "Siamo sempre interessati a collaborare su progetti che esplorano il futuro attraverso design speculativo, civic tech e knowledge mapping.",
+      "cta": "Contattaci per discutere delle possibilità"
+    }
+  },
+  "whiteboard": {
+    "openLink": "Apri link",
+    "zoomOut": "Zoom out",
+    "zoomIn": "Zoom in",
+    "resetZoom": "Reset zoom"
+  },
+  "nexthuman": {
+    "title": "NextHuman",
+    "subtitle": "Calendario delle Scadenze per l'Umanità",
+    "modal": {
+      "close": "Chiudi",
+      "whatIs": "Cos'è NextHuman?",
+      "description": "NextHuman è una piattaforma interattiva che visualizza le {probabilistiche} che attendono l'umanità. Non è una previsione, ma un {speculativo} che combina knowledge mapping, scenari futuri e visualizzazioni temporali per aiutare a comprendere le complessità del domani.",
+      "probabilistiche": "scadenze probabilistiche",
+      "speculativo": "esercizio di design speculativo",
+      "features": {
+        "deadlines": {
+          "title": "Scadenze Probabilistiche",
+          "description": "Eventi futuri con probabilità di accadimento basate su analisi e trend"
+        },
+        "mapping": {
+          "title": "Knowledge Mapping",
+          "description": "Visualizzazione delle connessioni tra eventi, temi e scenari"
+        },
+        "scenarios": {
+          "title": "Scenari Speculativi",
+          "description": "Esplorazione di futuri possibili attraverso visualizzazioni interattive"
+        }
+      },
+      "howItWorks": "Come Funziona?",
+      "steps": {
+        "explore": {
+          "title": "Esplora la Board",
+          "description": "Naviga liberamente nella whiteboard interattiva. Ogni card rappresenta una scadenza probabilistica con data, probabilità e temi associati."
+        },
+        "filters": {
+          "title": "Usa i Filtri",
+          "description": "Filtra per {themes} (clima, tecnologia, geopolitica...) o {probabilities} per concentrarti su aree specifiche di interesse.",
+          "themes": "temi",
+          "probabilities": "probabilità"
+        },
+        "scenarios": {
+          "title": "Esplora Scenari",
+          "description": "Seleziona tra scenari {optimistic}, {realistic} o {pessimistic} per vedere come cambiano le probabilità degli eventi.",
+          "optimistic": "ottimistici",
+          "realistic": "realistici",
+          "pessimistic": "pessimistici"
+        },
+        "connections": {
+          "title": "Scopri le Connessioni",
+          "description": "Clicca su un evento per vedere dettagli, implicazioni e link a risorse approfondite. Le connessioni tra eventi mostrano come il futuro sia interconnesso."
+        }
+      },
+      "importantNote": {
+        "title": "Nota Importante",
+        "description": "NextHuman non è una previsione scientifica, ma uno strumento di {speculative} per stimolare riflessioni critiche sui futuri possibili. Le probabilità sono indicative e basate su analisi di trend, non su modelli predittivi rigorosi.",
+        "speculative": "design speculativo"
+      },
+      "dontShowAgain": "Non mostrare più questo messaggio",
+      "startExploring": "Inizia l'esplorazione"
+    },
+    "view": {
+      "noDeadlines": "Nessuna scadenza trovata",
+      "resetFilters": "Reset filtri",
+      "scenarios": {
+        "optimistic": "Ottimistico",
+        "realistic": "Realistico",
+        "pessimistic": "Pessimistico"
+      },
+      "filters": {
+        "themes": "Temi",
+        "probabilities": "Probabilità",
+        "selectThemes": "Seleziona temi",
+        "selectProbabilities": "Seleziona probabilità",
+        "clear": "Pulisci",
+        "labels": {
+          "low": "Bassa",
+          "medium": "Media",
+          "high": "Alta",
+          "veryHigh": "Molto Alta"
+        }
+      },
+      "inspector": {
+        "info": "Informazioni",
+        "closeDetails": "Chiudi dettagli",
+        "whatCanYouDo": "Cosa puoi fare",
+        "actionsDescription": "Scopri azioni concrete che puoi intraprendere per prepararti o contribuire a questo evento futuro"
+      },
+      "timeline": {
+        "all": "Tutti"
+      },
+      "groups": {
+        "events": "eventi",
+        "critical": "critici"
+      },
+      "moreLinks": "altri"
+    },
+    "themes": {
+      "clima": "Clima & Pianeta",
+      "ambiente": "Ecosistemi",
+      "tecnologia": "Tecnologia & IA",
+      "energia": "Energia e Rinnovo",
+      "società": "Società",
+      "demografia": "Popolazioni",
+      "scienza": "Ricerca e Space",
+      "economia": "Economia Globale",
+      "salute": "Salute & Longevità",
+      "geopolitica": "Geo-dinamiche"
+    },
+    "columns": {
+      "climate": {
+        "title": "Clima & Ambiente",
+        "description": "Punti di non ritorno climatici e crisi ambientali globali."
+      },
+      "energy": {
+        "title": "Energia & Risorse",
+        "description": "Transizione energetica e gestione delle risorse naturali."
+      },
+      "technology": {
+        "title": "Tecnologia & Scienza",
+        "description": "IA, ricerca scientifica e innovazioni tecnologiche disruptive."
+      },
+      "society": {
+        "title": "Società & Demografia",
+        "description": "Trasformazioni sociali, demografiche e aspetti della salute."
+      },
+      "governance": {
+        "title": "Economia & Geopolitica",
+        "description": "Economia globale, geopolitica e governance del cambiamento."
+      }
+    }
+  },
+  "deadlines": {
+    "card": {
+      "expectedFor": "Previsto per:",
+      "probability": "di probabilità",
+      "past": "Passato",
+      "sources": "Fonti:",
+      "scope": "Portata:",
+      "type": "Tipo:",
+      "impact": "Impatto:",
+      "probabilityLabels": {
+        "low": "Bassa probabilità",
+        "medium": "Media probabilità",
+        "high": "Alta probabilità",
+        "veryHigh": "Molto alta probabilità"
+      },
+      "impactLabels": {
+        "local": "Impatto locale",
+        "regional": "Impatto regionale",
+        "global": "Impatto globale"
+      },
+      "categoryLabels": {
+        "milestone": "Traguardo importante",
+        "threshold": "Soglia critica",
+        "tippingPoint": "Punto di non ritorno",
+        "transformation": "Trasformazione epocale"
+      }
+    },
+    "1": {
+      "title": "Punto di non ritorno per il ghiaccio artico",
+      "description": "Il ghiaccio marino artico potrebbe raggiungere un punto di non ritorno, con conseguenze irreversibili per il clima globale.",
+      "actions": {
+        "0": {
+          "title": "Ridurre emissioni personali",
+          "description": "Adotta uno stile di vita a basse emissioni",
+          "links": {
+            "Calcolatore impronta carbonica": "Calcolatore impronta carbonica"
+          }
+        },
+        "1": {
+          "title": "Supportare politiche climatiche",
+          "description": "Vota e sostieni politici che promuovono azioni per il clima",
+          "links": {
+            "Climate Action Network": "Climate Action Network"
+          }
+        }
+      }
+    },
+    "2": {
+      "title": "AGI (Artificial General Intelligence) raggiunta",
+      "description": "Possibile raggiungimento dell'intelligenza artificiale generale, con capacità cognitive paragonabili o superiori a quelle umane.",
+      "actions": {
+        "0": {
+          "title": "Educarsi sull'IA",
+          "description": "Comprendi le implicazioni dell'IA per la società",
+          "links": {
+            "Future of Humanity Institute": "Future of Humanity Institute"
+          }
+        },
+        "1": {
+          "title": "Promuovere governance dell'IA",
+          "description": "Supporta regolamentazioni etiche per l'IA",
+          "links": {
+            "Partnership on AI": "Partnership on AI"
+          }
+        }
+      }
+    },
+    "3": {
+      "title": "Popolazione mondiale raggiunge il picco",
+      "description": "La popolazione mondiale potrebbe raggiungere il picco massimo prima di iniziare a declinare."
+    },
+    "4": {
+      "title": "Transizione completa alle energie rinnovabili",
+      "description": "Possibile completamento della transizione energetica globale verso fonti rinnovabili.",
+      "actions": {
+        "0": {
+          "title": "Passa a energia rinnovabile",
+          "description": "Scegli un fornitore di energia rinnovabile"
+        },
+        "1": {
+          "title": "Investi in rinnovabili",
+          "description": "Supporta progetti di energia pulita"
+        }
+      }
+    },
+    "5": {
+      "title": "Collasso di un ecosistema marino principale",
+      "description": "Rischio di collasso di un ecosistema marino critico (es. barriera corallina, foreste di kelp).",
+      "actions": {
+        "0": {
+          "title": "Proteggere gli oceani",
+          "description": "Supporta organizzazioni per la conservazione marina",
+          "links": {
+            "Ocean Conservancy": "Ocean Conservancy"
+          }
+        }
+      }
+    },
+    "6": {
+      "title": "Crisi idrica globale",
+      "description": "Possibile crisi idrica globale con oltre 4 miliardi di persone che vivono in aree con grave scarsità d'acqua."
+    },
+    "7": {
+      "title": "Raggiungimento della singolarità tecnologica",
+      "description": "Momento in cui il progresso tecnologico diventa così rapido da essere incomprensibile per gli esseri umani."
+    },
+    "8": {
+      "title": "Riorganizzazione geopolitica globale",
+      "description": "Possibile riorganizzazione significativa degli equilibri geopolitici mondiali."
+    },
+    "9": {
+      "title": "Estinzione di massa delle specie",
+      "description": "Rischio di accelerazione dell'estinzione di massa delle specie, con perdita del 30-50% delle specie attuali.",
+      "actions": {
+        "0": {
+          "title": "Supporta la conservazione",
+          "description": "Contribuisci a organizzazioni per la protezione della biodiversità",
+          "links": {
+            "WWF": "WWF"
+          }
+        }
+      }
+    },
+    "10": {
+      "title": "Crisi del debito globale",
+      "description": "Possibile crisi sistemica del debito globale che potrebbe destabilizzare l'economia mondiale."
+    },
+    "11": {
+      "title": "Earth Overshoot Day 2025",
+      "description": "Giorno in cui l'umanità ha consumato tutte le risorse che la Terra può rigenerare in un anno. Questa data arriva sempre prima ogni anno."
+    },
+    "12": {
+      "title": "Raggiungimento della Longevity Escape Velocity",
+      "description": "Secondo Ray Kurzweil, raggiungeremo la capacità di guadagnare più di un anno di aspettativa di vita per ogni anno vissuto, grazie ai progressi in medicina e IA."
+    },
+    "13": {
+      "title": "Obiettivo Net Zero 2030 (UE)",
+      "description": "L'Unione Europea punta a raggiungere la neutralità climatica entro il 2030, riducendo le emissioni del 55% rispetto ai livelli del 1990."
+    },
+    "14": {
+      "title": "Prima missione umana su Marte",
+      "description": "Possibile lancio della prima missione umana su Marte, segnando l'inizio dell'espansione dell'umanità oltre la Terra."
+    },
+    "15": {
+      "title": "Quantum Supremacy per problemi pratici",
+      "description": "I computer quantistici potrebbero risolvere problemi pratici impossibili per i computer classici, rivoluzionando crittografia, farmaceutica e finanza."
+    },
+    "16": {
+      "title": "Crisi demografica potenziale",
+      "description": "Secondo alcuni modelli, potrebbe verificarsi una crisi demografica globale se dovesse verificarsi una crisi ecologica che influenzi le risorse disponibili."
+    },
+    "17": {
+      "title": "Obiettivo Net Zero globale 2050",
+      "description": "Obiettivo globale per raggiungere emissioni nette zero di gas serra, cruciale per limitare il riscaldamento globale a 1.5°C."
+    },
+    "18": {
+      "title": "Collasso della Corrente del Golfo",
+      "description": "Rischio di rallentamento o collasso della Corrente del Golfo, che potrebbe causare cambiamenti climatici drastici in Europa e Nord America."
+    },
+    "19": {
+      "title": "Fine dell'era del petrolio",
+      "description": "Possibile fine dell'era del petrolio come principale fonte energetica, con transizione completa a energie alternative."
+    },
+    "20": {
+      "title": "Urbanizzazione globale al 70%",
+      "description": "Il 70% della popolazione mondiale vivrà in aree urbane, con conseguenze significative per infrastrutture, risorse e società."
+    },
+    "21": {
+      "title": "Raggiungimento dell'IA a livello umano",
+      "description": "Secondo sondaggi tra esperti, probabilità del 50% che l'IA raggiunga capacità paragonabili a quelle umane in questo periodo."
+    },
+    "22": {
+      "title": "Scomparsa dei ghiacciai alpini",
+      "description": "I ghiacciai delle Alpi potrebbero scomparire completamente, con impatti devastanti sull'approvvigionamento idrico europeo."
+    },
+    "23": {
+      "title": "Crisi alimentare globale",
+      "description": "Possibile crisi alimentare globale dovuta a cambiamenti climatici, scarsità d'acqua e crescita demografica."
+    },
+    "24": {
+      "title": "Fusione nucleare commerciale",
+      "description": "Possibile raggiungimento della fusione nucleare commercialmente sostenibile, fornendo energia pulita e illimitata."
+    },
+    "25": {
+      "title": "Riduzione del 50% della biodiversità",
+      "description": "Rischio di perdita del 50% delle specie attuali se non verranno prese misure drastiche per la conservazione."
+    },
+    "26": {
+      "title": "Invecchiamento globale della popolazione",
+      "description": "Per la prima volta nella storia, gli over-65 supereranno i bambini sotto i 5 anni, con profonde implicazioni sociali ed economiche."
+    },
+    "27": {
+      "title": "Fine dell'era del carbone",
+      "description": "Possibile fine dell'uso del carbone come fonte energetica principale, segnando una svolta storica nella transizione energetica."
+    },
+    "28": {
+      "title": "Collasso della pesca globale",
+      "description": "Rischio di collasso degli stock ittici globali se non verranno implementate pratiche di pesca sostenibili."
+    },
+    "29": {
+      "title": "Raggiungimento degli SDG 2030",
+      "description": "Scadenza per il raggiungimento degli Obiettivi di Sviluppo Sostenibile delle Nazioni Unite, inclusi povertà zero, istruzione di qualità e azione per il clima."
+    },
+    "30": {
+      "title": "Crisi dei rifugiati climatici",
+      "description": "Possibile crisi globale con centinaia di milioni di rifugiati climatici costretti a migrare a causa di eventi estremi e innalzamento del mare.",
+      "actions": {
+        "0": {
+          "title": "Supporta organizzazioni per rifugiati",
+          "description": "Contribuisci a organizzazioni che aiutano i rifugiati climatici",
+          "links": {
+            "UNHCR": "UNHCR"
+          }
+        },
+        "1": {
+          "title": "Promuovi politiche di accoglienza",
+          "description": "Sostieni politiche che affrontano la migrazione climatica"
+        }
+      }
+    }
+  }
+}
+

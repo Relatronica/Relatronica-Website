@@ -3,8 +3,9 @@
 import { useMemo, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { format } from 'date-fns';
-import { it } from 'date-fns/locale';
+import { it, enUS } from 'date-fns/locale';
 import { X, TrendingUp, TrendingDown, BarChart, Tags, Percent } from 'lucide-react';
+import { useI18n } from '@/lib/i18n';
 import { Theme, Probability } from '@/types/deadline';
 import { deadlines } from '@/data/deadlines';
 import { cn, getThemeColorHex } from '@/lib/utils';
@@ -30,11 +31,14 @@ export function VisionaryView({
   filters: FilterState;
   onFilterChange: (filters: FilterState) => void;
 }) {
+  const { t, locale } = useI18n();
   const [selectedDeadline, setSelectedDeadline] = useState<string | null>(null);
   const [scenarioType, setScenarioType] = useState<ScenarioType>('realistic');
   const [boardMode, setBoardMode] = useState<WhiteboardMode>('strategia');
   const [openFilterMenu, setOpenFilterMenu] = useState<'themes' | 'probabilities' | null>(null);
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
+  
+  const dateLocale = locale === 'en' ? enUS : it;
 
   // Aggiorna i filtri quando viene selezionato un anno
   const effectiveFilters = useMemo(() => {
@@ -114,8 +118,8 @@ const orderedThemes = useMemo(() => {
 
     const columns: WhiteboardColumnFrame[] = BOARD_COLUMNS.map((column, index) => ({
       id: `lane-${column.id}`,
-      title: column.title,
-      description: column.description,
+      title: t(`nexthuman.columns.${column.id}.title`) || column.title,
+      description: t(`nexthuman.columns.${column.id}.description`) || column.description,
       accent: column.accent,
       x: columnStartX + index * (columnWidth + columnGap),
       y: columnTop,
@@ -186,11 +190,19 @@ const orderedThemes = useMemo(() => {
             Boolean(link && link.url && link.url.trim() && (link.url.startsWith('http') || link.url.includes('.')))
           );
         
+        // Traduci titolo e descrizione del deadline
+        const deadlineTitleKey = `deadlines.${deadline.id}.title`;
+        const deadlineDescriptionKey = `deadlines.${deadline.id}.description`;
+        const translatedTitle = t(deadlineTitleKey);
+        const translatedDescription = t(deadlineDescriptionKey);
+        const displayTitle = translatedTitle !== deadlineTitleKey ? translatedTitle : deadline.title;
+        const displayDescription = translatedDescription !== deadlineDescriptionKey ? translatedDescription : deadline.description;
+        
         items.push({
           id: deadline.id,
-          title: deadline.title,
-          description: deadline.description,
-          meta: format(deadline.date, 'MMM yyyy', { locale: it }),
+          title: displayTitle,
+          description: displayDescription,
+          meta: format(deadline.date, 'MMM yyyy', { locale: dateLocale }),
           tags: deadline.themes.slice(0, 2),
           probability: deadline.adjustedProbability,
           color: getThemeColorHex(primaryTheme),
@@ -207,10 +219,16 @@ const orderedThemes = useMemo(() => {
           const stickyX = itemX + cardWidth - 75;
           const stickyY = itemY + cardHeight - 50;
           
+          // Traduci la label del link se disponibile
+          const linkLabel = deadlineLinks[0]?.label ?? 'Link';
+          const linkLabelKey = `deadlines.${deadline.id}.links.${linkLabel}`;
+          const translatedLinkLabel = t(linkLabelKey);
+          const displayLinkLabel = translatedLinkLabel !== linkLabelKey ? translatedLinkLabel : linkLabel;
+          
           items.push({
             id: `sticky-${deadline.id}`,
-            title: deadlineLinks[0]?.label ?? 'Link',
-            description: deadlineLinks.length > 1 ? `+${deadlineLinks.length - 1} altri` : undefined,
+            title: displayLinkLabel,
+            description: deadlineLinks.length > 1 ? `+${deadlineLinks.length - 1} ${t('nexthuman.view.moreLinks')}` : undefined,
             meta: '',
             color: '#fef3c7',
             x: stickyX,
@@ -228,9 +246,9 @@ const orderedThemes = useMemo(() => {
 
       const group: WhiteboardGroup = {
         id: `group-${theme}`,
-        title: THEME_LABELS[theme] ?? theme,
-        description: `${deadlinesForTheme.length} eventi`,
-        badges: criticalCount > 0 ? [`${criticalCount} critici`] : [],
+        title: t(`nexthuman.themes.${theme}`) || (THEME_LABELS[theme] ?? theme),
+        description: `${deadlinesForTheme.length} ${t('nexthuman.view.groups.events')}`,
+        badges: criticalCount > 0 ? [`${criticalCount} ${t('nexthuman.view.groups.critical')}`] : [],
         color: accent,
         x: groupX,
         y: groupY,
@@ -294,9 +312,9 @@ const orderedThemes = useMemo(() => {
     return (
       <div className="flex h-screen items-center justify-center bg-slate-50">
         <div className="text-center">
-          <p className="text-lg font-medium text-slate-500">Nessuna scadenza trovata</p>
+          <p className="text-lg font-medium text-slate-500">{t('nexthuman.view.noDeadlines')}</p>
           <button onClick={() => onFilterChange({ ...filters, themes: [] })} className="mt-4 text-blue-600 hover:underline">
-            Reset filtri
+            {t('nexthuman.view.resetFilters')}
           </button>
         </div>
       </div>
@@ -337,7 +355,7 @@ const orderedThemes = useMemo(() => {
                       )}
                     >
                       <Icon className="w-3.5 h-3.5" />
-                      {type === 'optimistic' ? 'Ottimistico' : type === 'realistic' ? 'Realistico' : 'Pessimistico'}
+                      {t(`nexthuman.view.scenarios.${type}`)}
                     </button>
                   );
                 })}
@@ -360,7 +378,7 @@ const orderedThemes = useMemo(() => {
                   )}
                 >
                   <Tags className="w-3.5 h-3.5" />
-                  Temi
+                  {t('nexthuman.view.filters.themes')}
                   {filters.themes.length > 0 && (
                     <span className="flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-slate-900 text-white text-xs font-semibold">
                       {filters.themes.length}
@@ -372,7 +390,7 @@ const orderedThemes = useMemo(() => {
                 {openFilterMenu === 'themes' && (
                   <div className="absolute bottom-full left-0 mb-2 rounded-xl border border-slate-200 bg-white p-3 shadow-2xl min-w-[280px]">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-semibold text-slate-700">Seleziona temi</span>
+                      <span className="text-xs font-semibold text-slate-700">{t('nexthuman.view.filters.selectThemes')}</span>
                       {filters.themes.length > 0 && (
                         <button
                           onClick={(e) => {
@@ -382,7 +400,7 @@ const orderedThemes = useMemo(() => {
                           className="text-xs text-slate-500 hover:text-slate-900 flex items-center gap-1"
                         >
                           <X className="w-3 h-3" />
-                          Pulisci
+                          {t('nexthuman.view.filters.clear')}
                         </button>
                       )}
                     </div>
@@ -407,7 +425,7 @@ const orderedThemes = useMemo(() => {
                             )}
                             style={isActive ? { backgroundColor: getThemeColorHex(theme) } : {}}
                           >
-                            {THEME_LABELS[theme] ?? theme}
+                            {t(`nexthuman.themes.${theme}`) || (THEME_LABELS[theme] ?? theme)}
               </button>
                         );
                       })}
@@ -431,7 +449,7 @@ const orderedThemes = useMemo(() => {
                   )}
                 >
                   <Percent className="w-3.5 h-3.5" />
-                  Probabilità
+                  {t('nexthuman.view.filters.probabilities')}
                   {filters.probabilities.length > 0 && (
                     <span className="flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-slate-900 text-white text-xs font-semibold">
                       {filters.probabilities.length}
@@ -443,7 +461,7 @@ const orderedThemes = useMemo(() => {
                 {openFilterMenu === 'probabilities' && (
                   <div className="absolute bottom-full left-0 mb-2 rounded-xl border border-slate-200 bg-white p-3 shadow-2xl min-w-[200px]">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-semibold text-slate-700">Seleziona probabilità</span>
+                      <span className="text-xs font-semibold text-slate-700">{t('nexthuman.view.filters.selectProbabilities')}</span>
                       {filters.probabilities.length > 0 && (
                         <button
                           onClick={(e) => {
@@ -453,19 +471,14 @@ const orderedThemes = useMemo(() => {
                           className="text-xs text-slate-500 hover:text-slate-900 flex items-center gap-1"
                         >
                           <X className="w-3 h-3" />
-                          Pulisci
+                          {t('nexthuman.view.filters.clear')}
                         </button>
                       )}
             </div>
                     <div className="flex flex-wrap gap-1.5">
                       {(['low', 'medium', 'high', 'very-high'] as Probability[]).map(prob => {
                         const isActive = filters.probabilities.includes(prob);
-                        const labels: Record<Probability, string> = {
-                          low: 'Bassa',
-                          medium: 'Media',
-                          high: 'Alta',
-                          'very-high': 'Molto Alta',
-                        };
+                        const probKey = prob === 'very-high' ? 'veryHigh' : prob;
                         return (
                           <button
                             key={prob}
@@ -483,7 +496,7 @@ const orderedThemes = useMemo(() => {
                                 : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                             )}
                           >
-                            {labels[prob]}
+                            {t(`nexthuman.view.filters.labels.${probKey}`)}
                           </button>
                         );
                       })}

@@ -4,16 +4,18 @@ import Link from 'next/link';
 import { ArrowRight, Calendar, Network, Sparkles, Brain, Scale } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
+import { useI18n } from '@/lib/i18n';
 
 export default function ProgettiPage() {
+  const { t } = useI18n();
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://relatronica.com';
   
   const progetti = [
     {
       id: 'nexthuman',
-      title: 'NextHuman',
-      subtitle: 'Calendario delle Scadenze per l\'Umanità',
-      description: 'Una piattaforma interattiva che visualizza le scadenze probabilistiche che attendono l\'umanità, combinando knowledge mapping, scenari speculativi e visualizzazioni temporali.',
+      title: t('projects.nexthuman.title'),
+      subtitle: t('projects.nexthuman.subtitle'),
+      description: t('projects.nexthuman.description'),
       tags: ['Speculative Design', 'Knowledge Mapping', 'Civic Tech', 'Data Visualization'],
       href: '/nexthuman',
       icon: Calendar,
@@ -21,9 +23,9 @@ export default function ProgettiPage() {
     },
     {
       id: 'segno',
-      title: 'SEGNO',
-      subtitle: 'Costruisci il tuo scenario AI',
-      description: 'Una piattaforma interattiva che permette di costruire scenari personalizzati sull\'uso dell\'IA e scoprire l\'impatto. Aiuta persone e imprese a comprendere rischi e opportunità attraverso note educative con riferimenti normativi e best practices.',
+      title: t('projects.segno.title'),
+      subtitle: t('projects.segno.subtitle'),
+      description: t('projects.segno.description'),
       tags: ['Civic Tech', 'AI Ethics', 'Speculative Design', 'Education'],
       href: 'https://segno.app/',
       icon: Brain,
@@ -31,10 +33,10 @@ export default function ProgettiPage() {
     },
     {
       id: 'civica',
-      title: 'Civica',
-      subtitle: 'Configuratore di sistemi politici',
-      description: 'Una piattaforma interattiva per esplorare, confrontare e configurare diversi sistemi politici. Permette di comprendere le implicazioni delle scelte istituzionali attraverso visualizzazioni e scenari comparativi.',
-      tags: ['Civic Tech', 'Speculative Design', 'Education', 'In Sviluppo'],
+      title: t('projects.civica.title'),
+      subtitle: t('projects.civica.subtitle'),
+      description: t('projects.civica.description'),
+      tags: ['Civic Tech', 'Speculative Design', 'Education', t('projects.inDevelopment')],
       href: null,
       icon: Scale,
       color: 'orange',
@@ -79,9 +81,9 @@ export default function ProgettiPage() {
       <div className="min-h-screen pt-32 pb-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-24">
-            <h1 className="text-6xl font-bold mb-6 text-slate-900">Progetti</h1>
+            <h1 className="text-6xl font-bold mb-6 text-slate-900">{t('projects.title')}</h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-              Esplorazioni al confine tra design speculativo, civic tech e knowledge mapping
+              {t('projects.subtitle')}
             </p>
           </div>
 
@@ -114,13 +116,13 @@ export default function ProgettiPage() {
                 </div>
                 {!isComingSoon && (
                   <div className="flex items-center gap-2 text-blue-600 font-semibold text-sm">
-                    <span>Esplora progetto</span>
+                    <span>{t('projects.exploreProject')}</span>
                     <ArrowRight className="w-4 h-4" />
                   </div>
                 )}
                 {isComingSoon && (
                   <div className="text-slate-400 text-sm italic">
-                    Prossimamente
+                    {t('common.comingSoon')}
                   </div>
                 )}
               </div>
@@ -140,13 +142,12 @@ export default function ProgettiPage() {
 
         <div className="mt-20 text-center">
           <div className="rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-10 shadow-sm max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold mb-4 text-slate-900">Hai un progetto in mente?</h2>
+            <h2 className="text-2xl font-bold mb-4 text-slate-900">{t('projects.contact.title')}</h2>
             <p className="text-slate-600 mb-6 text-[15px] leading-relaxed">
-              Siamo sempre interessati a collaborare su progetti che esplorano il futuro 
-              attraverso design speculativo, civic tech e knowledge mapping.
+              {t('projects.contact.description')}
             </p>
             <p className="text-sm text-slate-500">
-              Contattaci per discutere delle possibilità
+              {t('projects.contact.cta')}
             </p>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Toolbar } from "@/components/Toolbar";
+import { I18nProvider } from "@/lib/i18n";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://relatronica.com';
 
@@ -123,8 +124,10 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased bg-white">
-        <Toolbar />
-        {children}
+        <I18nProvider>
+          <Toolbar />
+          {children}
+        </I18nProvider>
       </body>
     </html>
   );

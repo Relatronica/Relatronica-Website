@@ -4,15 +4,21 @@ import Link from 'next/link';
 import { ArrowRight, Calendar, Sparkles, Users, Network, Target, Globe, Shield } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
+import { useI18n } from '@/lib/i18n';
 
 export function HomeClient() {
+  const { t } = useI18n();
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://relatronica.com';
   
   const homePageSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Relatronica",
-    "description": "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli. Attivismo per tecnologie responsabili.",
+    "description": t('home.tagline', {
+      comprenderli: t('home.comprenderli'),
+      discuterli: t('home.discuterli'),
+      plasmarli: t('home.plasmarli')
+    }),
     "url": siteUrl,
     "publisher": {
       "@type": "Organization",
@@ -24,26 +30,26 @@ export function HomeClient() {
   const features = [
     {
       icon: Sparkles,
-      title: 'Speculative Design',
-      description: 'Progettiamo scenari futuri alternativi per stimolare il pensiero critico e aprire conversazioni su possibili futuri.',
+      title: t('home.features.speculativeDesign.title'),
+      description: t('home.features.speculativeDesign.description'),
       color: 'purple'
     },
     {
       icon: Users,
-      title: 'Civic Tech',
-      description: 'Sviluppiamo tecnologie digitali che potenziano le comunità e migliorano l\'accesso alle informazioni pubbliche.',
+      title: t('home.features.civicTech.title'),
+      description: t('home.features.civicTech.description'),
       color: 'green'
     },
     {
       icon: Network,
-      title: 'Knowledge Mapping',
-      description: 'Visualizziamo le relazioni tra concetti, dati e idee per rendere la conoscenza più accessibile e comprensibile.',
+      title: t('home.features.knowledgeMapping.title'),
+      description: t('home.features.knowledgeMapping.description'),
       color: 'orange'
     },
     {
       icon: Shield,
-      title: 'Tecnologie Responsabili',
-      description: 'Promuoviamo un approccio etico e responsabile alla tecnologia, orientato al benessere collettivo.',
+      title: t('home.features.responsibleTech.title'),
+      description: t('home.features.responsibleTech.description'),
       color: 'emerald'
     }
   ];
@@ -67,13 +73,23 @@ export function HomeClient() {
             {/* Hero Section */}
             <div className="text-center mb-24">
               <h1 className="text-7xl font-bold mb-6 text-slate-900 leading-tight">
-                Relatronica
+                {t('home.title')}
               </h1>
               <p className="text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8">
-                Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a{' '}
-                <span className="font-semibold text-slate-900">comprenderli</span>,{' '}
-                <span className="font-semibold text-slate-900">discuterli</span> e{' '}
-                <span className="font-semibold text-slate-900">plasmarli</span>
+                {(() => {
+                  const tagline = t('home.tagline', {
+                    comprenderli: t('home.comprenderli'),
+                    discuterli: t('home.discuterli'),
+                    plasmarli: t('home.plasmarli')
+                  });
+                  const parts = tagline.split(/(\{comprenderli\}|\{discuterli\}|\{plasmarli\})/);
+                  return parts.map((part, i) => {
+                    if (part === '{comprenderli}') return <span key={i} className="font-semibold text-slate-900">{t('home.comprenderli')}</span>;
+                    if (part === '{discuterli}') return <span key={i} className="font-semibold text-slate-900">{t('home.discuterli')}</span>;
+                    if (part === '{plasmarli}') return <span key={i} className="font-semibold text-slate-900">{t('home.plasmarli')}</span>;
+                    return <span key={i}>{part}</span>;
+                  });
+                })()}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
@@ -81,14 +97,14 @@ export function HomeClient() {
                   className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-full font-semibold hover:bg-slate-800 transition-all duration-200 shadow-lg hover:shadow-xl"
                 >
                   <Calendar className="w-5 h-5" />
-                  Esplora NextHuman
+                  {t('home.exploreNextHuman')}
                   <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link
                   href="/about"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-white/90 border border-slate-200 text-slate-900 rounded-full font-semibold hover:bg-white transition-all duration-200 shadow-sm hover:shadow-md"
                 >
-                  Scopri di più
+                  {t('common.learnMore')}
                 </Link>
               </div>
             </div>
@@ -118,17 +134,15 @@ export function HomeClient() {
                 <div className="inline-flex items-center justify-center p-4 rounded-2xl bg-white/80 mb-6">
                   <Calendar className="w-8 h-8 text-blue-600" />
                 </div>
-                <h2 className="text-4xl font-bold mb-4 text-slate-900">NextHuman</h2>
+                <h2 className="text-4xl font-bold mb-4 text-slate-900">{t('home.nexthumanHighlight.title')}</h2>
                 <p className="text-xl text-slate-700 mb-6 leading-relaxed">
-                  Un calendario delle scadenze probabilistiche per l&apos;umanità. 
-                  Esplora scenari futuri attraverso visualizzazioni interattive, knowledge mapping 
-                  e design speculativo.
+                  {t('home.nexthumanHighlight.description')}
                 </p>
                 <Link
                   href="/nexthuman"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-all duration-200 shadow-md hover:shadow-lg"
                 >
-                  Inizia l&apos;esplorazione
+                  {t('home.nexthumanHighlight.cta')}
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
@@ -146,9 +160,9 @@ export function HomeClient() {
                   </div>
                   <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-slate-900 group-hover:translate-x-1 transition-all" />
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-slate-900">I Nostri Progetti</h3>
+                <h3 className="text-2xl font-bold mb-3 text-slate-900">{t('home.cta.ourProjects.title')}</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Esplora le nostre esplorazioni al confine tra design speculativo, civic tech e knowledge mapping.
+                  {t('home.cta.ourProjects.description')}
                 </p>
               </Link>
 
@@ -162,9 +176,9 @@ export function HomeClient() {
                   </div>
                   <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-slate-900 group-hover:translate-x-1 transition-all" />
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-slate-900">Chi Siamo</h3>
+                <h3 className="text-2xl font-bold mb-3 text-slate-900">{t('home.cta.whoWeAre.title')}</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Scopri la nostra missione, i nostri valori e il nostro impegno per tecnologie responsabili.
+                  {t('home.cta.whoWeAre.description')}
                 </p>
               </Link>
             </div>

@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { Deadline } from '@/types/deadline';
 import { cn } from '@/lib/utils';
+import { useI18n } from '@/lib/i18n';
 
 interface TimelineFilterProps {
   deadlines: Deadline[];
@@ -11,6 +12,7 @@ interface TimelineFilterProps {
 }
 
 export function TimelineFilter({ deadlines, selectedYear, onYearSelect }: TimelineFilterProps) {
+  const { t } = useI18n();
   const [hoveredYear, setHoveredYear] = useState<number | null>(null);
   const [isHovering, setIsHovering] = useState(false);
 
@@ -194,7 +196,7 @@ export function TimelineFilter({ deadlines, selectedYear, onYearSelect }: Timeli
                       : 'bg-white/95 text-slate-900 border-slate-200/80'
                   )}
                 >
-                  Tutti
+                  {t('nexthuman.view.timeline.all')}
                 </div>
               </div>
             )}

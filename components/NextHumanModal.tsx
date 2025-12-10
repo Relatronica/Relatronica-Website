@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react';
 import { X, Calendar, Network, Sparkles, TrendingUp, TrendingDown, BarChart, Info } from 'lucide-react';
 import Image from 'next/image';
+import { useI18n } from '@/lib/i18n';
 
 export function NextHumanModal() {
+  const { t } = useI18n();
   const [isOpen, setIsOpen] = useState(false);
   const [dontShowAgain, setDontShowAgain] = useState(false);
 
@@ -41,7 +43,7 @@ export function NextHumanModal() {
         <button
           onClick={handleClose}
           className="absolute top-4 right-4 p-2 rounded-lg hover:bg-slate-100 transition-colors z-10"
-          aria-label="Chiudi"
+          aria-label={t('nexthuman.modal.close')}
         >
           <X className="w-5 h-5 text-slate-600" />
         </button>
@@ -59,8 +61,8 @@ export function NextHumanModal() {
               />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-slate-900">NextHuman</h2>
-              <p className="text-sm text-slate-500 mt-1">Calendario delle Scadenze per l&apos;Umanità</p>
+              <h2 className="text-3xl font-bold text-slate-900">{t('nexthuman.title')}</h2>
+              <p className="text-sm text-slate-500 mt-1">{t('nexthuman.subtitle')}</p>
             </div>
           </div>
 
@@ -68,12 +70,19 @@ export function NextHumanModal() {
           <div className="space-y-6 text-slate-700 leading-relaxed">
             <div>
               <p className="text-lg font-medium text-slate-900 mb-3">
-                Cos&apos;è NextHuman?
+                {t('nexthuman.modal.whatIs')}
               </p>
               <p className="text-[15px] text-slate-600 mb-4">
-                NextHuman è una piattaforma interattiva che visualizza le <strong className="text-slate-900">scadenze probabilistiche</strong> che attendono l&apos;umanità. 
-                Non è una previsione, ma un <strong className="text-slate-900">esercizio di design speculativo</strong> che combina knowledge mapping, 
-                scenari futuri e visualizzazioni temporali per aiutare a comprendere le complessità del domani.
+                {t('nexthuman.modal.description', {
+                  probabilistic: `<strong class="text-slate-900">${t('nexthuman.modal.probabilistiche')}</strong>`,
+                  speculative: `<strong class="text-slate-900">${t('nexthuman.modal.speculativo')}</strong>`
+                }).replace(/\{probabilistiche\}/, `<strong class="text-slate-900">${t('nexthuman.modal.probabilistiche')}</strong>`)
+                  .replace(/\{speculativo\}/, `<strong class="text-slate-900">${t('nexthuman.modal.speculativo')}</strong>`)
+                  .split(/(\{probabilistiche\}|\{speculativo\})/).map((part, i) => {
+                    if (part === '{probabilistiche}') return <strong key={i} className="text-slate-900">{t('nexthuman.modal.probabilistiche')}</strong>;
+                    if (part === '{speculativo}') return <strong key={i} className="text-slate-900">{t('nexthuman.modal.speculativo')}</strong>;
+                    return <span key={i}>{part}</span>;
+                  })}
               </p>
             </div>
 
@@ -83,8 +92,8 @@ export function NextHumanModal() {
                   <Calendar className="w-4 h-4 text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-slate-900 mb-1">Scadenze Probabilistiche</p>
-                  <p className="text-xs text-slate-600">Eventi futuri con probabilità di accadimento basate su analisi e trend</p>
+                  <p className="text-sm font-semibold text-slate-900 mb-1">{t('nexthuman.modal.features.deadlines.title')}</p>
+                  <p className="text-xs text-slate-600">{t('nexthuman.modal.features.deadlines.description')}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -92,8 +101,8 @@ export function NextHumanModal() {
                   <Network className="w-4 h-4 text-purple-600" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-slate-900 mb-1">Knowledge Mapping</p>
-                  <p className="text-xs text-slate-600">Visualizzazione delle connessioni tra eventi, temi e scenari</p>
+                  <p className="text-sm font-semibold text-slate-900 mb-1">{t('nexthuman.modal.features.mapping.title')}</p>
+                  <p className="text-xs text-slate-600">{t('nexthuman.modal.features.mapping.description')}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -101,15 +110,15 @@ export function NextHumanModal() {
                   <Sparkles className="w-4 h-4 text-orange-600" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-slate-900 mb-1">Scenari Speculativi</p>
-                  <p className="text-xs text-slate-600">Esplorazione di futuri possibili attraverso visualizzazioni interattive</p>
+                  <p className="text-sm font-semibold text-slate-900 mb-1">{t('nexthuman.modal.features.scenarios.title')}</p>
+                  <p className="text-xs text-slate-600">{t('nexthuman.modal.features.scenarios.description')}</p>
                 </div>
               </div>
             </div>
 
             <div>
               <p className="text-lg font-medium text-slate-900 mb-3">
-                Come Funziona?
+                {t('nexthuman.modal.howItWorks')}
               </p>
               <div className="grid md:grid-cols-2 gap-3">
                 <div className="flex items-start gap-3 p-3 rounded-lg bg-slate-50">
@@ -117,10 +126,9 @@ export function NextHumanModal() {
                     1
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-slate-900 mb-1">Esplora la Board</p>
+                    <p className="text-sm font-semibold text-slate-900 mb-1">{t('nexthuman.modal.steps.explore.title')}</p>
                     <p className="text-xs text-slate-600">
-                      Naviga liberamente nella whiteboard interattiva. Ogni card rappresenta una scadenza probabilistica 
-                      con data, probabilità e temi associati.
+                      {t('nexthuman.modal.steps.explore.description')}
                     </p>
                   </div>
                 </div>
@@ -129,10 +137,18 @@ export function NextHumanModal() {
                     2
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-slate-900 mb-1">Usa i Filtri</p>
+                    <p className="text-sm font-semibold text-slate-900 mb-1">{t('nexthuman.modal.steps.filters.title')}</p>
                     <p className="text-xs text-slate-600">
-                      Filtra per <strong>temi</strong> (clima, tecnologia, geopolitica...) o <strong>probabilità</strong> per 
-                      concentrarti su aree specifiche di interesse.
+                      {t('nexthuman.modal.steps.filters.description', {
+                        themes: `<strong>${t('nexthuman.modal.steps.filters.themes')}</strong>`,
+                        probabilities: `<strong>${t('nexthuman.modal.steps.filters.probabilities')}</strong>`
+                      }).replace(/\{themes\}/, `<strong>${t('nexthuman.modal.steps.filters.themes')}</strong>`)
+                        .replace(/\{probabilities\}/, `<strong>${t('nexthuman.modal.steps.filters.probabilities')}</strong>`)
+                        .split(/(\{themes\}|\{probabilities\})/).map((part, i) => {
+                          if (part === '{themes}') return <strong key={i}>{t('nexthuman.modal.steps.filters.themes')}</strong>;
+                          if (part === '{probabilities}') return <strong key={i}>{t('nexthuman.modal.steps.filters.probabilities')}</strong>;
+                          return <span key={i}>{part}</span>;
+                        })}
                     </p>
                   </div>
                 </div>
@@ -141,10 +157,21 @@ export function NextHumanModal() {
                     3
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-slate-900 mb-1">Esplora Scenari</p>
+                    <p className="text-sm font-semibold text-slate-900 mb-1">{t('nexthuman.modal.steps.scenarios.title')}</p>
                     <p className="text-xs text-slate-600">
-                      Seleziona tra scenari <strong>ottimistici</strong>, <strong>realistici</strong> o <strong>pessimistici</strong> 
-                      per vedere come cambiano le probabilità degli eventi.
+                      {t('nexthuman.modal.steps.scenarios.description', {
+                        optimistic: `<strong>${t('nexthuman.modal.steps.scenarios.optimistic')}</strong>`,
+                        realistic: `<strong>${t('nexthuman.modal.steps.scenarios.realistic')}</strong>`,
+                        pessimistic: `<strong>${t('nexthuman.modal.steps.scenarios.pessimistic')}</strong>`
+                      }).replace(/\{optimistic\}/, `<strong>${t('nexthuman.modal.steps.scenarios.optimistic')}</strong>`)
+                        .replace(/\{realistic\}/, `<strong>${t('nexthuman.modal.steps.scenarios.realistic')}</strong>`)
+                        .replace(/\{pessimistic\}/, `<strong>${t('nexthuman.modal.steps.scenarios.pessimistic')}</strong>`)
+                        .split(/(\{optimistic\}|\{realistic\}|\{pessimistic\})/).map((part, i) => {
+                          if (part === '{optimistic}') return <strong key={i}>{t('nexthuman.modal.steps.scenarios.optimistic')}</strong>;
+                          if (part === '{realistic}') return <strong key={i}>{t('nexthuman.modal.steps.scenarios.realistic')}</strong>;
+                          if (part === '{pessimistic}') return <strong key={i}>{t('nexthuman.modal.steps.scenarios.pessimistic')}</strong>;
+                          return <span key={i}>{part}</span>;
+                        })}
                     </p>
                   </div>
                 </div>
@@ -153,10 +180,9 @@ export function NextHumanModal() {
                     4
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-slate-900 mb-1">Scopri le Connessioni</p>
+                    <p className="text-sm font-semibold text-slate-900 mb-1">{t('nexthuman.modal.steps.connections.title')}</p>
                     <p className="text-xs text-slate-600">
-                      Clicca su un evento per vedere dettagli, implicazioni e link a risorse approfondite. 
-                      Le connessioni tra eventi mostrano come il futuro sia interconnesso.
+                      {t('nexthuman.modal.steps.connections.description')}
                     </p>
                   </div>
                 </div>
@@ -167,11 +193,15 @@ export function NextHumanModal() {
               <div className="flex items-start gap-2 p-3 rounded-lg bg-amber-50 border border-amber-200">
                 <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-sm font-semibold text-amber-900 mb-1">Nota Importante</p>
+                  <p className="text-sm font-semibold text-amber-900 mb-1">{t('nexthuman.modal.importantNote.title')}</p>
                   <p className="text-xs text-amber-800">
-                    NextHuman non è una previsione scientifica, ma uno strumento di <strong>design speculativo</strong> 
-                    per stimolare riflessioni critiche sui futuri possibili. Le probabilità sono indicative e basate su 
-                    analisi di trend, non su modelli predittivi rigorosi.
+                    {t('nexthuman.modal.importantNote.description', {
+                      speculative: `<strong>${t('nexthuman.modal.importantNote.speculative')}</strong>`
+                    }).replace(/\{speculative\}/, `<strong>${t('nexthuman.modal.importantNote.speculative')}</strong>`)
+                      .split(/(\{speculative\})/).map((part, i) => {
+                        if (part === '{speculative}') return <strong key={i}>{t('nexthuman.modal.importantNote.speculative')}</strong>;
+                        return <span key={i}>{part}</span>;
+                      })}
                   </p>
                 </div>
               </div>
@@ -187,13 +217,13 @@ export function NextHumanModal() {
                 onChange={(e) => setDontShowAgain(e.target.checked)}
                 className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
               />
-              <span className="text-sm text-slate-600">Non mostrare più questo messaggio</span>
+              <span className="text-sm text-slate-600">{t('nexthuman.modal.dontShowAgain')}</span>
             </label>
             <button
               onClick={handleClose}
               className="px-6 py-2.5 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
             >
-              Inizia l&apos;esplorazione
+              {t('nexthuman.modal.startExploring')}
             </button>
           </div>
         </div>
