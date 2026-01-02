@@ -15,9 +15,9 @@ export function HomeClient() {
     "@type": "WebSite",
     "name": "Relatronica",
     "description": t('home.tagline', {
-      comprenderli: t('home.comprenderli'),
-      discuterli: t('home.discuterli'),
-      plasmarli: t('home.plasmarli')
+      action1: t('home.action1'),
+      action2: t('home.action2'),
+      action3: t('home.action3')
     }),
     "url": siteUrl,
     "publisher": {
@@ -78,15 +78,15 @@ export function HomeClient() {
               <p className="text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8">
                 {(() => {
                   const tagline = t('home.tagline', {
-                    comprenderli: t('home.comprenderli'),
-                    discuterli: t('home.discuterli'),
-                    plasmarli: t('home.plasmarli')
+                    action1: t('home.action1'),
+                    action2: t('home.action2'),
+                    action3: t('home.action3')
                   });
-                  const parts = tagline.split(/(\{comprenderli\}|\{discuterli\}|\{plasmarli\})/);
+                  const parts = tagline.split(/(\{action1\}|\{action2\}|\{action3\})/);
                   return parts.map((part, i) => {
-                    if (part === '{comprenderli}') return <span key={i} className="font-semibold text-slate-900">{t('home.comprenderli')}</span>;
-                    if (part === '{discuterli}') return <span key={i} className="font-semibold text-slate-900">{t('home.discuterli')}</span>;
-                    if (part === '{plasmarli}') return <span key={i} className="font-semibold text-slate-900">{t('home.plasmarli')}</span>;
+                    if (part === '{action1}') return <span key={i} className="font-semibold text-slate-900">{t('home.action1')}</span>;
+                    if (part === '{action2}') return <span key={i} className="font-semibold text-slate-900">{t('home.action2')}</span>;
+                    if (part === '{action3}') return <span key={i} className="font-semibold text-slate-900">{t('home.action3')}</span>;
                     return <span key={i}>{part}</span>;
                   });
                 })()}

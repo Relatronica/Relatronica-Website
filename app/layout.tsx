@@ -82,7 +82,10 @@ export default function RootLayout({
     "url": siteUrl,
     "logo": `${siteUrl}/logo.png`,
     "description": "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli",
-    "sameAs": [],
+    "sameAs": [
+      "https://www.linkedin.com/company/relatronica/",
+      "https://www.instagram.com/relatronica"
+    ],
     "foundingDate": "2024",
     "areaServed": "IT",
     "knowsAbout": [

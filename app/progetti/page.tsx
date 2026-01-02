@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Calendar, Network, Sparkles, Brain, Scale, Users } from 'lucide-react';
+import { ArrowRight, Calendar, Network, Sparkles, Brain, Scale, Users, FileText, Instagram, Linkedin } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
 import { useI18n } from '@/lib/i18n';
@@ -34,6 +34,17 @@ export default function ProgettiPage() {
       status: null,
     },
     {
+      id: 'argo',
+      title: t('projects.argo.title'),
+      subtitle: t('projects.argo.subtitle'),
+      description: t('projects.argo.description'),
+      tags: ['End-to-End Encryption', 'Zero Knowledge', 'Privacy by Design', 'Note-taking'],
+      href: null,
+      icon: FileText,
+      color: 'pink',
+      status: t('projects.argo.status'),
+    },
+    {
       id: 'civica',
       title: t('projects.civica.title'),
       subtitle: t('projects.civica.subtitle'),
@@ -63,6 +74,7 @@ export default function ProgettiPage() {
       purple: 'bg-purple-50 text-purple-600',
       green: 'bg-green-50 text-green-600',
       orange: 'bg-orange-50 text-orange-600',
+      pink: 'bg-pink-50 text-pink-600',
     };
     return colors[color as keyof typeof colors] || colors.blue;
   };
@@ -174,9 +186,31 @@ export default function ProgettiPage() {
             <p className="text-slate-600 mb-6 text-[15px] leading-relaxed">
               {t('projects.contact.description')}
             </p>
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-slate-500 mb-4">
               {t('projects.contact.cta')}
             </p>
+            <div className="flex justify-center gap-3">
+              <a
+                href="https://www.instagram.com/relatronica"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 border border-slate-200 text-slate-700 hover:bg-white hover:shadow-md transition-all duration-200 font-medium text-sm"
+                aria-label="Follow us on Instagram"
+              >
+                <Instagram className="w-4 h-4 text-pink-600" />
+                <span>Instagram</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/company/relatronica/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 border border-slate-200 text-slate-700 hover:bg-white hover:shadow-md transition-all duration-200 font-medium text-sm"
+                aria-label="Follow us on LinkedIn"
+              >
+                <Linkedin className="w-4 h-4 text-blue-600" />
+                <span>LinkedIn</span>
+              </a>
+            </div>
           </div>
         </div>
         </div>

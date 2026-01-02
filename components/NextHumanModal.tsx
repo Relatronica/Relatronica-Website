@@ -74,15 +74,13 @@ export function NextHumanModal() {
               </p>
               <p className="text-[15px] text-slate-600 mb-4">
                 {t('nexthuman.modal.description', {
-                  probabilistic: `<strong class="text-slate-900">${t('nexthuman.modal.probabilistiche')}</strong>`,
-                  speculative: `<strong class="text-slate-900">${t('nexthuman.modal.speculativo')}</strong>`
-                }).replace(/\{probabilistiche\}/, `<strong class="text-slate-900">${t('nexthuman.modal.probabilistiche')}</strong>`)
-                  .replace(/\{speculativo\}/, `<strong class="text-slate-900">${t('nexthuman.modal.speculativo')}</strong>`)
-                  .split(/(\{probabilistiche\}|\{speculativo\})/).map((part, i) => {
-                    if (part === '{probabilistiche}') return <strong key={i} className="text-slate-900">{t('nexthuman.modal.probabilistiche')}</strong>;
-                    if (part === '{speculativo}') return <strong key={i} className="text-slate-900">{t('nexthuman.modal.speculativo')}</strong>;
-                    return <span key={i}>{part}</span>;
-                  })}
+                  modalAction1: t('nexthuman.modal.modalAction1'),
+                  modalAction2: t('nexthuman.modal.modalAction2')
+                }).split(/(\{modalAction1\}|\{modalAction2\})/).map((part, i) => {
+                  if (part === '{modalAction1}') return <strong key={i} className="text-slate-900">{t('nexthuman.modal.modalAction1')}</strong>;
+                  if (part === '{modalAction2}') return <strong key={i} className="text-slate-900">{t('nexthuman.modal.modalAction2')}</strong>;
+                  return <span key={i}>{part}</span>;
+                })}
               </p>
             </div>
 
@@ -139,11 +137,7 @@ export function NextHumanModal() {
                   <div>
                     <p className="text-sm font-semibold text-slate-900 mb-1">{t('nexthuman.modal.steps.filters.title')}</p>
                     <p className="text-xs text-slate-600">
-                      {t('nexthuman.modal.steps.filters.description', {
-                        themes: `<strong>${t('nexthuman.modal.steps.filters.themes')}</strong>`,
-                        probabilities: `<strong>${t('nexthuman.modal.steps.filters.probabilities')}</strong>`
-                      }).replace(/\{themes\}/, `<strong>${t('nexthuman.modal.steps.filters.themes')}</strong>`)
-                        .replace(/\{probabilities\}/, `<strong>${t('nexthuman.modal.steps.filters.probabilities')}</strong>`)
+                      {t('nexthuman.modal.steps.filters.description')
                         .split(/(\{themes\}|\{probabilities\})/).map((part, i) => {
                           if (part === '{themes}') return <strong key={i}>{t('nexthuman.modal.steps.filters.themes')}</strong>;
                           if (part === '{probabilities}') return <strong key={i}>{t('nexthuman.modal.steps.filters.probabilities')}</strong>;
@@ -159,13 +153,7 @@ export function NextHumanModal() {
                   <div>
                     <p className="text-sm font-semibold text-slate-900 mb-1">{t('nexthuman.modal.steps.scenarios.title')}</p>
                     <p className="text-xs text-slate-600">
-                      {t('nexthuman.modal.steps.scenarios.description', {
-                        optimistic: `<strong>${t('nexthuman.modal.steps.scenarios.optimistic')}</strong>`,
-                        realistic: `<strong>${t('nexthuman.modal.steps.scenarios.realistic')}</strong>`,
-                        pessimistic: `<strong>${t('nexthuman.modal.steps.scenarios.pessimistic')}</strong>`
-                      }).replace(/\{optimistic\}/, `<strong>${t('nexthuman.modal.steps.scenarios.optimistic')}</strong>`)
-                        .replace(/\{realistic\}/, `<strong>${t('nexthuman.modal.steps.scenarios.realistic')}</strong>`)
-                        .replace(/\{pessimistic\}/, `<strong>${t('nexthuman.modal.steps.scenarios.pessimistic')}</strong>`)
+                      {t('nexthuman.modal.steps.scenarios.description')
                         .split(/(\{optimistic\}|\{realistic\}|\{pessimistic\})/).map((part, i) => {
                           if (part === '{optimistic}') return <strong key={i}>{t('nexthuman.modal.steps.scenarios.optimistic')}</strong>;
                           if (part === '{realistic}') return <strong key={i}>{t('nexthuman.modal.steps.scenarios.realistic')}</strong>;
@@ -195,9 +183,7 @@ export function NextHumanModal() {
                 <div>
                   <p className="text-sm font-semibold text-amber-900 mb-1">{t('nexthuman.modal.importantNote.title')}</p>
                   <p className="text-xs text-amber-800">
-                    {t('nexthuman.modal.importantNote.description', {
-                      speculative: `<strong>${t('nexthuman.modal.importantNote.speculative')}</strong>`
-                    }).replace(/\{speculative\}/, `<strong>${t('nexthuman.modal.importantNote.speculative')}</strong>`)
+                    {t('nexthuman.modal.importantNote.description')
                       .split(/(\{speculative\})/).map((part, i) => {
                         if (part === '{speculative}') return <strong key={i}>{t('nexthuman.modal.importantNote.speculative')}</strong>;
                         return <span key={i}>{part}</span>;
