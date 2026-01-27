@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Calendar, Network, Sparkles, Brain, Scale, Users, FileText, Instagram, Linkedin } from 'lucide-react';
+import { ArrowRight, Calendar, Network, Sparkles, Brain, Scale, Users, FileText, Instagram, Linkedin, Shield } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
 import { useI18n } from '@/lib/i18n';
@@ -66,6 +66,17 @@ export default function ProgettiPage() {
       color: 'green',
       status: t('projects.neuralforming.status'),
     },
+    {
+      id: 'eclipse',
+      title: t('projects.eclipse.title'),
+      subtitle: t('projects.eclipse.subtitle'),
+      description: t('projects.eclipse.description'),
+      tags: ['Privacy by Design', 'Data Sovereignty', 'Feminist Tech', 'Health'],
+      href: null,
+      icon: Shield,
+      color: 'red',
+      status: t('projects.eclipse.status'),
+    },
   ];
 
   const getColorClasses = (color: string) => {
@@ -75,6 +86,7 @@ export default function ProgettiPage() {
       green: 'bg-green-50 text-green-600',
       orange: 'bg-orange-50 text-orange-600',
       pink: 'bg-pink-50 text-pink-600',
+      red: 'bg-red-50 text-red-600',
     };
     return colors[color as keyof typeof colors] || colors.blue;
   };

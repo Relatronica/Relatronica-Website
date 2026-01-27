@@ -189,6 +189,12 @@
       "description": "Un'applicazione per prendere note basata su crittografia end-to-end, zero knowledge e privacy by design. Progettata per garantire che i tuoi appunti rimangano sempre privati e sotto il tuo controllo esclusivo, senza compromessi sulla sicurezza o sull'esperienza utente.",
       "status": "Coming soon"
     },
+    "eclipse": {
+      "title": "Eclipse",
+      "subtitle": "Tracciamento del ciclo mestruale privacy-first",
+      "description": "Un'app che restituisce la sovranità sui dati del proprio corpo. In un panorama dove le app di tracciamento mestruale vendono informazioni intime a terze parti, Eclipse mette la privacy al centro: crittografia end-to-end, zero knowledge architecture e dati che rimangono esclusivamente sul tuo dispositivo. Un atto di resistenza digitale per l'autonomia corporea e la salute riproduttiva, perché i dati sul tuo ciclo non sono una merce da vendere.",
+      "status": "In test"
+    },
     "exploreProject": "Esplora progetto",
     "contact": {
       "title": "Hai un progetto in mente?",

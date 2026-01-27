@@ -189,6 +189,12 @@
       "description": "A note-taking application based on end-to-end encryption, zero knowledge architecture and privacy by design. Designed to ensure your notes remain private and under your exclusive control, without compromises on security or user experience.",
       "status": "Coming soon"
     },
+    "eclipse": {
+      "title": "Eclipse",
+      "subtitle": "Privacy-first menstrual cycle tracking",
+      "description": "An app that restores sovereignty over your body's data. In a landscape where menstrual tracking apps sell intimate information to third parties, Eclipse puts privacy at the center: end-to-end encryption, zero knowledge architecture, and data that stays exclusively on your device. A digital act of resistance for bodily autonomy and reproductive health, because your cycle data is not a commodity to be sold.",
+      "status": "In testing"
+    },
     "exploreProject": "Explore project",
     "contact": {
       "title": "Have a project in mind?",
