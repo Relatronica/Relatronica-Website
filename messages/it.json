@@ -155,6 +155,26 @@
       },
       "instagram": "Segui Relatronica su Instagram",
       "linkedin": "Segui Relatronica su LinkedIn"
+    },
+    "support": {
+      "title": "Sostieni il Futuro Aperto",
+      "description": "Relatronica e' un progetto indipendente e open source. Non vendiamo dati, non mostriamo pubblicita', non cerchiamo investitori che orientino le nostre scelte. Il nostro lavoro esiste grazie a chi crede che gli strumenti per comprendere il futuro debbano restare liberi, accessibili e di tutti.",
+      "impact": "Sostenere Relatronica non e' una donazione: e' un atto di partecipazione civica. Ogni contributo ci permette di continuare a sviluppare strumenti aperti, ricerca indipendente e risorse educative per le comunita'.",
+      "tiers": {
+        "observer": {
+          "name": "The Observer",
+          "description": "Il tuo nome tra i Civic Heroes del progetto"
+        },
+        "explorer": {
+          "name": "The Explorer",
+          "description": "Accesso anticipato a prototipi e mappe di conoscenza"
+        },
+        "architect": {
+          "name": "The Future Architect",
+          "description": "Dialogo diretto con il team su design, etica e futuro"
+        }
+      },
+      "cta": "Diventa parte del progetto"
     }
   },
   "projects": {

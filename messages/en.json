@@ -155,6 +155,26 @@
       },
       "instagram": "Follow Relatronica on Instagram",
       "linkedin": "Follow Relatronica on LinkedIn"
+    },
+    "support": {
+      "title": "Support the Open Future",
+      "description": "Relatronica is an independent, open-source project. We don't sell data, show ads, or seek investors who might steer our choices. Our work exists because people believe that tools for understanding the future should remain free, accessible, and belong to everyone.",
+      "impact": "Supporting Relatronica isn't a donation -- it's an act of civic participation. Every contribution allows us to keep developing open tools, independent research, and educational resources for communities.",
+      "tiers": {
+        "observer": {
+          "name": "The Observer",
+          "description": "Your name among the project's Civic Heroes"
+        },
+        "explorer": {
+          "name": "The Explorer",
+          "description": "Early access to prototypes and knowledge maps"
+        },
+        "architect": {
+          "name": "The Future Architect",
+          "description": "Direct dialogue with the team on design, ethics, and the future"
+        }
+      },
+      "cta": "Become part of the project"
     }
   },
   "projects": {

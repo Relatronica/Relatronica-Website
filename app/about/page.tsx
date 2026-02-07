@@ -1,6 +1,6 @@
 'use client';
 
-import { Sparkles, Users, Network, Lightbulb, Target, Globe, Info, Shield, Heart, Zap, BookOpen, Code2, Instagram, Linkedin } from 'lucide-react';
+import { Sparkles, Users, Network, Lightbulb, Target, Globe, Info, Shield, Heart, Zap, BookOpen, Code2, Instagram, Linkedin, HandHeart, ExternalLink } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
 import { useState } from 'react';
@@ -364,6 +364,46 @@ export default function AboutPage() {
                   <span>LinkedIn</span>
                 </a>
               </div>
+            </div>
+          </section>
+
+          {/* Support Section */}
+          <section className="rounded-2xl border border-slate-200 bg-gradient-to-br from-emerald-50 to-teal-50 p-10 shadow-sm">
+            <div className="text-center max-w-2xl mx-auto">
+              <div className="p-3 rounded-xl bg-white/60 w-fit mx-auto mb-5">
+                <HandHeart className="w-6 h-6 text-emerald-600" />
+              </div>
+              <h2 className="text-2xl font-bold mb-4 text-slate-900">{t('about.support.title')}</h2>
+              <p className="text-slate-700 leading-relaxed mb-3 text-[15px]">
+                {t('about.support.description')}
+              </p>
+              <p className="text-slate-700 leading-relaxed mb-8 text-[15px]">
+                {t('about.support.impact')}
+              </p>
+              <div className="grid sm:grid-cols-3 gap-4 mb-8">
+                <div className="p-4 rounded-xl bg-white/70 border border-slate-200/60">
+                  <p className="font-semibold text-slate-900 text-sm mb-1">{t('about.support.tiers.observer.name')}</p>
+                  <p className="text-slate-500 text-xs">{t('about.support.tiers.observer.description')}</p>
+                </div>
+                <div className="p-4 rounded-xl bg-white/70 border border-slate-200/60">
+                  <p className="font-semibold text-slate-900 text-sm mb-1">{t('about.support.tiers.explorer.name')}</p>
+                  <p className="text-slate-500 text-xs">{t('about.support.tiers.explorer.description')}</p>
+                </div>
+                <div className="p-4 rounded-xl bg-white/70 border border-slate-200/60">
+                  <p className="font-semibold text-slate-900 text-sm mb-1">{t('about.support.tiers.architect.name')}</p>
+                  <p className="text-slate-500 text-xs">{t('about.support.tiers.architect.description')}</p>
+                </div>
+              </div>
+              <a
+                href="https://buymeacoffee.com/relatronica"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-600 text-white hover:bg-emerald-700 hover:shadow-lg transition-all duration-200 font-medium text-sm"
+                aria-label={t('about.support.cta')}
+              >
+                <span>{t('about.support.cta')}</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
             </div>
           </section>
         </div>
