@@ -2,14 +2,36 @@
   "common": {
     "home": "Home",
     "nexthuman": "NextHuman",
+    "observatory": "Osservatorio",
     "projects": "Progetti",
     "about": "About",
+    "manifesto": "Manifesto",
+    "learn": "Academy",
     "explore": "Esplora",
     "learnMore": "Scopri di più",
     "comingSoon": "Prossimamente",
     "language": "Lingua",
     "italian": "Italiano",
     "english": "Inglese"
+  },
+  "observatory": {
+    "badge": "Auto-aggiornante",
+    "title": "Osservatorio",
+    "subtitle": "Un hub di conoscenza che aggrega le fonti più autorevoli su etica dell'IA, policy, sovranità digitale e civic tech. Aggiornato automaticamente per tenerti informato.",
+    "articlesCount": "articoli",
+    "sourcesActive": "fonti attive",
+    "lastUpdate": "Ultimo aggiornamento",
+    "refresh": "Aggiorna",
+    "searchPlaceholder": "Cerca articoli, fonti, temi...",
+    "filters": "Filtri",
+    "clearFilters": "Rimuovi filtri",
+    "loading": "Caricamento delle fonti in corso...",
+    "retry": "Riprova",
+    "noResults": "Nessun articolo trovato con i filtri selezionati.",
+    "loadMore": "Carica altri",
+    "remaining": "rimanenti",
+    "aboutTitle": "Come funziona l'Osservatorio",
+    "aboutDescription": "L'Osservatorio aggrega automaticamente contenuti dalle fonti più autorevoli al mondo su etica dell'IA, policy, sovranità digitale e civic tech. I feed RSS vengono aggiornati ogni ora per garantire che tu abbia sempre accesso alle informazioni più recenti. Ogni articolo rimanda direttamente alla fonte originale."
   },
   "home": {
     "title": "Relatronica",
@@ -572,6 +594,122 @@
           "title": "Promuovi politiche di accoglienza",
           "description": "Sostieni politiche che affrontano la migrazione climatica"
         }
+      }
+    }
+  },
+  "learn": {
+    "badge": "Academy",
+    "title": "Relatronica Academy",
+    "subtitle": "Corsi gratuiti e aperti per esplorare design speculativo, civic tech, knowledge mapping e tecnologie responsabili. Impara a immaginare e costruire futuri migliori.",
+    "module": "Modulo",
+    "course": "Corso",
+    "completed": "Completato",
+    "free": "Gratuito e aperto",
+    "availableCourses": "Corsi disponibili",
+    "comingSoon": "Prossimamente",
+    "start": "Inizia",
+    "continue": "Continua",
+    "stats": {
+      "lessons": "lezioni",
+      "minutes": "minuti di lettura",
+      "modules": "moduli",
+      "courses": "corsi",
+      "completed": "completate"
+    },
+    "resources": "risorse",
+    "keyTakeaways": "Concetti chiave",
+    "reflection": "Spunto di riflessione",
+    "furtherReading": "Per approfondire",
+    "markComplete": "Segna come completata",
+    "markedComplete": "Lezione completata",
+    "backToAcademy": "Torna all'Academy",
+    "backToCourse": "Torna al corso",
+    "notFound": "Pagina non trovata",
+    "prev": "Precedente",
+    "next": "Successiva",
+    "quiz": {
+      "title": "Quiz del modulo",
+      "description": "Metti alla prova la tua comprensione dei concetti chiave di questo modulo.",
+      "start": "Inizia il quiz",
+      "retry": "Riprova il quiz",
+      "question": "Domanda",
+      "of": "di",
+      "check": "Verifica risposta",
+      "correct": "Corretto!",
+      "incorrect": "Non proprio...",
+      "next": "Prossima domanda",
+      "seeResults": "Vedi risultati",
+      "results": "Risultati del quiz",
+      "score": "Punteggio",
+      "passed": "Quiz superato!",
+      "failed": "Quiz non superato",
+      "passedDescription": "Ottimo lavoro! Hai dimostrato una buona comprensione dei concetti di questo modulo.",
+      "failedDescription": "Non preoccuparti! Puoi rivedere le lezioni e riprovare il quiz quando vuoi.",
+      "backToModule": "Torna al modulo",
+      "nextModule": "Prossimo modulo",
+      "selectAnswer": "Seleziona una risposta",
+      "quizAvailable": "Quiz disponibile",
+      "quizPassed": "Quiz superato"
+    },
+    "cta": {
+      "title": "Vuoi sapere perché lo facciamo?",
+      "description": "Questa academy nasce dai principi del nostro manifesto. Scopri i valori che guidano ogni progetto di Relatronica.",
+      "button": "Leggi il Manifesto"
+    }
+  },
+  "manifesto": {
+    "badge": "Manifesto",
+    "title": "Il futuro non è un luogo in cui arriviamo.",
+    "opening": "È un luogo che costruiamo. Ogni giorno, con ogni scelta, con ogni strumento che progettiamo e ogni domanda che ci poniamo.",
+    "preamble": "Viviamo in un'epoca in cui il futuro viene raccontato da chi ha il potere di plasmarlo — spesso a porte chiuse, spesso senza consultare chi ne subirà le conseguenze. Noi crediamo che immaginare il futuro sia un atto politico, e che il design sia lo strumento per renderlo accessibile a tutti. Non siamo profeti. Siamo progettisti, ricercatori e attivisti che credono nel potere delle domande giuste, degli strumenti aperti e delle comunità informate.",
+    "principles": {
+      "p1": {
+        "title": "Il futuro è un progetto collettivo",
+        "body": "Nessun algoritmo, nessun governo, nessuna corporation dovrebbe avere il monopolio dell'immaginazione. Il futuro appartiene a chi lo abita. Per questo progettiamo strumenti che permettono alle comunità di esplorare scenari, confrontare possibilità e costruire visioni condivise. Non accettiamo che il futuro sia un prodotto da vendere."
+      },
+      "p2": {
+        "title": "La tecnologia deve servire le comunità, non controllarle",
+        "body": "Ogni tecnologia incorpora i valori di chi la progetta. Noi scegliamo di progettare per l'autonomia, non per la dipendenza. Per la trasparenza, non per l'opacità. Per l'empowerment, non per l'estrazione. La civic tech non è un settore — è una responsabilità."
+      },
+      "p3": {
+        "title": "La conoscenza è potere solo quando è accessibile",
+        "body": "I dati chiusi in un database non cambiano il mondo. Le ricerche chiuse in un paper accademico non informano i cittadini. Noi crediamo nel knowledge mapping come pratica di democratizzazione: rendere visibile ciò che è nascosto, connettere ciò che sembra isolato, tradurre la complessità in comprensione."
+      },
+      "p4": {
+        "title": "Il design deve provocare, non solo risolvere",
+        "body": "Lo speculative design non cerca soluzioni immediate — cerca le domande che ancora non ci siamo posti. Un buon scenario futuro non è quello che prevede correttamente, ma quello che cambia il modo in cui pensiamo al presente. Progettiamo per disturbare il comfort dell'inevitabilità."
+      },
+      "p5": {
+        "title": "La trasparenza non è opzionale",
+        "body": "Ogni strumento che costruiamo deve essere comprensibile, verificabile e contestabile. Non crediamo nelle black box, nei termini di servizio illeggibili e nelle decisioni automatizzate senza spiegazione. Se non puoi capire come funziona, non puoi fidarti — e non dovresti."
+      },
+      "p6": {
+        "title": "L'attivismo si fa con gli strumenti",
+        "body": "Le parole contano, ma gli strumenti contano di più. Un'infografica ben progettata può cambiare un dibattito pubblico. Una visualizzazione di dati può smascherare un'ingiustizia. Una piattaforma aperta può dare voce a chi non ne ha. Noi non ci limitiamo a denunciare — costruiamo le alternative."
+      },
+      "p7": {
+        "title": "Le connessioni contano più dei dati isolati",
+        "body": "Un evento climatico, una decisione politica e un'innovazione tecnologica possono sembrare scollegati — finché non ne mappi le relazioni. Noi crediamo che la vera comprensione nasca dalle connessioni, non dall'accumulo. Per questo costruiamo mappe, grafi e visualizzazioni che rivelano il tessuto nascosto della realtà."
+      },
+      "p8": {
+        "title": "Il dissenso è design",
+        "body": "Rifiutare il futuro che ci viene imposto è il primo atto di progettazione. Dire \"questo non è inevitabile\" è design. Dire \"esiste un'alternativa\" è design. Dire \"chi ne paga le conseguenze?\" è design. Il dissenso informato e costruttivo è il motore del cambiamento."
+      },
+      "p9": {
+        "title": "Non progettiamo per il futuro — progettiamo il futuro",
+        "body": "La differenza è fondamentale. Progettare \"per\" il futuro significa adattarsi a ciò che viene. Progettare \"il\" futuro significa avere il coraggio di immaginare ciò che potrebbe essere e lavorare per renderlo possibile. Questo è il nostro impegno. Questo è Relatronica."
+      }
+    },
+    "closing": "Questi non sono principi astratti. Sono i criteri con cui valutiamo ogni progetto, ogni strumento, ogni decisione. Se condividi questa visione, non restare a guardare — unisciti a noi nel costruire futuri più giusti, più aperti e più consapevoli.",
+    "signature": "Relatronica — Nati al CERN, ispirati dal Web, guidati dal futuro.",
+    "cta": {
+      "explore": {
+        "title": "Esplora NextHuman",
+        "description": "Scopri le scadenze probabilistiche dell'umanità e inizia a esplorare gli scenari futuri che stiamo mappando."
+      },
+      "about": {
+        "title": "Chi siamo",
+        "description": "Scopri la nostra storia, il nostro approccio e i valori che guidano ogni progetto che realizziamo."
       }
     }
   }

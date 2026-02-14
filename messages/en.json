@@ -2,14 +2,36 @@
   "common": {
     "home": "Home",
     "nexthuman": "NextHuman",
+    "observatory": "Observatory",
     "projects": "Projects",
     "about": "About",
+    "manifesto": "Manifesto",
+    "learn": "Academy",
     "explore": "Explore",
     "learnMore": "Learn more",
     "comingSoon": "Coming soon",
     "language": "Language",
     "italian": "Italian",
     "english": "English"
+  },
+  "observatory": {
+    "badge": "Self-updating",
+    "title": "Observatory",
+    "subtitle": "A knowledge hub that aggregates the most authoritative sources on AI ethics, policy, digital sovereignty and civic tech. Automatically updated to keep you informed.",
+    "articlesCount": "articles",
+    "sourcesActive": "active sources",
+    "lastUpdate": "Last update",
+    "refresh": "Refresh",
+    "searchPlaceholder": "Search articles, sources, topics...",
+    "filters": "Filters",
+    "clearFilters": "Clear filters",
+    "loading": "Loading sources...",
+    "retry": "Retry",
+    "noResults": "No articles found with the selected filters.",
+    "loadMore": "Load more",
+    "remaining": "remaining",
+    "aboutTitle": "How the Observatory Works",
+    "aboutDescription": "The Observatory automatically aggregates content from the world's most authoritative sources on AI ethics, policy, digital sovereignty and civic tech. RSS feeds are updated hourly to ensure you always have access to the latest information. Each article links directly to its original source."
   },
   "home": {
     "title": "Relatronica",
@@ -572,6 +594,122 @@
           "title": "Promote welcoming policies",
           "description": "Support policies that address climate migration"
         }
+      }
+    }
+  },
+  "learn": {
+    "badge": "Academy",
+    "title": "Relatronica Academy",
+    "subtitle": "Free and open courses to explore speculative design, civic tech, knowledge mapping and responsible technologies. Learn to imagine and build better futures.",
+    "module": "Module",
+    "course": "Course",
+    "completed": "Completed",
+    "free": "Free and open",
+    "availableCourses": "Available courses",
+    "comingSoon": "Coming soon",
+    "start": "Start",
+    "continue": "Continue",
+    "stats": {
+      "lessons": "lessons",
+      "minutes": "min reading time",
+      "modules": "modules",
+      "courses": "courses",
+      "completed": "completed"
+    },
+    "resources": "resources",
+    "keyTakeaways": "Key takeaways",
+    "reflection": "Reflection prompt",
+    "furtherReading": "Further reading",
+    "markComplete": "Mark as complete",
+    "markedComplete": "Lesson completed",
+    "backToAcademy": "Back to Academy",
+    "backToCourse": "Back to course",
+    "notFound": "Page not found",
+    "prev": "Previous",
+    "next": "Next",
+    "quiz": {
+      "title": "Module quiz",
+      "description": "Test your understanding of the key concepts from this module.",
+      "start": "Start the quiz",
+      "retry": "Retry the quiz",
+      "question": "Question",
+      "of": "of",
+      "check": "Check answer",
+      "correct": "Correct!",
+      "incorrect": "Not quite...",
+      "next": "Next question",
+      "seeResults": "See results",
+      "results": "Quiz results",
+      "score": "Score",
+      "passed": "Quiz passed!",
+      "failed": "Quiz not passed",
+      "passedDescription": "Great work! You demonstrated a good understanding of this module's concepts.",
+      "failedDescription": "Don't worry! You can review the lessons and retry the quiz anytime.",
+      "backToModule": "Back to module",
+      "nextModule": "Next module",
+      "selectAnswer": "Select an answer",
+      "quizAvailable": "Quiz available",
+      "quizPassed": "Quiz passed"
+    },
+    "cta": {
+      "title": "Want to know why we do this?",
+      "description": "This academy is born from the principles of our manifesto. Discover the values that guide every Relatronica project.",
+      "button": "Read the Manifesto"
+    }
+  },
+  "manifesto": {
+    "badge": "Manifesto",
+    "title": "The future is not a place we arrive at.",
+    "opening": "It is a place we build. Every day, with every choice, with every tool we design and every question we ask.",
+    "preamble": "We live in an age where the future is narrated by those who have the power to shape it — often behind closed doors, often without consulting those who will bear the consequences. We believe that imagining the future is a political act, and that design is the tool to make it accessible to everyone. We are not prophets. We are designers, researchers and activists who believe in the power of the right questions, open tools and informed communities.",
+    "principles": {
+      "p1": {
+        "title": "The future is a collective project",
+        "body": "No algorithm, no government, no corporation should have a monopoly on imagination. The future belongs to those who inhabit it. That's why we design tools that enable communities to explore scenarios, compare possibilities and build shared visions. We refuse to accept that the future is a product to be sold."
+      },
+      "p2": {
+        "title": "Technology must serve communities, not control them",
+        "body": "Every technology embodies the values of those who design it. We choose to design for autonomy, not dependency. For transparency, not opacity. For empowerment, not extraction. Civic tech is not an industry — it is a responsibility."
+      },
+      "p3": {
+        "title": "Knowledge is power only when it is accessible",
+        "body": "Data locked in a database does not change the world. Research locked in an academic paper does not inform citizens. We believe in knowledge mapping as a practice of democratisation: making visible what is hidden, connecting what seems isolated, translating complexity into understanding."
+      },
+      "p4": {
+        "title": "Design must provoke, not just solve",
+        "body": "Speculative design does not seek immediate solutions — it seeks the questions we have not yet asked. A good future scenario is not one that predicts correctly, but one that changes how we think about the present. We design to disturb the comfort of inevitability."
+      },
+      "p5": {
+        "title": "Transparency is not optional",
+        "body": "Every tool we build must be understandable, verifiable and contestable. We do not believe in black boxes, unreadable terms of service and automated decisions without explanation. If you cannot understand how it works, you cannot trust it — and you should not have to."
+      },
+      "p6": {
+        "title": "Activism is built with tools",
+        "body": "Words matter, but tools matter more. A well-designed infographic can change a public debate. A data visualisation can unmask an injustice. An open platform can give voice to the voiceless. We don't just denounce — we build the alternatives."
+      },
+      "p7": {
+        "title": "Connections matter more than isolated data",
+        "body": "A climate event, a political decision and a technological innovation may seem unrelated — until you map their relationships. We believe that true understanding arises from connections, not accumulation. That's why we build maps, graphs and visualisations that reveal the hidden fabric of reality."
+      },
+      "p8": {
+        "title": "Dissent is design",
+        "body": "Refusing the future imposed on us is the first act of design. Saying \"this is not inevitable\" is design. Saying \"an alternative exists\" is design. Saying \"who bears the consequences?\" is design. Informed and constructive dissent is the engine of change."
+      },
+      "p9": {
+        "title": "We don't design for the future — we design the future",
+        "body": "The difference is fundamental. Designing \"for\" the future means adapting to what comes. Designing \"the\" future means having the courage to imagine what could be and working to make it possible. This is our commitment. This is Relatronica."
+      }
+    },
+    "closing": "These are not abstract principles. They are the criteria by which we evaluate every project, every tool, every decision. If you share this vision, don't stand by — join us in building futures that are more just, more open and more aware.",
+    "signature": "Relatronica — Born at CERN, inspired by the Web, guided by the future.",
+    "cta": {
+      "explore": {
+        "title": "Explore NextHuman",
+        "description": "Discover humanity's probabilistic deadlines and start exploring the future scenarios we are mapping."
+      },
+      "about": {
+        "title": "Who we are",
+        "description": "Discover our story, our approach and the values that guide every project we create."
       }
     }
   }
