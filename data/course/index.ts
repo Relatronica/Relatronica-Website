@@ -96,6 +96,66 @@ export const designFictionLabCourse: Course = {
   modules: [],
 };
 
+export const dataLiteracyCourse: Course = {
+  slug: 'data-literacy',
+  color: 'cyan',
+  iconName: 'BarChart3',
+  status: 'coming-soon',
+  content: {
+    it: {
+      title: 'Data Literacy',
+      description: 'Alfabetizzazione ai dati: leggere grafici, riconoscere manipolazioni e pensare criticamente con i numeri.',
+      longDescription: 'Un corso per imparare a leggere e interpretare i dati nel quotidiano: dai grafici sui giornali ai sondaggi elettorali, dalle statistiche sanitarie ai report aziendali. Impara a distinguere correlazione da causalità, a riconoscere le manipolazioni visive e a prendere decisioni informate.',
+    },
+    en: {
+      title: 'Data Literacy',
+      description: 'Data literacy: reading charts, recognising manipulations and thinking critically with numbers.',
+      longDescription: 'A course to learn how to read and interpret data in everyday life: from newspaper charts to election polls, from health statistics to business reports. Learn to distinguish correlation from causation, recognise visual manipulations and make informed decisions.',
+    },
+  },
+  modules: [],
+};
+
+export const openSourceCitizensCourse: Course = {
+  slug: 'open-source-per-cittadini',
+  color: 'teal',
+  iconName: 'Globe',
+  status: 'coming-soon',
+  content: {
+    it: {
+      title: 'Open Source per Cittadini',
+      description: 'Guida pratica per non-tecnici: scegliere alternative etiche e riprendere il controllo della propria vita digitale.',
+      longDescription: 'Un percorso pratico per chiunque voglia usare strumenti digitali che rispettano la privacy e la libertà. Dall\'email alla messaggistica, dal cloud allo storage, scopri alternative open source a ogni servizio che usi quotidianamente — senza bisogno di competenze tecniche.',
+    },
+    en: {
+      title: 'Open Source for Citizens',
+      description: 'A practical guide for non-techies: choosing ethical alternatives and taking back control of your digital life.',
+      longDescription: 'A practical path for anyone who wants to use digital tools that respect privacy and freedom. From email to messaging, from cloud to storage, discover open source alternatives to every service you use daily — no technical skills required.',
+    },
+  },
+  modules: [],
+};
+
+export const generativeAiEthicsCourse: Course = {
+  slug: 'etica-ia-generativa',
+  color: 'violet',
+  iconName: 'Sparkles',
+  status: 'coming-soon',
+  content: {
+    it: {
+      title: 'Etica dell\'IA Generativa',
+      description: 'LLM, deepfake e creatività artificiale: capire, usare e regolamentare l\'IA generativa.',
+      longDescription: 'Un deep-dive nell\'intelligenza artificiale generativa: come funzionano i modelli linguistici e le immagini AI, l\'impatto sul lavoro creativo e il copyright, i rischi di disinformazione con i deepfake, e le sfide normative. Per un uso consapevole e critico degli strumenti che stanno ridefinendo la creatività.',
+    },
+    en: {
+      title: 'Generative AI Ethics',
+      description: 'LLMs, deepfakes and artificial creativity: understanding, using and regulating generative AI.',
+      longDescription: 'A deep-dive into generative artificial intelligence: how language models and AI images work, the impact on creative work and copyright, disinformation risks from deepfakes, and regulatory challenges. For a conscious and critical use of the tools redefining creativity.',
+    },
+  },
+  modules: [],
+};
+
 // ── All Courses ─────────────────────────────────────────────
 
 export const allCourses: Course[] = [
@@ -103,6 +163,9 @@ export const allCourses: Course[] = [
   aiSocietaCourse,
   privacyToolkitCourse,
   designFictionLabCourse,
+  dataLiteracyCourse,
+  openSourceCitizensCourse,
+  generativeAiEthicsCourse,
 ];
 
 export const activeCourses: Course[] = allCourses.filter((c) => c.status === 'active');
