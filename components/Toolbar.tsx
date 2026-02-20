@@ -34,7 +34,11 @@ export function Toolbar() {
     { href: '/about', label: t('common.about') },
   ];
 
-  // Misura la posizione dell'elemento attivo per lo sliding indicator
+  const isNavItemActive = useCallback((href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname === href || pathname.startsWith(href + '/');
+  }, [pathname]);
+
   const updateIndicator = useCallback(() => {
     const container = navContainerRef.current;
     if (!container) return;
@@ -50,7 +54,6 @@ export function Toolbar() {
         left: itemRect.left - containerRect.left,
         width: itemRect.width,
       });
-      // Abilita le transizioni solo dopo il primo posizionamento
       requestAnimationFrame(() => {
         hasAnimated.current = true;
       });
@@ -59,12 +62,19 @@ export function Toolbar() {
     }
   }, [pathname, locale]);
 
-  // Aggiorna l'indicatore quando cambia la pagina o la lingua
   useEffect(() => {
     updateIndicator();
+
+    let cancelled = false;
+    document.fonts.ready.then(() => {
+      if (!cancelled) {
+        requestAnimationFrame(updateIndicator);
+      }
+    });
+
+    return () => { cancelled = true; };
   }, [updateIndicator]);
 
-  // Aggiorna l'indicatore al resize della finestra
   useEffect(() => {
     window.addEventListener('resize', updateIndicator);
     return () => window.removeEventListener('resize', updateIndicator);
@@ -149,7 +159,7 @@ export function Toolbar() {
                 />
               )}
               {navItems.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive = isNavItemActive(item.href);
                 return (
                   <Link
                     key={item.href}
@@ -273,7 +283,7 @@ export function Toolbar() {
           >
             <div className="border-t border-foreground/5 pt-3 pb-1 flex flex-col gap-1">
               {navItems.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive = isNavItemActive(item.href);
                 return (
                   <Link
                     key={item.href}

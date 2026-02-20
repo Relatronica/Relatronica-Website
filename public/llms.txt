@@ -1,0 +1,62 @@
+# Relatronica
+
+> Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli.
+
+Relatronica è uno studio di progettazione nato in Svizzera nel 2024 da un team di designer e ricercatori che si sono incontrati al CERN. Unisce speculative design, civic tech e knowledge mapping per esplorare scenari futuri e creare strumenti che aiutano le comunità a comprendere, discutere e navigare le complessità del mondo contemporaneo.
+
+## Aree di competenza
+
+- **Speculative Design**: progettiamo scenari futuri alternativi per stimolare il pensiero critico e aprire conversazioni su possibili futuri.
+- **Civic Tech**: sviluppiamo tecnologie digitali che potenziano le comunità e migliorano l'accesso alle informazioni pubbliche.
+- **Knowledge Mapping**: visualizziamo le relazioni tra concetti, dati e idee per rendere la conoscenza più accessibile.
+- **Tecnologie Responsabili**: promuoviamo un approccio etico e responsabile alla tecnologia, orientato al benessere collettivo.
+
+## Progetti principali
+
+### NextHuman
+Un calendario delle scadenze probabilistiche per l'umanità. Piattaforma interattiva che visualizza scenari futuri attraverso knowledge mapping, design speculativo e visualizzazioni temporali.
+URL: https://relatronica.com/nexthuman
+
+### SEGNO
+Piattaforma interattiva per costruire scenari personalizzati sull'uso dell'IA e scoprire l'impatto. Aiuta persone e imprese a comprendere rischi e opportunità con riferimenti normativi e best practices.
+
+### Civica
+Configuratore di sistemi politici: piattaforma interattiva per esplorare, confrontare e configurare diversi sistemi politici.
+
+### Neuralforming
+Gioco ibrido da tavolo per le scuole. Trasforma la classe in un parlamento democratico dove gli studenti propongono leggi e dibattono implicazioni etiche dell'IA.
+
+### Progetto Argo
+App per prendere note basata su crittografia end-to-end, zero knowledge e privacy by design.
+
+### Eclipse
+App di tracciamento del ciclo mestruale privacy-first con crittografia end-to-end e zero knowledge architecture.
+
+## Academy
+Relatronica Academy offre corsi gratuiti e aperti su design speculativo, civic tech, knowledge mapping e tecnologie responsabili.
+
+### Corsi attivi:
+- **Fondamenti**: Design speculativo, civic tech, knowledge mapping e tecnologie responsabili (6 moduli, 18 lezioni)
+- **AI & Società**: Intelligenza artificiale, etica algoritmica e impatto sociale (6 moduli, 18 lezioni)
+
+### Corsi in arrivo:
+- Privacy Toolkit
+- Design Fiction Lab
+- Data Literacy
+- Open Source per Cittadini
+- Etica dell'IA Generativa
+
+## Osservatorio
+Hub di conoscenza auto-aggiornante che aggrega le fonti più autorevoli su etica dell'IA, policy, sovranità digitale e civic tech.
+URL: https://relatronica.com/observatory
+
+## Contatti
+- Website: https://relatronica.com
+- LinkedIn: https://www.linkedin.com/company/relatronica/
+- Instagram: https://www.instagram.com/relatronica
+
+## Informazioni tecniche
+- Sito costruito con Next.js 14 (App Router)
+- Lingua principale: Italiano (disponibile anche in Inglese)
+- Contenuti strutturati con Schema.org JSON-LD
+- Tutti i contenuti sono open source e accessibili

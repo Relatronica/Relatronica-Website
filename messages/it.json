@@ -210,8 +210,13 @@
     },
     "segno": {
       "title": "SEGNO",
-      "subtitle": "Costruisci il tuo scenario AI",
-      "description": "Una piattaforma interattiva che permette di costruire scenari personalizzati sull'uso dell'IA e scoprire l'impatto. Aiuta persone e imprese a comprendere rischi e opportunità attraverso note educative con riferimenti normativi e best practices."
+      "subtitle": "Sovranità digitale",
+      "description": "Una piattaforma per riprendere il controllo della propria vita digitale. Offre percorsi formativi su privacy, diritti digitali e GDPR, strumenti pratici per la protezione dei dati, una mappa della propria impronta digitale e uno stack etico per valutare la sovranità dei servizi che usiamo ogni giorno."
+    },
+    "rebica": {
+      "title": "Rebica",
+      "subtitle": "SDL Citizen Lab",
+      "description": "Trasforma scenari futuri in codice eseguibile. Invece di slide statiche, ogni ipotesi viene simulata con migliaia di run Monte Carlo su dati reali e fonti citate. Parametri interattivi, risultati verificabili, tutto nel browser senza inviare dati. Scenari su AI e lavoro, consumo energetico, scoperta farmaci, euro digitale."
     },
     "civica": {
       "title": "Civica",
@@ -238,6 +243,13 @@
       "status": "In test"
     },
     "exploreProject": "Esplora progetto",
+    "filterByTag": "Filtra per tema",
+    "filterByStatus": "Filtra per stato",
+    "clearFilters": "Rimuovi filtri",
+    "statusActive": "Attivo",
+    "allTags": "Tutti i temi",
+    "allStatuses": "Tutti gli stati",
+    "noResults": "Nessun progetto corrisponde ai filtri selezionati.",
     "contact": {
       "title": "Hai un progetto in mente?",
       "description": "Siamo sempre interessati a collaborare su progetti che esplorano il futuro attraverso design speculativo, civic tech e knowledge mapping.",

@@ -168,8 +168,13 @@
     },
     "segno": {
       "title": "SEGNO",
-      "subtitle": "Build your AI scenario",
-      "description": "An interactive platform that allows you to build customized scenarios on AI use and discover the impact. Helps people and businesses understand risks and opportunities through educational notes with regulatory references and best practices."
+      "subtitle": "Digital sovereignty",
+      "description": "A platform to take back control of your digital life. It offers learning paths on privacy, digital rights and GDPR, practical tools for data protection, a map of your digital footprint, and an ethical stack to evaluate the sovereignty of the services we use every day."
+    },
+    "rebica": {
+      "title": "Rebica",
+      "subtitle": "SDL Citizen Lab",
+      "description": "Turns future scenarios into executable code. Instead of static slides, every hypothesis is simulated with thousands of Monte Carlo runs on real data and cited sources. Interactive parameters, verifiable results, all in the browser without sending any data. Scenarios on AI and employment, energy consumption, drug discovery, digital euro."
     },
     "civica": {
       "title": "Civica",
@@ -196,6 +201,13 @@
       "status": "In testing"
     },
     "exploreProject": "Explore project",
+    "filterByTag": "Filter by topic",
+    "filterByStatus": "Filter by status",
+    "clearFilters": "Clear filters",
+    "statusActive": "Active",
+    "allTags": "All topics",
+    "allStatuses": "All statuses",
+    "noResults": "No projects match the selected filters.",
     "contact": {
       "title": "Have a project in mind?",
       "description": "We are always interested in collaborating on projects that explore the future through speculative design, civic tech and knowledge mapping.",

@@ -22,7 +22,11 @@ export const metadata: Metadata = {
     "visualizzazione dati",
     "NextHuman",
     "calendario scadenze",
-    "futuri probabilistici"
+    "futuri probabilistici",
+    "Relatronica",
+    "CERN",
+    "etica tecnologica",
+    "responsible tech",
   ],
   authors: [{ name: "Relatronica" }],
   creator: "Relatronica",
@@ -32,6 +36,15 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: [
+      { url: '/icon.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/manifest.webmanifest',
   openGraph: {
     type: "website",
     locale: "it_IT",
@@ -42,14 +55,14 @@ export const metadata: Metadata = {
     images: [
       {
         url: `${siteUrl}/logo.png`,
-        width: 1200,
-        height: 630,
+        width: 512,
+        height: 512,
         alt: "Relatronica Logo",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Relatronica - Design Speculativo, Civic Tech e Knowledge Mapping",
     description: "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli.",
     images: [`${siteUrl}/logo.png`],
@@ -104,14 +117,6 @@ export default function RootLayout({
     "url": siteUrl,
     "description": "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a comprenderli, discuterli e plasmarli",
     "inLanguage": "it-IT",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": `${siteUrl}/?search={search_term_string}`
-      },
-      "query-input": "required name=search_term_string"
-    }
   };
 
   return (

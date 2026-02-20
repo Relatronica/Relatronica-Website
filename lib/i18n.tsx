@@ -2,8 +2,9 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Locale } from '@/i18n';
+import itDefault from '@/messages/it.json';
 
-type Translations = typeof import('@/messages/it.json');
+type Translations = typeof itDefault;
 
 interface I18nContextType {
   locale: Locale;
@@ -15,17 +16,15 @@ const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>('it');
-  const [translations, setTranslations] = useState<Translations | null>(null);
+  const [translations, setTranslations] = useState<Translations>(itDefault);
 
   useEffect(() => {
-    // Load locale from localStorage or default to 'it'
     if (typeof window !== 'undefined') {
       const savedLocale = (localStorage.getItem('locale') as Locale) || 'it';
       setLocaleState(savedLocale);
-      loadTranslations(savedLocale);
-    } else {
-      // SSR fallback
-      loadTranslations('it');
+      if (savedLocale !== 'it') {
+        loadTranslations(savedLocale);
+      }
     }
   }, []);
 
@@ -50,8 +49,6 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   };
 
   const t = (key: string, params?: Record<string, string>): string => {
-    if (!translations) return key;
-    
     const keys = key.split('.');
     let value: any = translations;
     
