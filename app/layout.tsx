@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Toolbar } from "@/components/Toolbar";
 import { I18nProvider } from "@/lib/i18n";
+import { ThemeProvider } from "@/lib/theme";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://relatronica.com';
 
@@ -120,8 +121,22 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="it" className="light">
+    <html lang="it" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -131,11 +146,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className="antialiased bg-white">
-        <I18nProvider>
-          <Toolbar />
-          {children}
-        </I18nProvider>
+      <body className="antialiased bg-background text-foreground">
+        <ThemeProvider>
+          <I18nProvider>
+            <Toolbar />
+            {children}
+          </I18nProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

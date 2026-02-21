@@ -5,14 +5,26 @@
 :root {
   --background: #ffffff;
   --foreground: #1d1d1f;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(0, 0, 0, 0.05);
+  --card-bg-solid: rgba(255, 255, 255, 0.9);
+}
+
+.dark {
+  --background: #0a0a0b;
+  --foreground: #f5f5f7;
+  --card-bg: rgba(30, 30, 32, 0.8);
+  --card-border: rgba(255, 255, 255, 0.06);
+  --card-bg-solid: rgba(30, 30, 32, 0.9);
 }
 
 body {
   color: var(--foreground);
-  background: #ffffff;
+  background: var(--background);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer utilities {
@@ -21,10 +33,10 @@ body {
   }
   
   .apple-card {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--card-bg);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--card-border);
   }
   
   .apple-card-dark {
@@ -56,6 +68,10 @@ body {
   .apple-button-secondary:hover {
     background: rgba(142, 142, 147, 0.2);
   }
+
+  .dark .apple-button-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
   
   /* Custom Scrollbar */
   .custom-scrollbar::-webkit-scrollbar {
@@ -75,6 +91,47 @@ body {
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.3);
   }
-  
-}
 
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Animated gradient background for hero */
+  .animated-gradient {
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+  }
+
+  @keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .dark .gradient-text {
+    background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effect for dark mode */
+  .glow {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.15);
+  }
+
+  .dark .glow {
+    box-shadow: 0 0 60px rgba(59, 130, 246, 0.2);
+  }
+}

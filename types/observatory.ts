@@ -26,6 +26,39 @@ export interface ObservatoryArticle {
   imageUrl?: string;
 }
 
+export interface LinkedDeadline {
+  id: string;
+  title: string;
+  date: string;
+  probability: string;
+  probabilityValue: number;
+  relevanceScore: number;
+}
+
+export interface PulseArticle extends ObservatoryArticle {
+  linkedDeadlines: LinkedDeadline[];
+}
+
+export interface DeadlineSignal {
+  id: string;
+  title: string;
+  date: string;
+  probability: string;
+  probabilityValue: number;
+  category?: string;
+  articleCount: number;
+  themes: string[];
+  recentArticleTitle?: string;
+}
+
+export interface PulseData {
+  articles: PulseArticle[];
+  signals: DeadlineSignal[];
+  lastUpdated: string;
+  sourcesCount: number;
+  connectionsCount: number;
+}
+
 export interface ObservatoryData {
   articles: ObservatoryArticle[];
   lastUpdated: string;

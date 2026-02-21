@@ -4,22 +4,23 @@ import ObservatoryClient from './ObservatoryClient';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://relatronica.com';
 
 export const metadata: Metadata = {
-  title: 'Osservatorio',
-  description: 'Un hub di conoscenza auto-aggiornante che aggrega le fonti più autorevoli su etica, IA, policy, sovranità digitale e civic tech. Resta informato sulle tematiche che plasmano il futuro.',
+  title: 'Pulse',
+  description: 'Notizie in tempo reale collegate agli scenari futuri di NextHuman. Il battito del futuro, oggi. Scopri come le notizie di oggi plasmano il domani.',
   keywords: [
+    'pulse',
     'osservatorio',
-    'etica tecnologica',
+    'scenari futuri',
     'intelligenza artificiale',
+    'etica tecnologica',
     'sovranità digitale',
-    'policy digitale',
     'civic tech',
-    'diritti digitali',
-    'AI ethics',
-    'digital rights',
+    'knowledge mapping',
+    'NextHuman',
+    'future scenarios',
   ],
   openGraph: {
-    title: 'Osservatorio | Relatronica',
-    description: 'Un hub di conoscenza auto-aggiornante su etica, IA, policy, sovranità digitale e civic tech.',
+    title: 'Pulse | Relatronica',
+    description: 'Notizie in tempo reale collegate agli scenari futuri di NextHuman. Il battito del futuro, oggi.',
     url: `${siteUrl}/observatory`,
     type: 'website',
   },

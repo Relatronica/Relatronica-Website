@@ -13,11 +13,15 @@
   },
   "home": {
     "title": "Relatronica",
+    "badge": "Design Speculativo · Civic Tech · Knowledge Mapping",
+    "heroTitle": "Il futuro è un progetto collettivo",
     "tagline": "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a {action1}, {action2} e {action3}",
     "action1": "comprenderli",
     "action2": "discuterli",
     "action3": "plasmarli",
-    "exploreNextHuman": "Esplora NextHuman",
+    "exploreCta": "Scopri i progetti",
+    "manifestoCta": "Leggi il manifesto",
+    "origin": "Nati al CERN nel 2024. Progettiamo strumenti aperti per comunità che vogliono partecipare alle scelte sul proprio futuro.",
     "features": {
       "speculativeDesign": {
         "title": "Speculative Design",
@@ -36,20 +40,30 @@
         "description": "Promuoviamo un approccio etico e responsabile alla tecnologia, orientato al benessere collettivo."
       }
     },
-    "nexthumanHighlight": {
-      "title": "NextHuman",
-      "description": "Un calendario delle scadenze probabilistiche per l'umanità. Esplora scenari futuri attraverso visualizzazioni interattive, knowledge mapping e design speculativo.",
-      "cta": "Inizia l'esplorazione"
+    "projectsShowcase": {
+      "title": "Cosa stiamo costruendo",
+      "subtitle": "Strumenti aperti, ricerca indipendente e risorse per le comunità",
+      "viewAll": "Vedi tutti i progetti"
     },
-    "cta": {
-      "ourProjects": {
-        "title": "I Nostri Progetti",
-        "description": "Esplora le nostre esplorazioni al confine tra design speculativo, civic tech e knowledge mapping."
+    "resources": {
+      "observatory": {
+        "title": "Pulse",
+        "description": "Notizie in tempo reale collegate agli scenari futuri di NextHuman. Il battito del futuro, oggi.",
+        "badge": "Live"
       },
-      "whoWeAre": {
-        "title": "Chi Siamo",
-        "description": "Scopri la nostra missione, i nostri valori e il nostro impegno per tecnologie responsabili."
+      "academy": {
+        "title": "Academy",
+        "description": "Corsi gratuiti e aperti su design speculativo, civic tech e tecnologie responsabili. Per tutti, senza barriere.",
+        "badge": "Gratuito"
       }
+    },
+    "manifestoQuote": "Non siamo profeti. Siamo progettisti, ricercatori e attivisti che credono nel potere delle domande giuste, degli strumenti aperti e delle comunità informate.",
+    "readManifesto": "Leggi il manifesto completo",
+    "finalCta": {
+      "title": "Il futuro si costruisce insieme",
+      "description": "Relatronica è un progetto indipendente e open source. Se condividi questa visione, unisciti alla comunità.",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
     }
   },
   "about": {

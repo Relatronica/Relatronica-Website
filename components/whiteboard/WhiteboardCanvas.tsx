@@ -5,6 +5,7 @@ import type { PointerEvent, WheelEvent } from 'react';
 import { Minus, Plus, RotateCcw, ExternalLink, Layers, CloudRain, Zap, Brain, Users, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/lib/i18n';
+import { useTheme } from '@/lib/theme';
 
 export type WhiteboardItem = {
   id: string;
@@ -63,7 +64,6 @@ interface WhiteboardCanvasProps {
 
 const clampZoom = (value: number) => Math.min(2.4, Math.max(0.45, value));
 
-// Mappatura icone per colonne
 const COLUMN_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   climate: CloudRain,
   energy: Zap,
@@ -93,6 +93,8 @@ export function WhiteboardCanvas({
   className,
 }: WhiteboardCanvasProps) {
   const { t } = useI18n();
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   const boardRef = useRef<HTMLDivElement>(null);
   const pointerState = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(0.65);
@@ -163,14 +165,7 @@ export function WhiteboardCanvas({
     const centerX = (minX + maxX) / 2;
     const centerY = (minY + maxY) / 2;
 
-    return {
-      minX,
-      minY,
-      width,
-      height,
-      centerX,
-      centerY,
-    };
+    return { minX, minY, width, height, centerX, centerY };
   }, [items, groups, columns]);
 
   const handleReset = useCallback(() => {
@@ -195,7 +190,6 @@ export function WhiteboardCanvas({
     setOffset({ x: offsetX, y: offsetY });
   }, [bounds]);
 
-  // Calculate initial zoom and offset to fit content
   useEffect(() => {
     if (!boardRef.current) return;
 
@@ -205,30 +199,29 @@ export function WhiteboardCanvas({
 
     if (containerWidth === 0 || containerHeight === 0) return;
 
-    // Calculate zoom to fit content with padding
     const padding = 120;
     const zoomX = (containerWidth - padding * 2) / bounds.width;
     const zoomY = (containerHeight - padding * 2) / bounds.height;
-    const calculatedZoom = Math.min(zoomX, zoomY, 0.75); // Max zoom 75%
-    const finalZoom = clampZoom(Math.max(calculatedZoom, 0.35)); // Min zoom 35%
+    const calculatedZoom = Math.min(zoomX, zoomY, 0.75);
+    const finalZoom = clampZoom(Math.max(calculatedZoom, 0.35));
 
-    // Center the content
     const offsetX = -bounds.centerX * finalZoom;
     const offsetY = -bounds.centerY * finalZoom;
 
     setZoom(finalZoom);
     setOffset({ x: offsetX, y: offsetY });
     
-    // Reset initialized flag to allow recalculation when bounds change significantly
     if (!initialized) {
       setInitialized(true);
     }
-  }, [bounds.width, bounds.height, bounds.centerX, bounds.centerY, initialized]); // Recalculate when content size/position changes
+  }, [bounds.width, bounds.height, bounds.centerX, bounds.centerY, initialized]);
+
+  const dotColor = isDark ? 'rgba(148, 163, 184, 0.08)' : 'rgba(148, 163, 184, 0.15)';
 
   return (
     <div
       className={cn(
-        'relative h-full w-full overflow-hidden bg-slate-50',
+        'relative h-full w-full overflow-hidden bg-slate-50 dark:bg-slate-950',
         className
       )}
     >
@@ -239,9 +232,7 @@ export function WhiteboardCanvas({
           isPanning && 'cursor-grabbing'
         )}
         style={{
-          backgroundImage: `
-            radial-gradient(circle, rgba(148, 163, 184, 0.15) 1.5px, transparent 0)
-          `,
+          backgroundImage: `radial-gradient(circle, ${dotColor} 1.5px, transparent 0)`,
           backgroundSize: '24px 24px',
           backgroundPosition: 'center',
         }}
@@ -259,30 +250,28 @@ export function WhiteboardCanvas({
             transformOrigin: '0 0',
           }}
         >
-          {/* Groups as "Areas" */}
-          {groups.map(group => {
-            return (
-              <div
-                key={group.id}
-                style={{
-                  transform: `translate(${group.x}px, ${group.y}px)`,
-                  width: group.width,
-                  height: group.height,
-                  borderColor: hexToRgba(group.color, 0.7),
-                }}
-                className="absolute rounded-xl border-[3px] border-solid bg-transparent"
-              >
-                <div className="absolute top-2 left-4 px-1">
-                  <h3 className="text-sm font-bold uppercase tracking-wider text-slate-700">
-                    {group.title}
-                  </h3>
-                </div>
+          {/* Groups */}
+          {groups.map(group => (
+            <div
+              key={group.id}
+              style={{
+                transform: `translate(${group.x}px, ${group.y}px)`,
+                width: group.width,
+                height: group.height,
+                borderColor: hexToRgba(group.color, 0.7),
+              }}
+              className="absolute rounded-xl border-[3px] border-solid bg-transparent"
+            >
+              <div className="absolute top-2 left-4 px-1">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                  {group.title}
+                </h3>
               </div>
-            );
-          })}
+            </div>
+          ))}
 
-           {/* Columns as "Swimlanes" or Background Areas */}
-           {columns.map(column => (
+          {/* Columns */}
+          {columns.map(column => (
             <div
               key={column.id}
               style={{
@@ -291,33 +280,42 @@ export function WhiteboardCanvas({
                 height: column.height,
                 borderColor: hexToRgba(column.accent, 0.1),
               }}
-              className="absolute rounded-3xl border-l-4 border-t border-r border-b bg-white/40"
+              className="absolute rounded-3xl border-l-4 border-t border-r border-b bg-white/40 dark:bg-white/[0.03]"
             >
-               <div className="absolute -top-20 left-4 right-4">
-                  <h2 className="flex items-center gap-3 text-3xl font-bold text-slate-800 leading-tight">
-                    {(() => {
-                      // Rimuove il prefisso "lane-" dall'id se presente
-                      const columnKey = column.id.replace(/^lane-/, '');
-                      const IconComponent = COLUMN_ICONS[columnKey] || Brain;
-                      return <IconComponent className="w-8 h-8" />;
-                    })()}
-                    {column.title}
-                  </h2>
-               </div>
+              <div className="absolute -top-20 left-4 right-4">
+                <h2 className="flex items-center gap-3 text-3xl font-bold text-slate-800 dark:text-slate-200 leading-tight">
+                  {(() => {
+                    const columnKey = column.id.replace(/^lane-/, '');
+                    const IconComponent = COLUMN_ICONS[columnKey] || Brain;
+                    return <IconComponent className="w-8 h-8" />;
+                  })()}
+                  {column.title}
+                </h2>
+              </div>
             </div>
           ))}
 
           {/* Items */}
           {items.map(item => {
-            const isSelectable = item.type !== 'note';
-            
-            // Styles for different types
             const isSticky = item.type === 'sticky';
             const isEvent = item.type === 'event';
             const isFlow = item.type === 'flow';
             const isNote = item.type === 'note';
+            const isSelectable = item.type !== 'note';
             const selectionId = item.selectTargetId ?? item.id;
             const isSelected = selectedId === selectionId;
+
+            const bgColor = isSticky
+              ? (isDark ? '#78640a' : '#fef3c7')
+              : isEvent
+              ? (isDark ? '#0f172a' : '#1e293b')
+              : (isDark ? '#1e1e20' : '#ffffff');
+
+            const textColor = isSticky
+              ? (isDark ? '#fef3c7' : '#0f172a')
+              : isEvent
+              ? '#ffffff'
+              : (isDark ? '#f1f5f9' : '#0f172a');
 
             return (
               <div
@@ -342,22 +340,17 @@ export function WhiteboardCanvas({
                   style={{
                     width: item.size?.width ?? (isSticky ? 85 : 260),
                     height: item.size?.height ?? (isSticky ? 65 : 180),
-                    backgroundColor: isSticky ? '#fef3c7' : isEvent ? '#1e293b' : '#ffffff',
-                    color: isEvent ? '#ffffff' : '#0f172a',
+                    backgroundColor: bgColor,
+                    color: textColor,
                   }}
                   className={cn(
                     'absolute inset-0 text-left overflow-hidden flex flex-col transition-all duration-200 group',
-                    // Shape
-                    isSticky ? 'rounded-lg shadow-md border-2 border-amber-300/60 p-2.5' : 'rounded-xl shadow-sm p-4',
-                    isFlow && 'border border-slate-200',
+                    isSticky ? 'rounded-lg shadow-md border-2 border-amber-300/60 dark:border-amber-600/40 p-2.5' : 'rounded-xl shadow-sm p-4',
+                    isFlow && 'border border-slate-200 dark:border-slate-700',
                     isNote && 'bg-transparent border-none shadow-none',
-                    
-                    // Selection
                     !isSticky && isSelected
                       ? 'ring-2 ring-blue-500 shadow-xl scale-[1.02] z-10'
                       : !isSticky && 'hover:shadow-md hover:-translate-y-1 z-0',
-
-                    // Specific Overrides
                   )}
                   type="button"
                 >
@@ -367,7 +360,7 @@ export function WhiteboardCanvas({
                       "text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded-full",
                       isEvent 
                         ? "bg-slate-700/80 text-slate-200" 
-                        : "bg-slate-100 text-slate-600"
+                        : "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"
                     )}>
                       {item.meta}
                     </span>
@@ -382,17 +375,13 @@ export function WhiteboardCanvas({
                     onClick={(e) => {
                       e.stopPropagation();
                       const url = item.links?.[0]?.url;
-                      if (!url) {
-                        e.preventDefault();
-                        return;
-                      }
-                      // Normalize URL if needed
+                      if (!url) { e.preventDefault(); return; }
                       if (!url.startsWith('http')) {
                         e.preventDefault();
                         window.open(`https://${url}`, '_blank', 'noopener,noreferrer');
                       }
                     }}
-                    className="absolute top-2 right-2 text-amber-900/60 z-30 hover:text-amber-900 transition-colors cursor-pointer"
+                    className="absolute top-2 right-2 text-amber-900/60 dark:text-amber-200/60 z-30 hover:text-amber-900 dark:hover:text-amber-100 transition-colors cursor-pointer"
                     aria-label={item.links[0].label || t('whiteboard.openLink')}
                     title={item.links[0].label || t('whiteboard.openLink')}
                   >
@@ -404,7 +393,7 @@ export function WhiteboardCanvas({
                   <h3 className={cn(
                     "font-bold leading-tight text-left",
                     isSticky ? "font-handwriting text-[9px] line-clamp-2" : "text-lg line-clamp-3",
-                    isNote && "text-xl text-slate-400 font-medium italic"
+                    isNote && "text-xl text-slate-400 dark:text-slate-500 font-medium italic"
                   )}>
                     {item.title}
                   </h3>
@@ -421,35 +410,34 @@ export function WhiteboardCanvas({
         </div>
       </div>
 
-      <div className="absolute bottom-5 right-5 flex items-center gap-2 rounded-full bg-white/90 border border-gray-200 shadow-lg backdrop-blur">
+      {/* Zoom Controls */}
+      <div className="absolute bottom-5 right-5 flex items-center gap-2 rounded-full bg-white/90 dark:bg-slate-800/90 border border-gray-200 dark:border-slate-700 shadow-lg backdrop-blur">
         <button
           onClick={() => setZoom(prev => clampZoom(prev - 0.15))}
-          className="p-3 hover:bg-gray-100 rounded-full transition-colors"
+          className="p-3 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full transition-colors"
           aria-label={t('whiteboard.zoomOut')}
         >
-          <Minus className="w-4 h-4" />
+          <Minus className="w-4 h-4 text-slate-700 dark:text-slate-300" />
         </button>
-        <div className="px-3 text-sm font-semibold tabular-nums text-slate-700">
+        <div className="px-3 text-sm font-semibold tabular-nums text-slate-700 dark:text-slate-300">
           {(zoom * 100).toFixed(0)}%
         </div>
         <button
           onClick={() => setZoom(prev => clampZoom(prev + 0.15))}
-          className="p-3 hover:bg-gray-100 rounded-full transition-colors"
+          className="p-3 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full transition-colors"
           aria-label={t('whiteboard.zoomIn')}
         >
-          <Plus className="w-4 h-4" />
+          <Plus className="w-4 h-4 text-slate-700 dark:text-slate-300" />
         </button>
-        <div className="h-6 w-px bg-gray-200" />
+        <div className="h-6 w-px bg-gray-200 dark:bg-slate-600" />
         <button
           onClick={handleReset}
-          className="p-3 hover:bg-gray-100 rounded-full transition-colors flex items-center gap-1 text-xs font-semibold"
+          className="p-3 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full transition-colors flex items-center gap-1 text-xs font-semibold"
           aria-label={t('whiteboard.resetZoom')}
         >
-          <RotateCcw className="w-4 h-4" />
+          <RotateCcw className="w-4 h-4 text-slate-700 dark:text-slate-300" />
         </button>
       </div>
     </div>
   );
 }
-
-

@@ -2,7 +2,7 @@
   "common": {
     "home": "Home",
     "nexthuman": "NextHuman",
-    "observatory": "Osservatorio",
+    "observatory": "Pulse",
     "projects": "Progetti",
     "about": "About",
     "manifesto": "Manifesto",
@@ -14,32 +14,40 @@
     "italian": "Italiano",
     "english": "Inglese"
   },
-  "observatory": {
-    "badge": "Auto-aggiornante",
-    "title": "Osservatorio",
-    "subtitle": "Un hub di conoscenza che aggrega le fonti più autorevoli su etica dell'IA, policy, sovranità digitale e civic tech. Aggiornato automaticamente per tenerti informato.",
+  "pulse": {
+    "badge": "Live · Connesso a NextHuman",
+    "title": "Pulse",
+    "subtitle": "Notizie in tempo reale collegate agli scenari futuri di NextHuman. Ogni articolo è un segnale che connette il presente al domani.",
+    "signalBoard": "Scenari attivi",
+    "signalBoardHint": "gli scenari futuri con più segnali oggi",
     "articlesCount": "articoli",
+    "connections": "connessioni",
     "sourcesActive": "fonti attive",
-    "lastUpdate": "Ultimo aggiornamento",
     "refresh": "Aggiorna",
-    "searchPlaceholder": "Cerca articoli, fonti, temi...",
+    "searchPlaceholder": "Cerca articoli, fonti, scenari...",
     "filters": "Filtri",
     "clearFilters": "Rimuovi filtri",
-    "loading": "Caricamento delle fonti in corso...",
+    "loading": "Rilevamento segnali in corso...",
     "retry": "Riprova",
     "noResults": "Nessun articolo trovato con i filtri selezionati.",
     "loadMore": "Carica altri",
     "remaining": "rimanenti",
-    "aboutTitle": "Come funziona l'Osservatorio",
-    "aboutDescription": "L'Osservatorio aggrega automaticamente contenuti dalle fonti più autorevoli al mondo su etica dell'IA, policy, sovranità digitale e civic tech. I feed RSS vengono aggiornati ogni ora per garantire che tu abbia sempre accesso alle informazioni più recenti. Ogni articolo rimanda direttamente alla fonte originale."
+    "ctaTitle": "Esplora tutti gli scenari su NextHuman",
+    "ctaDescription": "Questi articoli sono collegati alle scadenze probabilistiche dell'umanità. Esplora la mappa interattiva completa per scoprire come il presente plasma il futuro.",
+    "aboutTitle": "Come funziona Pulse",
+    "aboutDescription": "Pulse aggrega automaticamente contenuti dalle fonti più autorevoli e li collega agli scenari futuri di NextHuman attraverso un sistema di keyword matching. Ogni articolo diventa evidenza per uno o più scenari probabilistici, creando un ponte tra le notizie di oggi e il futuro che ci attende."
   },
   "home": {
     "title": "Relatronica",
+    "badge": "Design Speculativo · Civic Tech · Knowledge Mapping",
+    "heroTitle": "Il futuro è un progetto collettivo",
     "tagline": "Immaginiamo futuri possibili e creiamo strumenti che aiutano le comunità a {action1}, {action2} e {action3}",
     "action1": "comprenderli",
     "action2": "discuterli",
     "action3": "plasmarli",
-    "exploreNextHuman": "Esplora NextHuman",
+    "exploreCta": "Scopri i progetti",
+    "manifestoCta": "Leggi il manifesto",
+    "origin": "Nati al CERN nel 2024. Progettiamo strumenti aperti per comunità che vogliono partecipare alle scelte sul proprio futuro.",
     "features": {
       "speculativeDesign": {
         "title": "Speculative Design",
@@ -58,20 +66,30 @@
         "description": "Promuoviamo un approccio etico e responsabile alla tecnologia, orientato al benessere collettivo."
       }
     },
-    "nexthumanHighlight": {
-      "title": "NextHuman",
-      "description": "Un calendario delle scadenze probabilistiche per l'umanità. Esplora scenari futuri attraverso visualizzazioni interattive, knowledge mapping e design speculativo.",
-      "cta": "Inizia l'esplorazione"
+    "projectsShowcase": {
+      "title": "Cosa stiamo costruendo",
+      "subtitle": "Strumenti aperti, ricerca indipendente e risorse per le comunità",
+      "viewAll": "Vedi tutti i progetti"
     },
-    "cta": {
-      "ourProjects": {
-        "title": "I Nostri Progetti",
-        "description": "Esplora le nostre esplorazioni al confine tra design speculativo, civic tech e knowledge mapping."
+    "resources": {
+      "observatory": {
+        "title": "Pulse",
+        "description": "Notizie in tempo reale collegate agli scenari futuri di NextHuman. Il battito del futuro, oggi.",
+        "badge": "Live"
       },
-      "whoWeAre": {
-        "title": "Chi Siamo",
-        "description": "Scopri la nostra missione, i nostri valori e il nostro impegno per tecnologie responsabili."
+      "academy": {
+        "title": "Academy",
+        "description": "Corsi gratuiti e aperti su design speculativo, civic tech e tecnologie responsabili. Per tutti, senza barriere.",
+        "badge": "Gratuito"
       }
+    },
+    "manifestoQuote": "Non siamo profeti. Siamo progettisti, ricercatori e attivisti che credono nel potere delle domande giuste, degli strumenti aperti e delle comunità informate.",
+    "readManifesto": "Leggi il manifesto completo",
+    "finalCta": {
+      "title": "Il futuro si costruisce insieme",
+      "description": "Relatronica è un progetto indipendente e open source. Se condividi questa visione, unisciti alla comunità.",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
     }
   },
   "about": {

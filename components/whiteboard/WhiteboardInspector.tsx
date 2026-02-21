@@ -17,21 +17,21 @@ export function WhiteboardInspector({ deadline, onClose, className }: Whiteboard
   return (
     <aside
       className={cn(
-        'absolute top-6 right-6 z-30 w-[320px] max-w-full rounded-3xl border border-gray-200/70 bg-white/95 shadow-2xl backdrop-blur-xl flex flex-col max-h-[calc(100%-3rem)]',
+        'absolute z-30 w-[320px] max-w-full rounded-3xl border border-gray-200/70 dark:border-slate-700/70 bg-white/95 dark:bg-slate-900/95 shadow-2xl backdrop-blur-xl flex flex-col',
         className
       )}
     >
-      <div className="flex items-center justify-between px-5 py-3 border-b border-gray-200">
+      <div className="flex items-center justify-between px-5 py-3 border-b border-gray-200 dark:border-slate-700">
         <div className="flex items-center gap-2">
           <div className="w-1 h-6 rounded-full" style={{ backgroundColor: deadline.adjustedProbability !== undefined && deadline.adjustedProbability >= 80 ? '#ef4444' : deadline.adjustedProbability !== undefined && deadline.adjustedProbability >= 60 ? '#f59e0b' : '#10b981' }} />
-          <p className="text-xs uppercase tracking-[0.3em] text-gray-600 font-semibold">{t('nexthuman.view.inspector.info')}</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-gray-600 dark:text-gray-400 font-semibold">{t('nexthuman.view.inspector.info')}</p>
         </div>
         <button
           onClick={onClose}
-          className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+          className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"
           aria-label={t('nexthuman.view.inspector.closeDetails')}
         >
-          <X className="w-5 h-5 text-gray-600" />
+          <X className="w-5 h-5 text-gray-600 dark:text-gray-400" />
         </button>
       </div>
 
@@ -41,15 +41,14 @@ export function WhiteboardInspector({ deadline, onClose, className }: Whiteboard
         </div>
 
         {deadline.actions && deadline.actions.length > 0 && (
-          <div className="px-5 py-5 space-y-3 border-t border-gray-200 bg-gray-50/50">
+          <div className="px-5 py-5 space-y-3 border-t border-gray-200 dark:border-slate-700 bg-gray-50/50 dark:bg-slate-800/50">
             <div className="mb-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-700 mb-1">{t('nexthuman.view.inspector.whatCanYouDo')}</p>
-              <p className="text-xs text-gray-600 leading-relaxed">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-700 dark:text-gray-300 mb-1">{t('nexthuman.view.inspector.whatCanYouDo')}</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
                 {t('nexthuman.view.inspector.actionsDescription')}
               </p>
             </div>
             {deadline.actions.map((action, index) => {
-              // Traduci titolo e descrizione dell'azione
               const actionTitleKey = `deadlines.${deadline.id}.actions.${index}.title`;
               const actionDescriptionKey = `deadlines.${deadline.id}.actions.${index}.description`;
               const translatedActionTitle = t(actionTitleKey);
@@ -60,16 +59,15 @@ export function WhiteboardInspector({ deadline, onClose, className }: Whiteboard
               return (
                 <div
                   key={`${deadline.id}-action-${index}`}
-                  className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow"
+                  className="rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <p className="text-base font-semibold text-gray-900 mb-2">{displayActionTitle}</p>
-                  <p className="text-sm text-gray-700 mb-3 leading-relaxed">
+                  <p className="text-base font-semibold text-gray-900 dark:text-white mb-2">{displayActionTitle}</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mb-3 leading-relaxed">
                     {displayActionDescription}
                   </p>
                   {action.links && action.links.length > 0 && (
-                    <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-100">
+                    <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-100 dark:border-slate-700">
                       {action.links.filter(link => link.url && link.url.trim()).map((link, linkIdx) => {
-                        // Traduci la label del link
                         const linkLabelKey = `deadlines.${deadline.id}.actions.${index}.links.${link.label}`;
                         const translatedLinkLabel = t(linkLabelKey);
                         const displayLinkLabel = translatedLinkLabel !== linkLabelKey ? translatedLinkLabel : link.label;
@@ -86,7 +84,7 @@ export function WhiteboardInspector({ deadline, onClose, className }: Whiteboard
                                 return;
                               }
                             }}
-                            className="inline-flex items-center gap-2 text-xs font-medium px-3 py-2 rounded-lg bg-slate-900 text-white hover:bg-slate-800 transition-colors"
+                            className="inline-flex items-center gap-2 text-xs font-medium px-3 py-2 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-gray-100 transition-colors"
                           >
                             <ExternalLink className="w-3.5 h-3.5" />
                             {displayLinkLabel}
@@ -104,5 +102,3 @@ export function WhiteboardInspector({ deadline, onClose, className }: Whiteboard
     </aside>
   );
 }
-
-

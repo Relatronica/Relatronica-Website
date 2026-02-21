@@ -310,10 +310,10 @@ const orderedThemes = useMemo(() => {
 
   if (adjustedDeadlines.length === 0) {
     return (
-      <div className="flex h-screen items-center justify-center bg-slate-50">
+      <div className="flex h-screen items-center justify-center bg-slate-50 dark:bg-slate-950">
         <div className="text-center">
-          <p className="text-lg font-medium text-slate-500">{t('nexthuman.view.noDeadlines')}</p>
-          <button onClick={() => onFilterChange({ ...filters, themes: [] })} className="mt-4 text-blue-600 hover:underline">
+          <p className="text-lg font-medium text-slate-500 dark:text-slate-400">{t('nexthuman.view.noDeadlines')}</p>
+          <button onClick={() => onFilterChange({ ...filters, themes: [] })} className="mt-4 text-blue-600 dark:text-blue-400 hover:underline">
             {t('nexthuman.view.resetFilters')}
           </button>
         </div>
@@ -337,7 +337,7 @@ const orderedThemes = useMemo(() => {
         <div className="pointer-events-none absolute bottom-6 left-1/2 z-40 -translate-x-1/2 flex flex-col items-center gap-3">
           
            {/* Filter Bar */}
-           <div className="pointer-events-auto flex items-center gap-3 rounded-2xl border border-slate-200 bg-white/95 px-4 py-2.5 shadow-xl backdrop-blur">
+           <div className="pointer-events-auto flex items-center gap-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/95 dark:bg-slate-800/95 px-4 py-2.5 shadow-xl backdrop-blur">
               
               {/* Scenarios */}
               <div className="flex items-center gap-1">
@@ -350,8 +350,8 @@ const orderedThemes = useMemo(() => {
                 className={cn(
                         "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all",
                   scenarioType === type
-                          ? "bg-slate-900 text-white shadow-sm"
-                          : "text-slate-600 hover:bg-slate-50"
+                          ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-sm"
+                          : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700"
                       )}
                     >
                       <Icon className="w-3.5 h-3.5" />
@@ -361,7 +361,7 @@ const orderedThemes = useMemo(() => {
                 })}
               </div>
 
-              <div className="h-6 w-px bg-slate-200" />
+              <div className="h-6 w-px bg-slate-200 dark:bg-slate-600" />
 
               {/* Themes Button */}
               <div className="relative" data-filter-menu>
@@ -373,14 +373,14 @@ const orderedThemes = useMemo(() => {
                   className={cn(
                     "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all",
                     filters.themes.length > 0
-                      ? "bg-slate-100 text-slate-900"
-                      : "text-slate-600 hover:bg-slate-50"
+                      ? "bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white"
+                      : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700"
                   )}
                 >
                   <Tags className="w-3.5 h-3.5" />
                   {t('nexthuman.view.filters.themes')}
                   {filters.themes.length > 0 && (
-                    <span className="flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-slate-900 text-white text-xs font-semibold">
+                    <span className="flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs font-semibold">
                       {filters.themes.length}
                     </span>
                   )}
@@ -388,16 +388,16 @@ const orderedThemes = useMemo(() => {
 
                 {/* Themes Popover */}
                 {openFilterMenu === 'themes' && (
-                  <div className="absolute bottom-full left-0 mb-2 rounded-xl border border-slate-200 bg-white p-3 shadow-2xl min-w-[280px]">
+                  <div className="absolute bottom-full left-0 mb-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-3 shadow-2xl min-w-[280px]">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-semibold text-slate-700">{t('nexthuman.view.filters.selectThemes')}</span>
+                      <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{t('nexthuman.view.filters.selectThemes')}</span>
                       {filters.themes.length > 0 && (
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             onFilterChange({ ...filters, themes: [] });
                           }}
-                          className="text-xs text-slate-500 hover:text-slate-900 flex items-center gap-1"
+                          className="text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1"
                         >
                           <X className="w-3 h-3" />
                           {t('nexthuman.view.filters.clear')}
@@ -421,7 +421,7 @@ const orderedThemes = useMemo(() => {
                               "px-2.5 py-1 rounded-lg text-xs font-medium transition-all",
                               isActive
                                 ? "text-white shadow-sm"
-                                : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                                : "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600"
                             )}
                             style={isActive ? { backgroundColor: getThemeColorHex(theme) } : {}}
                           >
@@ -444,14 +444,14 @@ const orderedThemes = useMemo(() => {
                   className={cn(
                     "flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium transition-all",
                     filters.probabilities.length > 0
-                      ? "bg-slate-100 text-slate-900"
-                      : "text-slate-600 hover:bg-slate-50"
+                      ? "bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white"
+                      : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700"
                   )}
                 >
                   <Percent className="w-3.5 h-3.5" />
                   {t('nexthuman.view.filters.probabilities')}
                   {filters.probabilities.length > 0 && (
-                    <span className="flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-slate-900 text-white text-xs font-semibold">
+                    <span className="flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs font-semibold">
                       {filters.probabilities.length}
                     </span>
                   )}
@@ -459,16 +459,16 @@ const orderedThemes = useMemo(() => {
 
                 {/* Probabilities Popover */}
                 {openFilterMenu === 'probabilities' && (
-                  <div className="absolute bottom-full left-0 mb-2 rounded-xl border border-slate-200 bg-white p-3 shadow-2xl min-w-[200px]">
+                  <div className="absolute bottom-full left-0 mb-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-3 shadow-2xl min-w-[200px]">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-semibold text-slate-700">{t('nexthuman.view.filters.selectProbabilities')}</span>
+                      <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{t('nexthuman.view.filters.selectProbabilities')}</span>
                       {filters.probabilities.length > 0 && (
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             onFilterChange({ ...filters, probabilities: [] });
                           }}
-                          className="text-xs text-slate-500 hover:text-slate-900 flex items-center gap-1"
+                          className="text-xs text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1"
                         >
                           <X className="w-3 h-3" />
                           {t('nexthuman.view.filters.clear')}
@@ -492,8 +492,8 @@ const orderedThemes = useMemo(() => {
                             className={cn(
                               "px-3 py-1.5 rounded-lg text-xs font-medium transition-all",
                               isActive
-                                ? "bg-slate-900 text-white shadow-sm"
-                                : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                                ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-sm"
+                                : "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600"
                             )}
                           >
                             {t(`nexthuman.view.filters.labels.${probKey}`)}
@@ -511,7 +511,7 @@ const orderedThemes = useMemo(() => {
         <WhiteboardInspector
           deadline={selectedEvent}
           onClose={() => setSelectedDeadline(null)}
-          className="top-6 right-6 bottom-6"
+          className="top-32 right-6 bottom-20 max-h-[calc(100%-13rem)]"
         />
       )}
 

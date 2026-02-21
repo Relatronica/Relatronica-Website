@@ -5,18 +5,20 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/lib/i18n';
-import { Globe, Menu, X } from 'lucide-react';
+import { useTheme } from '@/lib/theme';
+import { Globe, Menu, X, Sun, Moon } from 'lucide-react';
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function Toolbar() {
   const pathname = usePathname();
   const { locale, setLocale, t } = useI18n();
+  const { theme, toggleTheme } = useTheme();
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
-  // Sliding indicator state
   const navContainerRef = useRef<HTMLDivElement>(null);
   const [indicatorStyle, setIndicatorStyle] = useState<{
     left: number;
@@ -80,12 +82,10 @@ export function Toolbar() {
     return () => window.removeEventListener('resize', updateIndicator);
   }, [updateIndicator]);
 
-  // Chiudi il menu mobile quando si cambia pagina
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
-  // Chiudi i menu al click esterno
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -102,7 +102,6 @@ export function Toolbar() {
     };
   }, []);
 
-  // Blocca lo scroll del body quando il menu mobile è aperto
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -125,7 +124,6 @@ export function Toolbar() {
       <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50 hidden lg:block">
         <div className="apple-card rounded-full px-10 py-4 shadow-lg">
           <div className="flex items-center justify-center gap-7">
-            {/* Logo e Brand */}
             <Link href="/" className="flex items-center gap-2.5 shrink-0">
               <Image
                 src="/logo.png"
@@ -137,16 +135,13 @@ export function Toolbar() {
               <span className="text-lg font-bold text-foreground">Relatronica</span>
             </Link>
 
-            {/* Separatore */}
             <div className="w-px h-6 bg-foreground/10 shrink-0" />
 
-            {/* Navigation Items */}
             <div className="relative flex items-center gap-1.5" ref={navContainerRef}>
-              {/* Sliding pill indicator */}
               {indicatorStyle && (
                 <div
                   className={cn(
-                    'absolute top-0 bottom-0 rounded-full bg-blue-50',
+                    'absolute top-0 bottom-0 rounded-full bg-blue-50 dark:bg-blue-950/50',
                     hasAnimated.current
                       ? 'transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)]'
                       : ''
@@ -168,7 +163,7 @@ export function Toolbar() {
                     className={cn(
                       'text-sm font-medium relative z-10 px-3.5 py-2 rounded-full whitespace-nowrap transition-colors duration-200',
                       isActive
-                        ? 'text-blue-600'
+                        ? 'text-blue-600 dark:text-blue-400'
                         : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
                     )}
                   >
@@ -178,8 +173,26 @@ export function Toolbar() {
               })}
             </div>
 
-            {/* Separatore */}
             <div className="w-px h-6 bg-foreground/10 shrink-0" />
+
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
+              aria-label="Toggle theme"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={theme}
+                  initial={{ scale: 0.5, opacity: 0, rotate: -90 }}
+                  animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                  exit={{ scale: 0.5, opacity: 0, rotate: 90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                </motion.div>
+              </AnimatePresence>
+            </button>
 
             {/* Language Switch */}
             <div className="relative shrink-0" ref={menuRef}>
@@ -191,38 +204,46 @@ export function Toolbar() {
                 <Globe className="w-4 h-4" />
                 <span className="uppercase text-xs">{locale}</span>
               </button>
-              {isLanguageMenuOpen && (
-                <div className="absolute top-full right-0 mt-2 w-40 rounded-lg bg-white border border-slate-200 shadow-lg overflow-hidden z-50">
-                  <button
-                    onClick={() => {
-                      setLocale('it');
-                      setIsLanguageMenuOpen(false);
-                    }}
-                    className={cn(
-                      'w-full text-left px-4 py-2 text-sm transition-colors',
-                      locale === 'it'
-                        ? 'bg-blue-50 text-blue-600 font-medium'
-                        : 'text-slate-700 hover:bg-slate-50'
-                    )}
+              <AnimatePresence>
+                {isLanguageMenuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -4, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -4, scale: 0.95 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full right-0 mt-2 w-40 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg overflow-hidden z-50"
                   >
-                    {t('common.italian')}
-                  </button>
-                  <button
-                    onClick={() => {
-                      setLocale('en');
-                      setIsLanguageMenuOpen(false);
-                    }}
-                    className={cn(
-                      'w-full text-left px-4 py-2 text-sm transition-colors',
-                      locale === 'en'
-                        ? 'bg-blue-50 text-blue-600 font-medium'
-                        : 'text-slate-700 hover:bg-slate-50'
-                    )}
-                  >
-                    {t('common.english')}
-                  </button>
-                </div>
-              )}
+                    <button
+                      onClick={() => {
+                        setLocale('it');
+                        setIsLanguageMenuOpen(false);
+                      }}
+                      className={cn(
+                        'w-full text-left px-4 py-2 text-sm transition-colors',
+                        locale === 'it'
+                          ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 font-medium'
+                          : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+                      )}
+                    >
+                      {t('common.italian')}
+                    </button>
+                    <button
+                      onClick={() => {
+                        setLocale('en');
+                        setIsLanguageMenuOpen(false);
+                      }}
+                      className={cn(
+                        'w-full text-left px-4 py-2 text-sm transition-colors',
+                        locale === 'en'
+                          ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 font-medium'
+                          : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+                      )}
+                    >
+                      {t('common.english')}
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </div>
@@ -232,7 +253,6 @@ export function Toolbar() {
       <nav className="fixed top-4 left-4 right-4 z-50 lg:hidden" ref={mobileMenuRef}>
         <div className="apple-card rounded-2xl px-4 py-3 shadow-lg">
           <div className="flex items-center justify-between">
-            {/* Logo e Brand */}
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/logo.png"
@@ -244,9 +264,16 @@ export function Toolbar() {
               <span className="text-base font-bold text-foreground">Relatronica</span>
             </Link>
 
-            {/* Hamburger + Language */}
             <div className="flex items-center gap-1">
-              {/* Language Switch (compatto) */}
+              {/* Theme Toggle (mobile) */}
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
+
               <button
                 onClick={() => {
                   setLocale(locale === 'it' ? 'en' : 'it');
@@ -258,7 +285,6 @@ export function Toolbar() {
                 <span className="uppercase text-xs font-medium">{locale}</span>
               </button>
 
-              {/* Hamburger Button */}
               <button
                 onClick={toggleMobileMenu}
                 className="p-2 rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
@@ -274,7 +300,6 @@ export function Toolbar() {
             </div>
           </div>
 
-          {/* Mobile Menu Dropdown */}
           <div
             className={cn(
               'overflow-hidden transition-all duration-300 ease-in-out',
@@ -291,7 +316,7 @@ export function Toolbar() {
                     className={cn(
                       'text-sm font-medium transition-all px-4 py-2.5 rounded-xl',
                       isActive
-                        ? 'text-blue-600 bg-blue-50'
+                        ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50'
                         : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
                     )}
                   >
@@ -304,10 +329,9 @@ export function Toolbar() {
         </div>
       </nav>
 
-      {/* Overlay scuro quando il menu mobile è aperto */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/20 z-40 lg:hidden"
+          className="fixed inset-0 bg-black/20 dark:bg-black/50 z-40 lg:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
           aria-hidden="true"
         />

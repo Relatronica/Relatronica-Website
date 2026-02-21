@@ -13,11 +13,15 @@
   },
   "home": {
     "title": "Relatronica",
+    "badge": "Speculative Design · Civic Tech · Knowledge Mapping",
+    "heroTitle": "The future is a collective project",
     "tagline": "We imagine possible futures and create tools that help communities {action1}, {action2} and {action3} them",
     "action1": "understand",
     "action2": "discuss",
     "action3": "shape",
-    "exploreNextHuman": "Explore NextHuman",
+    "exploreCta": "Explore the projects",
+    "manifestoCta": "Read the manifesto",
+    "origin": "Born at CERN in 2024. We design open tools for communities that want to participate in the choices shaping their future.",
     "features": {
       "speculativeDesign": {
         "title": "Speculative Design",
@@ -36,20 +40,30 @@
         "description": "We promote an ethical and responsible approach to technology, oriented towards collective well-being."
       }
     },
-    "nexthumanHighlight": {
-      "title": "NextHuman",
-      "description": "A calendar of probabilistic deadlines for humanity. Explore future scenarios through interactive visualizations, knowledge mapping and speculative design.",
-      "cta": "Start exploring"
+    "projectsShowcase": {
+      "title": "What we're building",
+      "subtitle": "Open tools, independent research and resources for communities",
+      "viewAll": "View all projects"
     },
-    "cta": {
-      "ourProjects": {
-        "title": "Our Projects",
-        "description": "Explore our explorations at the intersection of speculative design, civic tech and knowledge mapping."
+    "resources": {
+      "observatory": {
+        "title": "Pulse",
+        "description": "Real-time news connected to NextHuman's future scenarios. The heartbeat of the future, today.",
+        "badge": "Live"
       },
-      "whoWeAre": {
-        "title": "Who We Are",
-        "description": "Discover our mission, our values and our commitment to responsible technologies."
+      "academy": {
+        "title": "Academy",
+        "description": "Free and open courses on speculative design, civic tech and responsible technologies. For everyone, without barriers.",
+        "badge": "Free"
       }
+    },
+    "manifestoQuote": "We are not prophets. We are designers, researchers and activists who believe in the power of the right questions, open tools and informed communities.",
+    "readManifesto": "Read the full manifesto",
+    "finalCta": {
+      "title": "The future is built together",
+      "description": "Relatronica is an independent, open-source project. If you share this vision, join the community.",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
     }
   },
   "about": {

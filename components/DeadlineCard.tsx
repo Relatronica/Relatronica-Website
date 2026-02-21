@@ -17,7 +17,6 @@ export function DeadlineCard({ deadline, variant = 'default' }: DeadlineCardProp
   const isPast = new Date(deadline.date) < new Date();
   const dateLocale = locale === 'en' ? enUS : it;
   
-  // Traduci le label
   const probabilityLabels: Record<string, string> = {
     low: t('deadlines.card.probabilityLabels.low'),
     medium: t('deadlines.card.probabilityLabels.medium'),
@@ -38,7 +37,6 @@ export function DeadlineCard({ deadline, variant = 'default' }: DeadlineCardProp
     transformation: t('deadlines.card.categoryLabels.transformation'),
   };
   
-  // Traduci titolo e descrizione del deadline se disponibili
   const deadlineTitleKey = `deadlines.${deadline.id}.title`;
   const deadlineDescriptionKey = `deadlines.${deadline.id}.description`;
   const translatedTitle = t(deadlineTitleKey);
@@ -46,7 +44,6 @@ export function DeadlineCard({ deadline, variant = 'default' }: DeadlineCardProp
   const title = translatedTitle !== deadlineTitleKey ? translatedTitle : deadline.title;
   const description = translatedDescription !== deadlineDescriptionKey ? translatedDescription : deadline.description;
   
-  // Traduci le azioni se presenti
   const translatedActions = deadline.actions?.map((action, index) => {
     const actionTitleKey = `deadlines.${deadline.id}.actions.${index}.title`;
     const actionDescriptionKey = `deadlines.${deadline.id}.actions.${index}.description`;
@@ -78,43 +75,41 @@ export function DeadlineCard({ deadline, variant = 'default' }: DeadlineCardProp
   if (variant === 'timeline') {
     return (
       <div>
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex-1">
-            <h3 className="text-xl font-bold text-slate-900 mb-3 leading-tight">
-              {displayDeadline.title}
-            </h3>
-            <div className="flex items-center gap-2 text-sm text-slate-700 mb-3">
-              <Calendar className="w-4 h-4 text-slate-600" />
-              <span>
-                <span className="font-medium">{t('deadlines.card.expectedFor')} </span>
-                {format(new Date(displayDeadline.date), 'd MMMM yyyy', { locale: dateLocale })}
-              </span>
-            </div>
-          </div>
+        <div className="mb-4">
           <div className={cn(
-            'px-3 py-1.5 rounded-full text-xs font-semibold border ml-3 flex-shrink-0',
+            'inline-flex px-2.5 py-1 rounded-full text-[11px] font-semibold border mb-3',
             getProbabilityColor(displayDeadline.probability)
           )}>
             {displayDeadline.probabilityValue}% {t('deadlines.card.probability')}
           </div>
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 leading-tight">
+            {displayDeadline.title}
+          </h3>
+          <div className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
+            <Calendar className="w-4 h-4 text-slate-600 dark:text-slate-400" />
+            <span>
+              <span className="font-medium">{t('deadlines.card.expectedFor')} </span>
+              {format(new Date(displayDeadline.date), 'd MMMM yyyy', { locale: dateLocale })}
+            </span>
+          </div>
         </div>
 
         <div className="mb-4">
-          <p className="text-slate-800 leading-relaxed text-[15px] mb-2">
+          <p className="text-slate-800 dark:text-slate-200 leading-relaxed text-[15px] mb-2">
             {displayDeadline.description}
           </p>
           {displayDeadline.sources && displayDeadline.sources.length > 0 && (
-            <p className="text-xs text-slate-500 italic">
+            <p className="text-xs text-slate-500 dark:text-slate-400 italic">
               {t('deadlines.card.sources')} {displayDeadline.sources.join(', ')}
             </p>
           )}
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-gray-200">
+        <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-gray-200 dark:border-slate-700">
           {displayDeadline.impact && (
             <div className="flex items-center gap-2">
-              <Globe className="w-4 h-4 text-slate-600" />
-              <span className="text-sm text-slate-700">
+              <Globe className="w-4 h-4 text-slate-600 dark:text-slate-400" />
+              <span className="text-sm text-slate-700 dark:text-slate-300">
                 <span className="font-medium">{t('deadlines.card.scope')} </span>
                 {impactLabels[displayDeadline.impact]}
               </span>
@@ -122,8 +117,8 @@ export function DeadlineCard({ deadline, variant = 'default' }: DeadlineCardProp
           )}
           {displayDeadline.category && (
             <div className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-slate-600" />
-              <span className="text-sm text-slate-700">
+              <TrendingUp className="w-4 h-4 text-slate-600 dark:text-slate-400" />
+              <span className="text-sm text-slate-700 dark:text-slate-300">
                 <span className="font-medium">{t('deadlines.card.type')} </span>
                 {categoryLabels[displayDeadline.category]}
               </span>
@@ -230,4 +225,3 @@ export function DeadlineCard({ deadline, variant = 'default' }: DeadlineCardProp
     </div>
   );
 }
-
