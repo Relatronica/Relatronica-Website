@@ -110,11 +110,13 @@ function SignalCard({
   locale,
   isActive,
   onClick,
+  translatedTitle,
 }: {
   signal: DeadlineSignal;
   locale: string;
   isActive: boolean;
   onClick: () => void;
+  translatedTitle: string;
 }) {
   const probColor = PROBABILITY_COLORS[signal.probability] || 'text-slate-500';
   const probBg = PROBABILITY_BG[signal.probability] || 'bg-slate-100';
@@ -143,7 +145,7 @@ function SignalCard({
       </div>
 
       <h4 className="text-sm font-semibold text-slate-900 dark:text-white leading-snug mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-        {signal.title}
+        {translatedTitle}
       </h4>
 
       <div className="flex items-center justify-between">
@@ -167,10 +169,11 @@ function SignalCard({
   );
 }
 
-function ArticleCard({ article, locale, onDeadlineClick }: {
+function ArticleCard({ article, locale, onDeadlineClick, translateDeadline }: {
   article: PulseArticle;
   locale: string;
   onDeadlineClick: (id: string) => void;
+  translateDeadline: (id: string, fallback: string) => string;
 }) {
   const primaryTheme = article.themes[0];
   const config = THEME_CONFIG[primaryTheme];
@@ -291,7 +294,7 @@ function ArticleCard({ article, locale, onDeadlineClick }: {
                   'w-1.5 h-1.5 rounded-full flex-shrink-0',
                   ld.probabilityValue >= 70 ? 'bg-orange-400' : ld.probabilityValue >= 50 ? 'bg-amber-400' : 'bg-slate-400'
                 )} />
-                <span className="truncate max-w-[140px]">{ld.title}</span>
+                <span className="truncate max-w-[140px]">{translateDeadline(ld.id, ld.title)}</span>
                 <span className="text-slate-400 flex-shrink-0">{formatDeadlineYear(ld.date)}</span>
               </button>
             ))}
@@ -400,6 +403,11 @@ export default function ObservatoryClient() {
 
   const activeSignal = data?.signals.find((s) => s.id === activeDeadline);
 
+  const deadlineTitle = useCallback((id: string, fallback: string) => {
+    const translated = t(`deadlines.${id}.title`);
+    return translated !== `deadlines.${id}.title` ? translated : fallback;
+  }, [t]);
+
   const pulseSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -469,6 +477,7 @@ export default function ObservatoryClient() {
                       locale={locale}
                       isActive={activeDeadline === signal.id}
                       onClick={() => handleDeadlineClick(signal.id)}
+                      translatedTitle={deadlineTitle(signal.id, signal.title)}
                     />
                   ))}
                 </div>
@@ -488,7 +497,7 @@ export default function ObservatoryClient() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-blue-900 dark:text-blue-200">
-                      {locale === 'it' ? 'Filtrando per scenario:' : 'Filtering by scenario:'} {activeSignal.title}
+                      {locale === 'it' ? 'Filtrando per scenario:' : 'Filtering by scenario:'} {deadlineTitle(activeSignal.id, activeSignal.title)}
                     </p>
                     <p className="text-xs text-blue-600 dark:text-blue-400">
                       {filteredArticles.length} {locale === 'it' ? 'articoli collegati' : 'linked articles'} · {activeSignal.probabilityValue}% {locale === 'it' ? 'probabilità' : 'probability'} · {formatDeadlineYear(activeSignal.date)}
@@ -672,6 +681,7 @@ export default function ObservatoryClient() {
                         article={article}
                         locale={locale}
                         onDeadlineClick={handleDeadlineClick}
+                        translateDeadline={deadlineTitle}
                       />
                     </StaggerItem>
                   ))}
