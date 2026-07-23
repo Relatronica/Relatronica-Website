@@ -7,6 +7,10 @@
     "about": "About",
     "manifesto": "Manifesto",
     "learn": "Academy",
+    "work": "Lavori",
+    "navWorkNextHumanDesc": "Mappa interattiva dei futuri probabilistici dell'umanità",
+    "navWorkPulseDesc": "Segnali di notizie live collegati agli scenari NextHuman",
+    "navWorkProjectsDesc": "Lavori dello studio e collaborazioni",
     "explore": "Esplora",
     "learnMore": "Scopri di più",
     "comingSoon": "Prossimamente",
@@ -348,8 +352,10 @@
         "description": "NextHuman non è una previsione scientifica, ma uno strumento di {speculative} per stimolare riflessioni critiche sui futuri possibili. Le probabilità sono indicative e basate su analisi di trend, non su modelli predittivi rigorosi.",
         "speculative": "design speculativo"
       },
-      "dontShowAgain": "Non mostrare più questo messaggio",
-      "startExploring": "Inizia l'esplorazione"
+      "dontShowAgain": "Non mostrare più all'apertura",
+      "startExploring": "Inizia l'esplorazione",
+      "openGuide": "Guida",
+      "panelAria": "Introduzione a NextHuman"
     },
     "view": {
       "noDeadlines": "Nessuna scadenza trovata",

@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { formatDeadlineHorizonShort, getHorizonStart, isDeadlinePast } from '@/lib/deadlineHorizon';
-import { X, TrendingUp, TrendingDown, BarChart, Tags, Percent } from 'lucide-react';
+import { X, TrendingUp, TrendingDown, BarChart, Tags, Percent, Info } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 import { Theme, Probability } from '@/types/deadline';
 import { deadlines } from '@/data/deadlines';
@@ -26,9 +26,13 @@ const BOARD_TOP_OFFSET = 0;
 export function VisionaryView({
   filters,
   onFilterChange,
+  introOpen = false,
+  onOpenIntro,
 }: {
   filters: FilterState;
   onFilterChange: (filters: FilterState) => void;
+  introOpen?: boolean;
+  onOpenIntro?: () => void;
 }) {
   const { t, locale } = useI18n();
   const [selectedDeadline, setSelectedDeadline] = useState<string | null>(null);
@@ -520,6 +524,18 @@ const orderedThemes = useMemo(() => {
         selectedYear={selectedYear}
         onYearSelect={setSelectedYear}
       />
+
+      {!introOpen && onOpenIntro && (
+        <button
+          type="button"
+          onClick={onOpenIntro}
+          className="absolute right-6 top-28 z-40 flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-700 bg-white/95 dark:bg-slate-800/95 px-3 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 shadow-lg backdrop-blur transition-colors hover:bg-white dark:hover:bg-slate-700"
+          aria-label={t('nexthuman.modal.openGuide')}
+        >
+          <Info className="w-3.5 h-3.5" />
+          <span className="hidden sm:inline">{t('nexthuman.modal.openGuide')}</span>
+        </button>
+      )}
       </div>
     </div>
   );
