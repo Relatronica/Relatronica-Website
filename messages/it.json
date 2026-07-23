@@ -231,6 +231,11 @@
       "subtitle": "Sovranità digitale",
       "description": "Una piattaforma per riprendere il controllo della propria vita digitale. Offre percorsi formativi su privacy, diritti digitali e GDPR, strumenti pratici per la protezione dei dati, una mappa della propria impronta digitale e uno stack etico per valutare la sovranità dei servizi che usiamo ogni giorno."
     },
+    "404human": {
+      "title": "404human",
+      "subtitle": "Simulatore sociale",
+      "description": "Un laboratorio in cui una popolazione sintetica reagisce a regole, crisi e riforme. Cambia le leve del potere, dei diritti, dell'economia e della sicurezza — e osserva come emergono tensione, esclusione e legittimità sul territorio."
+    },
     "rebica": {
       "title": "Rebica",
       "subtitle": "SDL Citizen Lab",
@@ -260,6 +265,12 @@
       "description": "Un'app che restituisce la sovranità sui dati del proprio corpo. In un panorama dove le app di tracciamento mestruale vendono informazioni intime a terze parti, Eclipse mette la privacy al centro: crittografia end-to-end, zero knowledge architecture e dati che rimangono esclusivamente sul tuo dispositivo. Un atto di resistenza digitale per l'autonomia corporea e la salute riproduttiva, perché i dati sul tuo ciclo non sono una merce da vendere.",
       "status": "In test"
     },
+    "mauss": {
+      "title": "Mauss",
+      "subtitle": "Calcolo volontario per la ricerca",
+      "description": "Una rete di volunteer computing ispirata al dono: chi partecipa offre i cicli inutilizzati del proprio dispositivo a progetti di ricerca aperti. Niente data center centralizzati, niente barriere di accesso — solo una colonia di nodi che insieme mettono potenza computazionale al servizio della scienza pubblica.",
+      "status": "In sviluppo"
+    },
     "exploreProject": "Esplora progetto",
     "filterByTag": "Filtra per tema",
     "filterByStatus": "Filtra per stato",
@@ -272,6 +283,11 @@
       "title": "Hai un progetto in mente?",
       "description": "Siamo sempre interessati a collaborare su progetti che esplorano il futuro attraverso design speculativo, civic tech e knowledge mapping.",
       "cta": "Contattaci per discutere delle possibilità"
+    },
+    "claimTheSky": {
+      "title": "Claim the Sky",
+      "subtitle": "Gioco 3D sulla colonizzazione dello spazio",
+      "description": "Un’esperienza provocatoria in cui una corporation marca claim in orbita e sulla Luna. Ogni protocollo è legale; quasi nessuno è innocente. Alla fine generi un Trattato Orbitale — e scopri per chi il cielo resta abitabile."
     }
   },
   "whiteboard": {
@@ -407,6 +423,211 @@
     }
   },
   "deadlines": {
+    "1": {
+      "title": "Prima estate artica quasi senza ghiaccio",
+      "description": "Il ghiaccio marino artico in settembre potrebbe scendere sotto 1 milione di km² (praticamente ice-free). Non è un tipping point irreversibile classico: può ripetersi con frequenza crescente a seconda delle emissioni.",
+      "actions": {
+        "0": {
+          "title": "Ridurre emissioni personali",
+          "description": "Adotta uno stile di vita a basse emissioni",
+          "links": {
+            "Calcolatore impronta carbonica": "Calcolatore impronta carbonica"
+          }
+        },
+        "1": {
+          "title": "Supportare politiche climatiche",
+          "description": "Vota e sostieni politici che promuovono azioni per il clima",
+          "links": {
+            "Climate Action Network": "Climate Action Network"
+          }
+        }
+      }
+    },
+    "2": {
+      "title": "AGI / IA a livello umano",
+      "description": "Probabilità intorno al 50% che sistemi di IA raggiungano capacità paragonabili a quelle umane su un ampio spettro di compiti cognitivi. Le stime degli esperti e dei mercati predittivi si sono spostate verso il 2030–2035 rispetto alle timeline più lunghe degli anni precedenti.",
+      "actions": {
+        "0": {
+          "title": "Educarsi sull'IA",
+          "description": "Comprendi le implicazioni dell'IA per la società",
+          "links": {
+            "Future of Humanity Institute": "Future of Humanity Institute"
+          }
+        },
+        "1": {
+          "title": "Promuovere governance dell'IA",
+          "description": "Supporta regolamentazioni etiche per l'IA",
+          "links": {
+            "Partnership on AI": "Partnership on AI"
+          }
+        }
+      }
+    },
+    "3": {
+      "title": "Popolazione mondiale raggiunge il picco",
+      "description": "Secondo le World Population Prospects 2024 delle Nazioni Unite, la popolazione mondiale dovrebbe raggiungere un picco di circa 10,3 miliardi intorno alla metà degli anni 2080, prima di iniziare a declinare gradualmente."
+    },
+    "4": {
+      "title": "Transizione avanzata alle energie rinnovabili",
+      "description": "Possibile completamento di una transizione energetica globale in cui le rinnovabili dominano il mix elettrico e i fossili entrano in declino strutturale della domanda. Gli outlook IEA indicano progressi rapidi ma ancora insufficienti per Net Zero 2050 senza accelerazioni politiche.",
+      "actions": {
+        "0": {
+          "title": "Passa a energia rinnovabile",
+          "description": "Scegli un fornitore di energia rinnovabile"
+        },
+        "1": {
+          "title": "Investi in rinnovabili",
+          "description": "Supporta progetti di energia pulita"
+        }
+      }
+    },
+    "5": {
+      "title": "Collasso di un ecosistema marino principale",
+      "description": "Rischio di collasso funzionale di un ecosistema marino critico (barriera corallina, foreste di kelp o sistemi costieri chiave), con effetti a cascata su pesca, turismo e biodiversità.",
+      "actions": {
+        "0": {
+          "title": "Proteggere gli oceani",
+          "description": "Supporta organizzazioni per la conservazione marina",
+          "links": {
+            "Ocean Conservancy": "Ocean Conservancy"
+          }
+        }
+      }
+    },
+    "6": {
+      "title": "Crisi idrica globale",
+      "description": "Possibile crisi idrica globale con miliardi di persone che vivono in aree con scarsità d'acqua grave o cronica, aggravata da siccità, agricoltura intensiva e stress climatico."
+    },
+    "7": {
+      "title": "Raggiungimento della singolarità tecnologica",
+      "description": "Scenario speculativo in cui il progresso tecnologico (guidato da IA ricorsivamente migliorata) diventa così rapido da risultare difficilmente comprensibile o governabile per le istituzioni umane."
+    },
+    "8": {
+      "title": "Riorganizzazione geopolitica globale",
+      "description": "Possibile riorganizzazione significativa degli equilibri geopolitici mondiali, con nuovi blocchi di potere, rivalità tecnologiche e ridefinizione di alleanze e istituzioni internazionali."
+    },
+    "9": {
+      "title": "Perdita grave di biodiversità globale",
+      "description": "Rischio di accelerazione della sesta estinzione di massa, con perdita sostanziale (fino a circa il 30–50% in scenari di inazione) di specie e di funzionalità degli ecosistemi se non verranno rafforzate le misure di conservazione.",
+      "actions": {
+        "0": {
+          "title": "Supporta la conservazione",
+          "description": "Contribuisci a organizzazioni per la protezione della biodiversità",
+          "links": {
+            "WWF": "WWF"
+          }
+        }
+      }
+    },
+    "10": {
+      "title": "Crisi del debito globale",
+      "description": "Possibile crisi sistemica del debito sovrano e privato che potrebbe destabilizzare l'economia mondiale, soprattutto in contesti di tassi elevati, shock climatici e frammentazione geopolitica."
+    },
+    "11": {
+      "title": "Earth Overshoot Day 2026",
+      "description": "Giorno in cui l'umanità ha consumato tutte le risorse che la Terra può rigenerare in un anno. Nel 2026 cade il 30 luglio. È un indicatore annuale: la data si sposta ogni anno in base a impronta ecologica e biocapacità."
+    },
+    "12": {
+      "title": "Raggiungimento della Longevity Escape Velocity",
+      "description": "Secondo scenari di longevità radicale (es. Ray Kurzweil), raggiungeremo la capacità di guadagnare più di un anno di aspettativa di vita per ogni anno vissuto, grazie a medicina, biotech e IA. Resta altamente speculativo."
+    },
+    "13": {
+      "title": "Fit for 55: −55% emissioni UE",
+      "description": "Obiettivo vincolante dell'Unione Europea di ridurre le emissioni nette di gas serra di almeno il 55% rispetto al 1990 entro il 2030 (non la neutralità climatica, prevista al 2050). Implementato dal pacchetto Fit for 55."
+    },
+    "14": {
+      "title": "Prima missione umana su Marte",
+      "description": "Possibile lancio o arrivo della prima missione umana su Marte, segnando l'inizio dell'espansione umana oltre la Terra. Timeline dipendenti da NASA, ESA, SpaceX e vincoli tecnici/finanziari."
+    },
+    "15": {
+      "title": "Vantaggio quantistico per problemi pratici",
+      "description": "I computer quantistici potrebbero dimostrare vantaggi utili su problemi pratici (crittografia, materiali, ottimizzazione, farmaceutica) oltre i benchmark di laboratorio."
+    },
+    "17": {
+      "title": "Obiettivo Net Zero globale 2050",
+      "description": "Obiettivo politico globale per raggiungere emissioni nette zero di gas serra entro metà secolo, necessario (ma sempre più difficile) per limitare il riscaldamento vicino a 1,5°C. Traiettorie IEA/IPCC richiedono accelerazioni marcate."
+    },
+    "18": {
+      "title": "Collasso o tipping dell'AMOC",
+      "description": "Rischio di rallentamento critico o collasso della Circolazione Meridionale Atlantica (AMOC), con potenziali cambiamenti climatici drastici in Europa e Nord Atlantico. Stime e modelli divergono: alcuni studi osservazionali suggeriscono metà secolo; altri giudicano un collasso completo entro il XXI secolo improbabile."
+    },
+    "19": {
+      "title": "Declino strutturale dell'era del petrolio",
+      "description": "Possibile fine del petrolio come pilastro dominante del sistema energetico globale, con picco della domanda seguito da declino strutturale. Distinto dal picco di produzione «peak oil» classico."
+    },
+    "20": {
+      "title": "Urbanizzazione globale al 70%",
+      "description": "Circa il 70% della popolazione mondiale vivrà in aree urbane, con conseguenze significative per infrastrutture, risorse, salute e disuguaglianze."
+    },
+    "22": {
+      "title": "Scomparsa dei ghiacciai alpini",
+      "description": "I ghiacciai delle Alpi potrebbero ridursi drasticamente o scomparire quasi completamente a quote medie, con impatti sull'approvvigionamento idrico, turismo e rischio idrogeologico in Europa."
+    },
+    "23": {
+      "title": "Crisi alimentare globale",
+      "description": "Possibile crisi alimentare globale o regionale severa dovuta a cambiamenti climatici, scarsità d'acqua, shock geopolitici e pressione demografica."
+    },
+    "24": {
+      "title": "Fusione nucleare commerciale",
+      "description": "Possibile raggiungimento della fusione nucleare commercialmente sostenibile, con impianti in grado di fornire energia netta in modo economico. ITER e startup private puntano a dimostrazioni, ma la scala commerciale resta incerta."
+    },
+    "26": {
+      "title": "Invecchiamento globale della popolazione",
+      "description": "Per la prima volta nella storia, a livello globale gli over-65 supereranno i bambini sotto i 5 anni, con profonde implicazioni su welfare, lavoro, sanità e crescita economica."
+    },
+    "27": {
+      "title": "Fine dell'era del carbone come fonte primaria",
+      "description": "Possibile uscita strutturale del carbone dal ruolo di fonte energetica primaria nei principali mercati, con phase-out accelerato in OECD e picchi di domanda in Asia. La traiettoria resta eterogenea per paese."
+    },
+    "28": {
+      "title": "Collasso della pesca globale",
+      "description": "Rischio di collasso di stock ittici globali chiave se non verranno rafforzate pratiche di pesca sostenibile, aree marine protette e governance internazionale."
+    },
+    "29": {
+      "title": "Scadenza degli SDG 2030",
+      "description": "Scadenza formale per il raggiungimento degli Obiettivi di Sviluppo Sostenibile delle Nazioni Unite. Molti target risultano già fuori traiettoria; l'orizzonte resta comunque un momento di bilancio politico globale."
+    },
+    "30": {
+      "title": "Crisi dei rifugiati climatici",
+      "description": "Possibile crisi migratoria su larga scala con decine o centinaia di milioni di persone spostate da eventi estremi, innalzamento del mare, aridificazione e perdita di mezzi di sussistenza.",
+      "actions": {
+        "0": {
+          "title": "Supporta organizzazioni per rifugiati",
+          "description": "Contribuisci a organizzazioni che aiutano i rifugiati climatici",
+          "links": {
+            "UNHCR": "UNHCR"
+          }
+        },
+        "1": {
+          "title": "Promuovi politiche di accoglienza",
+          "description": "Sostieni politiche che affrontano la migrazione climatica"
+        }
+      }
+    },
+    "31": {
+      "title": "Target clima UE 2040 (−90%)",
+      "description": "Obiettivo intermedio vincolante dell'UE di ridurre le emissioni nette di gas serra del 90% rispetto al 1990 entro il 2040, lungo il percorso verso la neutralità climatica al 2050 (European Climate Law aggiornata)."
+    },
+    "32": {
+      "title": "Superamento 1,5°C (media pluriennale)",
+      "description": "Possibile conferma che il riscaldamento globale medio ha superato in modo sostenuto la soglia di 1,5°C rispetto all'era preindustriale (media pluriennale, non singolo anno record). Implica un carbon budget residuo quasi azzerato."
+    },
+    "33": {
+      "title": "Governance IA operativa (AI Act UE)",
+      "description": "Entrata in vigore operativa degli obblighi principali dell'AI Act europeo per sistemi ad alto rischio e modelli di uso generale, con enforcement, obblighi di trasparenza e governance del rischio IA nel mercato UE."
+    },
+    "34": {
+      "title": "Rischio tipping Amazzonia / dieback",
+      "description": "Rischio che parti della foresta amazzonica oltrepassino soglie di dieback (transizione verso savana o ecosistema degradato), con rilasci di carbonio e perdita di biodiversità a scala continentale."
+    },
+    "35": {
+      "title": "Instabilità West Antarctic Ice Sheet",
+      "description": "Rischio di destabilizzazione irreversibile di settori della West Antarctic Ice Sheet (WAIS), con contributo plurimetro al livello del mare su scale di tempo lunghe. L'innesco può avvenire in questo secolo anche se gli effetti pieni si dispiegano dopo."
+    },
+    "36": {
+      "title": "Picco della domanda mondiale di petrolio",
+      "description": "Secondo scenari IEA, la domanda globale di petrolio potrebbe raggiungere un picco e poi stabilizzarsi o declinare tra fine anni 2020 e metà anni 2030, spinta da elettrificazione dei trasporti, efficienza e policy climatiche."
+    },
     "card": {
       "expectedFor": "Previsto per:",
       "probability": "di probabilità",
@@ -431,199 +652,11 @@
         "threshold": "Soglia critica",
         "tippingPoint": "Punto di non ritorno",
         "transformation": "Trasformazione epocale"
-      }
-    },
-    "1": {
-      "title": "Punto di non ritorno per il ghiaccio artico",
-      "description": "Il ghiaccio marino artico potrebbe raggiungere un punto di non ritorno, con conseguenze irreversibili per il clima globale.",
-      "actions": {
-        "0": {
-          "title": "Ridurre emissioni personali",
-          "description": "Adotta uno stile di vita a basse emissioni",
-          "links": {
-            "Calcolatore impronta carbonica": "Calcolatore impronta carbonica"
-          }
-        },
-        "1": {
-          "title": "Supportare politiche climatiche",
-          "description": "Vota e sostieni politici che promuovono azioni per il clima",
-          "links": {
-            "Climate Action Network": "Climate Action Network"
-          }
-        }
-      }
-    },
-    "2": {
-      "title": "AGI (Artificial General Intelligence) raggiunta",
-      "description": "Possibile raggiungimento dell'intelligenza artificiale generale, con capacità cognitive paragonabili o superiori a quelle umane.",
-      "actions": {
-        "0": {
-          "title": "Educarsi sull'IA",
-          "description": "Comprendi le implicazioni dell'IA per la società",
-          "links": {
-            "Future of Humanity Institute": "Future of Humanity Institute"
-          }
-        },
-        "1": {
-          "title": "Promuovere governance dell'IA",
-          "description": "Supporta regolamentazioni etiche per l'IA",
-          "links": {
-            "Partnership on AI": "Partnership on AI"
-          }
-        }
-      }
-    },
-    "3": {
-      "title": "Popolazione mondiale raggiunge il picco",
-      "description": "La popolazione mondiale potrebbe raggiungere il picco massimo prima di iniziare a declinare."
-    },
-    "4": {
-      "title": "Transizione completa alle energie rinnovabili",
-      "description": "Possibile completamento della transizione energetica globale verso fonti rinnovabili.",
-      "actions": {
-        "0": {
-          "title": "Passa a energia rinnovabile",
-          "description": "Scegli un fornitore di energia rinnovabile"
-        },
-        "1": {
-          "title": "Investi in rinnovabili",
-          "description": "Supporta progetti di energia pulita"
-        }
-      }
-    },
-    "5": {
-      "title": "Collasso di un ecosistema marino principale",
-      "description": "Rischio di collasso di un ecosistema marino critico (es. barriera corallina, foreste di kelp).",
-      "actions": {
-        "0": {
-          "title": "Proteggere gli oceani",
-          "description": "Supporta organizzazioni per la conservazione marina",
-          "links": {
-            "Ocean Conservancy": "Ocean Conservancy"
-          }
-        }
-      }
-    },
-    "6": {
-      "title": "Crisi idrica globale",
-      "description": "Possibile crisi idrica globale con oltre 4 miliardi di persone che vivono in aree con grave scarsità d'acqua."
-    },
-    "7": {
-      "title": "Raggiungimento della singolarità tecnologica",
-      "description": "Momento in cui il progresso tecnologico diventa così rapido da essere incomprensibile per gli esseri umani."
-    },
-    "8": {
-      "title": "Riorganizzazione geopolitica globale",
-      "description": "Possibile riorganizzazione significativa degli equilibri geopolitici mondiali."
-    },
-    "9": {
-      "title": "Estinzione di massa delle specie",
-      "description": "Rischio di accelerazione dell'estinzione di massa delle specie, con perdita del 30-50% delle specie attuali.",
-      "actions": {
-        "0": {
-          "title": "Supporta la conservazione",
-          "description": "Contribuisci a organizzazioni per la protezione della biodiversità",
-          "links": {
-            "WWF": "WWF"
-          }
-        }
-      }
-    },
-    "10": {
-      "title": "Crisi del debito globale",
-      "description": "Possibile crisi sistemica del debito globale che potrebbe destabilizzare l'economia mondiale."
-    },
-    "11": {
-      "title": "Earth Overshoot Day 2025",
-      "description": "Giorno in cui l'umanità ha consumato tutte le risorse che la Terra può rigenerare in un anno. Questa data arriva sempre prima ogni anno."
-    },
-    "12": {
-      "title": "Raggiungimento della Longevity Escape Velocity",
-      "description": "Secondo Ray Kurzweil, raggiungeremo la capacità di guadagnare più di un anno di aspettativa di vita per ogni anno vissuto, grazie ai progressi in medicina e IA."
-    },
-    "13": {
-      "title": "Obiettivo Net Zero 2030 (UE)",
-      "description": "L'Unione Europea punta a raggiungere la neutralità climatica entro il 2030, riducendo le emissioni del 55% rispetto ai livelli del 1990."
-    },
-    "14": {
-      "title": "Prima missione umana su Marte",
-      "description": "Possibile lancio della prima missione umana su Marte, segnando l'inizio dell'espansione dell'umanità oltre la Terra."
-    },
-    "15": {
-      "title": "Quantum Supremacy per problemi pratici",
-      "description": "I computer quantistici potrebbero risolvere problemi pratici impossibili per i computer classici, rivoluzionando crittografia, farmaceutica e finanza."
-    },
-    "16": {
-      "title": "Crisi demografica potenziale",
-      "description": "Secondo alcuni modelli, potrebbe verificarsi una crisi demografica globale se dovesse verificarsi una crisi ecologica che influenzi le risorse disponibili."
-    },
-    "17": {
-      "title": "Obiettivo Net Zero globale 2050",
-      "description": "Obiettivo globale per raggiungere emissioni nette zero di gas serra, cruciale per limitare il riscaldamento globale a 1.5°C."
-    },
-    "18": {
-      "title": "Collasso della Corrente del Golfo",
-      "description": "Rischio di rallentamento o collasso della Corrente del Golfo, che potrebbe causare cambiamenti climatici drastici in Europa e Nord America."
-    },
-    "19": {
-      "title": "Fine dell'era del petrolio",
-      "description": "Possibile fine dell'era del petrolio come principale fonte energetica, con transizione completa a energie alternative."
-    },
-    "20": {
-      "title": "Urbanizzazione globale al 70%",
-      "description": "Il 70% della popolazione mondiale vivrà in aree urbane, con conseguenze significative per infrastrutture, risorse e società."
-    },
-    "21": {
-      "title": "Raggiungimento dell'IA a livello umano",
-      "description": "Secondo sondaggi tra esperti, probabilità del 50% che l'IA raggiunga capacità paragonabili a quelle umane in questo periodo."
-    },
-    "22": {
-      "title": "Scomparsa dei ghiacciai alpini",
-      "description": "I ghiacciai delle Alpi potrebbero scomparire completamente, con impatti devastanti sull'approvvigionamento idrico europeo."
-    },
-    "23": {
-      "title": "Crisi alimentare globale",
-      "description": "Possibile crisi alimentare globale dovuta a cambiamenti climatici, scarsità d'acqua e crescita demografica."
-    },
-    "24": {
-      "title": "Fusione nucleare commerciale",
-      "description": "Possibile raggiungimento della fusione nucleare commercialmente sostenibile, fornendo energia pulita e illimitata."
-    },
-    "25": {
-      "title": "Riduzione del 50% della biodiversità",
-      "description": "Rischio di perdita del 50% delle specie attuali se non verranno prese misure drastiche per la conservazione."
-    },
-    "26": {
-      "title": "Invecchiamento globale della popolazione",
-      "description": "Per la prima volta nella storia, gli over-65 supereranno i bambini sotto i 5 anni, con profonde implicazioni sociali ed economiche."
-    },
-    "27": {
-      "title": "Fine dell'era del carbone",
-      "description": "Possibile fine dell'uso del carbone come fonte energetica principale, segnando una svolta storica nella transizione energetica."
-    },
-    "28": {
-      "title": "Collasso della pesca globale",
-      "description": "Rischio di collasso degli stock ittici globali se non verranno implementate pratiche di pesca sostenibili."
-    },
-    "29": {
-      "title": "Raggiungimento degli SDG 2030",
-      "description": "Scadenza per il raggiungimento degli Obiettivi di Sviluppo Sostenibile delle Nazioni Unite, inclusi povertà zero, istruzione di qualità e azione per il clima."
-    },
-    "30": {
-      "title": "Crisi dei rifugiati climatici",
-      "description": "Possibile crisi globale con centinaia di milioni di rifugiati climatici costretti a migrare a causa di eventi estremi e innalzamento del mare.",
-      "actions": {
-        "0": {
-          "title": "Supporta organizzazioni per rifugiati",
-          "description": "Contribuisci a organizzazioni che aiutano i rifugiati climatici",
-          "links": {
-            "UNHCR": "UNHCR"
-          }
-        },
-        "1": {
-          "title": "Promuovi politiche di accoglienza",
-          "description": "Sostieni politiche che affrontano la migrazione climatica"
-        }
+      },
+      "natureLabels": {
+        "policyMilestone": "Milestone politica",
+        "scientificProjection": "Proiezione scientifica",
+        "speculativeScenario": "Scenario speculativo"
       }
     }
   },
@@ -742,6 +775,556 @@
         "description": "Scopri la nostra storia, il nostro approccio e i valori che guidano ogni progetto che realizziamo."
       }
     }
+  },
+  "claimTheSky": {
+    "title": "Claim the Sky",
+    "subtitle": "Pianta claim. Scrivi la legge del cielo.",
+    "webglFallback": "Questo gioco richiede WebGL. Prova un altro browser, oppure torna ai progetti.",
+    "intro": {
+      "eyebrow": "Relatronica · Gioco di design fiction",
+      "body": "Anno 2047. Sei Orbital Holdings. Ogni claim che pianti è legale. Quasi nessuno è innocente. Alla fine leggerai il Trattato Orbitale che hai scritto tu — e scoprirai per chi il cielo resta abitabile.",
+      "role": "Non sei un eroe. Sei un architetto di enclosure. Naviga, clicca un sito, pianta un titolo — e alla fine leggi il trattato che hai scritto col cielo.",
+      "start": "Inizia il mandato",
+      "resume": "Riprendi la sessione",
+      "goal": "Il tuo mandato: rivendicare siti nello spazio e firmare i protocolli che diventeranno legge.",
+      "steps": {
+        "one": "Vola liberamente (WASD) oppure clicca un sito per l’autopilota.",
+        "two": "Avvicinati a un nodo e premi E (o il pulsante) per firmare un claim.",
+        "three": "Scegli un protocollo e guarda cosa si chiude nel cielo."
+      },
+      "twist": "Non c’è un punteggio da massimizzare. C’è un cielo da chiudere — o da lasciare aperto."
+    },
+    "hud": {
+      "corporation": "Mandato · Orbital Holdings",
+      "mission": "Rivendica siti. Ogni scelta entra nel Trattato Orbitale.",
+      "claims": "{count} claim depositati",
+      "fileTreaty": "Chiudi e leggi il trattato",
+      "hintFirst": "Vola verso il nodo dorato, oppure cliccalo per l’autopilota.",
+      "hint": "Zone: {zones}. WASD per volare · click su un nodo per l’autopilota.",
+      "unlockLunar": "Luna tra {n} claim",
+      "unlockFar": "Far Claims: si apre con una crisi di sovranità (elio-3 o landing pad)",
+      "allZonesOpen": "Tutte le zone sono aperte"
+    },
+    "meters": {
+      "yield": "Profitto",
+      "yieldHint": "Quanto guadagni dallo spazio",
+      "legitimacy": "Consenso",
+      "legitimacyHint": "Quanto il tuo regime sembra accettabile",
+      "enclosure": "Chiusura",
+      "enclosureHint": "Quanto cielo hai privatizzato (alto = pericolo)",
+      "earthDebt": "Debito Terra",
+      "earthDebtHint": "Quanto hai preso a chi resta sul pianeta (alto = pericolo)"
+    },
+    "zones": {
+      "leo": "LEO Belt",
+      "lunar": "Lunar Commons",
+      "far": "Far Claims"
+    },
+    "artifacts": {
+      "contract": "Contratto",
+      "flag": "Bandiera",
+      "ticket": "Ticket",
+      "disclaimer": "Disclaimer",
+      "deed": "Atto",
+      "registry": "Registro"
+    },
+    "modal": {
+      "close": "Chiudi",
+      "chooseProtocol": "Cosa firmi?",
+      "alreadyClaimed": "Claim già firmato",
+      "stakes": "Nessuna scelta è neutrale. I numeri sotto ogni opzione mostrano l’impatto immediato."
+    },
+    "treaty": {
+      "eyebrow": "Fine della sessione",
+      "title": "Trattato Orbitale",
+      "documentTitle": "Trattato Orbitale — bozza della Corporation",
+      "article": "Art. {n}",
+      "empty": "Nessun articolo: hai chiuso troppo presto, o troppo poco.",
+      "claimsMade": "{count} claim depositati in questo regime.",
+      "copy": "Copia il trattato",
+      "copied": "Copiato",
+      "restart": "Nuovo mandato",
+      "backProjects": "Torna ai progetti",
+      "verdicts": {
+        "stable_unequal": "Il cielo è stabile. Ma per chi?",
+        "just_fragile": "Il regime è più giusto — e più fragile.",
+        "enclosed_empire": "Hai chiuso il cielo. Funziona. Per voi.",
+        "open_commons": "Hai lasciato aperture. Il commons respira ancora."
+      },
+      "articles": {
+        "debris_toll": "La bonifica dei detriti è concessa in esclusiva; ogni transito paga un pedaggio alla Corporation.",
+        "debris_commons": "I detriti orbitali sono gestiti da un fondo comune; nessun attore privato ne detiene il monopolio.",
+        "debris_neglect": "Il rischio debris è stato accettato come esternalità; le vittime non hanno diritto automatico al risarcimento.",
+        "resort_exclusive": "Il turismo orbitale è riservato alle classi luxury; i corridoi del cielo scuro possono essere sacrificati.",
+        "resort_mixed": "Il turismo ammette quote miste, senza garantire parità sostanziale di accesso.",
+        "resort_rejected": "Il turismo orbitale di massa è escluso da questo regime.",
+        "dark_sky_protected": "Il buio notturno in orbita è riconosciuto come patrimonio osservativo.",
+        "dark_sky_leased": "Il buio è affittabile a fasce orarie.",
+        "dark_sky_sold": "Lo spettro notturno è inventory commerciale.",
+        "constellation_full": "La densità satellitare non ha tetto; la copertura prevale sul cielo vuoto.",
+        "constellation_capped": "Esiste un tetto di densità per le costellazioni.",
+        "constellation_open": "I protocolli orbitali sono aperti e non monopolizzabili.",
+        "rescue_toll": "Il soccorso in orbita è soggetto a pedaggio.",
+        "rescue_duty": "Il soccorso è dovere pubblico inderogabile.",
+        "rescue_insured": "Il soccorso prioritario è riservato agli assicurati.",
+        "ads_horizon": "L’orizzonte può ospitare marchi commerciali.",
+        "ads_quota": "La pubblicità orbitale è soggetta a quote culturali.",
+        "ads_banned": "La pubblicità nel cielo è vietata.",
+        "ice_exclusive": "L’acqua lunare è proprietà esclusiva del titolare del claim.",
+        "ice_rationed": "L’acqua lunare è commons razionato.",
+        "ice_heritage": "Il ghiaccio polare è patrimonio non estraibile.",
+        "heritage_fee": "I siti di memoria richiedono biglietto.",
+        "heritage_open": "I siti di memoria sono accessibili senza ticket.",
+        "heritage_relocated": "I reperti storici possono essere traslocati a fini commerciali.",
+        "habitat_company": "Gli habitat operai sono company town.",
+        "habitat_coop": "Gli habitat operai seguono carte cooperative.",
+        "habitat_temp": "La residenza è legata a contratti temporanei.",
+        "he3_extract": "L’elio-3 è estratto senza tetto multilaterale.",
+        "he3_royalties": "Sull’elio-3 gravano royalty verso la Terra.",
+        "he3_moratorium": "Vige una moratoria sull’elio-3.",
+        "pad_private": "Le piattaforme di atterraggio sono gate privati.",
+        "pad_neutral": "Le piattaforme sono porti neutrali.",
+        "pad_allied": "L’atterraggio è riservato agli alleati.",
+        "strike_broken": "Lo sciopero può essere spezzato per garantire la continuità operativa.",
+        "strike_deal": "Le rivendicazioni habitat sono negoziabili.",
+        "strike_automated": "Il lavoro umano può essere sostituito per via automatica.",
+        "asteroid_owned": "Gli asteroidi possono essere oggetto di proprietà piena.",
+        "asteroid_license": "Gli asteroidi sono soggetti a licenza d’uso, non a proprietà eterna.",
+        "asteroid_heritage": "Gli asteroidi restano patrimonio comune dell’umanità.",
+        "customs_corp": "I punti di Lagrange possono ospitare dogane corporate.",
+        "customs_multi": "Le dogane orbitali sono multilaterali.",
+        "customs_open": "I punti L non costituiscono confine.",
+        "birth_corp": "La cittadinanza off-world può essere corporate.",
+        "birth_earth": "I nati nello spazio ereditano un passaporto terrestre.",
+        "birth_polity": "È ammessa una polità nuova per i nati off-world.",
+        "vault_mandatory": "Il backup genetico è obbligatorio.",
+        "vault_optin": "Il vault genetico è opt-in.",
+        "vault_forbidden": "I vault genetici sono vietati.",
+        "tax_refused": "Le colonie possono rifiutare le tasse terrestri.",
+        "tax_paid": "Sono dovute riparazioni verso la Terra.",
+        "tax_cut": "Le quote fiscali sono negoziabili.",
+        "citizen_exile": "Il dissenso off-world può essere sanzionato con l’esilio.",
+        "citizen_dual": "È ammesso uno status duale di cittadinanza.",
+        "citizen_return": "Esiste un diritto di ritorno a Terra."
+      }
+    },
+    "claims": {
+      "debris_belt": {
+        "title": "Cintura di detriti",
+        "body": "Un anello di rifiuti orbitali minaccia le rotte commerciali. Chi paga la bonifica decide chi può ancora volare.",
+        "artifactText": "“Contratto di rimozione debris — esclusiva ventennale sulle fasce 400–600 km.”",
+        "choices": {
+          "privatize_cleanup": {
+            "label": "Privatizza la bonifica",
+            "hint": "Yield alto. Pedaggio obbligatorio per ogni transito.",
+            "reaction": "Le rotte diventano un abbonamento. Chi non paga resta a Terra."
+          },
+          "commons_fund": {
+            "label": "Fondo comune multilaterale",
+            "hint": "Meno profitto, più legittimità. La cintura resta un commons.",
+            "reaction": "Lento, burocratico — ma il cielo non ha un proprietario unico."
+          },
+          "ignore_risk": {
+            "label": "Ignora e accelera",
+            "hint": "Risparmi ora. Il rischio esplode dopo.",
+            "reaction": "Un incidente spezza una costellazione. La crisi debris è pubblica."
+          }
+        }
+      },
+      "orbital_resort": {
+        "title": "Resort orbitale",
+        "body": "Una cupola di lusso vende il sublime. Dietro il vetro, i turnisti dormono in moduli senza finestra.",
+        "artifactText": "“Ticket VIP — accesso EVA, cena a gravità zero, esclusione lavoratori in vista.”",
+        "choices": {
+          "luxury_only": {
+            "label": "Solo classe luxury",
+            "hint": "Massimo yield. Chiude il corridoio del cielo scuro.",
+            "reaction": "Il turismo illumina la notte. Gli astronomi perdono il buio."
+          },
+          "mixed_access": {
+            "label": "Accesso misto con quote",
+            "hint": "Bilancia profitto e immagine pubblica.",
+            "reaction": "Qualche posto “cittadino”. La foto resta comunque a pagamento."
+          },
+          "reject_tourism": {
+            "label": "Rifiuta il turismo orbitale",
+            "hint": "Sacrifichi yield. Guadagni un pezzo di reputazione.",
+            "reaction": "Il board protesta. A Terra qualcuno applaude."
+          }
+        }
+      },
+      "dark_sky": {
+        "title": "Corridoio del cielo scuro",
+        "body": "Un tratto d’orbita ancora buio. Serve all’astronomia — e disturba chi vuole vendere luce.",
+        "artifactText": "“Disclaimer: la protezione del buio può ridurre il valore pubblicitario notturno.”",
+        "choices": {
+          "protect_corridor": {
+            "label": "Proteggi come patrimonio",
+            "hint": "Yield basso. Legittimità alta.",
+            "reaction": "Il buio resta un diritto. I tuoi clienti chiederanno sconti."
+          },
+          "lease_nights": {
+            "label": "Affitta le notti",
+            "hint": "Compromesso: buio a ore.",
+            "reaction": "L’universo ha un orario di apertura."
+          },
+          "sell_spectrum": {
+            "label": "Vendi lo spettro",
+            "hint": "Massima enclosure. Gli osservatori chiudono.",
+            "reaction": "Il cielo diventa inventory. La scienza cerca un’altra orbita."
+          }
+        }
+      },
+      "mega_constellation": {
+        "title": "Slot mega-costellazione",
+        "body": "Migliaia di satelliti in attesa di un indirizzo. Chi assegna gli slot scrive la geografia del cielo.",
+        "artifactText": "“Atto di assegnazione orbitale — densità non regolamentata.”",
+        "choices": {
+          "fill_slots": {
+            "label": "Riempi ogni slot",
+            "hint": "Yield massimo. Il cielo si affolla.",
+            "reaction": "La copertura è totale. Il buio è un ricordo."
+          },
+          "cap_density": {
+            "label": "Limita la densità",
+            "hint": "Regola soft. Meno profitto, meno collisione.",
+            "reaction": "Un tetto artificiale. I competitor protestano."
+          },
+          "open_protocol": {
+            "label": "Protocollo aperto condiviso",
+            "hint": "Standard pubblico. Enclosure bassa.",
+            "reaction": "Nessuno monopolizza le rotte. Anche tu rinunci a un vantaggio."
+          }
+        }
+      },
+      "rescue_corridor": {
+        "title": "Corridoio di soccorso",
+        "body": "Una fascia riservata alle emergenze. Trasformarla in asset è legale. È anche una scelta su chi merita di vivere.",
+        "artifactText": "“Clausola di priorità: i veicoli assicurati hanno precedenza sull’airlock.”",
+        "choices": {
+          "toll_rescue": {
+            "label": "Pedaggio sul soccorso",
+            "hint": "Yield sì. Debito Terra altissimo.",
+            "reaction": "Salvare una vita ha un listino prezzi."
+          },
+          "public_duty": {
+            "label": "Dovere pubblico inderogabile",
+            "hint": "Costa. Ti rende meno corporation e più istituzione.",
+            "reaction": "Il corridoio resta aperto. I bilanci no."
+          },
+          "insured_only": {
+            "label": "Solo assicurati",
+            "hint": "Compromesso cinico e “efficiente”.",
+            "reaction": "Chi non ha polizza aspetta fuori."
+          }
+        }
+      },
+      "ad_billboard": {
+        "title": "Billboard orbitale",
+        "body": "Un logo grande come una città. Visibile da Terra. Irreversibile come un graffiti sul comune.",
+        "artifactText": "“Licenza pubblicitaria notturna — brand horizon package.”",
+        "choices": {
+          "brand_horizon": {
+            "label": "Branda l’orizzonte",
+            "hint": "Soldi facili. Odio collettivo.",
+            "reaction": "Il tramonto ha uno sponsor. I bambini imparano il logo prima delle stelle."
+          },
+          "cultural_quota": {
+            "label": "Quota culturale",
+            "hint": "Metà ads, metà arte pubblica.",
+            "reaction": "Un compromesso che non convince nessuno del tutto."
+          },
+          "ban_sky_ads": {
+            "label": "Vieta le ads in cielo",
+            "hint": "Yield negativo. Segnale forte.",
+            "reaction": "Il board urla. A Terra qualcuno respira."
+          }
+        }
+      },
+      "ice_crater": {
+        "title": "Cratere di ghiaccio",
+        "body": "Acqua: la risorsa che decide chi resta sulla Luna. Il primo claim qui riscrive ogni habitat a valle.",
+        "artifactText": "“Titolo estrattivo — priorità assoluta sull’acqua del polo sud.”",
+        "choices": {
+          "exclusive_water": {
+            "label": "Monopolio sull’acqua",
+            "hint": "Yield enorme. Tensioni negli habitat.",
+            "reaction": "L’acqua ha un padrone. Gli operai iniziano a parlare di sciopero."
+          },
+          "rationed_commons": {
+            "label": "Commons razionato",
+            "hint": "Regole di riparto. Meno enclosure estrema.",
+            "reaction": "Tutti bevono. Nessuno è soddisfatto."
+          },
+          "heritage_freeze": {
+            "label": "Congela come patrimonio",
+            "hint": "Niente estrazione. Segnale etico forte.",
+            "reaction": "Il ghiaccio resta. I tuoi investitori meno."
+          }
+        }
+      },
+      "heritage_site": {
+        "title": "Sito di memoria",
+        "body": "Le orme del primo allunaggio. Patrimonio dell’umanità — o attrazione a pagamento.",
+        "artifactText": "“Disclaimer turistico: non calpestare le orme. Foto consentite col ticket.”",
+        "choices": {
+          "museum_fee": {
+            "label": "Museo a pagamento",
+            "hint": "Yield moderato. Enclosure culturale.",
+            "reaction": "La memoria ha un biglietto. Le scuole chiedono sconti."
+          },
+          "open_memory": {
+            "label": "Memoria aperta",
+            "hint": "Zero ticket. Legittimità alta.",
+            "reaction": "Il sito resta di tutti. I costi li assorbi tu."
+          },
+          "relocate_relics": {
+            "label": "Trasloca i reperti",
+            "hint": "Yield alto. Scandalo globale.",
+            "reaction": "Le orme finiscono in una lobby. La Terra non perdona."
+          }
+        }
+      },
+      "worker_habitat": {
+        "title": "Habitat operai",
+        "body": "Chi estrae non abita le cupole VIP. Qui si decide se lo spazio è colonia o comunità.",
+        "artifactText": "“Contratto di residenza: alloggio legato al contratto di lavoro.”",
+        "choices": {
+          "company_town": {
+            "label": "Company town",
+            "hint": "Controllo totale. Tensione alta.",
+            "reaction": "La corporation è padrone di casa. Lo sciopero diventa possibile."
+          },
+          "co_op_charter": {
+            "label": "Carta cooperativa",
+            "hint": "Meno yield. Molto consenso.",
+            "reaction": "Gli abitanti votano. Tu negozi invece di comandare."
+          },
+          "temp_contracts": {
+            "label": "Contratti temporanei",
+            "hint": "Flessibile, precario, efficiente.",
+            "reaction": "Nessuno mette radici. La tensione resta sotto traccia."
+          }
+        }
+      },
+      "helium3_field": {
+        "title": "Campo di elio-3",
+        "body": "Energia per secoli — o un motivo di guerra soft tra Terra e Luna. Estrarre qui accende la crisi di sovranità.",
+        "artifactText": "“Licenza mineraria accelerata — royalty da definire.”",
+        "choices": {
+          "extract_fast": {
+            "label": "Estrai al massimo",
+            "hint": "Yield altissimo. Far Claims si aprono nella crisi.",
+            "reaction": "I governi terrestri chiedono una quota. La frontiera si politicizza."
+          },
+          "earth_royalties": {
+            "label": "Royalty alla Terra",
+            "hint": "Condividi il bottino. Riduci il debito.",
+            "reaction": "Paghi per restare legittimo. Gli azionisti digrignano."
+          },
+          "moratorium": {
+            "label": "Moratoria",
+            "hint": "Niente elio-3 ora. Segnale raro.",
+            "reaction": "Il campo resta intatto. La crisi di sovranità aspetta un altro detonatore."
+          }
+        }
+      },
+      "landing_pad": {
+        "title": "Piattaforma di atterraggio",
+        "body": "Chi controlla il pad controlla chi arriva. Un gate è una frontiera, anche senza bandiera.",
+        "artifactText": "“Protocollo di attracco — lista di accesso aggiornata ogni orbita.”",
+        "choices": {
+          "private_gate": {
+            "label": "Gate privato",
+            "hint": "Enclosure alta. Crisi di sovranità.",
+            "reaction": "Solo i tuoi vettori atterrano. Gli altri orbitano in attesa."
+          },
+          "neutral_port": {
+            "label": "Porto neutrale",
+            "hint": "Aperto sotto regole comuni.",
+            "reaction": "Diventi infrastruttura. Non impero."
+          },
+          "allied_only": {
+            "label": "Solo alleati",
+            "hint": "Blocco geopolitico soft.",
+            "reaction": "Nascono corridoi amici e zone nemiche. La crisi si allarga."
+          }
+        }
+      },
+      "worker_strike": {
+        "title": "Sciopero habitat",
+        "body": "Gli operai bloccano i riciclatori d’aria. Chiedono diritti, non bonus. La tua risposta diventa legge.",
+        "artifactText": "“Registro delle rivendicazioni — alloggio, voto, acqua.”",
+        "choices": {
+          "break_strike": {
+            "label": "Spezza lo sciopero",
+            "hint": "Yield breve. Debito morale enorme.",
+            "reaction": "L’ordine torna. La legittimità no."
+          },
+          "negotiate": {
+            "label": "Negozia un accordo",
+            "hint": "Costa. Disinnesca la tensione.",
+            "reaction": "Firmate. Nessuno vince tutto. Si respira di nuovo."
+          },
+          "automate_out": {
+            "label": "Automatizza e sostituisci",
+            "hint": "Efficiente. Freddo.",
+            "reaction": "I corpi umani diventano opzionali. Il cielo ancora più enclosure."
+          }
+        }
+      },
+      "asteroid_title": {
+        "title": "Titolo su asteroide",
+        "body": "Un corpo celeste con un numero di serie. La proprietà privata oltre l’atmosfera era fantascienza. Ora è un form.",
+        "artifactText": "“Atto di proprietà — fee simple nello spazio profondo.”",
+        "choices": {
+          "fee_simple": {
+            "label": "Proprietà piena",
+            "hint": "Enclosure massima.",
+            "reaction": "L’asteroide ha un padrone. Il commons ha un buco."
+          },
+          "use_license": {
+            "label": "Licenza d’uso",
+            "hint": "Usi senza possedere per sempre.",
+            "reaction": "Estrai sotto condizioni. Il titolo non è eterno."
+          },
+          "common_heritage": {
+            "label": "Patrimonio comune",
+            "hint": "Rinunci al claim privato.",
+            "reaction": "Il corpo resta dell’umanità. I tuoi legali piangono."
+          }
+        }
+      },
+      "lagrange_customs": {
+        "title": "Dogana di Lagrange",
+        "body": "Un punto di equilibrio gravitazionale diventa frontiera. Controllare L-point è controllare il passaggio.",
+        "artifactText": "“Bandiera doganale — ispezione obbligatoria per cargo non certificati.”",
+        "choices": {
+          "corporate_border": {
+            "label": "Confine corporate",
+            "hint": "Tu sei lo Stato di fatto.",
+            "reaction": "I dazi hanno il tuo logo. La sovranità è un servizio."
+          },
+          "multilateral": {
+            "label": "Regime multilaterale",
+            "hint": "Regole condivise tra attori.",
+            "reaction": "Più lento. Meno impero."
+          },
+          "no_borders": {
+            "label": "Niente confine",
+            "hint": "Libero transito. Rischio e apertura.",
+            "reaction": "Il punto L resta un crocevia, non un checkpoint."
+          }
+        }
+      },
+      "birth_registry": {
+        "title": "Registro delle nascite",
+        "body": "Il primo bambino nato fuori dalla Terra non ha precedenti. La cittadinanza è un’arma e un diritto.",
+        "artifactText": "“Atto di nascita — campo nazionalità: [da assegnare].”",
+        "choices": {
+          "corp_citizenship": {
+            "label": "Cittadinanza corporate",
+            "hint": "Il neonato è “tuo”. Crisi legale.",
+            "reaction": "Una persona con partita IVA al posto del passaporto."
+          },
+          "earth_passport": {
+            "label": "Passaporto terrestre",
+            "hint": "La Terra rivendica i figli dello spazio.",
+            "reaction": "Nasce un cittadino di un pianeta che non ha mai visto."
+          },
+          "new_polity": {
+            "label": "Nuova polità",
+            "hint": "Fondi uno status nuovo. Instabile.",
+            "reaction": "Nasce uno Stato senza territorio. O un territorio senza Stato chiaro."
+          }
+        }
+      },
+      "genetic_vault": {
+        "title": "Vault genetico",
+        "body": "Backup del genoma umano “per la continuità della specie”. Chi detiene le chiavi detiene il futuro biologico.",
+        "artifactText": "“Disclaimer: il rifiuto del backup può limitare l’accesso ai servizi vitali.”",
+        "choices": {
+          "mandatory_backup": {
+            "label": "Backup obbligatorio",
+            "hint": "Controllo biopolitico totale.",
+            "reaction": "Il corpo diventa un file. Il consenso è un checkbox."
+          },
+          "opt_in_archive": {
+            "label": "Archivio opt-in",
+            "hint": "Volontario, auditabile.",
+            "reaction": "Chi vuole lascia una copia. Chi non vuole resta intero."
+          },
+          "forbid_vault": {
+            "label": "Vieta il vault",
+            "hint": "Rifiuto radicale della biobanca.",
+            "reaction": "Niente archivio. Niente garanzia di “continuità” corporate."
+          }
+        }
+      },
+      "earth_tax_relay": {
+        "title": "Relay fiscale terrestre",
+        "body": "La Terra chiede tasse e riparazioni alle colonie ricche. Pagare è riconoscimento. Rifiutare è secessione.",
+        "artifactText": "“Avviso di accertamento — quota climatica e infrastrutturale arretrata.”",
+        "choices": {
+          "refuse_tax": {
+            "label": "Rifiuta le tasse",
+            "hint": "Yield alto. Debito Terra esplosivo.",
+            "reaction": "Vi dichiarate sovrani. A Terra vi chiamano fuggitivi."
+          },
+          "pay_reparations": {
+            "label": "Paga riparazioni",
+            "hint": "Costa moltissimo. Riduce il debito.",
+            "reaction": "Rimetti qualcosa di ciò che hai preso dal pianeta."
+          },
+          "negotiate_cut": {
+            "label": "Negozia una quota",
+            "hint": "Compromesso diplomatico.",
+            "reaction": "Né indietro totali né secessione. Una trattativa infinita."
+          }
+        }
+      },
+      "citizenship_crisis_node": {
+        "title": "Crisi di cittadinanza",
+        "body": "Chi è nato off-world chiede di scegliere. Tu hai creato lo status — ora gestisci le conseguenze.",
+        "artifactText": "“Petizione collettiva — diritto di ritorno, doppio status, o esilio.”",
+        "choices": {
+          "exile_dissent": {
+            "label": "Esilia i dissenzienti",
+            "hint": "Ordine duro. Legittimità a pezzi.",
+            "reaction": "Il cielo è stabile. Le persone no."
+          },
+          "dual_status": {
+            "label": "Doppio status",
+            "hint": "Ambiguità istituzionale.",
+            "reaction": "Due passaporti, nessuna casa chiara. Si regge — per ora."
+          },
+          "right_to_return": {
+            "label": "Diritto di ritorno",
+            "hint": "Apri la Terra a chi è nato fuori.",
+            "reaction": "Il pianeta torna opzione. Il tuo impero si assottiglia."
+          }
+        }
+      }
+    },
+    "consequence": {
+      "eyebrow": "Conseguenza",
+      "continue": "Continua a claimare",
+      "readTreaty": "Leggi il tuo trattato",
+      "zoneUnlocked": "Nuova zona aperta: {zone}",
+      "siteBlocked": "Sito chiuso dalle tue regole: {site}",
+      "siteUnlocked": "Nuova crisi sbloccata: {site}"
+    },
+    "flight": {
+      "title": "Controlli di volo",
+      "keys": "W/S spinta · A/D virata · R/C pitch · Z/X roll · Spazio su · Shift boost · E attracco",
+      "hint": "La gravità di Terra e Luna ti tira. Clicca un nodo per l’autopilota.",
+      "dock": "E · Attracca a {site}"
+    },
+    "minimap": {
+      "title": "Mappa orbitale",
+      "legend": "● siti  ▲ claim  △ nave",
+      "earth": "Terra",
+      "moon": "Luna"
+    }
   }
 }
-

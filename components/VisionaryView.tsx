@@ -2,8 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import type { CSSProperties } from 'react';
-import { format } from 'date-fns';
-import { it, enUS } from 'date-fns/locale';
+import { formatDeadlineHorizonShort, getHorizonStart, isDeadlinePast } from '@/lib/deadlineHorizon';
 import { X, TrendingUp, TrendingDown, BarChart, Tags, Percent } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 import { Theme, Probability } from '@/types/deadline';
@@ -37,8 +36,6 @@ export function VisionaryView({
   const [boardMode, setBoardMode] = useState<WhiteboardMode>('strategia');
   const [openFilterMenu, setOpenFilterMenu] = useState<'themes' | 'probabilities' | null>(null);
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
-  
-  const dateLocale = locale === 'en' ? enUS : it;
 
   // Aggiorna i filtri quando viene selezionato un anno
   const effectiveFilters = useMemo(() => {
@@ -62,7 +59,7 @@ export function VisionaryView({
 
   const adjustedDeadlines = useMemo<EnhancedDeadline[]>(() => {
     return applyScenarioToDeadlines(filteredDeadlines, scenarioType)
-      .sort((a, b) => a.date.getTime() - b.date.getTime());
+      .sort((a, b) => getHorizonStart(a).getTime() - getHorizonStart(b).getTime());
   }, [filteredDeadlines, scenarioType]);
 
   const stats = useMemo(() => {
@@ -71,7 +68,7 @@ export function VisionaryView({
       adjustedDeadlines.reduce((sum, deadline) => sum + deadline.adjustedProbability, 0) /
         (total || 1);
     const critical = adjustedDeadlines.filter(deadline => deadline.adjustedProbability >= 80).length;
-    const upcoming = adjustedDeadlines.filter(deadline => deadline.date > new Date()).length;
+    const upcoming = adjustedDeadlines.filter(deadline => !isDeadlinePast(deadline)).length;
 
     return {
       total,
@@ -83,7 +80,9 @@ export function VisionaryView({
 
   const orderedDeadlines = useMemo(() => {
     if (boardMode === 'timeline') {
-      return [...adjustedDeadlines].sort((a, b) => a.date.getTime() - b.date.getTime());
+      return [...adjustedDeadlines].sort(
+        (a, b) => getHorizonStart(a).getTime() - getHorizonStart(b).getTime()
+      );
     }
     if (boardMode === 'cluster') {
       return [...adjustedDeadlines].sort((a, b) =>
@@ -202,7 +201,7 @@ const orderedThemes = useMemo(() => {
           id: deadline.id,
           title: displayTitle,
           description: displayDescription,
-          meta: format(deadline.date, 'MMM yyyy', { locale: dateLocale }),
+          meta: formatDeadlineHorizonShort(deadline, locale),
           tags: deadline.themes.slice(0, 2),
           probability: deadline.adjustedProbability,
           color: getThemeColorHex(primaryTheme),

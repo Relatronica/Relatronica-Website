@@ -11,6 +11,12 @@ import { aiModule03 } from './ai-module-03';
 import { aiModule04 } from './ai-module-04';
 import { aiModule05 } from './ai-module-05';
 import { aiModule06 } from './ai-module-06';
+import { dfModule01 } from './df-module-01';
+import { dfModule02 } from './df-module-02';
+import { dfModule03 } from './df-module-03';
+import { dfModule04 } from './df-module-04';
+import { dfModule05 } from './df-module-05';
+import { dfModule06 } from './df-module-06';
 
 // ── Active Courses ──────────────────────────────────────────
 
@@ -80,7 +86,7 @@ export const designFictionLabCourse: Course = {
   slug: 'design-fiction-lab',
   color: 'orange',
   iconName: 'Wand2',
-  status: 'coming-soon',
+  status: 'active',
   content: {
     it: {
       title: 'Design Fiction Lab',
@@ -93,7 +99,7 @@ export const designFictionLabCourse: Course = {
       longDescription: 'A practical and creative course: learn to build diegetic prototypes, future catalogues and speculative narratives. From concept to prototype, with guided exercises and case studies.',
     },
   },
-  modules: [],
+  modules: [dfModule01, dfModule02, dfModule03, dfModule04, dfModule05, dfModule06],
 };
 
 export const dataLiteracyCourse: Course = {

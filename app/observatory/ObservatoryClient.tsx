@@ -92,6 +92,11 @@ function formatDeadlineYear(dateStr: string): string {
   return new Date(dateStr).getFullYear().toString();
 }
 
+function formatHorizon(horizonLabel: string | undefined, dateStr: string): string {
+  if (horizonLabel && horizonLabel.trim()) return horizonLabel;
+  return formatDeadlineYear(dateStr);
+}
+
 function PulseIcon({ className }: { className?: string }) {
   return (
     <div className={cn('relative', className)}>
@@ -140,7 +145,7 @@ function SignalCard({
           {signal.articleCount}
         </span>
         <span className="text-[11px] text-slate-400 font-medium">
-          {formatDeadlineYear(signal.date)}
+          {formatHorizon(signal.horizonLabel, signal.date)}
         </span>
       </div>
 
@@ -295,7 +300,7 @@ function ArticleCard({ article, locale, onDeadlineClick, translateDeadline }: {
                   ld.probabilityValue >= 70 ? 'bg-orange-400' : ld.probabilityValue >= 50 ? 'bg-amber-400' : 'bg-slate-400'
                 )} />
                 <span className="truncate max-w-[140px]">{translateDeadline(ld.id, ld.title)}</span>
-                <span className="text-slate-400 flex-shrink-0">{formatDeadlineYear(ld.date)}</span>
+                <span className="text-slate-400 flex-shrink-0">{formatHorizon(ld.horizonLabel, ld.date)}</span>
               </button>
             ))}
           </div>
@@ -500,7 +505,7 @@ export default function ObservatoryClient() {
                       {locale === 'it' ? 'Filtrando per scenario:' : 'Filtering by scenario:'} {deadlineTitle(activeSignal.id, activeSignal.title)}
                     </p>
                     <p className="text-xs text-blue-600 dark:text-blue-400">
-                      {filteredArticles.length} {locale === 'it' ? 'articoli collegati' : 'linked articles'} · {activeSignal.probabilityValue}% {locale === 'it' ? 'probabilità' : 'probability'} · {formatDeadlineYear(activeSignal.date)}
+                      {filteredArticles.length} {locale === 'it' ? 'articoli collegati' : 'linked articles'} · {activeSignal.probabilityValue}% {locale === 'it' ? 'probabilità' : 'probability'} · {formatHorizon(activeSignal.horizonLabel, activeSignal.date)}
                     </p>
                   </div>
                 </div>

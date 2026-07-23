@@ -10,6 +10,7 @@ import {
   LinkedDeadline,
   DeadlineSignal,
 } from '@/types/observatory';
+import { formatDeadlineHorizonShort } from '@/lib/deadlineHorizon';
 
 const parser = new Parser({
   timeout: 10000,
@@ -114,6 +115,7 @@ function matchArticleToDeadlines(article: ObservatoryArticle): LinkedDeadline[] 
         id: deadline.id,
         title: deadline.title,
         date: deadline.date.toISOString(),
+        horizonLabel: formatDeadlineHorizonShort(deadline, 'en'),
         probability: deadline.probability,
         probabilityValue: deadline.probabilityValue,
         relevanceScore: score,
@@ -148,6 +150,7 @@ function computeSignals(articles: PulseArticle[]): DeadlineSignal[] {
         id: deadline.id,
         title: deadline.title,
         date: deadline.date.toISOString(),
+        horizonLabel: formatDeadlineHorizonShort(deadline, 'en'),
         probability: deadline.probability,
         probabilityValue: deadline.probabilityValue,
         category: deadline.category,

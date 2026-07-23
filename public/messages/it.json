@@ -214,6 +214,12 @@
       "description": "Un'app che restituisce la sovranità sui dati del proprio corpo. In un panorama dove le app di tracciamento mestruale vendono informazioni intime a terze parti, Eclipse mette la privacy al centro: crittografia end-to-end, zero knowledge architecture e dati che rimangono esclusivamente sul tuo dispositivo. Un atto di resistenza digitale per l'autonomia corporea e la salute riproduttiva, perché i dati sul tuo ciclo non sono una merce da vendere.",
       "status": "In test"
     },
+    "mauss": {
+      "title": "Mauss",
+      "subtitle": "Calcolo volontario per la ricerca",
+      "description": "Una rete di volunteer computing ispirata al dono: chi partecipa offre i cicli inutilizzati del proprio dispositivo a progetti di ricerca aperti. Niente data center centralizzati, niente barriere di accesso — solo una colonia di nodi che insieme mettono potenza computazionale al servizio della scienza pubblica.",
+      "status": "In sviluppo"
+    },
     "exploreProject": "Esplora progetto",
     "filterByTag": "Filtra per tema",
     "filterByStatus": "Filtra per stato",
@@ -361,6 +367,211 @@
     }
   },
   "deadlines": {
+    "1": {
+      "title": "Prima estate artica quasi senza ghiaccio",
+      "description": "Il ghiaccio marino artico in settembre potrebbe scendere sotto 1 milione di km² (praticamente ice-free). Non è un tipping point irreversibile classico: può ripetersi con frequenza crescente a seconda delle emissioni.",
+      "actions": {
+        "0": {
+          "title": "Ridurre emissioni personali",
+          "description": "Adotta uno stile di vita a basse emissioni",
+          "links": {
+            "Calcolatore impronta carbonica": "Calcolatore impronta carbonica"
+          }
+        },
+        "1": {
+          "title": "Supportare politiche climatiche",
+          "description": "Vota e sostieni politici che promuovono azioni per il clima",
+          "links": {
+            "Climate Action Network": "Climate Action Network"
+          }
+        }
+      }
+    },
+    "2": {
+      "title": "AGI / IA a livello umano",
+      "description": "Probabilità intorno al 50% che sistemi di IA raggiungano capacità paragonabili a quelle umane su un ampio spettro di compiti cognitivi. Le stime degli esperti e dei mercati predittivi si sono spostate verso il 2030–2035 rispetto alle timeline più lunghe degli anni precedenti.",
+      "actions": {
+        "0": {
+          "title": "Educarsi sull'IA",
+          "description": "Comprendi le implicazioni dell'IA per la società",
+          "links": {
+            "Future of Humanity Institute": "Future of Humanity Institute"
+          }
+        },
+        "1": {
+          "title": "Promuovere governance dell'IA",
+          "description": "Supporta regolamentazioni etiche per l'IA",
+          "links": {
+            "Partnership on AI": "Partnership on AI"
+          }
+        }
+      }
+    },
+    "3": {
+      "title": "Popolazione mondiale raggiunge il picco",
+      "description": "Secondo le World Population Prospects 2024 delle Nazioni Unite, la popolazione mondiale dovrebbe raggiungere un picco di circa 10,3 miliardi intorno alla metà degli anni 2080, prima di iniziare a declinare gradualmente."
+    },
+    "4": {
+      "title": "Transizione avanzata alle energie rinnovabili",
+      "description": "Possibile completamento di una transizione energetica globale in cui le rinnovabili dominano il mix elettrico e i fossili entrano in declino strutturale della domanda. Gli outlook IEA indicano progressi rapidi ma ancora insufficienti per Net Zero 2050 senza accelerazioni politiche.",
+      "actions": {
+        "0": {
+          "title": "Passa a energia rinnovabile",
+          "description": "Scegli un fornitore di energia rinnovabile"
+        },
+        "1": {
+          "title": "Investi in rinnovabili",
+          "description": "Supporta progetti di energia pulita"
+        }
+      }
+    },
+    "5": {
+      "title": "Collasso di un ecosistema marino principale",
+      "description": "Rischio di collasso funzionale di un ecosistema marino critico (barriera corallina, foreste di kelp o sistemi costieri chiave), con effetti a cascata su pesca, turismo e biodiversità.",
+      "actions": {
+        "0": {
+          "title": "Proteggere gli oceani",
+          "description": "Supporta organizzazioni per la conservazione marina",
+          "links": {
+            "Ocean Conservancy": "Ocean Conservancy"
+          }
+        }
+      }
+    },
+    "6": {
+      "title": "Crisi idrica globale",
+      "description": "Possibile crisi idrica globale con miliardi di persone che vivono in aree con scarsità d'acqua grave o cronica, aggravata da siccità, agricoltura intensiva e stress climatico."
+    },
+    "7": {
+      "title": "Raggiungimento della singolarità tecnologica",
+      "description": "Scenario speculativo in cui il progresso tecnologico (guidato da IA ricorsivamente migliorata) diventa così rapido da risultare difficilmente comprensibile o governabile per le istituzioni umane."
+    },
+    "8": {
+      "title": "Riorganizzazione geopolitica globale",
+      "description": "Possibile riorganizzazione significativa degli equilibri geopolitici mondiali, con nuovi blocchi di potere, rivalità tecnologiche e ridefinizione di alleanze e istituzioni internazionali."
+    },
+    "9": {
+      "title": "Perdita grave di biodiversità globale",
+      "description": "Rischio di accelerazione della sesta estinzione di massa, con perdita sostanziale (fino a circa il 30–50% in scenari di inazione) di specie e di funzionalità degli ecosistemi se non verranno rafforzate le misure di conservazione.",
+      "actions": {
+        "0": {
+          "title": "Supporta la conservazione",
+          "description": "Contribuisci a organizzazioni per la protezione della biodiversità",
+          "links": {
+            "WWF": "WWF"
+          }
+        }
+      }
+    },
+    "10": {
+      "title": "Crisi del debito globale",
+      "description": "Possibile crisi sistemica del debito sovrano e privato che potrebbe destabilizzare l'economia mondiale, soprattutto in contesti di tassi elevati, shock climatici e frammentazione geopolitica."
+    },
+    "11": {
+      "title": "Earth Overshoot Day 2026",
+      "description": "Giorno in cui l'umanità ha consumato tutte le risorse che la Terra può rigenerare in un anno. Nel 2026 cade il 30 luglio. È un indicatore annuale: la data si sposta ogni anno in base a impronta ecologica e biocapacità."
+    },
+    "12": {
+      "title": "Raggiungimento della Longevity Escape Velocity",
+      "description": "Secondo scenari di longevità radicale (es. Ray Kurzweil), raggiungeremo la capacità di guadagnare più di un anno di aspettativa di vita per ogni anno vissuto, grazie a medicina, biotech e IA. Resta altamente speculativo."
+    },
+    "13": {
+      "title": "Fit for 55: −55% emissioni UE",
+      "description": "Obiettivo vincolante dell'Unione Europea di ridurre le emissioni nette di gas serra di almeno il 55% rispetto al 1990 entro il 2030 (non la neutralità climatica, prevista al 2050). Implementato dal pacchetto Fit for 55."
+    },
+    "14": {
+      "title": "Prima missione umana su Marte",
+      "description": "Possibile lancio o arrivo della prima missione umana su Marte, segnando l'inizio dell'espansione umana oltre la Terra. Timeline dipendenti da NASA, ESA, SpaceX e vincoli tecnici/finanziari."
+    },
+    "15": {
+      "title": "Vantaggio quantistico per problemi pratici",
+      "description": "I computer quantistici potrebbero dimostrare vantaggi utili su problemi pratici (crittografia, materiali, ottimizzazione, farmaceutica) oltre i benchmark di laboratorio."
+    },
+    "17": {
+      "title": "Obiettivo Net Zero globale 2050",
+      "description": "Obiettivo politico globale per raggiungere emissioni nette zero di gas serra entro metà secolo, necessario (ma sempre più difficile) per limitare il riscaldamento vicino a 1,5°C. Traiettorie IEA/IPCC richiedono accelerazioni marcate."
+    },
+    "18": {
+      "title": "Collasso o tipping dell'AMOC",
+      "description": "Rischio di rallentamento critico o collasso della Circolazione Meridionale Atlantica (AMOC), con potenziali cambiamenti climatici drastici in Europa e Nord Atlantico. Stime e modelli divergono: alcuni studi osservazionali suggeriscono metà secolo; altri giudicano un collasso completo entro il XXI secolo improbabile."
+    },
+    "19": {
+      "title": "Declino strutturale dell'era del petrolio",
+      "description": "Possibile fine del petrolio come pilastro dominante del sistema energetico globale, con picco della domanda seguito da declino strutturale. Distinto dal picco di produzione «peak oil» classico."
+    },
+    "20": {
+      "title": "Urbanizzazione globale al 70%",
+      "description": "Circa il 70% della popolazione mondiale vivrà in aree urbane, con conseguenze significative per infrastrutture, risorse, salute e disuguaglianze."
+    },
+    "22": {
+      "title": "Scomparsa dei ghiacciai alpini",
+      "description": "I ghiacciai delle Alpi potrebbero ridursi drasticamente o scomparire quasi completamente a quote medie, con impatti sull'approvvigionamento idrico, turismo e rischio idrogeologico in Europa."
+    },
+    "23": {
+      "title": "Crisi alimentare globale",
+      "description": "Possibile crisi alimentare globale o regionale severa dovuta a cambiamenti climatici, scarsità d'acqua, shock geopolitici e pressione demografica."
+    },
+    "24": {
+      "title": "Fusione nucleare commerciale",
+      "description": "Possibile raggiungimento della fusione nucleare commercialmente sostenibile, con impianti in grado di fornire energia netta in modo economico. ITER e startup private puntano a dimostrazioni, ma la scala commerciale resta incerta."
+    },
+    "26": {
+      "title": "Invecchiamento globale della popolazione",
+      "description": "Per la prima volta nella storia, a livello globale gli over-65 supereranno i bambini sotto i 5 anni, con profonde implicazioni su welfare, lavoro, sanità e crescita economica."
+    },
+    "27": {
+      "title": "Fine dell'era del carbone come fonte primaria",
+      "description": "Possibile uscita strutturale del carbone dal ruolo di fonte energetica primaria nei principali mercati, con phase-out accelerato in OECD e picchi di domanda in Asia. La traiettoria resta eterogenea per paese."
+    },
+    "28": {
+      "title": "Collasso della pesca globale",
+      "description": "Rischio di collasso di stock ittici globali chiave se non verranno rafforzate pratiche di pesca sostenibile, aree marine protette e governance internazionale."
+    },
+    "29": {
+      "title": "Scadenza degli SDG 2030",
+      "description": "Scadenza formale per il raggiungimento degli Obiettivi di Sviluppo Sostenibile delle Nazioni Unite. Molti target risultano già fuori traiettoria; l'orizzonte resta comunque un momento di bilancio politico globale."
+    },
+    "30": {
+      "title": "Crisi dei rifugiati climatici",
+      "description": "Possibile crisi migratoria su larga scala con decine o centinaia di milioni di persone spostate da eventi estremi, innalzamento del mare, aridificazione e perdita di mezzi di sussistenza.",
+      "actions": {
+        "0": {
+          "title": "Supporta organizzazioni per rifugiati",
+          "description": "Contribuisci a organizzazioni che aiutano i rifugiati climatici",
+          "links": {
+            "UNHCR": "UNHCR"
+          }
+        },
+        "1": {
+          "title": "Promuovi politiche di accoglienza",
+          "description": "Sostieni politiche che affrontano la migrazione climatica"
+        }
+      }
+    },
+    "31": {
+      "title": "Target clima UE 2040 (−90%)",
+      "description": "Obiettivo intermedio vincolante dell'UE di ridurre le emissioni nette di gas serra del 90% rispetto al 1990 entro il 2040, lungo il percorso verso la neutralità climatica al 2050 (European Climate Law aggiornata)."
+    },
+    "32": {
+      "title": "Superamento 1,5°C (media pluriennale)",
+      "description": "Possibile conferma che il riscaldamento globale medio ha superato in modo sostenuto la soglia di 1,5°C rispetto all'era preindustriale (media pluriennale, non singolo anno record). Implica un carbon budget residuo quasi azzerato."
+    },
+    "33": {
+      "title": "Governance IA operativa (AI Act UE)",
+      "description": "Entrata in vigore operativa degli obblighi principali dell'AI Act europeo per sistemi ad alto rischio e modelli di uso generale, con enforcement, obblighi di trasparenza e governance del rischio IA nel mercato UE."
+    },
+    "34": {
+      "title": "Rischio tipping Amazzonia / dieback",
+      "description": "Rischio che parti della foresta amazzonica oltrepassino soglie di dieback (transizione verso savana o ecosistema degradato), con rilasci di carbonio e perdita di biodiversità a scala continentale."
+    },
+    "35": {
+      "title": "Instabilità West Antarctic Ice Sheet",
+      "description": "Rischio di destabilizzazione irreversibile di settori della West Antarctic Ice Sheet (WAIS), con contributo plurimetro al livello del mare su scale di tempo lunghe. L'innesco può avvenire in questo secolo anche se gli effetti pieni si dispiegano dopo."
+    },
+    "36": {
+      "title": "Picco della domanda mondiale di petrolio",
+      "description": "Secondo scenari IEA, la domanda globale di petrolio potrebbe raggiungere un picco e poi stabilizzarsi o declinare tra fine anni 2020 e metà anni 2030, spinta da elettrificazione dei trasporti, efficienza e policy climatiche."
+    },
     "card": {
       "expectedFor": "Previsto per:",
       "probability": "di probabilità",
@@ -385,201 +596,12 @@
         "threshold": "Soglia critica",
         "tippingPoint": "Punto di non ritorno",
         "transformation": "Trasformazione epocale"
-      }
-    },
-    "1": {
-      "title": "Punto di non ritorno per il ghiaccio artico",
-      "description": "Il ghiaccio marino artico potrebbe raggiungere un punto di non ritorno, con conseguenze irreversibili per il clima globale.",
-      "actions": {
-        "0": {
-          "title": "Ridurre emissioni personali",
-          "description": "Adotta uno stile di vita a basse emissioni",
-          "links": {
-            "Calcolatore impronta carbonica": "Calcolatore impronta carbonica"
-          }
-        },
-        "1": {
-          "title": "Supportare politiche climatiche",
-          "description": "Vota e sostieni politici che promuovono azioni per il clima",
-          "links": {
-            "Climate Action Network": "Climate Action Network"
-          }
-        }
-      }
-    },
-    "2": {
-      "title": "AGI (Artificial General Intelligence) raggiunta",
-      "description": "Possibile raggiungimento dell'intelligenza artificiale generale, con capacità cognitive paragonabili o superiori a quelle umane.",
-      "actions": {
-        "0": {
-          "title": "Educarsi sull'IA",
-          "description": "Comprendi le implicazioni dell'IA per la società",
-          "links": {
-            "Future of Humanity Institute": "Future of Humanity Institute"
-          }
-        },
-        "1": {
-          "title": "Promuovere governance dell'IA",
-          "description": "Supporta regolamentazioni etiche per l'IA",
-          "links": {
-            "Partnership on AI": "Partnership on AI"
-          }
-        }
-      }
-    },
-    "3": {
-      "title": "Popolazione mondiale raggiunge il picco",
-      "description": "La popolazione mondiale potrebbe raggiungere il picco massimo prima di iniziare a declinare."
-    },
-    "4": {
-      "title": "Transizione completa alle energie rinnovabili",
-      "description": "Possibile completamento della transizione energetica globale verso fonti rinnovabili.",
-      "actions": {
-        "0": {
-          "title": "Passa a energia rinnovabile",
-          "description": "Scegli un fornitore di energia rinnovabile"
-        },
-        "1": {
-          "title": "Investi in rinnovabili",
-          "description": "Supporta progetti di energia pulita"
-        }
-      }
-    },
-    "5": {
-      "title": "Collasso di un ecosistema marino principale",
-      "description": "Rischio di collasso di un ecosistema marino critico (es. barriera corallina, foreste di kelp).",
-      "actions": {
-        "0": {
-          "title": "Proteggere gli oceani",
-          "description": "Supporta organizzazioni per la conservazione marina",
-          "links": {
-            "Ocean Conservancy": "Ocean Conservancy"
-          }
-        }
-      }
-    },
-    "6": {
-      "title": "Crisi idrica globale",
-      "description": "Possibile crisi idrica globale con oltre 4 miliardi di persone che vivono in aree con grave scarsità d'acqua."
-    },
-    "7": {
-      "title": "Raggiungimento della singolarità tecnologica",
-      "description": "Momento in cui il progresso tecnologico diventa così rapido da essere incomprensibile per gli esseri umani."
-    },
-    "8": {
-      "title": "Riorganizzazione geopolitica globale",
-      "description": "Possibile riorganizzazione significativa degli equilibri geopolitici mondiali."
-    },
-    "9": {
-      "title": "Estinzione di massa delle specie",
-      "description": "Rischio di accelerazione dell'estinzione di massa delle specie, con perdita del 30-50% delle specie attuali.",
-      "actions": {
-        "0": {
-          "title": "Supporta la conservazione",
-          "description": "Contribuisci a organizzazioni per la protezione della biodiversità",
-          "links": {
-            "WWF": "WWF"
-          }
-        }
-      }
-    },
-    "10": {
-      "title": "Crisi del debito globale",
-      "description": "Possibile crisi sistemica del debito globale che potrebbe destabilizzare l'economia mondiale."
-    },
-    "11": {
-      "title": "Earth Overshoot Day 2025",
-      "description": "Giorno in cui l'umanità ha consumato tutte le risorse che la Terra può rigenerare in un anno. Questa data arriva sempre prima ogni anno."
-    },
-    "12": {
-      "title": "Raggiungimento della Longevity Escape Velocity",
-      "description": "Secondo Ray Kurzweil, raggiungeremo la capacità di guadagnare più di un anno di aspettativa di vita per ogni anno vissuto, grazie ai progressi in medicina e IA."
-    },
-    "13": {
-      "title": "Obiettivo Net Zero 2030 (UE)",
-      "description": "L'Unione Europea punta a raggiungere la neutralità climatica entro il 2030, riducendo le emissioni del 55% rispetto ai livelli del 1990."
-    },
-    "14": {
-      "title": "Prima missione umana su Marte",
-      "description": "Possibile lancio della prima missione umana su Marte, segnando l'inizio dell'espansione dell'umanità oltre la Terra."
-    },
-    "15": {
-      "title": "Quantum Supremacy per problemi pratici",
-      "description": "I computer quantistici potrebbero risolvere problemi pratici impossibili per i computer classici, rivoluzionando crittografia, farmaceutica e finanza."
-    },
-    "16": {
-      "title": "Crisi demografica potenziale",
-      "description": "Secondo alcuni modelli, potrebbe verificarsi una crisi demografica globale se dovesse verificarsi una crisi ecologica che influenzi le risorse disponibili."
-    },
-    "17": {
-      "title": "Obiettivo Net Zero globale 2050",
-      "description": "Obiettivo globale per raggiungere emissioni nette zero di gas serra, cruciale per limitare il riscaldamento globale a 1.5°C."
-    },
-    "18": {
-      "title": "Collasso della Corrente del Golfo",
-      "description": "Rischio di rallentamento o collasso della Corrente del Golfo, che potrebbe causare cambiamenti climatici drastici in Europa e Nord America."
-    },
-    "19": {
-      "title": "Fine dell'era del petrolio",
-      "description": "Possibile fine dell'era del petrolio come principale fonte energetica, con transizione completa a energie alternative."
-    },
-    "20": {
-      "title": "Urbanizzazione globale al 70%",
-      "description": "Il 70% della popolazione mondiale vivrà in aree urbane, con conseguenze significative per infrastrutture, risorse e società."
-    },
-    "21": {
-      "title": "Raggiungimento dell'IA a livello umano",
-      "description": "Secondo sondaggi tra esperti, probabilità del 50% che l'IA raggiunga capacità paragonabili a quelle umane in questo periodo."
-    },
-    "22": {
-      "title": "Scomparsa dei ghiacciai alpini",
-      "description": "I ghiacciai delle Alpi potrebbero scomparire completamente, con impatti devastanti sull'approvvigionamento idrico europeo."
-    },
-    "23": {
-      "title": "Crisi alimentare globale",
-      "description": "Possibile crisi alimentare globale dovuta a cambiamenti climatici, scarsità d'acqua e crescita demografica."
-    },
-    "24": {
-      "title": "Fusione nucleare commerciale",
-      "description": "Possibile raggiungimento della fusione nucleare commercialmente sostenibile, fornendo energia pulita e illimitata."
-    },
-    "25": {
-      "title": "Riduzione del 50% della biodiversità",
-      "description": "Rischio di perdita del 50% delle specie attuali se non verranno prese misure drastiche per la conservazione."
-    },
-    "26": {
-      "title": "Invecchiamento globale della popolazione",
-      "description": "Per la prima volta nella storia, gli over-65 supereranno i bambini sotto i 5 anni, con profonde implicazioni sociali ed economiche."
-    },
-    "27": {
-      "title": "Fine dell'era del carbone",
-      "description": "Possibile fine dell'uso del carbone come fonte energetica principale, segnando una svolta storica nella transizione energetica."
-    },
-    "28": {
-      "title": "Collasso della pesca globale",
-      "description": "Rischio di collasso degli stock ittici globali se non verranno implementate pratiche di pesca sostenibili."
-    },
-    "29": {
-      "title": "Raggiungimento degli SDG 2030",
-      "description": "Scadenza per il raggiungimento degli Obiettivi di Sviluppo Sostenibile delle Nazioni Unite, inclusi povertà zero, istruzione di qualità e azione per il clima."
-    },
-    "30": {
-      "title": "Crisi dei rifugiati climatici",
-      "description": "Possibile crisi globale con centinaia di milioni di rifugiati climatici costretti a migrare a causa di eventi estremi e innalzamento del mare.",
-      "actions": {
-        "0": {
-          "title": "Supporta organizzazioni per rifugiati",
-          "description": "Contribuisci a organizzazioni che aiutano i rifugiati climatici",
-          "links": {
-            "UNHCR": "UNHCR"
-          }
-        },
-        "1": {
-          "title": "Promuovi politiche di accoglienza",
-          "description": "Sostieni politiche che affrontano la migrazione climatica"
-        }
+      },
+      "natureLabels": {
+        "policyMilestone": "Milestone politica",
+        "scientificProjection": "Proiezione scientifica",
+        "speculativeScenario": "Scenario speculativo"
       }
     }
   }
 }
-

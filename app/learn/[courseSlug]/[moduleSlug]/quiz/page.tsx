@@ -38,7 +38,6 @@ export default function QuizPage() {
   const moduleId = `${courseSlug}/${moduleSlug}`;
   const previousResult = getQuizResult(moduleId);
 
-  // Find next module for navigation
   const nextModule = useMemo(() => {
     if (!course) return null;
     const idx = course.modules.findIndex((m) => m.slug === moduleSlug);
@@ -49,10 +48,10 @@ export default function QuizPage() {
     return (
       <DotBoard>
         <div className="min-h-screen pt-32 pb-24 px-6 text-center">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">
+          <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
             {t('learn.notFound')}
           </h1>
-          <Link href="/learn" className="text-blue-600 hover:underline">
+          <Link href="/learn" className="text-blue-600 dark:text-blue-400 hover:underline">
             {t('learn.backToAcademy')}
           </Link>
         </div>
@@ -89,7 +88,6 @@ export default function QuizPage() {
       setSelectedAnswer(null);
       setHasChecked(false);
     } else {
-      // Calculate results
       const correctCount = answers.reduce<number>((acc, answer, idx) => {
         return acc + (answer !== null && answer === questions[idx].correctAnswer ? 1 : 0);
       }, 0);
@@ -123,24 +121,24 @@ export default function QuizPage() {
       <div className="min-h-screen pt-32 pb-24 px-6">
         <div className="max-w-3xl mx-auto">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-sm text-slate-500 mb-10 flex-wrap">
+          <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-10 flex-wrap">
             <Link
               href="/learn"
-              className="hover:text-slate-900 transition-colors"
+              className="hover:text-slate-900 dark:hover:text-white transition-colors"
             >
               Academy
             </Link>
             <span>/</span>
             <Link
               href={`/learn/${course.slug}`}
-              className="hover:text-slate-900 transition-colors"
+              className="hover:text-slate-900 dark:hover:text-white transition-colors"
             >
               {courseContent.title}
             </Link>
             <span>/</span>
             <Link
               href={`/learn/${course.slug}/${mod.slug}`}
-              className="hover:text-slate-900 transition-colors"
+              className="hover:text-slate-900 dark:hover:text-white transition-colors"
             >
               {modContent.title}
             </Link>
@@ -149,31 +147,31 @@ export default function QuizPage() {
           {/* ── INTRO STATE ────────────────────────────────────── */}
           {quizState === 'intro' && (
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-blue-50 mb-8">
-                <HelpCircle className="w-10 h-10 text-blue-600" />
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-blue-50 dark:bg-blue-950/50 mb-8">
+                <HelpCircle className="w-10 h-10 text-blue-600 dark:text-blue-400" />
               </div>
 
               <span className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
                 {t('learn.module')} {mod.number}
               </span>
-              <h1 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-4">
+              <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white leading-tight mb-4">
                 {quizContent.title}
               </h1>
-              <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-xl mx-auto">
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8 max-w-xl mx-auto">
                 {quizContent.description}
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                <div className="rounded-xl bg-slate-100 px-5 py-3 text-sm text-slate-600">
-                  <span className="font-semibold text-slate-900">
+                <div className="rounded-xl bg-slate-100 dark:bg-slate-800 px-5 py-3 text-sm text-slate-600 dark:text-slate-400">
+                  <span className="font-semibold text-slate-900 dark:text-white">
                     {totalQuestions}
                   </span>{' '}
                   {t('learn.quiz.question').toLowerCase()}
                   {totalQuestions > 1 ? 'e' : 'a'}
                 </div>
-                <div className="rounded-xl bg-slate-100 px-5 py-3 text-sm text-slate-600">
+                <div className="rounded-xl bg-slate-100 dark:bg-slate-800 px-5 py-3 text-sm text-slate-600 dark:text-slate-400">
                   {t('learn.quiz.score')} minimo:{' '}
-                  <span className="font-semibold text-slate-900">
+                  <span className="font-semibold text-slate-900 dark:text-white">
                     {quiz.passingScore}%
                   </span>
                 </div>
@@ -183,8 +181,8 @@ export default function QuizPage() {
                 <div
                   className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8 ${
                     previousResult.passed
-                      ? 'bg-emerald-100 text-emerald-700'
-                      : 'bg-amber-100 text-amber-700'
+                      ? 'bg-emerald-100 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400'
+                      : 'bg-amber-100 dark:bg-amber-950/50 text-amber-700 dark:text-amber-400'
                   }`}
                 >
                   {previousResult.passed ? (
@@ -199,7 +197,7 @@ export default function QuizPage() {
               <div>
                 <button
                   onClick={startQuiz}
-                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-slate-900 text-white font-semibold text-sm hover:bg-slate-800 transition-all shadow-sm hover:shadow-md"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-sm hover:bg-slate-800 dark:hover:bg-gray-100 transition-all shadow-sm hover:shadow-md"
                 >
                   <HelpCircle className="w-4 h-4" />
                   {previousResult
@@ -216,7 +214,7 @@ export default function QuizPage() {
               {/* Progress bar */}
               <div className="mb-10">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium text-slate-500">
+                  <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
                     {t('learn.quiz.question')} {currentQuestion + 1}{' '}
                     {t('learn.quiz.of')} {totalQuestions}
                   </span>
@@ -229,9 +227,9 @@ export default function QuizPage() {
                     %
                   </span>
                 </div>
-                <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-blue-600 rounded-full transition-all duration-500 ease-out"
+                    className="h-full bg-blue-600 dark:bg-blue-500 rounded-full transition-all duration-500 ease-out"
                     style={{
                       width: `${((currentQuestion + (hasChecked ? 1 : 0)) / totalQuestions) * 100}%`,
                     }}
@@ -240,8 +238,8 @@ export default function QuizPage() {
               </div>
 
               {/* Question */}
-              <div className="rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-8 md:p-10 shadow-sm mb-8">
-                <h2 className="text-xl md:text-2xl font-bold text-slate-900 leading-snug mb-8">
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 backdrop-blur-xl p-8 md:p-10 shadow-sm mb-8">
+                <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white leading-snug mb-8">
                   {currentQContent.question}
                 </h2>
 
@@ -260,12 +258,12 @@ export default function QuizPage() {
                         disabled={hasChecked}
                         className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 ${
                           showCorrect
-                            ? 'border-emerald-400 bg-emerald-50 text-slate-900'
+                            ? 'border-emerald-400 dark:border-emerald-600 bg-emerald-50 dark:bg-emerald-950/40 text-slate-900 dark:text-white'
                             : showIncorrect
-                              ? 'border-red-400 bg-red-50 text-slate-900'
+                              ? 'border-red-400 dark:border-red-600 bg-red-50 dark:bg-red-950/40 text-slate-900 dark:text-white'
                               : isSelected
-                                ? 'border-blue-400 bg-blue-50 text-slate-900'
-                                : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700'
+                                ? 'border-blue-400 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/40 text-slate-900 dark:text-white'
+                                : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-slate-700 dark:text-slate-300'
                         } ${hasChecked ? 'cursor-default' : 'cursor-pointer'}`}
                       >
                         <div className="flex items-start gap-3">
@@ -277,7 +275,7 @@ export default function QuizPage() {
                                   ? 'bg-red-500 text-white'
                                   : isSelected
                                     ? 'bg-blue-500 text-white'
-                                    : 'bg-slate-100 text-slate-500'
+                                    : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
                             }`}
                           >
                             {showCorrect ? (
@@ -303,22 +301,22 @@ export default function QuizPage() {
                 <div
                   className={`rounded-2xl border p-6 mb-8 ${
                     selectedAnswer === currentQ.correctAnswer
-                      ? 'border-emerald-200 bg-emerald-50/50'
-                      : 'border-amber-200 bg-amber-50/50'
+                      ? 'border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/30'
+                      : 'border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/30'
                   }`}
                 >
                   <p
                     className={`font-semibold text-sm mb-2 ${
                       selectedAnswer === currentQ.correctAnswer
-                        ? 'text-emerald-700'
-                        : 'text-amber-700'
+                        ? 'text-emerald-700 dark:text-emerald-400'
+                        : 'text-amber-700 dark:text-amber-400'
                     }`}
                   >
                     {selectedAnswer === currentQ.correctAnswer
                       ? t('learn.quiz.correct')
                       : t('learn.quiz.incorrect')}
                   </p>
-                  <p className="text-slate-700 text-[15px] leading-relaxed">
+                  <p className="text-slate-700 dark:text-slate-300 text-[15px] leading-relaxed">
                     {currentQContent.explanation}
                   </p>
                 </div>
@@ -333,8 +331,8 @@ export default function QuizPage() {
                     disabled={selectedAnswer === null}
                     className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all ${
                       selectedAnswer === null
-                        ? 'bg-slate-200 text-slate-400 cursor-not-allowed'
-                        : 'bg-slate-900 text-white hover:bg-slate-800 shadow-sm hover:shadow-md'
+                        ? 'bg-slate-200 dark:bg-slate-800 text-slate-400 cursor-not-allowed'
+                        : 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-gray-100 shadow-sm hover:shadow-md'
                     }`}
                   >
                     {t('learn.quiz.check')}
@@ -342,7 +340,7 @@ export default function QuizPage() {
                 ) : (
                   <button
                     onClick={nextQuestion}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 text-white font-semibold text-sm hover:bg-slate-800 transition-all shadow-sm hover:shadow-md"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-sm hover:bg-slate-800 dark:hover:bg-gray-100 transition-all shadow-sm hover:shadow-md"
                   >
                     {currentQuestion < totalQuestions - 1
                       ? t('learn.quiz.next')
@@ -359,7 +357,7 @@ export default function QuizPage() {
             <div className="text-center">
               <div
                 className={`inline-flex items-center justify-center w-24 h-24 rounded-3xl mb-8 ${
-                  passed ? 'bg-emerald-50' : 'bg-amber-50'
+                  passed ? 'bg-emerald-50 dark:bg-emerald-950/50' : 'bg-amber-50 dark:bg-amber-950/50'
                 }`}
               >
                 {passed ? (
@@ -369,19 +367,19 @@ export default function QuizPage() {
                 )}
               </div>
 
-              <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
+              <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3">
                 {passed
                   ? t('learn.quiz.passed')
                   : t('learn.quiz.failed')}
               </h1>
-              <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-lg mx-auto">
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8 max-w-lg mx-auto">
                 {passed
                   ? t('learn.quiz.passedDescription')
                   : t('learn.quiz.failedDescription')}
               </p>
 
               {/* Score display */}
-              <div className="inline-flex flex-col items-center rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-8 mb-10 shadow-sm">
+              <div className="inline-flex flex-col items-center rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 backdrop-blur-xl p-8 mb-10 shadow-sm">
                 <div className="relative w-32 h-32 mb-4">
                   <svg
                     className="w-full h-full transform -rotate-90"
@@ -392,7 +390,8 @@ export default function QuizPage() {
                       cy="60"
                       r="52"
                       fill="none"
-                      stroke="#e2e8f0"
+                      stroke="currentColor"
+                      className="text-slate-200 dark:text-slate-700"
                       strokeWidth="8"
                     />
                     <circle
@@ -408,19 +407,19 @@ export default function QuizPage() {
                     />
                   </svg>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-3xl font-bold text-slate-900">
+                    <span className="text-3xl font-bold text-slate-900 dark:text-white">
                       {finalScore}%
                     </span>
                   </div>
                 </div>
-                <p className="text-sm text-slate-500">
+                <p className="text-sm text-slate-500 dark:text-slate-400">
                   {correctCount}/{totalQuestions}{' '}
                   {locale === 'it' ? 'risposte corrette' : 'correct answers'}
                 </p>
               </div>
 
               {/* Question breakdown */}
-              <div className="rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-6 mb-10 shadow-sm text-left">
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 backdrop-blur-xl p-6 mb-10 shadow-sm text-left">
                 <div className="space-y-3">
                   {questions.map((q, idx) => {
                     const qContent =
@@ -433,16 +432,18 @@ export default function QuizPage() {
                       >
                         <div
                           className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5 ${
-                            isCorrect ? 'bg-emerald-100' : 'bg-red-100'
+                            isCorrect
+                              ? 'bg-emerald-100 dark:bg-emerald-950/50'
+                              : 'bg-red-100 dark:bg-red-950/50'
                           }`}
                         >
                           {isCorrect ? (
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                           ) : (
                             <XCircle className="w-3.5 h-3.5 text-red-500" />
                           )}
                         </div>
-                        <span className="text-sm text-slate-700 leading-relaxed">
+                        <span className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                           {qContent.question}
                         </span>
                       </div>
@@ -456,7 +457,7 @@ export default function QuizPage() {
                 {!passed && (
                   <button
                     onClick={startQuiz}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 text-white font-semibold text-sm hover:bg-slate-800 transition-all shadow-sm hover:shadow-md"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-sm hover:bg-slate-800 dark:hover:bg-gray-100 transition-all shadow-sm hover:shadow-md"
                   >
                     <RotateCcw className="w-4 h-4" />
                     {t('learn.quiz.retry')}
@@ -464,7 +465,7 @@ export default function QuizPage() {
                 )}
                 <Link
                   href={`/learn/${courseSlug}/${moduleSlug}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-slate-200 bg-white text-slate-700 font-semibold text-sm hover:bg-slate-50 transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   {t('learn.quiz.backToModule')}
@@ -472,7 +473,7 @@ export default function QuizPage() {
                 {passed && nextModule && (
                   <Link
                     href={`/learn/${courseSlug}/${nextModule.slug}`}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 text-white font-semibold text-sm hover:bg-slate-800 transition-all shadow-sm hover:shadow-md"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-sm hover:bg-slate-800 dark:hover:bg-gray-100 transition-all shadow-sm hover:shadow-md"
                   >
                     {t('learn.quiz.nextModule')}
                     <ArrowRight className="w-4 h-4" />

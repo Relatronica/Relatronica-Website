@@ -1,25 +1,24 @@
 'use client';
 
 import { useMemo } from 'react';
-import { format } from 'date-fns';
-import { it } from 'date-fns/locale';
 import { FilterState } from '@/types/deadline';
 import { deadlines } from '@/data/deadlines';
-import { getProbabilityColor, getThemeColor, getThemeColorHex, cn } from '@/lib/utils';
+import { getThemeColor, getThemeColorHex, cn } from '@/lib/utils';
 import { filterDeadlines } from '@/lib/filters';
+import { getHorizonStart, isDeadlinePast } from '@/lib/deadlineHorizon';
 import { DeadlineCard } from './DeadlineCard';
 
 export function TimelineView({ filters }: { filters: FilterState }) {
   const filteredDeadlines = useMemo(() => {
     return filterDeadlines(deadlines, filters)
-      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      .sort((a, b) => getHorizonStart(a).getTime() - getHorizonStart(b).getTime());
   }, [filters]);
 
-  // Group deadlines by year
+  // Group deadlines by start year of their horizon
   const deadlinesByYear = useMemo(() => {
     const grouped: Record<number, typeof filteredDeadlines> = {};
     filteredDeadlines.forEach(deadline => {
-      const year = new Date(deadline.date).getFullYear();
+      const year = getHorizonStart(deadline).getFullYear();
       if (!grouped[year]) {
         grouped[year] = [];
       }
@@ -78,9 +77,8 @@ export function TimelineView({ filters }: { filters: FilterState }) {
 
             {/* Deadlines for this year */}
             <div className="space-y-6">
-              {deadlinesByYear[year].map((deadline, deadlineIndex) => {
-                const deadlineDate = new Date(deadline.date);
-                const isPast = deadlineDate < new Date();
+              {deadlinesByYear[year].map((deadline) => {
+                const isPast = isDeadlinePast(deadline);
 
                 return (
                   <div

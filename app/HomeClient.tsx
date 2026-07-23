@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import {
-  ArrowRight, Calendar, Sparkles, Users, Network, Shield,
+  ArrowRight, Sparkles, Users, Network, Shield,
   BookOpen, Radio, Quote, Gamepad2, Lock, ExternalLink
 } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
@@ -65,12 +65,12 @@ export function HomeClient() {
 
   const projects = [
     {
-      icon: Calendar,
-      title: t('projects.nexthuman.title'),
-      subtitle: t('projects.nexthuman.subtitle'),
-      description: t('projects.nexthuman.description'),
-      href: '/nexthuman',
-      color: 'blue'
+      icon: Network,
+      title: t('projects.404human.title'),
+      subtitle: t('projects.404human.subtitle'),
+      description: t('projects.404human.description'),
+      href: 'https://404human.org/',
+      color: 'orange'
     },
     {
       icon: Lock,

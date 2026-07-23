@@ -12,11 +12,25 @@ export type Theme =
 
 export type Probability = 'low' | 'medium' | 'high' | 'very-high';
 
+export type DeadlinePrecision = 'day' | 'year' | 'window';
+
+export type DeadlineNature =
+  | 'policy-milestone'
+  | 'scientific-projection'
+  | 'speculative-scenario';
+
 export interface Deadline {
   id: string;
   title: string;
   description: string;
+  /** Anchor date: exact day, or start of a year/window */
   date: Date;
+  /** End of temporal window when precision is 'window' */
+  horizonEnd?: Date;
+  precision?: DeadlinePrecision;
+  nature?: DeadlineNature;
+  /** Recurring annual markers (e.g. Earth Overshoot Day) */
+  recurring?: 'annual';
   probability: Probability;
   probabilityValue: number; // 0-100
   themes: Theme[];
@@ -47,4 +61,3 @@ export interface FilterState {
     end: Date;
   };
 }
-

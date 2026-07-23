@@ -22,8 +22,8 @@ export default function ModulePage() {
     return (
       <DotBoard>
         <div className="min-h-screen pt-32 pb-24 px-6 text-center">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">{t('learn.notFound')}</h1>
-          <Link href="/learn" className="text-blue-600 hover:underline">{t('learn.backToAcademy')}</Link>
+          <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">{t('learn.notFound')}</h1>
+          <Link href="/learn" className="text-blue-600 dark:text-blue-400 hover:underline">{t('learn.backToAcademy')}</Link>
         </div>
       </DotBoard>
     );
@@ -42,12 +42,12 @@ export default function ModulePage() {
         <div className="max-w-4xl mx-auto">
 
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-sm text-slate-500 mb-10 flex-wrap">
-            <Link href="/learn" className="hover:text-slate-900 transition-colors">
+          <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-10 flex-wrap">
+            <Link href="/learn" className="hover:text-slate-900 dark:hover:text-white transition-colors">
               Academy
             </Link>
             <span>/</span>
-            <Link href={`/learn/${course.slug}`} className="hover:text-slate-900 transition-colors">
+            <Link href={`/learn/${course.slug}`} className="hover:text-slate-900 dark:hover:text-white transition-colors">
               {courseContent.title}
             </Link>
           </div>
@@ -57,10 +57,10 @@ export default function ModulePage() {
             <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               {t('learn.module')} {mod.number}
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight mt-2 mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight mt-2 mb-4">
               {content.title}
             </h1>
-            <p className="text-xl text-slate-600 leading-relaxed">
+            <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
               {content.description}
             </p>
           </div>
@@ -76,10 +76,10 @@ export default function ModulePage() {
                 <Link
                   key={lesson.slug}
                   href={`/learn/${courseSlug}/${mod.slug}/${lesson.slug}`}
-                  className="group block rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-300"
+                  className="group block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 backdrop-blur-xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-300"
                 >
                   <div className="flex items-start gap-5">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
                       {isCompleted ? (
                         <CheckCircle2 className="w-5 h-5 text-emerald-500" />
                       ) : (
@@ -89,10 +89,10 @@ export default function ModulePage() {
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h2 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
+                      <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                         {lessonContent.title}
                       </h2>
-                      <p className="text-slate-500 text-sm leading-relaxed mb-3">
+                      <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-3">
                         {lessonContent.description}
                       </p>
                       <div className="flex items-center gap-4 text-xs text-slate-400">
@@ -106,7 +106,7 @@ export default function ModulePage() {
                         </span>
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
+                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
                   </div>
                 </Link>
               );
@@ -125,41 +125,41 @@ export default function ModulePage() {
                 href={`/learn/${courseSlug}/${mod.slug}/quiz`}
                 className={`group block rounded-2xl border-2 p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-300 mb-16 ${
                   quizPassed
-                    ? 'border-emerald-200 bg-emerald-50/50'
-                    : 'border-blue-200 bg-blue-50/50 hover:border-blue-300'
+                    ? 'border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/30'
+                    : 'border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/30 hover:border-blue-300 dark:hover:border-blue-700'
                 }`}
               >
                 <div className="flex items-start gap-5">
                   <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center ${
-                    quizPassed ? 'bg-emerald-100' : 'bg-blue-100'
+                    quizPassed ? 'bg-emerald-100 dark:bg-emerald-950/50' : 'bg-blue-100 dark:bg-blue-950/50'
                   }`}>
                     {quizPassed ? (
-                      <Trophy className="w-5 h-5 text-emerald-600" />
+                      <Trophy className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
                     ) : (
-                      <HelpCircle className="w-5 h-5 text-blue-600" />
+                      <HelpCircle className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
                     <h2 className={`text-lg font-bold mb-1 transition-colors ${
                       quizPassed
-                        ? 'text-emerald-900'
-                        : 'text-slate-900 group-hover:text-blue-600'
+                        ? 'text-emerald-900 dark:text-emerald-300'
+                        : 'text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400'
                     }`}>
                       {quizContent.title}
                     </h2>
-                    <p className="text-slate-500 text-sm leading-relaxed mb-3">
+                    <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-3">
                       {quizContent.description}
                     </p>
                     <div className="flex items-center gap-4 text-xs">
                       <span className={`flex items-center gap-1 font-medium ${
-                        quizPassed ? 'text-emerald-600' : 'text-blue-600'
+                        quizPassed ? 'text-emerald-600 dark:text-emerald-400' : 'text-blue-600 dark:text-blue-400'
                       }`}>
                         <HelpCircle className="w-3 h-3" />
                         {mod.quiz!.questions.length} {t('learn.quiz.question').toLowerCase()}{mod.quiz!.questions.length > 1 ? (locale === 'it' ? 'e' : 's') : (locale === 'it' ? 'a' : '')}
                       </span>
                       {quizResult && (
                         <span className={`flex items-center gap-1 font-medium ${
-                          quizPassed ? 'text-emerald-600' : 'text-amber-600'
+                          quizPassed ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'
                         }`}>
                           {quizPassed ? <CheckCircle2 className="w-3 h-3" /> : null}
                           {t('learn.quiz.score')}: {quizResult.score}%
@@ -168,7 +168,7 @@ export default function ModulePage() {
                     </div>
                   </div>
                   <ArrowRight className={`w-4 h-4 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1 ${
-                    quizPassed ? 'text-emerald-400' : 'text-blue-400 group-hover:text-blue-600'
+                    quizPassed ? 'text-emerald-400' : 'text-blue-400 group-hover:text-blue-600 dark:group-hover:text-blue-300'
                   }`} />
                 </div>
               </Link>
@@ -180,7 +180,7 @@ export default function ModulePage() {
             {prevModule ? (
               <Link
                 href={`/learn/${courseSlug}/${prevModule.slug}`}
-                className="flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition-colors"
+                className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span className="hidden sm:inline">
@@ -192,7 +192,7 @@ export default function ModulePage() {
             {nextModule ? (
               <Link
                 href={`/learn/${courseSlug}/${nextModule.slug}`}
-                className="flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition-colors"
+                className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
               >
                 <span className="hidden sm:inline">
                   {(nextModule.content[locale as 'it' | 'en'] || nextModule.content.it).title}

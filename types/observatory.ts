@@ -30,6 +30,7 @@ export interface LinkedDeadline {
   id: string;
   title: string;
   date: string;
+  horizonLabel: string;
   probability: string;
   probabilityValue: number;
   relevanceScore: number;
@@ -43,6 +44,7 @@ export interface DeadlineSignal {
   id: string;
   title: string;
   date: string;
+  horizonLabel: string;
   probability: string;
   probabilityValue: number;
   category?: string;

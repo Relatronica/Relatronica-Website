@@ -8,6 +8,10 @@ import { FilterState } from '@/types/deadline';
 import { deadlines } from '@/data/deadlines';
 import { getProbabilityColor, getThemeColor, getThemeColorHex, cn } from '@/lib/utils';
 import { filterDeadlines } from '@/lib/filters';
+import {
+  deadlineTouchesYear,
+  getHorizonStart,
+} from '@/lib/deadlineHorizon';
 import { DeadlineCard } from './DeadlineCard';
 
 export function CalendarView({ filters }: { filters: FilterState }) {
@@ -21,14 +25,18 @@ export function CalendarView({ filters }: { filters: FilterState }) {
   const nextYear = () => setCurrentYear(currentYear + 1);
 
   const getDeadlinesForDay = (day: Date) => {
-    return filteredDeadlines.filter(deadline => 
-      isSameDay(new Date(deadline.date), day)
-    );
+    return filteredDeadlines.filter(deadline => {
+      if (deadline.precision === 'day' || (!deadline.precision && !deadline.horizonEnd)) {
+        return isSameDay(getHorizonStart(deadline), day);
+      }
+      // Year/window: place marker on the anchor date (start of horizon)
+      return isSameDay(getHorizonStart(deadline), day);
+    });
   };
 
   const getDeadlinesForMonth = (month: Date) => {
-    return filteredDeadlines.filter(deadline => 
-      isSameMonth(new Date(deadline.date), month)
+    return filteredDeadlines.filter(deadline =>
+      isSameMonth(getHorizonStart(deadline), month)
     );
   };
 
@@ -40,8 +48,8 @@ export function CalendarView({ filters }: { filters: FilterState }) {
 
   const yearDeadlines = useMemo(() => {
     return filteredDeadlines
-      .filter(deadline => new Date(deadline.date).getFullYear() === currentYear)
-      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      .filter(deadline => deadlineTouchesYear(deadline, currentYear))
+      .sort((a, b) => getHorizonStart(a).getTime() - getHorizonStart(b).getTime());
   }, [filteredDeadlines, currentYear]);
 
   const renderMonthCalendar = (month: Date) => {

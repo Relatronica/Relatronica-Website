@@ -5,17 +5,17 @@
  */
 export const DEADLINE_KEYWORDS: Record<string, string[]> = {
   '1': [
-    'arctic', 'artico', 'ghiaccio', 'ice cap', 'ice sheet', 'sea ice',
-    'permafrost', 'polar', 'tipping point', 'punto di non ritorno',
+    'arctic', 'artico', 'sea ice', 'ghiaccio marino', 'ice-free', 'ice free',
+    'polar', 'artico ice-free', 'september ice',
   ],
   '2': [
     'AGI', 'artificial general intelligence', 'intelligenza artificiale generale',
-    'superintelligence', 'superintelligenza', 'AI safety', 'sicurezza IA',
-    'alignment', 'frontier model',
+    'human-level AI', 'IA a livello umano', 'superintelligence', 'superintelligenza',
+    'AI safety', 'sicurezza IA', 'alignment', 'frontier model', 'HLMI',
   ],
   '3': [
     'population peak', 'picco demografico', 'population decline', 'fertility rate',
-    'tasso di natalità', 'birth rate', 'depopulation',
+    'tasso di natalità', 'birth rate', 'depopulation', 'world population prospects',
   ],
   '4': [
     'renewable energy', 'energie rinnovabili', 'energy transition', 'transizione energetica',
@@ -39,7 +39,8 @@ export const DEADLINE_KEYWORDS: Record<string, string[]> = {
   ],
   '9': [
     'mass extinction', 'estinzione di massa', 'species loss', 'biodiversity loss',
-    'sixth extinction', 'sesta estinzione',
+    'sixth extinction', 'sesta estinzione', 'biodiversity', 'biodiversità',
+    'IPBES', 'living planet',
   ],
   '10': [
     'global debt', 'debito globale', 'debt crisis', 'crisi del debito',
@@ -54,8 +55,8 @@ export const DEADLINE_KEYWORDS: Record<string, string[]> = {
     'escape velocity', 'lifespan', 'aspettativa di vita', 'rejuvenation',
   ],
   '13': [
-    'net zero', 'carbon neutral', 'neutralità climatica', 'green deal',
-    'european green deal', 'EU climate', 'fit for 55',
+    'fit for 55', 'EU 2030', '−55%', '-55%', 'european climate law',
+    'green deal', 'european green deal', 'EU climate', 'riduzione emissioni UE',
   ],
   '14': [
     'mars mission', 'missione marte', 'mars colony', 'SpaceX', 'Starship',
@@ -63,32 +64,23 @@ export const DEADLINE_KEYWORDS: Record<string, string[]> = {
   ],
   '15': [
     'quantum computing', 'computer quantistico', 'quantum supremacy', 'qubit',
-    'quantum advantage', 'quantum processor',
-  ],
-  '16': [
-    'demographic crisis', 'crisi demografica', 'population collapse',
-    'collasso demografico', 'underpopulation',
+    'quantum advantage', 'quantum processor', 'vantaggio quantistico',
   ],
   '17': [
     'net zero 2050', 'paris agreement', 'accordo di parigi', 'climate target',
-    'obiettivo climatico', '1.5 degrees', '1.5 gradi', 'carbon budget',
+    'obiettivo climatico', 'carbon budget', 'net zero',
   ],
   '18': [
     'gulf stream', 'corrente del golfo', 'AMOC', 'thermohaline',
-    'atlantic circulation', 'circolazione atlantica',
+    'atlantic circulation', 'circolazione atlantica', 'overturning',
   ],
   '19': [
     'peak oil', 'fine petrolio', 'post-oil', 'fossil fuel', 'combustibili fossili',
-    'oil era', 'petrolio', 'oil demand',
+    'oil era', 'petrolio', 'oil demand decline',
   ],
   '20': [
     'urbanization', 'urbanizzazione', 'megacity', 'megacittà', 'smart city',
     'città intelligente', 'urban sprawl',
-  ],
-  '21': [
-    'artificial intelligence', 'intelligenza artificiale', 'machine learning',
-    'deep learning', 'LLM', 'large language model', 'GPT', 'neural network',
-    'AI regulation', 'regolamentazione IA', 'AI act', 'foundation model',
   ],
   '22': [
     'alpine glacier', 'ghiacciai alpini', 'glacier retreat', 'ritiro ghiacciai',
@@ -101,10 +93,6 @@ export const DEADLINE_KEYWORDS: Record<string, string[]> = {
   '24': [
     'nuclear fusion', 'fusione nucleare', 'ITER', 'tokamak', 'fusion energy',
     'energia da fusione', 'fusion reactor',
-  ],
-  '25': [
-    'biodiversity', 'biodiversità', 'species extinction', 'estinzione specie',
-    'wildlife', 'conservation', 'IPBES', 'living planet',
   ],
   '26': [
     'aging population', 'invecchiamento', 'elderly', 'over 65', 'pension crisis',
@@ -125,6 +113,30 @@ export const DEADLINE_KEYWORDS: Record<string, string[]> = {
   '30': [
     'climate refugee', 'rifugiati climatici', 'climate migration', 'migrazione climatica',
     'climate displacement', 'sea level rise', 'innalzamento mare', 'climate migrant',
+  ],
+  '31': [
+    'EU 2040', '−90%', '-90%', 'climate law 2040', 'target 2040',
+    'neutralità climatica', 'european climate target',
+  ],
+  '32': [
+    '1.5', '1,5', '1.5°C', '1,5°C', '1.5 degrees', '1.5 gradi',
+    'global warming', 'riscaldamento globale', 'carbon budget', 'pre-industrial',
+  ],
+  '33': [
+    'AI Act', 'AI act', 'EU AI', 'regolamento IA', 'high-risk AI',
+    'IA ad alto rischio', 'AI regulation', 'regolamentazione IA', 'foundation model',
+  ],
+  '34': [
+    'amazon', 'amazzonia', 'amazon rainforest', 'foresta amazzonica',
+    'dieback', 'savannization', 'tipping amazon', 'deforestation amazon',
+  ],
+  '35': [
+    'west antarctic', 'WAIS', 'antarctic ice sheet', 'calotta antartica',
+    'antartide', 'antarctica ice', 'ice sheet collapse', 'sea level antarctic',
+  ],
+  '36': [
+    'oil demand peak', 'picco domanda petrolio', 'peak oil demand',
+    'oil demand', 'domanda di petrolio', 'IEA oil',
   ],
 };
 

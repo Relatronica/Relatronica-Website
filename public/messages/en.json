@@ -214,6 +214,12 @@
       "description": "An app that restores sovereignty over your body's data. In a landscape where menstrual tracking apps sell intimate information to third parties, Eclipse puts privacy at the center: end-to-end encryption, zero knowledge architecture, and data that stays exclusively on your device. A digital act of resistance for bodily autonomy and reproductive health, because your cycle data is not a commodity to be sold.",
       "status": "In testing"
     },
+    "mauss": {
+      "title": "Mauss",
+      "subtitle": "Volunteer computing for research",
+      "description": "A volunteer computing network inspired by the gift: participants donate unused device cycles to open research projects. No centralized data centers, no access barriers — just a colony of nodes that together put computational power at the service of public science.",
+      "status": "In development"
+    },
     "exploreProject": "Explore project",
     "filterByTag": "Filter by topic",
     "filterByStatus": "Filter by status",
@@ -361,6 +367,211 @@
     }
   },
   "deadlines": {
+    "1": {
+      "title": "First nearly ice-free Arctic summer",
+      "description": "Arctic September sea ice may fall below 1 million km² (practically ice-free). This is not a classic irreversible tipping point: ice-free summers can recur with increasing frequency depending on emissions.",
+      "actions": {
+        "0": {
+          "title": "Reduce personal emissions",
+          "description": "Adopt a low-emission lifestyle",
+          "links": {
+            "Calcolatore impronta carbonica": "Carbon footprint calculator"
+          }
+        },
+        "1": {
+          "title": "Support climate policies",
+          "description": "Vote for and support politicians who advance climate action",
+          "links": {
+            "Climate Action Network": "Climate Action Network"
+          }
+        }
+      }
+    },
+    "2": {
+      "title": "AGI / human-level AI",
+      "description": "Around a 50% chance that AI systems reach human-comparable capabilities across a wide range of cognitive tasks. Expert and prediction-market estimates have shifted toward 2030–2035 versus longer timelines from earlier years.",
+      "actions": {
+        "0": {
+          "title": "Learn about AI",
+          "description": "Understand AI implications for society",
+          "links": {
+            "Future of Humanity Institute": "Future of Humanity Institute"
+          }
+        },
+        "1": {
+          "title": "Promote AI governance",
+          "description": "Support ethical regulation for AI",
+          "links": {
+            "Partnership on AI": "Partnership on AI"
+          }
+        }
+      }
+    },
+    "3": {
+      "title": "World population reaches its peak",
+      "description": "According to the UN World Population Prospects 2024, world population is expected to peak around 10.3 billion in the mid-2080s, then gradually decline."
+    },
+    "4": {
+      "title": "Advanced renewable energy transition",
+      "description": "Possible completion of a global energy transition in which renewables dominate the power mix and fossil fuels enter a structural demand decline. IEA outlooks show rapid progress still insufficient for Net Zero 2050 without policy acceleration.",
+      "actions": {
+        "0": {
+          "title": "Switch to renewable energy",
+          "description": "Choose a renewable energy supplier"
+        },
+        "1": {
+          "title": "Invest in renewables",
+          "description": "Support clean energy projects"
+        }
+      }
+    },
+    "5": {
+      "title": "Collapse of a major marine ecosystem",
+      "description": "Risk of functional collapse of a critical marine ecosystem (coral reef, kelp forests or key coastal systems), with cascading effects on fisheries, tourism and biodiversity.",
+      "actions": {
+        "0": {
+          "title": "Protect the oceans",
+          "description": "Support marine conservation organizations",
+          "links": {
+            "Ocean Conservancy": "Ocean Conservancy"
+          }
+        }
+      }
+    },
+    "6": {
+      "title": "Global water crisis",
+      "description": "Possible global water crisis with billions of people living in areas of severe or chronic water scarcity, worsened by drought, intensive agriculture and climate stress."
+    },
+    "7": {
+      "title": "Technological singularity",
+      "description": "Speculative scenario in which technological progress (driven by recursively improving AI) becomes so rapid that it is hard for human institutions to understand or govern."
+    },
+    "8": {
+      "title": "Global geopolitical reorganization",
+      "description": "Possible significant reorganization of world geopolitical balances, with new power blocs, technology rivalries and redefined alliances and international institutions."
+    },
+    "9": {
+      "title": "Severe global biodiversity loss",
+      "description": "Risk of acceleration of the sixth mass extinction, with substantial loss (up to roughly 30–50% under inaction scenarios) of species and ecosystem function if conservation is not strengthened.",
+      "actions": {
+        "0": {
+          "title": "Support conservation",
+          "description": "Contribute to biodiversity protection organizations",
+          "links": {
+            "WWF": "WWF"
+          }
+        }
+      }
+    },
+    "10": {
+      "title": "Global debt crisis",
+      "description": "Possible systemic sovereign and private debt crisis that could destabilize the world economy, especially amid high rates, climate shocks and geopolitical fragmentation."
+    },
+    "11": {
+      "title": "Earth Overshoot Day 2026",
+      "description": "The day humanity has used all the ecological resources Earth can regenerate in a year. In 2026 it falls on July 30. It is an annual indicator: the date shifts each year with footprint and biocapacity."
+    },
+    "12": {
+      "title": "Longevity Escape Velocity",
+      "description": "According to radical longevity scenarios (e.g. Ray Kurzweil), we will gain more than one year of life expectancy per year lived through medicine, biotech and AI. Remains highly speculative."
+    },
+    "13": {
+      "title": "Fit for 55: −55% EU emissions",
+      "description": "Binding EU target to cut net greenhouse gas emissions by at least 55% vs 1990 by 2030 (not climate neutrality, which is set for 2050). Implemented via the Fit for 55 package."
+    },
+    "14": {
+      "title": "First human mission to Mars",
+      "description": "Possible launch or arrival of the first human Mars mission, marking humanity's expansion beyond Earth. Timelines depend on NASA, ESA, SpaceX and technical/financial constraints."
+    },
+    "15": {
+      "title": "Practical quantum advantage",
+      "description": "Quantum computers may demonstrate useful advantages on practical problems (cryptography, materials, optimization, pharma) beyond lab benchmarks."
+    },
+    "17": {
+      "title": "Global Net Zero 2050 target",
+      "description": "Global policy target for net-zero greenhouse gas emissions by mid-century, necessary (but increasingly difficult) to keep warming near 1.5°C. IEA/IPCC pathways require marked acceleration."
+    },
+    "18": {
+      "title": "AMOC collapse or tipping",
+      "description": "Risk of critical slowdown or collapse of the Atlantic Meridional Overturning Circulation (AMOC), with potential drastic climate shifts in Europe and the North Atlantic. Estimates diverge: some observational studies suggest mid-century; others judge a full 21st-century collapse unlikely."
+    },
+    "19": {
+      "title": "Structural decline of the oil era",
+      "description": "Possible end of oil as the dominant pillar of the global energy system, with demand peak followed by structural decline. Distinct from classic production 'peak oil'."
+    },
+    "20": {
+      "title": "Global urbanization at 70%",
+      "description": "About 70% of the world's population will live in urban areas, with major consequences for infrastructure, resources, health and inequality."
+    },
+    "22": {
+      "title": "Disappearance of Alpine glaciers",
+      "description": "Alpine glaciers may shrink drastically or nearly disappear at mid elevations, with impacts on water supply, tourism and hydrogeological risk in Europe."
+    },
+    "23": {
+      "title": "Global food crisis",
+      "description": "Possible severe global or regional food crisis due to climate change, water scarcity, geopolitical shocks and demographic pressure."
+    },
+    "24": {
+      "title": "Commercial nuclear fusion",
+      "description": "Possible achievement of commercially sustainable nuclear fusion, with plants delivering net energy economically. ITER and private startups pursue demos, but commercial scale remains uncertain."
+    },
+    "26": {
+      "title": "Global population aging",
+      "description": "For the first time in history, globally people over 65 will outnumber children under 5, with deep implications for welfare, labour, health systems and growth."
+    },
+    "27": {
+      "title": "End of coal as a primary energy source",
+      "description": "Possible structural exit of coal from a primary energy role in major markets, with accelerated OECD phase-out and demand peaks in Asia. Pathways remain uneven by country."
+    },
+    "28": {
+      "title": "Global fisheries collapse",
+      "description": "Risk of collapse of key global fish stocks unless sustainable fishing, marine protected areas and international governance are strengthened."
+    },
+    "29": {
+      "title": "SDG 2030 deadline",
+      "description": "Formal deadline for the UN Sustainable Development Goals. Many targets are already off track; the horizon remains a global political stocktake moment."
+    },
+    "30": {
+      "title": "Climate refugee crisis",
+      "description": "Possible large-scale migration crisis with tens or hundreds of millions displaced by extremes, sea-level rise, aridification and loss of livelihoods.",
+      "actions": {
+        "0": {
+          "title": "Support refugee organizations",
+          "description": "Contribute to organizations helping climate refugees",
+          "links": {
+            "UNHCR": "UNHCR"
+          }
+        },
+        "1": {
+          "title": "Promote welcoming policies",
+          "description": "Support policies that address climate migration"
+        }
+      }
+    },
+    "31": {
+      "title": "EU 2040 climate target (−90%)",
+      "description": "Binding EU intermediate target to cut net greenhouse gas emissions by 90% vs 1990 by 2040, on the path to climate neutrality by 2050 (updated European Climate Law)."
+    },
+    "32": {
+      "title": "1.5°C breach (multi-year mean)",
+      "description": "Possible confirmation that mean global warming has sustainably exceeded 1.5°C above pre-industrial levels (multi-year average, not a single record year). Implies a nearly exhausted remaining carbon budget."
+    },
+    "33": {
+      "title": "Operational AI governance (EU AI Act)",
+      "description": "Operational entry into force of key EU AI Act obligations for high-risk systems and general-purpose models, with enforcement, transparency duties and AI risk governance in the EU market."
+    },
+    "34": {
+      "title": "Amazon tipping / dieback risk",
+      "description": "Risk that parts of the Amazon rainforest cross dieback thresholds (transition toward savanna or degraded ecosystems), with carbon releases and continental-scale biodiversity loss."
+    },
+    "35": {
+      "title": "West Antarctic Ice Sheet instability",
+      "description": "Risk of irreversible destabilization of sectors of the West Antarctic Ice Sheet (WAIS), with multi-metre sea-level contribution over long timescales. Triggering may occur this century even if full effects unfold later."
+    },
+    "36": {
+      "title": "Global oil demand peak",
+      "description": "According to IEA scenarios, global oil demand may peak then plateau or decline between the late 2020s and mid-2030s, driven by transport electrification, efficiency and climate policy."
+    },
     "card": {
       "expectedFor": "Expected for:",
       "probability": "probability",
@@ -385,201 +596,12 @@
         "threshold": "Critical threshold",
         "tippingPoint": "Tipping point",
         "transformation": "Epochal transformation"
-      }
-    },
-    "1": {
-      "title": "Arctic ice tipping point",
-      "description": "Arctic sea ice could reach a tipping point, with irreversible consequences for global climate.",
-      "actions": {
-        "0": {
-          "title": "Reduce personal emissions",
-          "description": "Adopt a low-emission lifestyle",
-          "links": {
-            "Calcolatore impronta carbonica": "Carbon footprint calculator"
-          }
-        },
-        "1": {
-          "title": "Support climate policies",
-          "description": "Vote for and support politicians who promote climate action",
-          "links": {
-            "Climate Action Network": "Climate Action Network"
-          }
-        }
-      }
-    },
-    "2": {
-      "title": "AGI (Artificial General Intelligence) achieved",
-      "description": "Possible achievement of general artificial intelligence, with cognitive capabilities comparable to or superior to human ones.",
-      "actions": {
-        "0": {
-          "title": "Educate yourself on AI",
-          "description": "Understand the implications of AI for society",
-          "links": {
-            "Future of Humanity Institute": "Future of Humanity Institute"
-          }
-        },
-        "1": {
-          "title": "Promote AI governance",
-          "description": "Support ethical regulations for AI",
-          "links": {
-            "Partnership on AI": "Partnership on AI"
-          }
-        }
-      }
-    },
-    "3": {
-      "title": "World population reaches peak",
-      "description": "World population could reach its maximum peak before beginning to decline."
-    },
-    "4": {
-      "title": "Complete transition to renewable energy",
-      "description": "Possible completion of the global energy transition to renewable sources.",
-      "actions": {
-        "0": {
-          "title": "Switch to renewable energy",
-          "description": "Choose a renewable energy provider"
-        },
-        "1": {
-          "title": "Invest in renewables",
-          "description": "Support clean energy projects"
-        }
-      }
-    },
-    "5": {
-      "title": "Collapse of a major marine ecosystem",
-      "description": "Risk of collapse of a critical marine ecosystem (e.g. coral reef, kelp forests).",
-      "actions": {
-        "0": {
-          "title": "Protect the oceans",
-          "description": "Support marine conservation organizations",
-          "links": {
-            "Ocean Conservancy": "Ocean Conservancy"
-          }
-        }
-      }
-    },
-    "6": {
-      "title": "Global water crisis",
-      "description": "Possible global water crisis with over 4 billion people living in areas with severe water scarcity."
-    },
-    "7": {
-      "title": "Achievement of technological singularity",
-      "description": "The moment when technological progress becomes so rapid as to be incomprehensible to humans."
-    },
-    "8": {
-      "title": "Global geopolitical reorganization",
-      "description": "Possible significant reorganization of world geopolitical balances."
-    },
-    "9": {
-      "title": "Mass species extinction",
-      "description": "Risk of acceleration of mass species extinction, with loss of 30-50% of current species.",
-      "actions": {
-        "0": {
-          "title": "Support conservation",
-          "description": "Contribute to organizations for biodiversity protection",
-          "links": {
-            "WWF": "WWF"
-          }
-        }
-      }
-    },
-    "10": {
-      "title": "Global debt crisis",
-      "description": "Possible systemic global debt crisis that could destabilize the world economy."
-    },
-    "11": {
-      "title": "Earth Overshoot Day 2025",
-      "description": "The day when humanity has consumed all the resources that Earth can regenerate in a year. This date comes earlier every year."
-    },
-    "12": {
-      "title": "Achievement of Longevity Escape Velocity",
-      "description": "According to Ray Kurzweil, we will reach the ability to gain more than a year of life expectancy for each year lived, thanks to advances in medicine and AI."
-    },
-    "13": {
-      "title": "Net Zero 2030 target (EU)",
-      "description": "The European Union aims to achieve climate neutrality by 2030, reducing emissions by 55% compared to 1990 levels."
-    },
-    "14": {
-      "title": "First human mission to Mars",
-      "description": "Possible launch of the first human mission to Mars, marking the beginning of humanity's expansion beyond Earth."
-    },
-    "15": {
-      "title": "Quantum Supremacy for practical problems",
-      "description": "Quantum computers could solve practical problems impossible for classical computers, revolutionizing cryptography, pharmaceuticals and finance."
-    },
-    "16": {
-      "title": "Potential demographic crisis",
-      "description": "According to some models, a global demographic crisis could occur if an ecological crisis were to occur that affects available resources."
-    },
-    "17": {
-      "title": "Global Net Zero 2050 target",
-      "description": "Global target to achieve net zero greenhouse gas emissions, crucial to limit global warming to 1.5°C."
-    },
-    "18": {
-      "title": "Gulf Stream collapse",
-      "description": "Risk of slowdown or collapse of the Gulf Stream, which could cause drastic climate changes in Europe and North America."
-    },
-    "19": {
-      "title": "End of the oil era",
-      "description": "Possible end of the oil era as the main energy source, with complete transition to alternative energies."
-    },
-    "20": {
-      "title": "Global urbanization at 70%",
-      "description": "70% of the world's population will live in urban areas, with significant consequences for infrastructure, resources and society."
-    },
-    "21": {
-      "title": "Achievement of human-level AI",
-      "description": "According to expert surveys, 50% probability that AI will reach capabilities comparable to human ones in this period."
-    },
-    "22": {
-      "title": "Disappearance of Alpine glaciers",
-      "description": "Alpine glaciers could disappear completely, with devastating impacts on European water supply."
-    },
-    "23": {
-      "title": "Global food crisis",
-      "description": "Possible global food crisis due to climate change, water scarcity and population growth."
-    },
-    "24": {
-      "title": "Commercial nuclear fusion",
-      "description": "Possible achievement of commercially sustainable nuclear fusion, providing clean and unlimited energy."
-    },
-    "25": {
-      "title": "50% reduction in biodiversity",
-      "description": "Risk of losing 50% of current species if drastic conservation measures are not taken."
-    },
-    "26": {
-      "title": "Global population aging",
-      "description": "For the first time in history, over-65s will outnumber children under 5, with profound social and economic implications."
-    },
-    "27": {
-      "title": "End of the coal era",
-      "description": "Possible end of the use of coal as the main energy source, marking a historic turning point in the energy transition."
-    },
-    "28": {
-      "title": "Global fisheries collapse",
-      "description": "Risk of collapse of global fish stocks if sustainable fishing practices are not implemented."
-    },
-    "29": {
-      "title": "Achievement of SDGs 2030",
-      "description": "Deadline for achieving the United Nations Sustainable Development Goals, including zero poverty, quality education and climate action."
-    },
-    "30": {
-      "title": "Climate refugee crisis",
-      "description": "Possible global crisis with hundreds of millions of climate refugees forced to migrate due to extreme events and sea level rise.",
-      "actions": {
-        "0": {
-          "title": "Support refugee organizations",
-          "description": "Contribute to organizations that help climate refugees",
-          "links": {
-            "UNHCR": "UNHCR"
-          }
-        },
-        "1": {
-          "title": "Promote welcoming policies",
-          "description": "Support policies that address climate migration"
-        }
+      },
+      "natureLabels": {
+        "policyMilestone": "Policy milestone",
+        "scientificProjection": "Scientific projection",
+        "speculativeScenario": "Speculative scenario"
       }
     }
   }
 }
-

@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Calendar, Network, Sparkles, Brain, Scale, Users, FileText, Instagram, Linkedin, Shield, BarChart3, X } from 'lucide-react';
+import { ArrowRight, Calendar, Network, Sparkles, Brain, Scale, Users, FileText, Instagram, Linkedin, Shield, BarChart3, Cpu, X } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
 import { FadeIn, StaggerChildren, StaggerItem } from '@/components/motion';
@@ -18,11 +18,13 @@ export default function ProgettiPage() {
   const progetti = [
     { id: 'nexthuman', title: t('projects.nexthuman.title'), subtitle: t('projects.nexthuman.subtitle'), description: t('projects.nexthuman.description'), tags: ['Speculative Design', 'Knowledge Mapping', 'Civic Tech', 'Data Visualization'], href: '/nexthuman', icon: Calendar, color: 'blue', status: null },
     { id: 'segno', title: t('projects.segno.title'), subtitle: t('projects.segno.subtitle'), description: t('projects.segno.description'), tags: ['Digital Sovereignty', 'Privacy', 'Education', 'Digital Rights'], href: 'https://segno.app/', icon: Brain, color: 'purple', status: null },
+    { id: '404human', title: t('projects.404human.title'), subtitle: t('projects.404human.subtitle'), description: t('projects.404human.description'), tags: ['Speculative Design', 'Civic Tech', 'Simulation', 'Social Systems'], href: 'https://404human.org/', icon: Network, color: 'orange', status: null },
     { id: 'rebica', title: t('projects.rebica.title'), subtitle: t('projects.rebica.subtitle'), description: t('projects.rebica.description'), tags: ['Speculative Design', 'Data Visualization', 'Monte Carlo', 'Civic Tech'], href: null, icon: BarChart3, color: 'blue', status: null },
     { id: 'argo', title: t('projects.argo.title'), subtitle: t('projects.argo.subtitle'), description: t('projects.argo.description'), tags: ['End-to-End Encryption', 'Zero Knowledge', 'Privacy by Design', 'Note-taking'], href: null, icon: FileText, color: 'pink', status: t('projects.argo.status') },
     { id: 'civica', title: t('projects.civica.title'), subtitle: t('projects.civica.subtitle'), description: t('projects.civica.description'), tags: ['Civic Tech', 'Speculative Design', 'Education'], href: null, icon: Scale, color: 'orange', status: t('projects.civica.status') },
     { id: 'neuralforming', title: t('projects.neuralforming.title'), subtitle: t('projects.neuralforming.subtitle'), description: t('projects.neuralforming.description'), tags: ['Civic Tech', 'Education', 'AI Ethics', 'Gamification'], href: null, icon: Users, color: 'green', status: t('projects.neuralforming.status') },
     { id: 'eclipse', title: t('projects.eclipse.title'), subtitle: t('projects.eclipse.subtitle'), description: t('projects.eclipse.description'), tags: ['Privacy by Design', 'Data Sovereignty', 'Feminist Tech', 'Health'], href: null, icon: Shield, color: 'red', status: t('projects.eclipse.status') },
+    { id: 'mauss', title: t('projects.mauss.title'), subtitle: t('projects.mauss.subtitle'), description: t('projects.mauss.description'), tags: ['Volunteer Computing', 'Open Science', 'Research Infrastructure', 'Civic Tech'], href: null, icon: Cpu, color: 'green', status: t('projects.mauss.status') },
   ];
 
   const allTags = useMemo(() => {
