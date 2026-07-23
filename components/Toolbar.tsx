@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/lib/i18n';
 import { useTheme } from '@/lib/theme';
-import { ChevronDown, Globe, Menu, X, Sun, Moon, Pizza } from 'lucide-react';
+import { ChevronDown, Globe, Menu, X, Sun, Moon, HeartHandshake } from 'lucide-react';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SupportModal } from '@/components/SupportModal';
@@ -372,14 +372,14 @@ export function Toolbar() {
                 </AnimatePresence>
               </div>
 
-              {/* Donation / Support Button */}
+              {/* Support Button */}
               <button
                 onClick={() => setIsSupportModalOpen(true)}
                 title={t('common.supportTooltip')}
-                className="flex items-center gap-1.5 px-3 py-1.5 ml-1 rounded-full text-xs font-medium bg-amber-500/10 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/25 dark:border-amber-400/25 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-white transition-all duration-200 shadow-sm hover:shadow group shrink-0"
+                className="flex items-center gap-1.5 px-3.5 py-1.5 ml-1 rounded-full text-xs font-semibold bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25 dark:border-emerald-400/25 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 dark:hover:text-white transition-all duration-200 shadow-sm hover:shadow group shrink-0"
                 aria-label={t('common.supportTooltip')}
               >
-                <Pizza className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 group-hover:text-white transition-colors" />
+                <HeartHandshake className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 group-hover:text-white transition-colors" />
                 <span className="whitespace-nowrap">{t('common.donateShort')}</span>
               </button>
             </div>
@@ -403,14 +403,14 @@ export function Toolbar() {
             </Link>
 
             <div className="flex items-center gap-1.5 shrink-0">
-              {/* Pizza mobile quick button */}
+              {/* Support mobile quick button */}
               <button
                 onClick={() => setIsSupportModalOpen(true)}
                 title={t('common.supportTooltip')}
-                className="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 hover:bg-amber-500 hover:text-white transition-all duration-200 shrink-0"
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 hover:bg-emerald-600 hover:text-white transition-all duration-200 shrink-0"
                 aria-label={t('common.supportTooltip')}
               >
-                <Pizza className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                <HeartHandshake className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                 <span className="text-[11px] font-medium">{t('common.donateShort')}</span>
               </button>
 
@@ -526,9 +526,9 @@ export function Toolbar() {
                     setIsMobileMenuOpen(false);
                     setIsSupportModalOpen(true);
                   }}
-                  className="w-full flex items-center justify-center gap-2 text-sm font-semibold text-amber-800 dark:text-amber-200 bg-amber-500/15 dark:bg-amber-500/25 border border-amber-500/30 rounded-xl px-4 py-2.5 hover:bg-amber-500 hover:text-white transition-all duration-200 shadow-sm"
+                  className="w-full flex items-center justify-center gap-2 text-sm font-semibold text-emerald-800 dark:text-emerald-200 bg-emerald-500/15 dark:bg-emerald-500/25 border border-emerald-500/30 rounded-xl px-4 py-2.5 hover:bg-emerald-600 hover:text-white transition-all duration-200 shadow-sm"
                 >
-                  <Pizza className="w-4.5 h-4.5 text-amber-600 dark:text-amber-400" />
+                  <HeartHandshake className="w-4.5 h-4.5 text-emerald-600 dark:text-emerald-400" />
                   <span>{t('common.supportTooltip')}</span>
                 </button>
               </div>

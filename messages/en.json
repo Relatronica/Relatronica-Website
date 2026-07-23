@@ -17,9 +17,9 @@
     "language": "Language",
     "italian": "Italian",
     "english": "English",
-    "donate": "Buy us a pizza 🍕",
-    "donateShort": "Buy a pizza",
-    "supportTooltip": "Support the project by buying the team a pizza"
+    "donate": "Support Us",
+    "donateShort": "Support Us",
+    "supportTooltip": "Support Relatronica projects"
   },
   "pulse": {
     "badge": "Live · Connected to NextHuman",
@@ -1338,17 +1338,32 @@
   },
   "supportModal": {
     "badge": "Non-Profit Initiative",
-    "title": "Support the project 🍕",
-    "subtitle": "Buy the team a pizza to keep our tools free and open for everyone",
-    "paragraph1": "Relatronica is an independent, non-profit research and design studio born at CERN. We don't sell personal data, show ads, or accept compromises from investors that dictate our vision.",
-    "paragraph2": "Every contribution (equivalent to the price of a pizza!) helps us fund server infrastructure, develop open-source civic tech software, and keep our Academy free for the entire community.",
+    "title": "Support Relatronica Projects",
+    "subtitle": "Choose your preferred way to support our cause and keep our tools free and open for everyone.",
+    "intro": "Relatronica is a non-profit research and design studio born at CERN. We don't sell personal data, display ads, or accept compromises with investors.",
+    "ways": {
+      "pizza": {
+        "title": "Buy us a pizza",
+        "description": "If you believe in the cause but don't have time to contribute actively, a small donation (even just the price of a pizza!) helps fund servers and infrastructure.",
+        "cta": "Donate now"
+      },
+      "code": {
+        "title": "Contribute code & ideas",
+        "description": "Are you a developer, designer or researcher? Our civic tech projects are open-source. Contribute on GitHub or suggest new features.",
+        "cta": "Explore GitHub"
+      },
+      "share": {
+        "title": "Spread the word",
+        "description": "Share our maps and tools with colleagues and friends, or star our repositories to help us grow our community.",
+        "cta": "Read Manifesto"
+      }
+    },
     "points": {
       "open": "100% Open Source & Privacy",
-      "community": "Free & accessible tools",
-      "independent": "Transparent code & research"
+      "community": "Free and accessible tools",
+      "independent": "Transparent research & code"
     },
-    "cta": "Buy the team a pizza 🍕",
-    "aboutLink": "Learn more about the project",
+    "aboutLink": "Learn more about our approach",
     "close": "Close"
   }
 }

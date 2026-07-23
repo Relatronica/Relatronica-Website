@@ -17,9 +17,9 @@
     "language": "Lingua",
     "italian": "Italiano",
     "english": "Inglese",
-    "donate": "Offri una pizza 🍕",
-    "donateShort": "Offri una pizza",
-    "supportTooltip": "Sostieni il progetto offrendo una pizza al team"
+    "donate": "Sostienici",
+    "donateShort": "Sostienici",
+    "supportTooltip": "Sostieni i progetti di Relatronica"
   },
   "pulse": {
     "badge": "Live · Connesso a NextHuman",
@@ -1338,17 +1338,32 @@
   },
   "supportModal": {
     "badge": "Iniziativa Non-Profit",
-    "title": "Sostieni il progetto 🍕",
-    "subtitle": "Offri una pizza al team per mantenere liberi e aperti i nostri strumenti",
-    "paragraph1": "Relatronica è uno studio di ricerca e progettazione non-profit nato al CERN. Non vendiamo dati personali, non mostriamo pubblicità né accettiamo compromessi con investitori che condizionino la nostra visione.",
-    "paragraph2": "Ogni contributo (pari al valore di una pizza!) ci permette di finanziare l'infrastruttura server, sviluppare software civic tech open source e mantenere gratuita l'Academy per l'intera comunità.",
+    "title": "Sostieni i progetti di Relatronica",
+    "subtitle": "Scegli la modalità che preferisci per contribuire alla nostra causa e mantenere liberi e aperti i nostri strumenti.",
+    "intro": "Relatronica è uno studio di ricerca e progettazione non-profit nato al CERN. Non vendiamo dati personali, non mostriamo pubblicità né accettiamo compromessi con investitori.",
+    "ways": {
+      "pizza": {
+        "title": "Offri una pizza",
+        "description": "Se credi nella causa ma non hai tempo per contribuire attivamente, una piccola donazione (anche solo il costo di una pizza!) aiuta a finanziare server e infrastrutture.",
+        "cta": "Dona ora"
+      },
+      "code": {
+        "title": "Contribuisci con idee e codice",
+        "description": "Sei un developer, designer o ricercatore? I nostri progetti civic tech sono open source. Puoi contribuire su GitHub o proporre nuove funzionalità.",
+        "cta": "Esplora su GitHub"
+      },
+      "share": {
+        "title": "Fai sentire la tua voce",
+        "description": "Condividi le nostre mappe e i nostri strumenti con colleghi e amici, oppure lascia una stella ai nostri repository per aiutarci a crescere.",
+        "cta": "Scopri il Manifesto"
+      }
+    },
     "points": {
       "open": "100% Open Source & Privacy",
       "community": "Strumenti gratuiti e accessibili",
       "independent": "Ricerca e codice trasparenti"
     },
-    "cta": "Offri una pizza al team 🍕",
-    "aboutLink": "Scopri di più sul progetto",
+    "aboutLink": "Scopri di più sul nostro approccio",
     "close": "Chiudi"
   }
 }
