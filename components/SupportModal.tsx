@@ -30,18 +30,18 @@ export function SupportModal({ isOpen, onClose }: SupportModalProps) {
             aria-hidden="true"
           />
 
-          {/* Modal Card - Apple / Bento aesthetic */}
+          {/* Modal Card - Apple / Bento aesthetic matching the site design system */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 16 }}
             transition={{ type: 'spring', duration: 0.35, bounce: 0.1 }}
-            className="relative w-full max-w-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/80 dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden z-10 my-auto"
+            className="relative w-full max-w-2xl apple-card rounded-3xl shadow-2xl overflow-hidden z-10 my-auto bg-white/95 dark:bg-[#0f1115]/95 border border-foreground/10"
           >
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all"
+              className="absolute top-5 right-5 p-2 rounded-full text-foreground/50 hover:text-foreground hover:bg-foreground/5 transition-all"
               aria-label={t('supportModal.close')}
             >
               <X className="w-5 h-5" />
@@ -70,28 +70,28 @@ export function SupportModal({ isOpen, onClose }: SupportModalProps) {
                   {t('supportModal.badge')}
                 </span>
 
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                <h3 className="text-2xl font-bold text-foreground">
                   {t('supportModal.title')}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed max-w-lg">
+                <p className="text-xs sm:text-sm text-foreground/70 mt-1.5 leading-relaxed max-w-lg">
                   {t('supportModal.subtitle')}
                 </p>
               </div>
 
               {/* 3 Support Ways Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
-                {/* 1. Pizza / Donation Card */}
-                <div className="flex flex-col justify-between p-4 rounded-2xl bg-amber-500/5 dark:bg-amber-500/10 border border-amber-500/20 text-left">
+                {/* 1. Pizza / Donation Card - Nordic Terracotta / Warm accent */}
+                <div className="flex flex-col justify-between p-4 rounded-2xl bento-card bento-card-hover text-left">
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="p-2 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400">
+                      <div className="p-2 rounded-xl nordic-terracotta-bg nordic-terracotta-text">
                         <Pizza className="w-4 h-4" />
                       </div>
-                      <h4 className="font-bold text-sm text-slate-900 dark:text-white">
+                      <h4 className="font-bold text-sm text-foreground">
                         {t('supportModal.ways.pizza.title')}
                       </h4>
                     </div>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                    <p className="text-xs text-foreground/70 leading-relaxed mb-4">
                       {t('supportModal.ways.pizza.description')}
                     </p>
                   </div>
@@ -100,25 +100,25 @@ export function SupportModal({ isOpen, onClose }: SupportModalProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={onClose}
-                    className="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-amber-500 hover:bg-amber-600 text-white transition-colors shadow-sm"
+                    className="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-colors shadow-sm"
                   >
                     <span>{t('supportModal.ways.pizza.cta')}</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
 
-                {/* 2. Code / Contribution Card */}
-                <div className="flex flex-col justify-between p-4 rounded-2xl bg-blue-500/5 dark:bg-blue-500/10 border border-blue-500/20 text-left">
+                {/* 2. Code / Contribution Card - Nordic Sage / Green accent */}
+                <div className="flex flex-col justify-between p-4 rounded-2xl bento-card bento-card-hover text-left">
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="p-2 rounded-xl bg-blue-500/15 text-blue-600 dark:text-blue-400">
+                      <div className="p-2 rounded-xl nordic-sage-bg nordic-sage-text">
                         <Code2 className="w-4 h-4" />
                       </div>
-                      <h4 className="font-bold text-sm text-slate-900 dark:text-white">
+                      <h4 className="font-bold text-sm text-foreground">
                         {t('supportModal.ways.code.title')}
                       </h4>
                     </div>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                    <p className="text-xs text-foreground/70 leading-relaxed mb-4">
                       {t('supportModal.ways.code.description')}
                     </p>
                   </div>
@@ -127,32 +127,32 @@ export function SupportModal({ isOpen, onClose }: SupportModalProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={onClose}
-                    className="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-colors shadow-sm"
+                    className="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold apple-button-secondary transition-colors shadow-sm"
                   >
                     <span>{t('supportModal.ways.code.cta')}</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
 
-                {/* 3. Share / Voice Card */}
-                <div className="flex flex-col justify-between p-4 rounded-2xl bg-emerald-500/5 dark:bg-emerald-500/10 border border-emerald-500/20 text-left">
+                {/* 3. Share / Voice Card - Nordic Moss / Slate accent */}
+                <div className="flex flex-col justify-between p-4 rounded-2xl bento-card bento-card-hover text-left">
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="p-2 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                      <div className="p-2 rounded-xl nordic-moss-bg nordic-moss-text">
                         <Megaphone className="w-4 h-4" />
                       </div>
-                      <h4 className="font-bold text-sm text-slate-900 dark:text-white">
+                      <h4 className="font-bold text-sm text-foreground">
                         {t('supportModal.ways.share.title')}
                       </h4>
                     </div>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                    <p className="text-xs text-foreground/70 leading-relaxed mb-4">
                       {t('supportModal.ways.share.description')}
                     </p>
                   </div>
                   <Link
                     href="/manifesto"
                     onClick={onClose}
-                    className="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white transition-colors shadow-sm"
+                    className="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold apple-button-secondary transition-colors shadow-sm"
                   >
                     <span>{t('supportModal.ways.share.cta')}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -161,16 +161,16 @@ export function SupportModal({ isOpen, onClose }: SupportModalProps) {
               </div>
 
               {/* Guarantees / Principles */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 py-3 border-t border-slate-200/60 dark:border-slate-800 text-center text-xs">
-                <div className="flex items-center justify-center gap-1.5 text-slate-600 dark:text-slate-400">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 py-3 border-t border-foreground/10 text-center text-xs">
+                <div className="flex items-center justify-center gap-1.5 text-foreground/70">
                   <ShieldCheck className="w-3.5 h-3.5 nordic-sage-text shrink-0" />
                   <span>{t('supportModal.points.open')}</span>
                 </div>
-                <div className="flex items-center justify-center gap-1.5 text-slate-600 dark:text-slate-400">
+                <div className="flex items-center justify-center gap-1.5 text-foreground/70">
                   <HeartHandshake className="w-3.5 h-3.5 nordic-sage-text shrink-0" />
                   <span>{t('supportModal.points.community')}</span>
                 </div>
-                <div className="flex items-center justify-center gap-1.5 text-slate-600 dark:text-slate-400">
+                <div className="flex items-center justify-center gap-1.5 text-foreground/70">
                   <Sparkles className="w-3.5 h-3.5 nordic-sage-text shrink-0" />
                   <span>{t('supportModal.points.independent')}</span>
                 </div>
