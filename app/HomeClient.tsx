@@ -9,6 +9,7 @@ import { Hero3DWrapper } from '@/components/hero/Hero3DWrapper';
 import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
 import { FadeIn, StaggerChildren, StaggerItem, TextReveal } from '@/components/motion';
+import { SpeculativeDesignSVG, CivicTechSVG, KnowledgeMappingSVG, ResponsibleTechSVG } from '@/components/feature-graphics/FeatureSVGs';
 import { useI18n } from '@/lib/i18n';
 import { motion } from 'framer-motion';
 
@@ -201,144 +202,156 @@ export function HomeClient() {
                 </p>
               </FadeIn>
 
-              <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5" staggerDelay={0.08}>
-                {/* Feature 1: Speculative Design (Featured Hero Card - col-span-2) */}
-                <StaggerItem className="md:col-span-2 lg:col-span-2">
+              <StaggerChildren className="grid grid-cols-1 lg:grid-cols-2 gap-6" staggerDelay={0.08}>
+                {/* Feature 1: Speculative Design */}
+                <StaggerItem>
                   <motion.div
-                    whileHover={{ y: -2 }}
+                    whileHover={{ y: -3 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-                    className="bento-card relative h-full p-8 overflow-hidden flex flex-col justify-between"
+                    className="bento-card relative h-full p-6 sm:p-8 overflow-hidden flex flex-col sm:flex-row gap-6 items-center justify-between"
                   >
-                    <div>
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="p-3.5 rounded-2xl nordic-moss-bg nordic-moss-text border border-emerald-900/10 dark:border-emerald-100/10">
-                          <Sparkles className="w-6 h-6" />
-                        </div>
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full nordic-moss-bg nordic-moss-text text-xs font-medium border border-emerald-900/10 dark:border-emerald-100/10">
-                          Pilastro Metodologico
-                        </span>
-                      </div>
-
-                      <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                        {features[0].title}
-                      </h3>
-                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base max-w-md">
-                        {features[0].description}
-                      </p>
+                    <div className="w-full sm:w-5/12 shrink-0">
+                      <SpeculativeDesignSVG />
                     </div>
 
-                    <div className="mt-8 flex flex-wrap gap-2">
-                      <span className="px-2.5 py-1 rounded-md nordic-moss-bg nordic-moss-text text-xs font-medium">
-                        #DesignFiction
-                      </span>
-                      <span className="px-2.5 py-1 rounded-md nordic-moss-bg nordic-moss-text text-xs font-medium">
-                        #FuturiPossibili
-                      </span>
+                    <div className="w-full sm:w-7/12 flex flex-col justify-between h-full">
+                      <div>
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full nordic-moss-bg nordic-moss-text text-xs font-medium border border-emerald-900/10 dark:border-emerald-100/10">
+                            Pilastro Metodologico
+                          </span>
+                        </div>
+
+                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                          {features[0].title}
+                        </h3>
+                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                          {features[0].description}
+                        </p>
+                      </div>
+
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        <span className="px-2.5 py-1 rounded-md nordic-moss-bg nordic-moss-text text-xs font-medium">
+                          #DesignFiction
+                        </span>
+                        <span className="px-2.5 py-1 rounded-md nordic-moss-bg nordic-moss-text text-xs font-medium">
+                          #FuturiPossibili
+                        </span>
+                      </div>
                     </div>
                   </motion.div>
                 </StaggerItem>
 
                 {/* Feature 2: Civic Tech */}
-                <StaggerItem className="md:col-span-1 lg:col-span-2">
+                <StaggerItem>
                   <motion.div
-                    whileHover={{ y: -2 }}
+                    whileHover={{ y: -3 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-                    className="bento-card relative h-full p-8 overflow-hidden flex flex-col justify-between"
+                    className="bento-card relative h-full p-6 sm:p-8 overflow-hidden flex flex-col sm:flex-row gap-6 items-center justify-between"
                   >
-                    <div>
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="p-3.5 rounded-2xl nordic-sage-bg nordic-sage-text border border-green-900/10 dark:border-green-100/10">
-                          <Users className="w-6 h-6" />
-                        </div>
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full nordic-sage-bg nordic-sage-text text-xs font-medium">
-                          Impatto Sociale
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                        {features[1].title}
-                      </h3>
-                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                        {features[1].description}
-                      </p>
+                    <div className="w-full sm:w-5/12 shrink-0">
+                      <CivicTechSVG />
                     </div>
 
-                    <div className="mt-8 flex flex-wrap gap-2">
-                      <span className="px-2.5 py-1 rounded-md nordic-sage-bg nordic-sage-text text-xs font-medium">
-                        #OpenGov
-                      </span>
-                      <span className="px-2.5 py-1 rounded-md nordic-sage-bg nordic-sage-text text-xs font-medium">
-                        #Partecipazione
-                      </span>
+                    <div className="w-full sm:w-7/12 flex flex-col justify-between h-full">
+                      <div>
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full nordic-sage-bg nordic-sage-text text-xs font-medium">
+                            Impatto Sociale
+                          </span>
+                        </div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                          {features[1].title}
+                        </h3>
+                        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                          {features[1].description}
+                        </p>
+                      </div>
+
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        <span className="px-2.5 py-1 rounded-md nordic-sage-bg nordic-sage-text text-xs font-medium">
+                          #OpenGov
+                        </span>
+                        <span className="px-2.5 py-1 rounded-md nordic-sage-bg nordic-sage-text text-xs font-medium">
+                          #Partecipazione
+                        </span>
+                      </div>
                     </div>
                   </motion.div>
                 </StaggerItem>
 
                 {/* Feature 3: Knowledge Mapping */}
-                <StaggerItem className="md:col-span-1 lg:col-span-2">
+                <StaggerItem>
                   <motion.div
-                    whileHover={{ y: -2 }}
+                    whileHover={{ y: -3 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-                    className="bento-card relative h-full p-8 overflow-hidden flex flex-col justify-between"
+                    className="bento-card relative h-full p-6 sm:p-8 overflow-hidden flex flex-col sm:flex-row gap-6 items-center justify-between"
                   >
-                    <div>
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="p-3.5 rounded-2xl nordic-terracotta-bg nordic-terracotta-text border border-orange-900/10 dark:border-orange-100/10">
-                          <Network className="w-6 h-6" />
-                        </div>
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full nordic-terracotta-bg nordic-terracotta-text text-xs font-medium">
-                          Ricerca & Analisi
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                        {features[2].title}
-                      </h3>
-                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                        {features[2].description}
-                      </p>
+                    <div className="w-full sm:w-5/12 shrink-0">
+                      <KnowledgeMappingSVG />
                     </div>
 
-                    <div className="mt-8 flex flex-wrap gap-2">
-                      <span className="px-2.5 py-1 rounded-md nordic-terracotta-bg nordic-terracotta-text text-xs font-medium">
-                        #OpenKnowledge
-                      </span>
-                      <span className="px-2.5 py-1 rounded-md nordic-terracotta-bg nordic-terracotta-text text-xs font-medium">
-                        #Mappatura
-                      </span>
+                    <div className="w-full sm:w-7/12 flex flex-col justify-between h-full">
+                      <div>
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full nordic-terracotta-bg nordic-terracotta-text text-xs font-medium">
+                            Ricerca & Analisi
+                          </span>
+                        </div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                          {features[2].title}
+                        </h3>
+                        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                          {features[2].description}
+                        </p>
+                      </div>
+
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        <span className="px-2.5 py-1 rounded-md nordic-terracotta-bg nordic-terracotta-text text-xs font-medium">
+                          #OpenKnowledge
+                        </span>
+                        <span className="px-2.5 py-1 rounded-md nordic-terracotta-bg nordic-terracotta-text text-xs font-medium">
+                          #Mappatura
+                        </span>
+                      </div>
                     </div>
                   </motion.div>
                 </StaggerItem>
 
                 {/* Feature 4: Responsible Tech */}
-                <StaggerItem className="md:col-span-2 lg:col-span-2">
+                <StaggerItem>
                   <motion.div
-                    whileHover={{ y: -2 }}
+                    whileHover={{ y: -3 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-                    className="bento-card relative h-full p-8 overflow-hidden flex flex-col justify-between"
+                    className="bento-card relative h-full p-6 sm:p-8 overflow-hidden flex flex-col sm:flex-row gap-6 items-center justify-between"
                   >
-                    <div>
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="p-3.5 rounded-2xl nordic-slate-bg nordic-slate-text border border-slate-900/10 dark:border-slate-100/10">
-                          <Shield className="w-6 h-6" />
-                        </div>
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full nordic-slate-bg nordic-slate-text text-xs font-medium">
-                          Etica & Sostenibilità
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                        {features[3].title}
-                      </h3>
-                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                        {features[3].description}
-                      </p>
+                    <div className="w-full sm:w-5/12 shrink-0">
+                      <ResponsibleTechSVG />
                     </div>
 
-                    <div className="mt-8 flex flex-wrap gap-2">
-                      <span className="px-2.5 py-1 rounded-md nordic-slate-bg nordic-slate-text text-xs font-medium">
-                        #TechForGood
-                      </span>
-                      <span className="px-2.5 py-1 rounded-md nordic-slate-bg nordic-slate-text text-xs font-medium">
-                        #HumanCentered
-                      </span>
+                    <div className="w-full sm:w-7/12 flex flex-col justify-between h-full">
+                      <div>
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full nordic-slate-bg nordic-slate-text text-xs font-medium">
+                            Etica & Sostenibilità
+                          </span>
+                        </div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                          {features[3].title}
+                        </h3>
+                        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                          {features[3].description}
+                        </p>
+                      </div>
+
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        <span className="px-2.5 py-1 rounded-md nordic-slate-bg nordic-slate-text text-xs font-medium">
+                          #TechForGood
+                        </span>
+                        <span className="px-2.5 py-1 rounded-md nordic-slate-bg nordic-slate-text text-xs font-medium">
+                          #HumanCentered
+                        </span>
+                      </div>
                     </div>
                   </motion.div>
                 </StaggerItem>
