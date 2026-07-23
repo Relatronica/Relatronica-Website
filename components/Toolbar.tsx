@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/lib/i18n';
 import { useTheme } from '@/lib/theme';
-import { ChevronDown, Globe, Menu, X, Sun, Moon } from 'lucide-react';
+import { ChevronDown, Globe, Menu, X, Sun, Moon, Pizza } from 'lucide-react';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -175,23 +175,23 @@ export function Toolbar() {
   return (
     <>
       {/* ===== DESKTOP NAVBAR (lg+) ===== */}
-      <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50 hidden lg:block">
-        <div className="apple-card rounded-full px-10 py-4 shadow-lg">
-          <div className="flex items-center justify-center gap-7">
-            <Link href="/" className="flex items-center gap-2.5 shrink-0">
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden lg:block max-w-[calc(100vw-2rem)]">
+        <div className="apple-card rounded-full px-6 py-2.5 shadow-lg">
+          <div className="flex items-center justify-center gap-4 xl:gap-5">
+            <Link href="/" className="flex items-center gap-2 shrink-0">
               <Image
                 src="/logo.png"
                 alt="Relatronica"
-                width={28}
-                height={28}
+                width={26}
+                height={26}
                 className="object-contain"
               />
-              <span className="text-lg font-bold text-foreground">Relatronica</span>
+              <span className="text-base font-bold text-foreground">Relatronica</span>
             </Link>
 
-            <div className="w-px h-6 bg-foreground/10 shrink-0" />
+            <div className="w-px h-5 bg-foreground/10 shrink-0" />
 
-            <div className="relative flex items-center gap-1.5" ref={navContainerRef}>
+            <div className="relative flex items-center gap-1" ref={navContainerRef}>
               {indicatorStyle && (
                 <div
                   className={cn(
@@ -216,7 +216,7 @@ export function Toolbar() {
                   aria-expanded={isWorkMenuOpen}
                   aria-haspopup="true"
                   className={cn(
-                    'text-sm font-medium relative z-10 px-3.5 py-2 rounded-full whitespace-nowrap transition-colors duration-200 inline-flex items-center gap-1',
+                    'text-sm font-medium relative z-10 px-3 py-1.5 rounded-full whitespace-nowrap transition-colors duration-200 inline-flex items-center gap-1',
                     isWorkActive
                       ? 'text-blue-600 dark:text-blue-400'
                       : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
@@ -284,7 +284,7 @@ export function Toolbar() {
                     href={item.href}
                     data-active={isActive}
                     className={cn(
-                      'text-sm font-medium relative z-10 px-3.5 py-2 rounded-full whitespace-nowrap transition-colors duration-200',
+                      'text-sm font-medium relative z-10 px-3 py-1.5 rounded-full whitespace-nowrap transition-colors duration-200',
                       isActive
                         ? 'text-blue-600 dark:text-blue-400'
                         : 'text-foreground/70 hover:text-foreground hover:bg-foreground/5'
@@ -296,77 +296,92 @@ export function Toolbar() {
               })}
             </div>
 
-            <div className="w-px h-6 bg-foreground/10 shrink-0" />
+            <div className="w-px h-5 bg-foreground/10 shrink-0" />
 
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
-              aria-label="Toggle theme"
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={theme}
-                  initial={{ scale: 0.5, opacity: 0, rotate: -90 }}
-                  animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                  exit={{ scale: 0.5, opacity: 0, rotate: 90 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-                </motion.div>
-              </AnimatePresence>
-            </button>
-
-            {/* Language Switch */}
-            <div className="relative shrink-0" ref={menuRef}>
+            <div className="flex items-center gap-1 shrink-0">
+              {/* Theme Toggle */}
               <button
-                onClick={toggleLanguageMenu}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-full text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
-                aria-label={t('common.language')}
+                onClick={toggleTheme}
+                className="p-2 rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
+                aria-label="Toggle theme"
               >
-                <Globe className="w-4 h-4" />
-                <span className="uppercase text-xs">{locale}</span>
-              </button>
-              <AnimatePresence>
-                {isLanguageMenuOpen && (
+                <AnimatePresence mode="wait" initial={false}>
                   <motion.div
-                    initial={{ opacity: 0, y: -4, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -4, scale: 0.95 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute top-full right-0 mt-2 w-40 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg overflow-hidden z-50"
+                    key={theme}
+                    initial={{ scale: 0.5, opacity: 0, rotate: -90 }}
+                    animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                    exit={{ scale: 0.5, opacity: 0, rotate: 90 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <button
-                      onClick={() => {
-                        setLocale('it');
-                        setIsLanguageMenuOpen(false);
-                      }}
-                      className={cn(
-                        'w-full text-left px-4 py-2 text-sm transition-colors',
-                        locale === 'it'
-                          ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 font-medium'
-                          : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
-                      )}
-                    >
-                      {t('common.italian')}
-                    </button>
-                    <button
-                      onClick={() => {
-                        setLocale('en');
-                        setIsLanguageMenuOpen(false);
-                      }}
-                      className={cn(
-                        'w-full text-left px-4 py-2 text-sm transition-colors',
-                        locale === 'en'
-                          ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 font-medium'
-                          : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
-                      )}
-                    >
-                      {t('common.english')}
-                    </button>
+                    {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
                   </motion.div>
-                )}
-              </AnimatePresence>
+                </AnimatePresence>
+              </button>
+
+              {/* Language Switch */}
+              <div className="relative shrink-0" ref={menuRef}>
+                <button
+                  onClick={toggleLanguageMenu}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
+                  aria-label={t('common.language')}
+                >
+                  <Globe className="w-3.5 h-3.5" />
+                  <span className="uppercase text-xs">{locale}</span>
+                </button>
+                <AnimatePresence>
+                  {isLanguageMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -4, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -4, scale: 0.95 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute top-full right-0 mt-2 w-40 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg overflow-hidden z-50"
+                    >
+                      <button
+                        onClick={() => {
+                          setLocale('it');
+                          setIsLanguageMenuOpen(false);
+                        }}
+                        className={cn(
+                          'w-full text-left px-4 py-2 text-sm transition-colors',
+                          locale === 'it'
+                            ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 font-medium'
+                            : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+                        )}
+                      >
+                        {t('common.italian')}
+                      </button>
+                      <button
+                        onClick={() => {
+                          setLocale('en');
+                          setIsLanguageMenuOpen(false);
+                        }}
+                        className={cn(
+                          'w-full text-left px-4 py-2 text-sm transition-colors',
+                          locale === 'en'
+                            ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 font-medium'
+                            : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
+                        )}
+                      >
+                        {t('common.english')}
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Donation / Support Button */}
+              <a
+                href="https://buymeacoffee.com/relatronica"
+                target="_blank"
+                rel="noopener noreferrer"
+                title={t('common.supportTooltip')}
+                className="flex items-center gap-1.5 px-3 py-1.5 ml-1 rounded-full text-xs font-medium bg-amber-500/10 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/25 dark:border-amber-400/25 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 dark:hover:text-white transition-all duration-200 shadow-sm hover:shadow group shrink-0"
+                aria-label={t('common.supportTooltip')}
+              >
+                <Pizza className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 group-hover:text-white transition-colors" />
+                <span className="whitespace-nowrap">{t('common.donateShort')}</span>
+              </a>
             </div>
           </div>
         </div>
@@ -375,8 +390,8 @@ export function Toolbar() {
       {/* ===== MOBILE / TABLET NAVBAR (< lg) ===== */}
       <nav className="fixed top-4 left-4 right-4 z-50 lg:hidden" ref={mobileMenuRef}>
         <div className="apple-card rounded-2xl px-4 py-3 shadow-lg">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
+          <div className="flex items-center justify-between gap-2">
+            <Link href="/" className="flex items-center gap-2 shrink-0">
               <Image
                 src="/logo.png"
                 alt="Relatronica"
@@ -384,14 +399,27 @@ export function Toolbar() {
                 height={24}
                 className="object-contain"
               />
-              <span className="text-base font-bold text-foreground">Relatronica</span>
+              <span className="text-base font-bold text-foreground truncate">Relatronica</span>
             </Link>
 
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1.5 shrink-0">
+              {/* Pizza mobile quick button */}
+              <a
+                href="https://buymeacoffee.com/relatronica"
+                target="_blank"
+                rel="noopener noreferrer"
+                title={t('common.supportTooltip')}
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 hover:bg-amber-500 hover:text-white transition-all duration-200 shrink-0"
+                aria-label={t('common.supportTooltip')}
+              >
+                <Pizza className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                <span className="text-[11px] font-medium">{t('common.donateShort')}</span>
+              </a>
+
               {/* Theme Toggle (mobile) */}
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
+                className="p-1.5 rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -401,16 +429,15 @@ export function Toolbar() {
                 onClick={() => {
                   setLocale(locale === 'it' ? 'en' : 'it');
                 }}
-                className="flex items-center gap-1.5 px-2.5 py-2 rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
+                className="p-1.5 rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
                 aria-label={t('common.language')}
               >
                 <Globe className="w-4 h-4" />
-                <span className="uppercase text-xs font-medium">{locale}</span>
               </button>
 
               <button
                 onClick={toggleMobileMenu}
-                className="p-2 rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
+                className="p-1.5 rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
                 aria-label={isMobileMenuOpen ? 'Chiudi menu' : 'Apri menu'}
                 aria-expanded={isMobileMenuOpen}
               >
@@ -426,7 +453,7 @@ export function Toolbar() {
           <div
             className={cn(
               'overflow-hidden transition-all duration-300 ease-in-out',
-              isMobileMenuOpen ? 'max-h-[36rem] opacity-100 mt-3' : 'max-h-0 opacity-0 mt-0'
+              isMobileMenuOpen ? 'max-h-[38rem] opacity-100 mt-3' : 'max-h-0 opacity-0 mt-0'
             )}
           >
             <div className="border-t border-foreground/5 pt-3 pb-1 flex flex-col gap-1">
@@ -494,6 +521,18 @@ export function Toolbar() {
                   </Link>
                 );
               })}
+
+              <div className="pt-2">
+                <a
+                  href="https://buymeacoffee.com/relatronica"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 text-sm font-semibold text-amber-800 dark:text-amber-200 bg-amber-500/15 dark:bg-amber-500/25 border border-amber-500/30 rounded-xl px-4 py-2.5 hover:bg-amber-500 hover:text-white transition-all duration-200 shadow-sm"
+                >
+                  <Pizza className="w-4.5 h-4.5 text-amber-600 dark:text-amber-400" />
+                  <span>{t('common.supportTooltip')}</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

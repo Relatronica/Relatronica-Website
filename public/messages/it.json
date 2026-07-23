@@ -13,7 +13,10 @@
     "comingSoon": "Prossimamente",
     "language": "Lingua",
     "italian": "Italiano",
-    "english": "Inglese"
+    "english": "Inglese",
+    "donate": "Offri una pizza 🍕",
+    "donateShort": "Offri una pizza",
+    "supportTooltip": "Sostieni il progetto offrendo una pizza al team"
   },
   "home": {
     "title": "Relatronica",

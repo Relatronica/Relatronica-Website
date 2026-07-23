@@ -7,6 +7,7 @@ import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
 import { FadeIn, StaggerChildren, StaggerItem } from '@/components/motion';
 import { useI18n } from '@/lib/i18n';
+import { motion } from 'framer-motion';
 
 export default function ProgettiPage() {
   const { t } = useI18n();
@@ -181,7 +182,7 @@ export default function ProgettiPage() {
                       ${isComingSoon ? 'opacity-70' : 'hover:bg-white/80 dark:hover:bg-slate-800/50 hover:shadow-sm cursor-pointer'}`}
                     >
                       <div className="flex items-start gap-3 sm:w-2/5 shrink-0">
-                        <div className={`p-2 rounded-lg shrink-0 ${getIconBg(progetto.color)}`}>
+                        <div className="p-2 rounded-lg shrink-0 nordic-sage-bg nordic-sage-text">
                           <Icon className="w-4 h-4" />
                         </div>
                         <div className="min-w-0">
@@ -198,7 +199,7 @@ export default function ProgettiPage() {
                           {progetto.tags.map((tag) => (
                             <span key={tag} className={`px-2 py-0.5 text-[11px] rounded-full font-medium
                               ${activeTag === tag
-                                ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900'
+                                ? 'nordic-terracotta-bg nordic-terracotta-text'
                                 : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
                               }`}
                             >
@@ -224,6 +225,8 @@ export default function ProgettiPage() {
                 })}
               </div>
             </FadeIn>
+
+
 
             <FadeIn delay={0.4} className="mt-20 text-center">
               <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 backdrop-blur-xl p-10 shadow-sm max-w-2xl mx-auto">

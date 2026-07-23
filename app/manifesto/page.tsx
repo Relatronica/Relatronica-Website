@@ -73,33 +73,36 @@ export default function ManifestoPage() {
               </section>
             </FadeIn>
 
-            <StaggerChildren className="space-y-6 mb-20" staggerDelay={0.06}>
-              {principles.map((principle) => (
-                <StaggerItem key={principle.number}>
-                  <article className={`${cardBase} ${principle.accent.border} p-8 md:p-10 hover:shadow-md transition-shadow duration-300`}>
-                    <div className="flex items-start gap-5 md:gap-8">
-                      <div className={`flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-xl ${principle.accent.light} flex items-center justify-center`}>
-                        <span className={`text-lg md:text-xl font-bold ${principle.accent.text}`}>
-                          {principle.number}
-                        </span>
+            <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-20" staggerDelay={0.06}>
+              {principles.map((principle, idx) => {
+                const isFeatured = idx === 0 || idx === 4 || idx === 8;
+                return (
+                  <StaggerItem key={principle.number} className={isFeatured ? 'md:col-span-2' : 'md:col-span-1'}>
+                    <article className="bento-card bento-card-hover h-full p-8 md:p-10 flex flex-col justify-between">
+                      <div className="flex items-start gap-5 mb-6">
+                        <div className="shrink-0 w-12 h-12 rounded-2xl nordic-sage-bg nordic-sage-text flex items-center justify-center border border-emerald-900/10 dark:border-emerald-100/10">
+                          <span className="text-lg font-bold">
+                            {principle.number}
+                          </span>
+                        </div>
+                        <div>
+                          <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white">
+                            {principle.title}
+                          </h2>
+                        </div>
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                          {principle.title}
-                        </h2>
-                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-[15px]">
-                          {principle.body}
-                        </p>
-                      </div>
-                    </div>
-                  </article>
-                </StaggerItem>
-              ))}
+                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-[15px]">
+                        {principle.body}
+                      </p>
+                    </article>
+                  </StaggerItem>
+                );
+              })}
             </StaggerChildren>
 
             <FadeIn>
-              <section className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-br from-slate-900 to-slate-800 dark:from-slate-800 dark:to-slate-900 p-8 md:p-12 shadow-lg mb-12">
-                <p className="text-white/90 text-lg md:text-xl leading-relaxed text-center font-medium">
+              <section className="bento-card p-8 md:p-12 mb-12 border-emerald-900/20 dark:border-emerald-100/20">
+                <p className="text-slate-900 dark:text-white text-lg md:text-xl leading-relaxed text-center font-medium">
                   {t('manifesto.closing')}
                 </p>
               </section>
@@ -119,11 +122,11 @@ export default function ManifestoPage() {
                 <StaggerItem key={key}>
                   <Link
                     href={href}
-                    className={`group block ${cardBase} border-slate-200 dark:border-slate-800 p-8 hover:shadow-md transition-all duration-300`}
+                    className="group block bento-card bento-card-hover p-8"
                   >
                     <div className="flex items-start justify-between mb-4">
                       <h3 className="text-xl font-bold text-slate-900 dark:text-white">{t(`manifesto.cta.${key}.title`)}</h3>
-                      <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white group-hover:translate-x-1 transition-all" />
+                      <ArrowRight className="w-5 h-5 nordic-sage-text group-hover:translate-x-1 transition-all" />
                     </div>
                     <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                       {t(`manifesto.cta.${key}.description`)}
@@ -132,6 +135,7 @@ export default function ManifestoPage() {
                 </StaggerItem>
               ))}
             </StaggerChildren>
+
 
           </div>
         </div>

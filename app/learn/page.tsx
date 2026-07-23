@@ -76,13 +76,12 @@ export default function AcademyPage() {
             </FadeIn>
 
             <FadeIn delay={0.2} className="mb-16">
-              <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-6">
+              <h2 className="text-xs font-bold nordic-sage-text uppercase tracking-wider mb-6">
                 {t('learn.availableCourses')}
               </h2>
-              <div className="space-y-6">
+              <div className="grid grid-cols-1 gap-5">
                 {activeCourses.map((course) => {
                   const Icon = ICON_MAP[course.iconName] || BookOpen;
-                  const colors = COLOR_MAP[course.color] || COLOR_MAP.blue;
                   const content = course.content[locale as 'it' | 'en'] || course.content.it;
                   const lessonCount = getCourseTotalLessons(course);
                   const readingTime = getCourseReadingTime(course);
@@ -96,14 +95,14 @@ export default function AcademyPage() {
                     <Link
                       key={course.slug}
                       href={`/learn/${course.slug}`}
-                      className={`group block rounded-2xl border ${colors.border} bg-gradient-to-br ${colors.gradient} p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-300`}
+                      className="group block bento-card bento-card-hover p-8 md:p-10"
                     >
                       <div className="flex flex-col md:flex-row md:items-start gap-6">
-                        <div className="flex-shrink-0 w-16 h-16 rounded-2xl bg-white/80 dark:bg-white/10 flex items-center justify-center shadow-sm">
-                          <Icon className={`w-7 h-7 ${colors.icon}`} />
+                        <div className="shrink-0 w-16 h-16 rounded-2xl nordic-sage-bg nordic-sage-text flex items-center justify-center border border-emerald-900/10 dark:border-emerald-100/10">
+                          <Icon className="w-7 h-7" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2 group-hover:nordic-sage-text transition-colors">
                             {content.title}
                           </h3>
                           <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4 text-[15px]">
@@ -119,14 +118,14 @@ export default function AcademyPage() {
                               ~{readingTime} min
                             </span>
                             {courseCompletedCount > 0 && (
-                              <span className="text-emerald-600 dark:text-emerald-400 font-medium">
+                              <span className="nordic-sage-text font-medium">
                                 {courseCompletedCount}/{lessonCount} {t('learn.stats.completed')}
                               </span>
                             )}
                           </div>
                         </div>
-                        <div className="flex-shrink-0 self-center">
-                          <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/90 dark:bg-white/10 border border-slate-200 dark:border-white/10 rounded-full text-sm font-semibold text-slate-900 dark:text-white group-hover:bg-slate-900 dark:group-hover:bg-white group-hover:text-white dark:group-hover:text-slate-900 group-hover:border-slate-900 dark:group-hover:border-white transition-all duration-200 shadow-sm">
+                        <div className="shrink-0 self-center">
+                          <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold nordic-sage-bg nordic-sage-text group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-slate-900 transition-all duration-200">
                             {courseCompletedCount > 0 ? t('learn.continue') : t('learn.start')}
                             <ArrowRight className="w-4 h-4" />
                           </span>
@@ -140,26 +139,29 @@ export default function AcademyPage() {
 
             {comingSoonCourses.length > 0 && (
               <StaggerChildren className="mb-16" staggerDelay={0.1}>
-                <h2 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-6">
+                <h2 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-6">
                   {t('learn.comingSoon')}
                 </h2>
-                <div className="grid md:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-3 gap-5">
                   {comingSoonCourses.map((course) => {
                     const Icon = ICON_MAP[course.iconName] || BookOpen;
-                    const colors = COLOR_MAP[course.color] || COLOR_MAP.blue;
                     const content = course.content[locale as 'it' | 'en'] || course.content.it;
 
                     return (
                       <StaggerItem key={course.slug}>
-                        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 backdrop-blur-xl p-6 shadow-sm opacity-80">
-                          <div className={`w-12 h-12 rounded-xl ${colors.bg} flex items-center justify-center mb-4`}>
-                            <Icon className={`w-5 h-5 ${colors.icon}`} />
+                        <div className="bento-card p-6 h-full flex flex-col justify-between opacity-85">
+                          <div>
+                            <div className="w-12 h-12 rounded-xl nordic-slate-bg nordic-slate-text flex items-center justify-center mb-4">
+                              <Icon className="w-5 h-5" />
+                            </div>
+                            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{content.title}</h3>
+                            <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4">{content.description}</p>
                           </div>
-                          <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{content.title}</h3>
-                          <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4">{content.description}</p>
-                          <span className="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-medium">
-                            {t('common.comingSoon')}
-                          </span>
+                          <div>
+                            <span className="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-medium">
+                              {t('common.comingSoon')}
+                            </span>
+                          </div>
                         </div>
                       </StaggerItem>
                     );
@@ -167,6 +169,7 @@ export default function AcademyPage() {
                 </div>
               </StaggerChildren>
             )}
+
 
             <FadeIn className="text-center">
               <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900/50 dark:to-blue-950/30 p-10 shadow-sm max-w-2xl mx-auto">

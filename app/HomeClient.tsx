@@ -185,42 +185,173 @@ export function HomeClient() {
                 </FadeIn>
               </div>
             </div>
+            {/* === 2. FEATURES BENTO SHOWCASE (NORDIC TECH PALETTE) === */}
+            <div className="mb-28">
+              <FadeIn className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-wider nordic-sage-text">
+                    Aree di Ricerca & Pratica
+                  </span>
+                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mt-1">
+                    Cosa Facciamo
+                  </h2>
+                </div>
+                <p className="text-slate-500 dark:text-slate-400 text-sm max-w-md">
+                  I quattro pilastri attraverso cui esploriamo l’intersezione tra tecnologia, società e design speculativo.
+                </p>
+              </FadeIn>
 
-            {/* === 2. FEATURES GRID === */}
-            <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-28" staggerDelay={0.08}>
-              {features.map((feature) => {
-                const Icon = feature.icon;
-                return (
-                  <StaggerItem key={feature.title}>
-                    <Link href={feature.href} className="block h-full group">
-                      <motion.div
-                        whileHover={{ y: -4, scale: 1.01 }}
-                        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                        className="h-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm hover:shadow-lg transition-shadow duration-300 p-6"
-                      >
-                        <div className="flex items-start justify-between mb-4">
-                          <div className={`p-3 rounded-xl ${colorClasses[feature.color] || colorClasses.purple}`}>
-                            <Icon className="w-6 h-6" />
-                          </div>
-                          <ArrowRight className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-slate-900 dark:group-hover:text-white group-hover:translate-x-1 transition-all" />
+              <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5" staggerDelay={0.08}>
+                {/* Feature 1: Speculative Design (Featured Hero Card - col-span-2) */}
+                <StaggerItem className="md:col-span-2 lg:col-span-2">
+                  <motion.div
+                    whileHover={{ y: -2 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+                    className="bento-card relative h-full p-8 overflow-hidden flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="p-3.5 rounded-2xl nordic-moss-bg nordic-moss-text border border-emerald-900/10 dark:border-emerald-100/10">
+                          <Sparkles className="w-6 h-6" />
                         </div>
-                        <h3 className="text-lg font-bold mb-2 text-slate-900 dark:text-white">
-                          {feature.title}
-                        </h3>
-                        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                          {feature.description}
-                        </p>
-                      </motion.div>
-                    </Link>
-                  </StaggerItem>
-                );
-              })}
-            </StaggerChildren>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full nordic-moss-bg nordic-moss-text text-xs font-medium border border-emerald-900/10 dark:border-emerald-100/10">
+                          Pilastro Metodologico
+                        </span>
+                      </div>
 
-            {/* === 4. PROJECTS SHOWCASE === */}
+                      <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
+                        {features[0].title}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-base max-w-md">
+                        {features[0].description}
+                      </p>
+                    </div>
+
+                    <div className="mt-8 flex flex-wrap gap-2">
+                      <span className="px-2.5 py-1 rounded-md nordic-moss-bg nordic-moss-text text-xs font-medium">
+                        #DesignFiction
+                      </span>
+                      <span className="px-2.5 py-1 rounded-md nordic-moss-bg nordic-moss-text text-xs font-medium">
+                        #FuturiPossibili
+                      </span>
+                    </div>
+                  </motion.div>
+                </StaggerItem>
+
+                {/* Feature 2: Civic Tech */}
+                <StaggerItem className="md:col-span-1 lg:col-span-2">
+                  <motion.div
+                    whileHover={{ y: -2 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+                    className="bento-card relative h-full p-8 overflow-hidden flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="p-3.5 rounded-2xl nordic-sage-bg nordic-sage-text border border-green-900/10 dark:border-green-100/10">
+                          <Users className="w-6 h-6" />
+                        </div>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full nordic-sage-bg nordic-sage-text text-xs font-medium">
+                          Impatto Sociale
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                        {features[1].title}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        {features[1].description}
+                      </p>
+                    </div>
+
+                    <div className="mt-8 flex flex-wrap gap-2">
+                      <span className="px-2.5 py-1 rounded-md nordic-sage-bg nordic-sage-text text-xs font-medium">
+                        #OpenGov
+                      </span>
+                      <span className="px-2.5 py-1 rounded-md nordic-sage-bg nordic-sage-text text-xs font-medium">
+                        #Partecipazione
+                      </span>
+                    </div>
+                  </motion.div>
+                </StaggerItem>
+
+                {/* Feature 3: Knowledge Mapping */}
+                <StaggerItem className="md:col-span-1 lg:col-span-2">
+                  <motion.div
+                    whileHover={{ y: -2 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+                    className="bento-card relative h-full p-8 overflow-hidden flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="p-3.5 rounded-2xl nordic-terracotta-bg nordic-terracotta-text border border-orange-900/10 dark:border-orange-100/10">
+                          <Network className="w-6 h-6" />
+                        </div>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full nordic-terracotta-bg nordic-terracotta-text text-xs font-medium">
+                          Ricerca & Analisi
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                        {features[2].title}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        {features[2].description}
+                      </p>
+                    </div>
+
+                    <div className="mt-8 flex flex-wrap gap-2">
+                      <span className="px-2.5 py-1 rounded-md nordic-terracotta-bg nordic-terracotta-text text-xs font-medium">
+                        #OpenKnowledge
+                      </span>
+                      <span className="px-2.5 py-1 rounded-md nordic-terracotta-bg nordic-terracotta-text text-xs font-medium">
+                        #Mappatura
+                      </span>
+                    </div>
+                  </motion.div>
+                </StaggerItem>
+
+                {/* Feature 4: Responsible Tech */}
+                <StaggerItem className="md:col-span-2 lg:col-span-2">
+                  <motion.div
+                    whileHover={{ y: -2 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+                    className="bento-card relative h-full p-8 overflow-hidden flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="p-3.5 rounded-2xl nordic-slate-bg nordic-slate-text border border-slate-900/10 dark:border-slate-100/10">
+                          <Shield className="w-6 h-6" />
+                        </div>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full nordic-slate-bg nordic-slate-text text-xs font-medium">
+                          Etica & Sostenibilità
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                        {features[3].title}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        {features[3].description}
+                      </p>
+                    </div>
+
+                    <div className="mt-8 flex flex-wrap gap-2">
+                      <span className="px-2.5 py-1 rounded-md nordic-slate-bg nordic-slate-text text-xs font-medium">
+                        #TechForGood
+                      </span>
+                      <span className="px-2.5 py-1 rounded-md nordic-slate-bg nordic-slate-text text-xs font-medium">
+                        #HumanCentered
+                      </span>
+                    </div>
+                  </motion.div>
+                </StaggerItem>
+              </StaggerChildren>
+            </div>
+
+            {/* === 4. PROJECTS SHOWCASE (NORDIC BENTO) === */}
             <div className="mb-28">
               <FadeIn className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+                <span className="text-xs font-semibold uppercase tracking-wider nordic-terracotta-text">
+                  Iniziative ed Esperimenti
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mt-1 mb-3">
                   {t('home.projectsShowcase.title')}
                 </h2>
                 <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
@@ -229,42 +360,112 @@ export function HomeClient() {
               </FadeIn>
 
               <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-5" staggerDelay={0.1}>
-                {projects.map((project) => {
-                  const Icon = project.icon;
-                  return (
-                    <StaggerItem key={project.title}>
-                      <Link href={project.href} className="block h-full group">
-                        <motion.div
-                          whileHover={{ y: -4 }}
-                          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                          className="h-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 backdrop-blur-xl p-6 shadow-sm hover:shadow-lg transition-shadow duration-300"
-                        >
-                          <div className="flex items-start justify-between mb-4">
-                            <div className={`p-3 rounded-xl ${colorClasses[project.color] || colorClasses.purple}`}>
-                              <Icon className="w-6 h-6" />
+                {/* Project 1: 404 Human (Featured Flagship Project - col-span-2) */}
+                <StaggerItem className="md:col-span-2">
+                  <a href={projects[0].href} target="_blank" rel="noopener noreferrer" className="block h-full group">
+                    <motion.div
+                      whileHover={{ y: -3 }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                      className="bento-card bento-card-hover relative h-full p-8 overflow-hidden flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className="flex items-center justify-between mb-6">
+                          <div className="flex items-center gap-3">
+                            <div className="p-3.5 rounded-2xl nordic-terracotta-bg nordic-terracotta-text border border-orange-900/10 dark:border-orange-100/10">
+                              <Network className="w-6 h-6" />
                             </div>
-                            <ArrowRight className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-slate-900 dark:group-hover:text-white group-hover:translate-x-1 transition-all" />
+                            <span className="text-xs font-semibold tracking-wider nordic-terracotta-text uppercase">
+                              {projects[0].subtitle}
+                            </span>
                           </div>
-                          <div className="text-xs font-medium text-slate-500 dark:text-slate-500 uppercase tracking-wider mb-1">
-                            {project.subtitle}
+                          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">
+                            Ecosistema Esterno <ExternalLink className="w-3 h-3 ml-0.5" />
+                          </span>
+                        </div>
+
+                        <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-3 group-hover:nordic-terracotta-text transition-colors">
+                          {projects[0].title}
+                        </h3>
+                        <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed max-w-xl">
+                          {projects[0].description}
+                        </p>
+                      </div>
+
+                      <div className="mt-8 flex items-center gap-2 text-sm font-semibold nordic-terracotta-text">
+                        <span>Visita 404human.org</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                      </div>
+                    </motion.div>
+                  </a>
+                </StaggerItem>
+
+                {/* Project 2: SEGNO */}
+                <StaggerItem className="md:col-span-1">
+                  <Link href={projects[1].href} className="block h-full group">
+                    <motion.div
+                      whileHover={{ y: -3 }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                      className="bento-card bento-card-hover relative h-full p-8 overflow-hidden flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className="flex items-center justify-between mb-6">
+                          <div className="p-3 rounded-xl nordic-sage-bg nordic-sage-text border border-green-900/10 dark:border-green-100/10">
+                            <Lock className="w-5 h-5" />
                           </div>
-                          <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-white">
-                            {project.title}
+                          <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white group-hover:translate-x-1 transition-all" />
+                        </div>
+                        <div className="text-xs font-semibold nordic-sage-text uppercase tracking-wider mb-1">
+                          {projects[1].subtitle}
+                        </div>
+                        <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-white">
+                          {projects[1].title}
+                        </h3>
+                        <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                          {projects[1].description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </Link>
+                </StaggerItem>
+
+                {/* Project 3: Neuralforming */}
+                <StaggerItem className="md:col-span-3">
+                  <Link href={projects[2].href} className="block h-full group">
+                    <motion.div
+                      whileHover={{ y: -3 }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                      className="bento-card bento-card-hover relative h-full p-8 overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+                    >
+                      <div className="flex items-start gap-4 max-w-2xl">
+                        <div className="p-3.5 rounded-2xl nordic-moss-bg nordic-moss-text border border-emerald-900/10 dark:border-emerald-100/10 shrink-0">
+                          <Gamepad2 className="w-6 h-6" />
+                        </div>
+                        <div>
+                          <div className="text-xs font-semibold nordic-moss-text uppercase tracking-wider mb-1">
+                            {projects[2].subtitle}
+                          </div>
+                          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                            {projects[2].title}
                           </h3>
-                          <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3">
-                            {project.description}
+                          <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            {projects[2].description}
                           </p>
-                        </motion.div>
-                      </Link>
-                    </StaggerItem>
-                  );
-                })}
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2 text-sm font-semibold nordic-moss-text shrink-0">
+                        <span>{"Scopri l'esperimento"}</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                      </div>
+                    </motion.div>
+                  </Link>
+                </StaggerItem>
               </StaggerChildren>
 
               <FadeIn className="text-center mt-8">
                 <Link
                   href="/progetti"
-                  className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-medium"
+                  className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-medium text-sm"
                 >
                   {t('home.projectsShowcase.viewAll')}
                   <ArrowRight className="w-4 h-4" />
@@ -272,33 +473,36 @@ export function HomeClient() {
               </FadeIn>
             </div>
 
-            {/* === 5. RESOURCES (Observatory + Academy) === */}
+            {/* === 5. RESOURCES (NORDIC HUB) === */}
             <StaggerChildren className="grid md:grid-cols-2 gap-5 mb-28" staggerDelay={0.12}>
               <StaggerItem>
                 <Link href="/observatory" className="group block h-full">
                   <motion.div
-                    whileHover={{ y: -4 }}
+                    whileHover={{ y: -3 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                    className="h-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-orange-50/80 to-amber-50/80 dark:from-orange-950/30 dark:to-amber-950/30 backdrop-blur-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300"
+                    className="bento-card bento-card-hover relative h-full p-8 overflow-hidden flex flex-col justify-between"
                   >
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="p-3 rounded-xl bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400">
-                        <Radio className="w-6 h-6" />
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 text-xs font-medium">
-                          <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+                    <div>
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="p-3.5 rounded-2xl nordic-terracotta-bg nordic-terracotta-text">
+                          <Radio className="w-6 h-6" />
+                        </div>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full nordic-terracotta-bg nordic-terracotta-text text-xs font-medium">
+                          <span className="w-2 h-2 rounded-full bg-amber-600 dark:bg-amber-400 animate-pulse" />
                           {t('home.resources.observatory.badge')}
                         </span>
-                        <ArrowRight className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-slate-900 dark:group-hover:text-white group-hover:translate-x-1 transition-all" />
                       </div>
+                      <h3 className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">
+                        {t('home.resources.observatory.title')}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                        {t('home.resources.observatory.description')}
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">
-                      {t('home.resources.observatory.title')}
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                      {t('home.resources.observatory.description')}
-                    </p>
+                    <div className="mt-8 flex items-center gap-2 text-sm font-semibold nordic-terracotta-text">
+                      <span>{"Accedi all'Osservatorio"}</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                    </div>
                   </motion.div>
                 </Link>
               </StaggerItem>
@@ -306,31 +510,36 @@ export function HomeClient() {
               <StaggerItem>
                 <Link href="/learn" className="group block h-full">
                   <motion.div
-                    whileHover={{ y: -4 }}
+                    whileHover={{ y: -3 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                    className="h-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-blue-50/80 to-indigo-50/80 dark:from-blue-950/30 dark:to-indigo-950/30 backdrop-blur-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300"
+                    className="bento-card bento-card-hover relative h-full p-8 overflow-hidden flex flex-col justify-between"
                   >
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="p-3 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400">
-                        <BookOpen className="w-6 h-6" />
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-xs font-medium">
+                    <div>
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="p-3.5 rounded-2xl nordic-sage-bg nordic-sage-text">
+                          <BookOpen className="w-6 h-6" />
+                        </div>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full nordic-sage-bg nordic-sage-text text-xs font-medium">
                           {t('home.resources.academy.badge')}
                         </span>
-                        <ArrowRight className="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-slate-900 dark:group-hover:text-white group-hover:translate-x-1 transition-all" />
                       </div>
+                      <h3 className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">
+                        {t('home.resources.academy.title')}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                        {t('home.resources.academy.description')}
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">
-                      {t('home.resources.academy.title')}
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                      {t('home.resources.academy.description')}
-                    </p>
+                    <div className="mt-8 flex items-center gap-2 text-sm font-semibold nordic-sage-text">
+                      <span>{"Esplora l'Academy"}</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                    </div>
                   </motion.div>
                 </Link>
               </StaggerItem>
             </StaggerChildren>
+
+
 
             {/* === 6. MANIFESTO QUOTE === */}
             <FadeIn className="mb-28">

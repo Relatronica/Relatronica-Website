@@ -80,146 +80,123 @@ export default function AboutPage() {
             </p>
           </FadeIn>
 
-        <div className="space-y-10">
-          <FadeIn>
-            <section className={`${cardBase} p-10`}>
-              <div className="flex items-start gap-5">
-                <div className={`${iconBoxBase} bg-blue-50 dark:bg-blue-950/50`}>
-                  <Target className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                </div>
-                <div>
-                  <h2 className={headingBase}>{t('about.mission.title')}</h2>
-                  <p className={textBase}>
-                    {t('about.mission.description', {
-                      speculativeDesign: t('about.mission.speculativeDesign'),
-                      civicTech: t('about.mission.civicTech'),
-                      knowledgeMapping: t('about.mission.knowledgeMapping')
-                    }).split(/(\{speculativeDesign\}|\{civicTech\}|\{knowledgeMapping\})/).map((part, i) => {
-                      if (part === '{speculativeDesign}') return <InfoTooltip key={i} term={t('about.mission.speculativeDesign')} definition={t('about.mission.speculativeDesignTooltip')} ariaLabel={`${t('about.mission.speculativeDesign')} definition`} />;
-                      if (part === '{civicTech}') return <InfoTooltip key={i} term={t('about.mission.civicTech')} definition={t('about.mission.civicTechTooltip')} ariaLabel={`${t('about.mission.civicTech')} definition`} />;
-                      if (part === '{knowledgeMapping}') return <InfoTooltip key={i} term={t('about.mission.knowledgeMapping')} definition={t('about.mission.knowledgeMappingTooltip')} ariaLabel={`${t('about.mission.knowledgeMapping')} definition`} />;
-                      return <span key={i}>{part}</span>;
-                    })}
-                  </p>
-                </div>
-              </div>
-            </section>
-          </FadeIn>
-
-          <FadeIn>
-            <section className={`${cardBase} p-10`}>
-              <div className="flex items-start gap-5">
-                <div className={`${iconBoxBase} bg-sky-50 dark:bg-sky-950/50`}>
-                  <Globe className="w-6 h-6 text-sky-600 dark:text-sky-400" />
-                </div>
-                <div>
-                  <h2 className={headingBase}>{t('about.origins.title')}</h2>
-                  <p className={`${textBase} mb-4`}>{t('about.origins.paragraph1')}</p>
-                  <p className={`${textBase} mb-4`}>{t('about.origins.paragraph2')}</p>
-                  <p className={textBase}>{t('about.origins.paragraph3')}</p>
-                </div>
-              </div>
-            </section>
-          </FadeIn>
-
-          <StaggerChildren className="grid md:grid-cols-3 gap-8" staggerDelay={0.1}>
-            {[
-              { icon: Sparkles, color: 'purple', key: 'speculativeDesign' },
-              { icon: Users, color: 'green', key: 'civicTech' },
-              { icon: Network, color: 'orange', key: 'knowledgeMapping' },
-            ].map(({ icon: Icon, color, key }) => (
-              <StaggerItem key={key}>
-                <div className={`${cardBase} p-6 hover:shadow-md transition-shadow h-full`}>
-                  <div className={`p-3 rounded-xl w-fit mb-4 bg-${color}-50 dark:bg-${color}-950/50`}>
-                    <Icon className={`w-5 h-5 text-${color}-600 dark:text-${color}-400`} />
+          <div className="space-y-6">
+            {/* Bento Grid Row 1: Mission & Origins */}
+            <div className="grid md:grid-cols-2 gap-5">
+              <FadeIn className="h-full">
+                <section className="bento-card bento-card-hover p-8 md:p-10 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="p-3.5 rounded-2xl nordic-sage-bg nordic-sage-text">
+                        <Target className="w-6 h-6" />
+                      </div>
+                      <span className="text-xs font-semibold uppercase tracking-wider nordic-sage-text">
+                        Scopo & Visione
+                      </span>
+                    </div>
+                    <h2 className="text-2xl font-bold mb-3 text-slate-900 dark:text-white">{t('about.mission.title')}</h2>
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                      {t('about.mission.description', {
+                        speculativeDesign: t('about.mission.speculativeDesign'),
+                        civicTech: t('about.mission.civicTech'),
+                        knowledgeMapping: t('about.mission.knowledgeMapping')
+                      }).split(/(\{speculativeDesign\}|\{civicTech\}|\{knowledgeMapping\})/).map((part, i) => {
+                        if (part === '{speculativeDesign}') return <InfoTooltip key={i} term={t('about.mission.speculativeDesign')} definition={t('about.mission.speculativeDesignTooltip')} ariaLabel={`${t('about.mission.speculativeDesign')} definition`} />;
+                        if (part === '{civicTech}') return <InfoTooltip key={i} term={t('about.mission.civicTech')} definition={t('about.mission.civicTechTooltip')} ariaLabel={`${t('about.mission.civicTech')} definition`} />;
+                        if (part === '{knowledgeMapping}') return <InfoTooltip key={i} term={t('about.mission.knowledgeMapping')} definition={t('about.mission.knowledgeMappingTooltip')} ariaLabel={`${t('about.mission.knowledgeMapping')} definition`} />;
+                        return <span key={i}>{part}</span>;
+                      })}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold mb-3 text-slate-900 dark:text-white">{t(`about.pillars.${key}.title`)}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{t(`about.pillars.${key}.description`)}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerChildren>
+                </section>
+              </FadeIn>
 
-          <FadeIn>
-            <section className={`${cardBase} p-10`}>
-              <div className="flex items-start gap-5">
-                <div className={`${iconBoxBase} bg-indigo-50 dark:bg-indigo-950/50`}>
-                  <Lightbulb className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
-                </div>
-                <div>
-                  <h2 className={headingBase}>{t('about.approach.title')}</h2>
-                  <p className={`${textBase} mb-4`}>{t('about.approach.intro')}</p>
-                  <ul className="space-y-3 text-slate-700 dark:text-slate-300">
+              <FadeIn className="h-full">
+                <section className="bento-card bento-card-hover p-8 md:p-10 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="p-3.5 rounded-2xl nordic-terracotta-bg nordic-terracotta-text">
+                        <Globe className="w-6 h-6" />
+                      </div>
+                      <span className="text-xs font-semibold uppercase tracking-wider nordic-terracotta-text">
+                        Svizzera & CERN
+                      </span>
+                    </div>
+                    <h2 className="text-2xl font-bold mb-3 text-slate-900 dark:text-white">{t('about.origins.title')}</h2>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">{t('about.origins.paragraph1')}</p>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{t('about.origins.paragraph2')}</p>
+                  </div>
+                </section>
+              </FadeIn>
+            </div>
+
+            {/* Bento Grid Row 2: Pillars */}
+            <StaggerChildren className="grid md:grid-cols-3 gap-5" staggerDelay={0.08}>
+              {[
+                { icon: Sparkles, colorClass: 'nordic-moss-bg nordic-moss-text', key: 'speculativeDesign' },
+                { icon: Users, colorClass: 'nordic-sage-bg nordic-sage-text', key: 'civicTech' },
+                { icon: Network, colorClass: 'nordic-terracotta-bg nordic-terracotta-text', key: 'knowledgeMapping' },
+              ].map(({ icon: Icon, colorClass, key }) => (
+                <StaggerItem key={key}>
+                  <div className="bento-card bento-card-hover p-8 h-full flex flex-col justify-between">
+                    <div>
+                      <div className={`p-3 rounded-xl w-fit mb-5 ${colorClass}`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <h3 className="text-lg font-bold mb-2 text-slate-900 dark:text-white">{t(`about.pillars.${key}.title`)}</h3>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{t(`about.pillars.${key}.description`)}</p>
+                    </div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerChildren>
+
+            {/* Bento Grid Row 3: Approach & Values */}
+            <div className="grid md:grid-cols-2 gap-5">
+              <FadeIn className="h-full">
+                <section className="bento-card bento-card-hover p-8 md:p-10 h-full">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="p-3 rounded-xl nordic-slate-bg nordic-slate-text">
+                      <Lightbulb className="w-5 h-5" />
+                    </div>
+                    <h2 className="text-xl font-bold text-slate-900 dark:text-white">{t('about.approach.title')}</h2>
+                  </div>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">{t('about.approach.intro')}</p>
+                  <ul className="space-y-2.5 text-slate-700 dark:text-slate-300 text-sm">
                     {['critical', 'accessible', 'participation', 'ethics'].map(point => (
-                      <li key={point} className="flex items-start gap-3">
-                        <span className="text-slate-400 mt-1.5">•</span>
-                        <span className="text-[15px]">{t(`about.approach.points.${point}`)}</span>
+                      <li key={point} className="flex items-start gap-2.5">
+                        <span className="nordic-slate-text font-bold">•</span>
+                        <span>{t(`about.approach.points.${point}`)}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
-              </div>
-            </section>
-          </FadeIn>
+                </section>
+              </FadeIn>
 
-          <FadeIn>
-            <section className={`${cardBase} p-10`}>
-              <div className="flex items-start gap-5">
-                <div className={`${iconBoxBase} bg-emerald-50 dark:bg-emerald-950/50`}>
-                  <Shield className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
-                </div>
-                <div>
-                  <h2 className={headingBase}>{t('about.activism.title')}</h2>
-                  <p className={`${textBase} mb-4`}>{t('about.activism.intro')}</p>
-                  <StaggerChildren className="grid md:grid-cols-2 gap-4 mt-6" staggerDelay={0.08}>
-                    {[
-                      { icon: Heart, color: 'rose', key: 'ethics' },
-                      { icon: Zap, color: 'amber', key: 'transparency' },
-                      { icon: BookOpen, color: 'blue', key: 'education' },
-                      { icon: Code2, color: 'purple', key: 'sustainability' },
-                    ].map(({ icon: Icon, color, key }) => (
-                      <StaggerItem key={key}>
-                        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700">
-                          <h3 className="font-semibold mb-2 text-slate-900 dark:text-white flex items-center gap-2">
-                            <Icon className={`w-4 h-4 text-${color}-500`} />
-                            {t(`about.activism.${key}.title`)}
-                          </h3>
-                          <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                            {t(`about.activism.${key}.description`)}
-                          </p>
-                        </div>
-                      </StaggerItem>
-                    ))}
-                  </StaggerChildren>
-                </div>
-              </div>
-            </section>
-          </FadeIn>
-
-          <FadeIn>
-            <section className={`${cardBase} p-10`}>
-              <div className="flex items-start gap-5">
-                <div className={`${iconBoxBase} bg-violet-50 dark:bg-violet-950/50`}>
-                  <Heart className="w-6 h-6 text-violet-600 dark:text-violet-400" />
-                </div>
-                <div>
-                  <h2 className={headingBase}>{t('about.values.title')}</h2>
-                  <p className={`${textBase} mb-6`}>{t('about.values.intro')}</p>
-                  <ul className="space-y-4 text-slate-700 dark:text-slate-300">
+              <FadeIn className="h-full">
+                <section className="bento-card bento-card-hover p-8 md:p-10 h-full">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="p-3 rounded-xl nordic-sage-bg nordic-sage-text">
+                      <Heart className="w-5 h-5" />
+                    </div>
+                    <h2 className="text-xl font-bold text-slate-900 dark:text-white">{t('about.values.title')}</h2>
+                  </div>
+                  <ul className="space-y-3 text-slate-700 dark:text-slate-300 text-sm">
                     {['accessibility', 'participation', 'critical', 'responsibility', 'openness'].map(val => (
-                      <li key={val} className="flex items-start gap-3">
-                        <span className="text-slate-400 mt-1.5">•</span>
+                      <li key={val} className="flex items-start gap-2.5">
+                        <span className="nordic-sage-text font-bold">•</span>
                         <div>
                           <span className="font-semibold text-slate-900 dark:text-white">{t(`about.values.${val}.title`)}</span>
-                          <span className="text-[15px]"> - {t(`about.values.${val}.description`)}</span>
+                          <span className="text-slate-600 dark:text-slate-400"> - {t(`about.values.${val}.description`)}</span>
                         </div>
                       </li>
                     ))}
                   </ul>
-                </div>
-              </div>
-            </section>
-          </FadeIn>
+                </section>
+              </FadeIn>
+            </div>
+          </div>
+
 
           <FadeIn>
             <section className={`${cardBase} p-10`}>
@@ -293,9 +270,9 @@ export default function AboutPage() {
             </section>
           </FadeIn>
         </div>
-        </div>
       </div>
     </DotBoard>
     </>
   );
 }
+

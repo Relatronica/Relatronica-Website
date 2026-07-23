@@ -13,7 +13,10 @@
     "comingSoon": "Coming soon",
     "language": "Language",
     "italian": "Italian",
-    "english": "English"
+    "english": "English",
+    "donate": "Buy us a pizza 🍕",
+    "donateShort": "Buy a pizza",
+    "supportTooltip": "Support the project by buying the team a pizza"
   },
   "home": {
     "title": "Relatronica",
