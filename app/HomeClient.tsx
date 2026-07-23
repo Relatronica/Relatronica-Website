@@ -113,10 +113,7 @@ export function HomeClient() {
                 <Hero3DWrapper />
               </div>
 
-              {/* Ambient Radial Gradient Mask - Logo Aligned (Teal/Cyan/Blue) */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] opacity-40 dark:opacity-25 pointer-events-none z-0">
-                <div className="w-full h-full rounded-full bg-gradient-to-br from-emerald-200/50 via-teal-100/50 to-sky-200/40 dark:from-emerald-600/30 dark:via-teal-500/30 dark:to-blue-600/30 blur-[80px]" />
-              </div>
+
 
               <div className="relative z-10 max-w-4xl mx-auto">
                 <FadeIn delay={0.1} direction="none">

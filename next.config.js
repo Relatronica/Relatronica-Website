@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion', '@react-three/drei', '@react-three/fiber', 'three'],
+  },
   images: {
     remotePatterns: [
       {
@@ -10,6 +13,15 @@ const nextConfig = {
   },
   async headers() {
     return [
+      {
+        source: '/:all*(svg|jpg|png|webp|avif|woff2)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
       {
         source: '/(.*)',
         headers: [
@@ -40,3 +52,4 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
