@@ -5,6 +5,7 @@ import {
   ArrowRight, Sparkles, Users, Network, Shield,
   BookOpen, Radio, Quote, Gamepad2, Lock, ExternalLink
 } from 'lucide-react';
+import { Hero3DWrapper } from '@/components/hero/Hero3DWrapper';
 import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
 import { FadeIn, StaggerChildren, StaggerItem, TextReveal } from '@/components/motion';
@@ -106,12 +107,18 @@ export function HomeClient() {
           <div className="max-w-7xl mx-auto">
 
             {/* === 1. HERO === */}
-            <div className="relative text-center mb-32">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-30 dark:opacity-20 pointer-events-none">
-                <div className="w-full h-full rounded-full animated-gradient bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 blur-[100px]" />
+            <div className="relative text-center mb-28 min-h-[82vh] flex flex-col justify-center items-center pb-16">
+              {/* 3D Interactive Canvas Background - Full Bleed */}
+              <div className="absolute inset-y-0 -left-6 -right-6 md:-left-12 md:-right-12 lg:-left-24 lg:-right-24 pointer-events-none overflow-hidden z-0">
+                <Hero3DWrapper />
               </div>
 
-              <div className="relative z-10">
+              {/* Ambient Radial Gradient Mask - Logo Aligned (Teal/Cyan/Blue) */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] opacity-40 dark:opacity-25 pointer-events-none z-0">
+                <div className="w-full h-full rounded-full bg-gradient-to-br from-emerald-200/50 via-teal-100/50 to-sky-200/40 dark:from-emerald-600/30 dark:via-teal-500/30 dark:to-blue-600/30 blur-[80px]" />
+              </div>
+
+              <div className="relative z-10 max-w-4xl mx-auto">
                 <FadeIn delay={0.1} direction="none">
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-950/50 border border-blue-100 dark:border-blue-900/50 text-blue-600 dark:text-blue-400 text-sm font-medium mb-8">
                     <Sparkles className="w-4 h-4" />
@@ -160,6 +167,22 @@ export function HomeClient() {
                       >
                         {t('home.manifestoCta')}
                       </Link>
+                    </motion.div>
+                  </div>
+                </FadeIn>
+              </div>
+
+              {/* Absolute Positioned Scroll Indicator (Bottom Centered) */}
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10">
+                <FadeIn delay={1.0}>
+                  <div className="flex flex-col items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate-500 dark:text-slate-400 opacity-80 hover:opacity-100 transition-opacity">
+                    <span>{t('common.learnMore') || 'Scopri di più'}</span>
+                    <motion.div
+                      animate={{ y: [0, 6, 0] }}
+                      transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="p-2 rounded-full border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm shadow-sm"
+                    >
+                      <ArrowRight className="w-4 h-4 rotate-90 text-slate-700 dark:text-slate-300" />
                     </motion.div>
                   </div>
                 </FadeIn>
