@@ -612,5 +612,20 @@
         "speculativeScenario": "Scenario speculativo"
       }
     }
+  },
+  "supportModal": {
+    "badge": "Iniziativa Non-Profit",
+    "title": "Sostieni il progetto 🍕",
+    "subtitle": "Offri una pizza al team per mantenere liberi e aperti i nostri strumenti",
+    "paragraph1": "Relatronica è uno studio di ricerca e progettazione non-profit nato al CERN. Non vendiamo dati personali, non mostriamo pubblicità né accettiamo compromessi con investitori che condizionino la nostra visione.",
+    "paragraph2": "Ogni contributo (pari al valore di una pizza!) ci permette di finanziare l'infrastruttura server, sviluppare software civic tech open source e mantenere gratuita l'Academy per l'intera comunità.",
+    "points": {
+      "open": "100% Open Source & Privacy",
+      "community": "Strumenti gratuiti e accessibili",
+      "independent": "Ricerca e codice trasparenti"
+    },
+    "cta": "Offri una pizza al team 🍕",
+    "aboutLink": "Scopri di più sul progetto",
+    "close": "Chiudi"
   }
 }
