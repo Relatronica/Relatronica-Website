@@ -135,4 +135,3 @@ t('home.tagline', {
 ## Conclusione
 
 Il sistema di internazionalizzazione è stato implementato con successo. Il sito supporta ora italiano e inglese con uno switch facilmente accessibile nella toolbar. Tutti i contenuti principali sono stati tradotti e il sistema è pronto per essere utilizzato.
-

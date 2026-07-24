@@ -87,7 +87,7 @@ export function Toolbar() {
     } else {
       setIndicatorStyle(null);
     }
-  }, [pathname, locale]);
+  }, []);
 
   useEffect(() => {
     updateIndicator();
@@ -100,7 +100,7 @@ export function Toolbar() {
     });
 
     return () => { cancelled = true; };
-  }, [updateIndicator]);
+  }, [updateIndicator, pathname, locale]);
 
   useEffect(() => {
     window.addEventListener('resize', updateIndicator);

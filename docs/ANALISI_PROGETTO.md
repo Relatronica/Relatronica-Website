@@ -211,4 +211,3 @@ Focus su:
 4. **Personalizzazione** - Ogni utente crea la propria esperienza
 
 La combinazione di **Network Graph + Scenario Explorer + Action Hub** trasformerebbe il progetto in qualcosa di veramente innovativo e utile.
-

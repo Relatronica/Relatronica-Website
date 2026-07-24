@@ -287,7 +287,7 @@ const orderedThemes = useMemo(() => {
       items,
       groups,
     };
-  }, [boardMode, orderedDeadlines, orderedThemes, scenarioType]);
+  }, [orderedThemes, locale, t]);
 
   const whiteboardColumns = boardContent.columns;
   const whiteboardItems = boardContent.items;

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Calendar, Network, Sparkles, Brain, Scale, Users, FileText, Instagram, Linkedin, Shield, BarChart3, Cpu, X } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
@@ -16,7 +16,7 @@ export default function ProgettiPage() {
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [activeStatus, setActiveStatus] = useState<string | null>(null);
 
-  const progetti = [
+  const progetti = useMemo(() => [
     { id: 'nexthuman', title: t('projects.nexthuman.title'), subtitle: t('projects.nexthuman.subtitle'), description: t('projects.nexthuman.description'), tags: ['Speculative Design', 'Knowledge Mapping', 'Civic Tech', 'Data Visualization'], href: '/nexthuman', icon: Calendar, color: 'blue', status: null },
     { id: 'segno', title: t('projects.segno.title'), subtitle: t('projects.segno.subtitle'), description: t('projects.segno.description'), tags: ['Digital Sovereignty', 'Privacy', 'Education', 'Digital Rights'], href: 'https://segno.app/', icon: Brain, color: 'purple', status: null },
     { id: '404human', title: t('projects.404human.title'), subtitle: t('projects.404human.subtitle'), description: t('projects.404human.description'), tags: ['Speculative Design', 'Civic Tech', 'Simulation', 'Social Systems'], href: 'https://404human.org/', icon: Network, color: 'orange', status: null },
@@ -26,25 +26,25 @@ export default function ProgettiPage() {
     { id: 'neuralforming', title: t('projects.neuralforming.title'), subtitle: t('projects.neuralforming.subtitle'), description: t('projects.neuralforming.description'), tags: ['Civic Tech', 'Education', 'AI Ethics', 'Gamification'], href: null, icon: Users, color: 'green', status: t('projects.neuralforming.status') },
     { id: 'eclipse', title: t('projects.eclipse.title'), subtitle: t('projects.eclipse.subtitle'), description: t('projects.eclipse.description'), tags: ['Privacy by Design', 'Data Sovereignty', 'Feminist Tech', 'Health'], href: null, icon: Shield, color: 'red', status: t('projects.eclipse.status') },
     { id: 'mauss', title: t('projects.mauss.title'), subtitle: t('projects.mauss.subtitle'), description: t('projects.mauss.description'), tags: ['Volunteer Computing', 'Open Science', 'Research Infrastructure', 'Civic Tech'], href: null, icon: Cpu, color: 'green', status: t('projects.mauss.status') },
-  ];
+  ], [t]);
 
   const allTags = useMemo(() => {
     const tagSet = new Set<string>();
     progetti.forEach((p) => p.tags.forEach((tag) => tagSet.add(tag)));
     return Array.from(tagSet).sort();
-  }, []);
+  }, [progetti]);
 
-  const getResolvedStatus = (p: typeof progetti[0]) => {
+  const getResolvedStatus = useCallback((p: typeof progetti[0]) => {
     if (p.status) return p.status;
     if (p.href) return t('projects.statusActive');
     return t('common.comingSoon');
-  };
+  }, [t]);
 
   const allStatuses = useMemo(() => {
     const statusSet = new Set<string>();
     progetti.forEach((p) => statusSet.add(getResolvedStatus(p)));
     return Array.from(statusSet);
-  }, []);
+  }, [progetti, getResolvedStatus]);
 
   const filteredProgetti = useMemo(() => {
     return progetti.filter((p) => {
@@ -52,7 +52,7 @@ export default function ProgettiPage() {
       const matchesStatus = !activeStatus || getResolvedStatus(p) === activeStatus;
       return matchesTag && matchesStatus;
     });
-  }, [activeTag, activeStatus]);
+  }, [progetti, activeTag, activeStatus, getResolvedStatus]);
 
   const hasFilters = activeTag !== null || activeStatus !== null;
 

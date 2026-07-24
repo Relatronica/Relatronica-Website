@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useRef, useEffect } from 'react';
+import { useMemo, useRef, useEffect, useCallback } from 'react';
 import { Calendar } from 'lucide-react';
 import { cn, getThemeColorHex } from '@/lib/utils';
 import type { Deadline } from '@/types/deadline';
@@ -56,18 +56,18 @@ export function GanttChart({ deadlines, selectedDeadline, onSelectDeadline }: Ga
     return Math.ceil(diff / (1000 * 60 * 60 * 24));
   }, [timeRange]);
 
-  const getDatePosition = (date: Date) => {
+  const getDatePosition = useCallback((date: Date) => {
     const daysFromStart = Math.floor(
       (date.getTime() - timeRange.startDate.getTime()) / (1000 * 60 * 60 * 24)
     );
     return Math.max(0, Math.min(100, (daysFromStart / totalDays) * 100));
-  };
+  }, [timeRange, totalDays]);
 
   const todayPosition = useMemo(() => {
     const today = new Date();
     if (today < timeRange.startDate || today > timeRange.endDate) return null;
     return getDatePosition(today);
-  }, [timeRange, totalDays]);
+  }, [timeRange, getDatePosition]);
 
   useEffect(() => {
     if (todayRef.current && scrollContainerRef.current) {
@@ -86,7 +86,7 @@ export function GanttChart({ deadlines, selectedDeadline, onSelectDeadline }: Ga
       years.push({ year, position });
     }
     return years;
-  }, [timeRange, totalDays]);
+  }, [timeRange, getDatePosition]);
 
   const sortedDeadlines = useMemo(() => {
     return [...deadlines].sort(
