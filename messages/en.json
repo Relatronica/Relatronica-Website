@@ -672,6 +672,20 @@
     "free": "Free and open",
     "availableCourses": "Available courses",
     "comingSoon": "Coming soon",
+    "sections": {
+      "start": "Start here",
+      "design": "Speculative design",
+      "ai": "Artificial intelligence",
+      "comingSoon": "Coming soon"
+    },
+    "catalog": {
+      "certificate": "Certificate",
+      "completedBadge": "Completed",
+      "quiz": "quiz",
+      "quizzes": "quizzes",
+      "exercise": "exercise",
+      "exercises": "exercises"
+    },
     "start": "Start",
     "continue": "Continue",
     "stats": {

@@ -1,25 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Clock, GraduationCap, Brain, Lock, Wand2, Palette } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
-import { FadeIn, StaggerChildren, StaggerItem } from '@/components/motion';
+import { FadeIn } from '@/components/motion';
+import { ACADEMY_SECTIONS, CourseCatalogCard } from '@/components/learn/CourseCatalogCard';
 import { useI18n } from '@/lib/i18n';
-import { activeCourses, comingSoonCourses, getCourseTotalLessons, getCourseReadingTime, getAcademyTotalLessons } from '@/data/course';
+import { activeCourses, comingSoonCourses, getAcademyTotalLessons, getCourse } from '@/data/course';
 import { useCourseProgress } from '@/lib/courseProgress';
-import { getCourseCompletionProgress } from '@/lib/courseCompletion';
-
-const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
-  BookOpen, Brain, Lock, Wand2, GraduationCap, Palette,
-};
-
-const COLOR_MAP: Record<string, { icon: string; bg: string; border: string; gradient: string }> = {
-  blue: { icon: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-950/50', border: 'border-blue-200 dark:border-blue-800', gradient: 'from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30' },
-  purple: { icon: 'text-purple-600 dark:text-purple-400', bg: 'bg-purple-50 dark:bg-purple-950/50', border: 'border-purple-200 dark:border-purple-800', gradient: 'from-purple-50 to-violet-50 dark:from-purple-950/30 dark:to-violet-950/30' },
-  emerald: { icon: 'text-emerald-600 dark:text-emerald-400', bg: 'bg-emerald-50 dark:bg-emerald-950/50', border: 'border-emerald-200 dark:border-emerald-800', gradient: 'from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30' },
-  orange: { icon: 'text-orange-600 dark:text-orange-400', bg: 'bg-orange-50 dark:bg-orange-950/50', border: 'border-orange-200 dark:border-orange-800', gradient: 'from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30' },
-};
 
 export default function AcademyPage() {
   const { t, locale } = useI18n();
@@ -28,155 +17,127 @@ export default function AcademyPage() {
   const totalLessons = getAcademyTotalLessons();
   const completedCount = completedLessons.length;
 
+  const catalogLabels = {
+    lessons: t('learn.stats.lessons'),
+    quiz: t('learn.catalog.quiz'),
+    quizzes: t('learn.catalog.quizzes'),
+    exercise: t('learn.catalog.exercise'),
+    exercises: t('learn.catalog.exercises'),
+    certificate: t('learn.catalog.certificate'),
+    completed: t('learn.catalog.completedBadge'),
+    comingSoon: t('common.comingSoon'),
+  };
+
   const academySchema = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "Relatronica Academy",
-    "description": t('learn.subtitle'),
-    "url": `${siteUrl}/learn`,
-    "parentOrganization": { "@type": "Organization", "name": "Relatronica", "url": siteUrl },
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    name: 'Relatronica Academy',
+    description: t('learn.subtitle'),
+    url: `${siteUrl}/learn`,
+    parentOrganization: { '@type': 'Organization', name: 'Relatronica', url: siteUrl },
   };
 
   return (
     <>
       <StructuredData data={academySchema} />
       <DotBoard>
-        <div className="min-h-screen pt-32 pb-24 px-6">
-          <div className="max-w-6xl mx-auto">
+        <div className="min-h-screen pt-28 pb-24 px-6">
+          <div className="max-w-5xl mx-auto">
 
-            <FadeIn className="text-center mb-20">
-              <div className="inline-flex items-center justify-center p-4 rounded-2xl bg-slate-100 dark:bg-slate-800 mb-6">
-                <GraduationCap className="w-8 h-8 text-slate-700 dark:text-slate-300" />
-              </div>
-              <h1 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white leading-tight mb-4">
-                Relatronica <span className="text-blue-600 dark:text-blue-400">Academy</span>
+            <FadeIn className="mb-14">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3">
+                {t('learn.badge')}
+              </p>
+              <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white leading-tight mb-4">
+                {t('learn.title')}
               </h1>
-              <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed mb-8">
+              <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
                 {t('learn.subtitle')}
               </p>
-              <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-500 dark:text-slate-400">
-                <span className="flex items-center gap-2">
-                  <BookOpen className="w-4 h-4" />
-                  {activeCourses.length + comingSoonCourses.length} {t('learn.stats.courses')}
-                </span>
-                <span className="flex items-center gap-2">
-                  {totalLessons} {t('learn.stats.lessons')}
-                </span>
-                <span className="px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 font-medium border border-emerald-200 dark:border-emerald-800">
-                  {t('learn.free')}
-                </span>
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5 text-sm text-slate-500 dark:text-slate-400">
+                <span>{activeCourses.length} {t('learn.stats.courses')}</span>
+                <span aria-hidden="true">·</span>
+                <span>{totalLessons} {t('learn.stats.lessons')}</span>
+                <span aria-hidden="true">·</span>
+                <span className="text-emerald-700 dark:text-emerald-400 font-medium">{t('learn.free')}</span>
+                {completedCount > 0 && (
+                  <>
+                    <span aria-hidden="true">·</span>
+                    <span className="text-emerald-700 dark:text-emerald-400 font-medium">
+                      {completedCount}/{totalLessons} {t('learn.stats.completed')}
+                    </span>
+                  </>
+                )}
               </div>
-              {completedCount > 0 && (
-                <div className="mt-6">
-                  <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 text-sm font-medium">
-                    <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                    {completedCount}/{totalLessons} {t('learn.stats.completed')}
-                  </div>
-                </div>
-              )}
             </FadeIn>
 
-            <FadeIn delay={0.2} className="mb-16">
-              <h2 className="text-xs font-bold nordic-sage-text uppercase tracking-wider mb-6">
-                {t('learn.availableCourses')}
-              </h2>
-              <div className="grid grid-cols-1 gap-5">
-                {activeCourses.map((course) => {
-                  const Icon = ICON_MAP[course.iconName] || BookOpen;
-                  const content = course.content[locale as 'it' | 'en'] || course.content.it;
-                  const lessonCount = getCourseTotalLessons(course);
-                  const readingTime = getCourseReadingTime(course);
-                  const courseProgress = getCourseCompletionProgress(course, completedLessons, isQuizPassed);
+            <div className="space-y-12">
+              {ACADEMY_SECTIONS.map((section, index) => {
+                const courses = section.slugs
+                  .map((slug) => getCourse(slug))
+                  .filter((c): c is NonNullable<typeof c> => !!c && c.status === 'active');
 
-                  return (
-                    <Link
-                      key={course.slug}
-                      href={`/learn/${course.slug}`}
-                      className="group block bento-card bento-card-hover p-8 md:p-10"
-                    >
-                      <div className="flex flex-col md:flex-row md:items-start gap-6">
-                        <div className="shrink-0 w-16 h-16 rounded-2xl nordic-sage-bg nordic-sage-text flex items-center justify-center border border-emerald-900/10 dark:border-emerald-100/10">
-                          <Icon className="w-7 h-7" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2 group-hover:nordic-sage-text transition-colors">
-                            {content.title}
-                          </h3>
-                          <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4 text-[15px]">
-                            {content.longDescription}
-                          </p>
-                          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
-                            <span className="flex items-center gap-1.5">
-                              <BookOpen className="w-4 h-4" />
-                              {course.modules.length} {t('learn.stats.modules')} · {lessonCount} {t('learn.stats.lessons')}
-                            </span>
-                            <span className="flex items-center gap-1.5">
-                              <Clock className="w-4 h-4" />
-                              ~{readingTime} min
-                            </span>
-                            {courseProgress.completed > 0 && (
-                              <span className="nordic-sage-text font-medium">
-                                {courseProgress.completed}/{courseProgress.total} {t('learn.stats.completed')}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                        <div className="shrink-0 self-center">
-                          <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold nordic-sage-bg nordic-sage-text group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-slate-900 transition-all duration-200">
-                            {courseProgress.completed > 0 ? t('learn.continue') : t('learn.start')}
-                            <ArrowRight className="w-4 h-4" />
-                          </span>
-                        </div>
+                if (courses.length === 0) return null;
+
+                return (
+                  <FadeIn key={section.id} delay={index * 0.05}>
+                    <section>
+                      <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
+                        {t(`learn.sections.${section.id}`)}
+                      </h2>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {courses.map((course) => (
+                          <CourseCatalogCard
+                            key={course.slug}
+                            course={course}
+                            locale={locale as 'it' | 'en'}
+                            completedLessons={completedLessons}
+                            isQuizPassed={isQuizPassed}
+                            labels={catalogLabels}
+                          />
+                        ))}
                       </div>
-                    </Link>
-                  );
-                })}
-              </div>
-            </FadeIn>
+                    </section>
+                  </FadeIn>
+                );
+              })}
 
-            {comingSoonCourses.length > 0 && (
-              <StaggerChildren className="mb-16" staggerDelay={0.1}>
-                <h2 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-6">
-                  {t('learn.comingSoon')}
-                </h2>
-                <div className="grid md:grid-cols-3 gap-5">
-                  {comingSoonCourses.map((course) => {
-                    const Icon = ICON_MAP[course.iconName] || BookOpen;
-                    const content = course.content[locale as 'it' | 'en'] || course.content.it;
+              {comingSoonCourses.length > 0 && (
+                <FadeIn delay={0.15}>
+                  <section>
+                    <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
+                      {t('learn.sections.comingSoon')}
+                    </h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {comingSoonCourses.map((course) => (
+                        <CourseCatalogCard
+                          key={course.slug}
+                          course={course}
+                          locale={locale as 'it' | 'en'}
+                          completedLessons={completedLessons}
+                          isQuizPassed={isQuizPassed}
+                          labels={catalogLabels}
+                        />
+                      ))}
+                    </div>
+                  </section>
+                </FadeIn>
+              )}
+            </div>
 
-                    return (
-                      <StaggerItem key={course.slug}>
-                        <div className="bento-card p-6 h-full flex flex-col justify-between opacity-85">
-                          <div>
-                            <div className="w-12 h-12 rounded-xl nordic-slate-bg nordic-slate-text flex items-center justify-center mb-4">
-                              <Icon className="w-5 h-5" />
-                            </div>
-                            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{content.title}</h3>
-                            <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4">{content.description}</p>
-                          </div>
-                          <div>
-                            <span className="inline-block px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-medium">
-                              {t('common.comingSoon')}
-                            </span>
-                          </div>
-                        </div>
-                      </StaggerItem>
-                    );
-                  })}
+            <FadeIn delay={0.2} className="mt-16 pt-10 border-t border-slate-200 dark:border-slate-800">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <h2 className="text-base font-semibold text-slate-900 dark:text-white mb-1">
+                    {t('learn.cta.title')}
+                  </h2>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md leading-relaxed">
+                    {t('learn.cta.description')}
+                  </p>
                 </div>
-              </StaggerChildren>
-            )}
-
-
-            <FadeIn className="text-center">
-              <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900/50 dark:to-blue-950/30 p-10 shadow-sm max-w-2xl mx-auto">
-                <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">{t('learn.cta.title')}</h2>
-                <p className="text-slate-600 dark:text-slate-400 mb-6 text-[15px] leading-relaxed">
-                  {t('learn.cta.description')}
-                </p>
                 <Link
                   href="/manifesto"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-semibold hover:bg-slate-800 dark:hover:bg-gray-100 transition-all duration-200 shadow-md hover:shadow-lg text-sm"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 shrink-0 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                 >
                   {t('learn.cta.button')}
                   <ArrowRight className="w-4 h-4" />

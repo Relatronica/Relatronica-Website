@@ -672,6 +672,20 @@
     "free": "Gratuito e aperto",
     "availableCourses": "Corsi disponibili",
     "comingSoon": "Prossimamente",
+    "sections": {
+      "start": "Inizia qui",
+      "design": "Design speculativo",
+      "ai": "Intelligenza artificiale",
+      "comingSoon": "In arrivo"
+    },
+    "catalog": {
+      "certificate": "Attestato",
+      "completedBadge": "Completato",
+      "quiz": "quiz",
+      "quizzes": "quiz",
+      "exercise": "esercizio",
+      "exercises": "esercizi"
+    },
     "start": "Inizia",
     "continue": "Continua",
     "stats": {
