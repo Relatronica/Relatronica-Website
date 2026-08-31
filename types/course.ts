@@ -26,6 +26,20 @@ export interface ModuleContent {
   description: string;
 }
 
+export interface ModuleExerciseContent {
+  title: string;
+  description: string;
+  duration: string;
+  materials: string[];
+  steps: string[];
+  output: string;
+  debrief: string;
+}
+
+export interface ModuleExercise {
+  content: Record<Locale, ModuleExerciseContent>;
+}
+
 export interface CourseModule {
   slug: string;
   number: string;
@@ -33,6 +47,7 @@ export interface CourseModule {
   iconName: string;
   content: Record<Locale, ModuleContent>;
   lessons: CourseLesson[];
+  exercise?: ModuleExercise;
   quiz?: ModuleQuiz;
 }
 

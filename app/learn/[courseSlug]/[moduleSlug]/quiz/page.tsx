@@ -11,18 +11,20 @@ import {
   Trophy,
   RotateCcw,
   HelpCircle,
+  GraduationCap,
 } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
 import { useI18n } from '@/lib/i18n';
 import { getModuleQuiz, getCourse } from '@/data/course';
 import { useCourseProgress } from '@/lib/courseProgress';
+import { isCourseComplete } from '@/lib/courseCompletion';
 
 type QuizState = 'intro' | 'in-progress' | 'results';
 
 export default function QuizPage() {
   const params = useParams();
   const { t, locale } = useI18n();
-  const { saveQuizResult, getQuizResult } = useCourseProgress();
+  const { saveQuizResult, getQuizResult, completedLessons, isQuizPassed } = useCourseProgress();
   const courseSlug = params.courseSlug as string;
   const moduleSlug = params.moduleSlug as string;
 
@@ -43,6 +45,11 @@ export default function QuizPage() {
     const idx = course.modules.findIndex((m) => m.slug === moduleSlug);
     return idx < course.modules.length - 1 ? course.modules[idx + 1] : null;
   }, [course, moduleSlug]);
+
+  const courseComplete = useMemo(() => {
+    if (!course) return false;
+    return isCourseComplete(course, completedLessons, isQuizPassed);
+  }, [course, completedLessons, isQuizPassed]);
 
   if (!result || !course) {
     return (
@@ -452,6 +459,12 @@ export default function QuizPage() {
                 </div>
               </div>
 
+              {passed && courseComplete && (
+                <p className="text-center text-emerald-600 dark:text-emerald-400 font-medium mb-6">
+                  {t('learn.certificate.quizCourseComplete')}
+                </p>
+              )}
+
               {/* Actions */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 {!passed && (
@@ -463,6 +476,15 @@ export default function QuizPage() {
                     {t('learn.quiz.retry')}
                   </button>
                 )}
+                {passed && courseComplete && (
+                  <Link
+                    href={`/learn/${courseSlug}/certificato`}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm transition-all shadow-sm hover:shadow-md"
+                  >
+                    <GraduationCap className="w-4 h-4" />
+                    {t('learn.certificate.quizGetCertificate')}
+                  </Link>
+                )}
                 <Link
                   href={`/learn/${courseSlug}/${moduleSlug}`}
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"
@@ -470,7 +492,7 @@ export default function QuizPage() {
                   <ArrowLeft className="w-4 h-4" />
                   {t('learn.quiz.backToModule')}
                 </Link>
-                {passed && nextModule && (
+                {passed && nextModule && !courseComplete && (
                   <Link
                     href={`/learn/${courseSlug}/${nextModule.slug}`}
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-sm hover:bg-slate-800 dark:hover:bg-gray-100 transition-all shadow-sm hover:shadow-md"

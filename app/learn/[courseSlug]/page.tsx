@@ -2,15 +2,16 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { ArrowLeft, ArrowRight, BookOpen, Clock, CheckCircle2, Compass, Sparkles, Users, Network, Shield, Rocket, HelpCircle, Trophy, Package, Brain, Scale, Eye, Briefcase, Heart } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, Clock, CheckCircle2, Compass, Sparkles, Users, Network, Shield, Rocket, HelpCircle, Trophy, Package, Brain, Scale, Eye, Briefcase, Heart, Palette, ClipboardList, GraduationCap } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
 import { useI18n } from '@/lib/i18n';
 import { getCourse, getCourseTotalLessons, getCourseReadingTime } from '@/data/course';
 import { useCourseProgress } from '@/lib/courseProgress';
+import { getCourseCompletionProgress, isCourseComplete, getIncompleteCourseItems, isModuleComplete } from '@/lib/courseCompletion';
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
-  Compass, Sparkles, Users, Network, Shield, Rocket, BookOpen, Package, Brain, Scale, Eye, Briefcase, Heart,
+  Compass, Sparkles, Users, Network, Shield, Rocket, BookOpen, Package, Brain, Scale, Eye, Briefcase, Heart, Palette,
 };
 
 const COLOR_MAP: Record<string, { icon: string; bg: string; border: string }> = {
@@ -21,6 +22,26 @@ const COLOR_MAP: Record<string, { icon: string; bg: string; border: string }> = 
   rose: { icon: 'text-rose-600 dark:text-rose-400', bg: 'bg-rose-50 dark:bg-rose-950/50', border: 'border-rose-200 dark:border-rose-800' },
   indigo: { icon: 'text-indigo-600 dark:text-indigo-400', bg: 'bg-indigo-50 dark:bg-indigo-950/50', border: 'border-indigo-200 dark:border-indigo-800' },
 };
+
+function CompletionBadge({ label, done, total }: { label: string; done: number; total: number }) {
+  const complete = done >= total;
+  return (
+    <span
+      className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium border ${
+        complete
+          ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800'
+          : 'bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border-amber-200 dark:border-amber-800'
+      }`}
+    >
+      {complete ? (
+        <CheckCircle2 className="w-3 h-3" />
+      ) : (
+        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+      )}
+      {done}/{total} {label}
+    </span>
+  );
+}
 
 export default function CoursePage() {
   const params = useParams();
@@ -44,9 +65,14 @@ export default function CoursePage() {
   const content = course.content[locale as 'it' | 'en'] || course.content.it;
   const totalLessons = getCourseTotalLessons(course);
   const totalTime = getCourseReadingTime(course);
-  const completedCount = course.modules.reduce(
-    (acc, mod) => acc + mod.lessons.filter((l) => completedLessons.includes(`${course.slug}/${mod.slug}/${l.slug}`)).length,
-    0
+  const progress = getCourseCompletionProgress(course, completedLessons, isQuizPassed);
+  const courseComplete = isCourseComplete(course, completedLessons, isQuizPassed);
+  const incompleteItems = getIncompleteCourseItems(
+    course,
+    completedLessons,
+    isQuizPassed,
+    locale as 'it' | 'en',
+    { quiz: t('learn.quiz.title'), exercise: t('learn.exercise.badge') }
   );
 
   const courseSchema = {
@@ -96,14 +122,98 @@ export default function CoursePage() {
                   ~{totalTime} min
                 </span>
                 <span>{course.modules.length} {t('learn.stats.modules')}</span>
-                {completedCount > 0 && (
+                {progress.completed > 0 && (
                   <span className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
                     <CheckCircle2 className="w-4 h-4" />
-                    {completedCount}/{totalLessons} {t('learn.stats.completed')}
+                    {progress.completed}/{progress.total} {t('learn.stats.completed')}
                   </span>
                 )}
               </div>
+
+              {/* Progress bar */}
+              {progress.total > 0 && (
+                <div className="mt-6">
+                  <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+                    <span>{t('learn.certificate.progressLabel')}</span>
+                    <span>{progress.percentage}%</span>
+                  </div>
+                  <div className="h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                    <div
+                      className="h-full rounded-full bg-emerald-500 transition-all duration-500"
+                      style={{ width: `${progress.percentage}%` }}
+                    />
+                  </div>
+                  {!courseComplete && (
+                    <div className="mt-3 flex flex-wrap items-center gap-2">
+                      <CompletionBadge
+                        label={t('learn.stats.lessons')}
+                        done={progress.lessonsCompleted}
+                        total={progress.lessonsTotal}
+                      />
+                      {progress.exercisesTotal > 0 && (
+                        <CompletionBadge
+                          label={t('learn.certificate.badgeExercises')}
+                          done={progress.exercisesCompleted}
+                          total={progress.exercisesTotal}
+                        />
+                      )}
+                      {progress.quizzesTotal > 0 && (
+                        <CompletionBadge
+                          label={t('learn.quiz.title')}
+                          done={progress.quizzesPassed}
+                          total={progress.quizzesTotal}
+                        />
+                      )}
+                      {incompleteItems.length > 0 && (
+                        <details className="ml-auto">
+                          <summary className="list-none cursor-pointer text-xs text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 transition-colors [&::-webkit-details-marker]:hidden">
+                            {t('learn.certificate.missingCount', { count: String(incompleteItems.length) })}
+                          </summary>
+                          <ul className="mt-2 space-y-1.5 text-right">
+                            {incompleteItems.map((item) => (
+                              <li key={item.href}>
+                                <Link
+                                  href={item.href}
+                                  className="text-xs text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors"
+                                >
+                                  {t('learn.module')} {item.moduleNumber} · {item.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </details>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
+
+            {/* Certificate banner */}
+            {courseComplete && (
+              <Link
+                href={`/learn/${course.slug}/certificato`}
+                className="group block rounded-2xl border-2 border-emerald-300 dark:border-emerald-700 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/40 dark:to-teal-950/40 p-8 mb-12 shadow-sm hover:shadow-md transition-all"
+              >
+                <div className="flex flex-col md:flex-row md:items-center gap-6">
+                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-emerald-600 flex items-center justify-center">
+                    <GraduationCap className="w-7 h-7 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h2 className="text-xl font-bold text-emerald-900 dark:text-emerald-200 mb-1">
+                      {t('learn.certificate.courseCompleteBanner')}
+                    </h2>
+                    <p className="text-emerald-800/80 dark:text-emerald-300/80 text-sm">
+                      {t('learn.certificate.pageDescription')}
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-700 group-hover:bg-emerald-800 text-white text-sm font-semibold transition-colors shrink-0">
+                    {t('learn.certificate.getCertificate')}
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </Link>
+            )}
 
             {/* Modules */}
             <div className="space-y-6 mb-16">
@@ -111,7 +221,8 @@ export default function CoursePage() {
                 const Icon = ICON_MAP[mod.iconName] || BookOpen;
                 const colors = COLOR_MAP[mod.color] || COLOR_MAP.blue;
                 const modContent = mod.content[locale as 'it' | 'en'] || mod.content.it;
-                const moduleCompletedCount = mod.lessons.filter(
+                const moduleFullyComplete = isModuleComplete(course, mod.slug, completedLessons, isQuizPassed);
+                const moduleLessonsCompleted = mod.lessons.filter(
                   (l) => completedLessons.includes(`${course.slug}/${mod.slug}/${l.slug}`)
                 ).length;
 
@@ -128,7 +239,7 @@ export default function CoursePage() {
                             <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                               {t('learn.module')} {mod.number}
                             </span>
-                            {moduleCompletedCount === mod.lessons.length && mod.lessons.length > 0 && (
+                            {moduleFullyComplete && (
                               <span className="px-2 py-0.5 text-[10px] font-semibold rounded-full bg-emerald-100 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400">
                                 {t('learn.completed')}
                               </span>
@@ -136,9 +247,9 @@ export default function CoursePage() {
                           </div>
                           <h2 className="text-lg font-bold text-slate-900 dark:text-white">{modContent.title}</h2>
                         </div>
-                        {moduleCompletedCount > 0 && moduleCompletedCount < mod.lessons.length && (
+                        {moduleLessonsCompleted > 0 && !moduleFullyComplete && (
                           <span className="text-sm text-emerald-600 dark:text-emerald-400 font-medium flex-shrink-0">
-                            {moduleCompletedCount}/{mod.lessons.length}
+                            {moduleLessonsCompleted}/{mod.lessons.length}
                           </span>
                         )}
                       </div>
@@ -176,6 +287,41 @@ export default function CoursePage() {
                           </Link>
                         );
                       })}
+
+                      {/* Exercise link */}
+                      {mod.exercise && (() => {
+                        const exerciseContent = mod.exercise.content[locale as 'it' | 'en'] || mod.exercise.content.it;
+                        const exerciseId = `${course.slug}/${mod.slug}/exercise`;
+                        const exerciseCompleted = completedLessons.includes(exerciseId);
+
+                        return (
+                          <Link
+                            href={`/learn/${course.slug}/${mod.slug}/exercise`}
+                            className={`group flex items-center gap-4 p-4 md:px-8 md:py-5 transition-colors ${
+                              exerciseCompleted
+                                ? 'bg-emerald-50/50 dark:bg-emerald-950/20 hover:bg-emerald-50 dark:hover:bg-emerald-950/40'
+                                : 'bg-emerald-50/30 dark:bg-emerald-950/20 hover:bg-emerald-50/60 dark:hover:bg-emerald-950/40'
+                            }`}
+                          >
+                            <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-950/50 flex items-center justify-center">
+                              {exerciseCompleted ? (
+                                <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                              ) : (
+                                <ClipboardList className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                              )}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="text-sm font-semibold text-emerald-700 dark:text-emerald-400 group-hover:text-emerald-800 dark:group-hover:text-emerald-300 transition-colors truncate">
+                                {exerciseContent.title}
+                              </h3>
+                              <span className="text-xs text-slate-400">
+                                {t('learn.exercise.badge')} · {exerciseContent.duration}
+                              </span>
+                            </div>
+                            <ArrowRight className="w-3.5 h-3.5 text-emerald-400 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+                          </Link>
+                        );
+                      })()}
 
                       {/* Quiz link */}
                       {mod.quiz && (() => {

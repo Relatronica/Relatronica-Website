@@ -17,6 +17,10 @@ import { dfModule03 } from './df-module-03';
 import { dfModule04 } from './df-module-04';
 import { dfModule05 } from './df-module-05';
 import { dfModule06 } from './df-module-06';
+import { uxaiModule01 } from './uxai-module-01';
+import { uxaiModule02 } from './uxai-module-02';
+import { uxaiModule03 } from './uxai-module-03';
+import { uxaiModule04 } from './uxai-module-04';
 
 // ── Active Courses ──────────────────────────────────────────
 
@@ -142,6 +146,26 @@ export const openSourceCitizensCourse: Course = {
   modules: [],
 };
 
+export const aiEthicsForDesignersCourse: Course = {
+  slug: 'ai-etica-per-designer',
+  color: 'rose',
+  iconName: 'Palette',
+  status: 'active',
+  content: {
+    it: {
+      title: 'AI Etica per Designer',
+      description: 'Implicazioni etiche dell\'IA nel lavoro di UX e product design — pratico, operativo, bilingue.',
+      longDescription: 'Un percorso in 4 moduli, 12 lezioni e 4 esercizi pratici per designer UI/UX che usano (o valutano) l\'IA nel proprio lavoro: dal processo creativo ai prodotti live, dalla trasparenza al consenso, dal bias all\'accessibilità, fino a checklist, audit e EU AI Act. Gratuito, aperto e bilingue.',
+    },
+    en: {
+      title: 'Ethical AI for Designers',
+      description: 'Ethical implications of AI in UX and product design work — practical, operational, bilingual.',
+      longDescription: 'A path in 4 modules, 12 lessons and 4 practical exercises for UI/UX designers who use (or evaluate) AI in their work: from the creative process to live products, from transparency to consent, from bias to accessibility, to checklists, audits and the EU AI Act. Free, open and bilingual.',
+    },
+  },
+  modules: [uxaiModule01, uxaiModule02, uxaiModule03, uxaiModule04],
+};
+
 export const generativeAiEthicsCourse: Course = {
   slug: 'etica-ia-generativa',
   color: 'violet',
@@ -167,6 +191,7 @@ export const generativeAiEthicsCourse: Course = {
 export const allCourses: Course[] = [
   fondamentiCourse,
   aiSocietaCourse,
+  aiEthicsForDesignersCourse,
   privacyToolkitCourse,
   designFictionLabCourse,
   dataLiteracyCourse,
@@ -246,4 +271,10 @@ export function getModuleQuiz(courseSlug: string, moduleSlug: string) {
   const result = getModule(courseSlug, moduleSlug);
   if (!result || !result.module.quiz) return undefined;
   return { course: result.course, module: result.module, quiz: result.module.quiz };
+}
+
+export function getModuleExercise(courseSlug: string, moduleSlug: string) {
+  const result = getModule(courseSlug, moduleSlug);
+  if (!result || !result.module.exercise) return undefined;
+  return { course: result.course, module: result.module, exercise: result.module.exercise };
 }

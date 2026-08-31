@@ -1,16 +1,17 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Clock, GraduationCap, Brain, Lock, Wand2 } from 'lucide-react';
+import { ArrowRight, BookOpen, Clock, GraduationCap, Brain, Lock, Wand2, Palette } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
 import { FadeIn, StaggerChildren, StaggerItem } from '@/components/motion';
 import { useI18n } from '@/lib/i18n';
 import { activeCourses, comingSoonCourses, getCourseTotalLessons, getCourseReadingTime, getAcademyTotalLessons } from '@/data/course';
 import { useCourseProgress } from '@/lib/courseProgress';
+import { getCourseCompletionProgress } from '@/lib/courseCompletion';
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
-  BookOpen, Brain, Lock, Wand2, GraduationCap,
+  BookOpen, Brain, Lock, Wand2, GraduationCap, Palette,
 };
 
 const COLOR_MAP: Record<string, { icon: string; bg: string; border: string; gradient: string }> = {
@@ -22,7 +23,7 @@ const COLOR_MAP: Record<string, { icon: string; bg: string; border: string; grad
 
 export default function AcademyPage() {
   const { t, locale } = useI18n();
-  const { completedLessons } = useCourseProgress();
+  const { completedLessons, isQuizPassed } = useCourseProgress();
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://relatronica.com';
   const totalLessons = getAcademyTotalLessons();
   const completedCount = completedLessons.length;
@@ -85,11 +86,7 @@ export default function AcademyPage() {
                   const content = course.content[locale as 'it' | 'en'] || course.content.it;
                   const lessonCount = getCourseTotalLessons(course);
                   const readingTime = getCourseReadingTime(course);
-                  const courseCompletedCount = course.modules.reduce(
-                    (acc, mod) => acc + mod.lessons.filter(
-                      (l) => completedLessons.includes(`${course.slug}/${mod.slug}/${l.slug}`)
-                    ).length, 0
-                  );
+                  const courseProgress = getCourseCompletionProgress(course, completedLessons, isQuizPassed);
 
                   return (
                     <Link
@@ -117,16 +114,16 @@ export default function AcademyPage() {
                               <Clock className="w-4 h-4" />
                               ~{readingTime} min
                             </span>
-                            {courseCompletedCount > 0 && (
+                            {courseProgress.completed > 0 && (
                               <span className="nordic-sage-text font-medium">
-                                {courseCompletedCount}/{lessonCount} {t('learn.stats.completed')}
+                                {courseProgress.completed}/{courseProgress.total} {t('learn.stats.completed')}
                               </span>
                             )}
                           </div>
                         </div>
                         <div className="shrink-0 self-center">
                           <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold nordic-sage-bg nordic-sage-text group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-slate-900 transition-all duration-200">
-                            {courseCompletedCount > 0 ? t('learn.continue') : t('learn.start')}
+                            {courseProgress.completed > 0 ? t('learn.continue') : t('learn.start')}
                             <ArrowRight className="w-4 h-4" />
                           </span>
                         </div>

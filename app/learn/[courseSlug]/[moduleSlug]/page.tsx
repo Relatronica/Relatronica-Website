@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { ArrowLeft, ArrowRight, BookOpen, Clock, CheckCircle2, HelpCircle, Trophy } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, Clock, CheckCircle2, HelpCircle, Trophy, ClipboardList } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
 import { useI18n } from '@/lib/i18n';
 import { getModule, getCourse } from '@/data/course';
@@ -112,6 +112,64 @@ export default function ModulePage() {
               );
             })}
           </div>
+
+          {/* Exercise Card */}
+          {mod.exercise && (() => {
+            const exerciseContent = mod.exercise.content[locale as 'it' | 'en'] || mod.exercise.content.it;
+            const exerciseId = `${courseSlug}/${mod.slug}/exercise`;
+            const exerciseCompleted = completedLessons.includes(exerciseId);
+
+            return (
+              <Link
+                href={`/learn/${courseSlug}/${mod.slug}/exercise`}
+                className={`group block rounded-2xl border-2 p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-300 mb-8 ${
+                  exerciseCompleted
+                    ? 'border-emerald-200 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/30'
+                    : 'border-emerald-200 dark:border-emerald-800 bg-emerald-50/30 dark:bg-emerald-950/20 hover:border-emerald-300 dark:hover:border-emerald-700'
+                }`}
+              >
+                <div className="flex items-start gap-5">
+                  <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center ${
+                    exerciseCompleted ? 'bg-emerald-100 dark:bg-emerald-950/50' : 'bg-emerald-100 dark:bg-emerald-950/50'
+                  }`}>
+                    {exerciseCompleted ? (
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                    ) : (
+                      <ClipboardList className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-1 block">
+                      {t('learn.exercise.badge')}
+                    </span>
+                    <h2 className={`text-lg font-bold mb-1 transition-colors ${
+                      exerciseCompleted
+                        ? 'text-emerald-900 dark:text-emerald-300'
+                        : 'text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400'
+                    }`}>
+                      {exerciseContent.title}
+                    </h2>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-3">
+                      {exerciseContent.description}
+                    </p>
+                    <div className="flex items-center gap-4 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-3 h-3" />
+                        {exerciseContent.duration}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <ClipboardList className="w-3 h-3" />
+                        {exerciseContent.steps.length} {t('learn.exercise.steps').toLowerCase()}
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowRight className={`w-4 h-4 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1 ${
+                    exerciseCompleted ? 'text-emerald-400' : 'text-emerald-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-300'
+                  }`} />
+                </div>
+              </Link>
+            );
+          })()}
 
           {/* Quiz Card */}
           {mod.quiz && (() => {
