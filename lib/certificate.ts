@@ -63,9 +63,15 @@ export function saveStoredCertificate(payload: CertificatePayload): void {
   }
 }
 
-export function buildVerifyUrl(payload: CertificatePayload, siteUrl: string): string {
+export function buildVerifyUrl(
+  payload: CertificatePayload,
+  siteUrl: string,
+  locale: 'it' | 'en' = 'it'
+): string {
   const encoded = encodeCertificatePayload(payload);
-  return `${siteUrl}/learn/certificato/verifica?d=${encoded}`;
+  const params = new URLSearchParams({ d: encoded });
+  if (locale !== 'it') params.set('locale', locale);
+  return `${siteUrl}/learn/certificato/verifica?${params.toString()}`;
 }
 
 export function buildLinkedInShareUrl(shareUrl: string, text: string): string {
