@@ -5,17 +5,23 @@ import { ArrowRight } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
 import { FadeIn } from '@/components/motion';
-import { ACADEMY_SECTIONS, CourseCatalogCard } from '@/components/learn/CourseCatalogCard';
+import {
+  ACADEMY_HOME_SECTIONS,
+  COURSE_CATEGORY,
+  CourseCatalogCard,
+} from '@/components/learn/CourseCatalogCard';
 import { useI18n } from '@/lib/i18n';
-import { activeCourses, comingSoonCourses, getAcademyTotalLessons, getCourse } from '@/data/course';
+import { comingSoonCourses, getCourse } from '@/data/course';
 import { useCourseProgress } from '@/lib/courseProgress';
+import { getCourseCompletionProgress } from '@/lib/courseCompletion';
+
+const COURSE_GRID =
+  'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3';
 
 export default function AcademyPage() {
   const { t, locale } = useI18n();
   const { completedLessons, isQuizPassed } = useCourseProgress();
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://relatronica.com';
-  const totalLessons = getAcademyTotalLessons();
-  const completedCount = completedLessons.length;
 
   const catalogLabels = {
     lessons: t('learn.stats.lessons'),
@@ -27,6 +33,16 @@ export default function AcademyPage() {
     completed: t('learn.catalog.completedBadge'),
     comingSoon: t('common.comingSoon'),
   };
+
+  const getStartedSlug = (() => {
+    for (const slug of ['fondamenti', 'ai-e-societa', 'design-fiction-lab', 'ai-etica-per-designer']) {
+      const course = getCourse(slug);
+      if (!course || course.status !== 'active') continue;
+      const progress = getCourseCompletionProgress(course, completedLessons, isQuizPassed);
+      if (progress.completed < progress.total) return slug;
+    }
+    return 'fondamenti';
+  })();
 
   const academySchema = {
     '@context': 'https://schema.org',
@@ -41,38 +57,38 @@ export default function AcademyPage() {
     <>
       <StructuredData data={academySchema} />
       <DotBoard>
-        <div className="min-h-screen pt-28 pb-24 px-6">
-          <div className="max-w-5xl mx-auto">
+        <div className="min-h-screen pt-32 pb-24 px-6">
+          <div className="max-w-7xl mx-auto">
 
-            <FadeIn className="mb-14">
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3">
+            <FadeIn className="text-center mb-16 md:mb-20">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold tracking-wider uppercase mb-6">
                 {t('learn.badge')}
-              </p>
-              <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white leading-tight mb-4">
-                {t('learn.title')}
+              </span>
+              <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight mb-5">
+                {t('learn.home.welcomeTitle')}
               </h1>
-              <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
-                {t('learn.subtitle')}
+              <p className="text-base md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto mb-8">
+                {t('learn.home.welcomeSubtitle')}
               </p>
-              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5 text-sm text-slate-500 dark:text-slate-400">
-                <span>{activeCourses.length} {t('learn.stats.courses')}</span>
-                <span aria-hidden="true">·</span>
-                <span>{totalLessons} {t('learn.stats.lessons')}</span>
-                <span aria-hidden="true">·</span>
-                <span className="text-emerald-700 dark:text-emerald-400 font-medium">{t('learn.free')}</span>
-                {completedCount > 0 && (
-                  <>
-                    <span aria-hidden="true">·</span>
-                    <span className="text-emerald-700 dark:text-emerald-400 font-medium">
-                      {completedCount}/{totalLessons} {t('learn.stats.completed')}
-                    </span>
-                  </>
-                )}
+              <div className="flex flex-wrap justify-center gap-3">
+                <Link
+                  href={`/learn/${getStartedSlug}`}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-sm font-semibold hover:bg-slate-800 dark:hover:bg-gray-100 transition-colors"
+                >
+                  {t('learn.home.getStarted')}
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <a
+                  href="#courses"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                >
+                  {t('learn.home.allCourses')}
+                </a>
               </div>
             </FadeIn>
 
-            <div className="space-y-12">
-              {ACADEMY_SECTIONS.map((section, index) => {
+            <div className="space-y-10 md:space-y-12">
+              {ACADEMY_HOME_SECTIONS.map((section, index) => {
                 const courses = section.slugs
                   .map((slug) => getCourse(slug))
                   .filter((c): c is NonNullable<typeof c> => !!c && c.status === 'active');
@@ -81,21 +97,40 @@ export default function AcademyPage() {
 
                 return (
                   <FadeIn key={section.id} delay={index * 0.05}>
-                    <section>
-                      <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
-                        {t(`learn.sections.${section.id}`)}
-                      </h2>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {courses.map((course) => (
-                          <CourseCatalogCard
-                            key={course.slug}
-                            course={course}
-                            locale={locale as 'it' | 'en'}
-                            completedLessons={completedLessons}
-                            isQuizPassed={isQuizPassed}
-                            labels={catalogLabels}
-                          />
-                        ))}
+                    <section id={index === 0 ? 'courses' : undefined}>
+                      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-4">
+                        <div>
+                          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+                            {t(section.titleKey)}
+                          </h2>
+                          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl">
+                            {t(section.descriptionKey)}
+                          </p>
+                        </div>
+                        <Link
+                          href={section.linkHref}
+                          className="inline-flex items-center gap-1 text-sm font-medium text-emerald-700 dark:text-emerald-400 hover:underline shrink-0"
+                        >
+                          {t(section.linkKey)}
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+
+                      <div className={COURSE_GRID}>
+                        {courses.map((course) => {
+                          const categoryId = COURSE_CATEGORY[course.slug];
+                          return (
+                            <CourseCatalogCard
+                              key={course.slug}
+                              course={course}
+                              locale={locale as 'it' | 'en'}
+                              completedLessons={completedLessons}
+                              isQuizPassed={isQuizPassed}
+                              categoryLabel={categoryId ? t(`learn.sections.${categoryId}`) : undefined}
+                              labels={catalogLabels}
+                            />
+                          );
+                        })}
                       </div>
                     </section>
                   </FadeIn>
@@ -103,12 +138,15 @@ export default function AcademyPage() {
               })}
 
               {comingSoonCourses.length > 0 && (
-                <FadeIn delay={0.15}>
-                  <section>
-                    <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
+                <FadeIn delay={0.1}>
+                  <section id="coming-soon">
+                    <h2 className="text-xl font-semibold text-slate-900 dark:text-white mb-1">
                       {t('learn.sections.comingSoon')}
                     </h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
+                      {t('learn.free')} · {comingSoonCourses.length} {t('learn.stats.courses')}
+                    </p>
+                    <div className={COURSE_GRID}>
                       {comingSoonCourses.map((course) => (
                         <CourseCatalogCard
                           key={course.slug}
@@ -124,26 +162,6 @@ export default function AcademyPage() {
                 </FadeIn>
               )}
             </div>
-
-            <FadeIn delay={0.2} className="mt-16 pt-10 border-t border-slate-200 dark:border-slate-800">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div>
-                  <h2 className="text-base font-semibold text-slate-900 dark:text-white mb-1">
-                    {t('learn.cta.title')}
-                  </h2>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md leading-relaxed">
-                    {t('learn.cta.description')}
-                  </p>
-                </div>
-                <Link
-                  href="/manifesto"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 shrink-0 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
-                >
-                  {t('learn.cta.button')}
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </FadeIn>
 
           </div>
         </div>

@@ -678,6 +678,18 @@
       "ai": "Artificial intelligence",
       "comingSoon": "Coming soon"
     },
+    "home": {
+      "welcomeTitle": "Welcome to Relatronica Academy",
+      "welcomeSubtitle": "Resources for everyone — whether you're exploring speculative design, getting started with civic tech, or looking for concrete tools for more responsible technologies.",
+      "getStarted": "Get started",
+      "allCourses": "All courses",
+      "sectionFoundations": "Learn Relatronica's pillars",
+      "sectionFoundationsDesc": "Introductory paths on possible futures, speculative design and hands-on lab work.",
+      "sectionAi": "Artificial intelligence and society",
+      "sectionAiDesc": "Understand AI's impact and learn to design ethically and responsibly.",
+      "moreAboutManifesto": "Read the manifesto",
+      "exploreAi": "Explore AI & Society"
+    },
     "catalog": {
       "certificate": "Certificate",
       "completedBadge": "Completed",

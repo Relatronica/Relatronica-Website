@@ -1,22 +1,27 @@
 'use client';
 
-const coverShell =
-  'relative w-full h-28 sm:h-32 overflow-hidden rounded-t-xl border-b flex items-center justify-center p-3';
+type CoverProps = { muted?: boolean; variant?: 'thumb' | 'featured' };
 
-type CoverProps = { muted?: boolean };
+const coverVariants = {
+  thumb: 'relative w-full h-20 sm:h-[5.5rem] overflow-hidden rounded-t-xl border-b flex items-center justify-center p-2',
+  featured:
+    'relative w-full h-36 sm:h-full sm:min-h-[11rem] overflow-hidden rounded-t-xl sm:rounded-t-none sm:rounded-l-xl border-b sm:border-b-0 sm:border-r flex items-center justify-center p-3',
+};
 
 function CoverFrame({
   muted,
   className,
+  variant = 'thumb',
   children,
 }: {
   muted?: boolean;
   className: string;
+  variant?: 'thumb' | 'featured';
   children: React.ReactNode;
 }) {
   return (
     <div
-      className={`${coverShell} ${className} ${muted ? 'opacity-55 saturate-50' : ''}`}
+      className={`${coverVariants[variant]} ${className} ${muted ? 'opacity-55 saturate-50' : ''}`}
       aria-hidden="true"
     >
       {children}
@@ -24,10 +29,11 @@ function CoverFrame({
   );
 }
 
-export function FondamentiCover({ muted }: CoverProps) {
+export function FondamentiCover({ muted, variant = 'thumb' }: CoverProps) {
   return (
     <CoverFrame
       muted={muted}
+      variant={variant}
       className="bg-gradient-to-br from-blue-500/10 via-indigo-500/5 to-transparent border-blue-500/15"
     >
       <svg className="w-full h-full" viewBox="0 0 240 140" fill="none">
@@ -69,10 +75,11 @@ export function FondamentiCover({ muted }: CoverProps) {
   );
 }
 
-export function AiSocietaCover({ muted }: CoverProps) {
+export function AiSocietaCover({ muted, variant = 'thumb' }: CoverProps) {
   return (
     <CoverFrame
       muted={muted}
+      variant={variant}
       className="bg-gradient-to-br from-purple-500/10 via-violet-500/5 to-transparent border-purple-500/15"
     >
       <svg className="w-full h-full" viewBox="0 0 240 140" fill="none">
@@ -102,10 +109,11 @@ export function AiSocietaCover({ muted }: CoverProps) {
   );
 }
 
-export function AiEticaDesignerCover({ muted }: CoverProps) {
+export function AiEticaDesignerCover({ muted, variant = 'thumb' }: CoverProps) {
   return (
     <CoverFrame
       muted={muted}
+      variant={variant}
       className="bg-gradient-to-br from-rose-500/10 via-pink-500/5 to-transparent border-rose-500/15"
     >
       <svg className="w-full h-full" viewBox="0 0 240 140" fill="none">
@@ -129,10 +137,11 @@ export function AiEticaDesignerCover({ muted }: CoverProps) {
   );
 }
 
-export function DesignFictionLabCover({ muted }: CoverProps) {
+export function DesignFictionLabCover({ muted, variant = 'thumb' }: CoverProps) {
   return (
     <CoverFrame
       muted={muted}
+      variant={variant}
       className="bg-gradient-to-br from-orange-500/10 via-amber-500/5 to-transparent border-orange-500/15"
     >
       <svg className="w-full h-full" viewBox="0 0 240 140" fill="none">
@@ -156,10 +165,11 @@ export function DesignFictionLabCover({ muted }: CoverProps) {
   );
 }
 
-export function PrivacyToolkitCover({ muted }: CoverProps) {
+export function PrivacyToolkitCover({ muted, variant = 'thumb' }: CoverProps) {
   return (
     <CoverFrame
       muted={muted}
+      variant={variant}
       className="bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-transparent border-emerald-500/15"
     >
       <svg className="w-full h-full" viewBox="0 0 240 140" fill="none">
@@ -179,10 +189,11 @@ export function PrivacyToolkitCover({ muted }: CoverProps) {
   );
 }
 
-export function DataLiteracyCover({ muted }: CoverProps) {
+export function DataLiteracyCover({ muted, variant = 'thumb' }: CoverProps) {
   return (
     <CoverFrame
       muted={muted}
+      variant={variant}
       className="bg-gradient-to-br from-cyan-500/10 via-sky-500/5 to-transparent border-cyan-500/15"
     >
       <svg className="w-full h-full" viewBox="0 0 240 140" fill="none">
@@ -197,10 +208,11 @@ export function DataLiteracyCover({ muted }: CoverProps) {
   );
 }
 
-export function OpenSourceCitizensCover({ muted }: CoverProps) {
+export function OpenSourceCitizensCover({ muted, variant = 'thumb' }: CoverProps) {
   return (
     <CoverFrame
       muted={muted}
+      variant={variant}
       className="bg-gradient-to-br from-teal-500/10 via-emerald-500/5 to-transparent border-teal-500/15"
     >
       <svg className="w-full h-full" viewBox="0 0 240 140" fill="none">
@@ -217,10 +229,11 @@ export function OpenSourceCitizensCover({ muted }: CoverProps) {
   );
 }
 
-export function EticaIaGenerativaCover({ muted }: CoverProps) {
+export function EticaIaGenerativaCover({ muted, variant = 'thumb' }: CoverProps) {
   return (
     <CoverFrame
       muted={muted}
+      variant={variant}
       className="bg-gradient-to-br from-violet-500/10 via-purple-500/5 to-transparent border-violet-500/15"
     >
       <svg className="w-full h-full" viewBox="0 0 240 140" fill="none">
@@ -237,10 +250,11 @@ export function EticaIaGenerativaCover({ muted }: CoverProps) {
   );
 }
 
-export function DefaultCourseCover({ muted }: CoverProps) {
+export function DefaultCourseCover({ muted, variant = 'thumb' }: CoverProps) {
   return (
     <CoverFrame
       muted={muted}
+      variant={variant}
       className="bg-gradient-to-br from-slate-500/10 via-slate-400/5 to-transparent border-slate-500/15"
     >
       <svg className="w-full h-full" viewBox="0 0 240 140" fill="none">
@@ -263,7 +277,15 @@ const COVER_BY_SLUG: Record<string, React.ComponentType<CoverProps>> = {
   'etica-ia-generativa': EticaIaGenerativaCover,
 };
 
-export function CourseCoverArt({ slug, muted = false }: { slug: string; muted?: boolean }) {
+export function CourseCoverArt({
+  slug,
+  muted = false,
+  variant = 'thumb',
+}: {
+  slug: string;
+  muted?: boolean;
+  variant?: 'thumb' | 'featured';
+}) {
   const Cover = COVER_BY_SLUG[slug] ?? DefaultCourseCover;
-  return <Cover muted={muted} />;
+  return <Cover muted={muted} variant={variant} />;
 }

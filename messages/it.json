@@ -678,6 +678,18 @@
       "ai": "Intelligenza artificiale",
       "comingSoon": "In arrivo"
     },
+    "home": {
+      "welcomeTitle": "Benvenuto in Relatronica Academy",
+      "welcomeSubtitle": "Risorse per tutti — che tu stia esplorando il design speculativo, iniziando con la civic tech o cercando strumenti concreti per tecnologie più responsabili.",
+      "getStarted": "Inizia",
+      "allCourses": "Tutti i corsi",
+      "sectionFoundations": "Impara i pilastri di Relatronica",
+      "sectionFoundationsDesc": "Percorsi introduttivi su futuri possibili, design speculativo e laboratorio pratico.",
+      "sectionAi": "Intelligenza artificiale e società",
+      "sectionAiDesc": "Comprendi l'impatto dell'AI e impara a progettare in modo etico e responsabile.",
+      "moreAboutManifesto": "Leggi il manifesto",
+      "exploreAi": "Esplora AI & Società"
+    },
     "catalog": {
       "certificate": "Attestato",
       "completedBadge": "Completato",
