@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { GraduationCap } from 'lucide-react';
 import { CertificatePayload, formatCertificateDate } from '@/lib/certificate';
 
@@ -32,6 +33,15 @@ export function CertificatePreview({ payload, locale, labels }: CertificatePrevi
       <div className="absolute inset-5 md:inset-6 rounded-lg border border-emerald-600/20 pointer-events-none" />
 
       <div className="relative h-full flex flex-col items-center justify-center px-8 md:px-16 py-10 md:py-14 text-center">
+        <Image
+          src="/logo.png"
+          alt="Relatronica"
+          width={48}
+          height={52}
+          className="object-contain mb-4"
+          priority
+        />
+
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider mb-6">
           <GraduationCap className="w-3.5 h-3.5" />
           {labels.badge}

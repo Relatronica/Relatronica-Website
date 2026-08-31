@@ -38,10 +38,31 @@ const LABELS: Record<'it' | 'en', PdfLabels> = {
   },
 };
 
-export function generateCertificatePdf(
+const LOGO_ASPECT = 152 / 164;
+
+let logoDataUrlCache: string | null = null;
+
+async function getLogoDataUrl(): Promise<string> {
+  if (logoDataUrlCache) return logoDataUrlCache;
+
+  const response = await fetch('/logo.png');
+  const blob = await response.blob();
+
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      logoDataUrlCache = reader.result as string;
+      resolve(logoDataUrlCache);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
+export async function generateCertificatePdf(
   payload: CertificatePayload,
   locale: 'it' | 'en'
-): void {
+): Promise<void> {
   const labels = LABELS[locale];
   const courseTitle = locale === 'it' ? payload.courseTitleIt : payload.courseTitleEn;
   const dateStr = formatCertificateDate(payload.completedAt, locale);
@@ -63,53 +84,58 @@ export function generateCertificatePdf(
   doc.setLineWidth(0.3);
   doc.rect(16, 16, w - 32, h - 32);
 
+  const logoH = 14;
+  const logoW = logoH * LOGO_ASPECT;
+  const logoData = await getLogoDataUrl();
+  doc.addImage(logoData, 'PNG', w / 2 - logoW / 2, 18, logoW, logoH);
+
   // Header badge
   doc.setFillColor(74, 124, 89);
-  doc.roundedRect(w / 2 - 42, 24, 84, 10, 2, 2, 'F');
+  doc.roundedRect(w / 2 - 42, 34, 84, 10, 2, 2, 'F');
   doc.setTextColor(255, 255, 255);
   doc.setFontSize(9);
   doc.setFont('helvetica', 'bold');
-  doc.text(labels.badge, w / 2, 30.5, { align: 'center' });
+  doc.text(labels.badge, w / 2, 40.5, { align: 'center' });
 
   // Title
   doc.setTextColor(15, 23, 42);
   doc.setFontSize(26);
   doc.setFont('helvetica', 'bold');
-  doc.text(labels.title, w / 2, 52, { align: 'center' });
+  doc.text(labels.title, w / 2, 62, { align: 'center' });
 
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(100, 116, 139);
-  doc.text(labels.subtitle, w / 2, 60, { align: 'center' });
+  doc.text(labels.subtitle, w / 2, 70, { align: 'center' });
 
   // Divider
   doc.setDrawColor(132, 169, 140);
   doc.setLineWidth(0.5);
-  doc.line(w / 2 - 60, 68, w / 2 + 60, 68);
+  doc.line(w / 2 - 60, 78, w / 2 + 60, 78);
 
   // Recipient
   doc.setFontSize(11);
   doc.setTextColor(100, 116, 139);
-  doc.text(labels.awardedTo, w / 2, 82, { align: 'center' });
+  doc.text(labels.awardedTo, w / 2, 92, { align: 'center' });
 
   doc.setFontSize(22);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(15, 23, 42);
-  doc.text(payload.recipientName, w / 2, 94, { align: 'center' });
+  doc.text(payload.recipientName, w / 2, 104, { align: 'center' });
 
   // Course
   doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(100, 116, 139);
-  doc.text(labels.forCompleting, w / 2, 108, { align: 'center' });
+  doc.text(labels.forCompleting, w / 2, 118, { align: 'center' });
 
   doc.setFontSize(16);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(74, 124, 89);
   const titleLines = doc.splitTextToSize(courseTitle, w - 80);
-  doc.text(titleLines, w / 2, 118, { align: 'center' });
+  doc.text(titleLines, w / 2, 128, { align: 'center' });
 
-  const metaY = 118 + titleLines.length * 7 + 8;
+  const metaY = 128 + titleLines.length * 7 + 8;
 
   // Meta row
   doc.setFontSize(10);

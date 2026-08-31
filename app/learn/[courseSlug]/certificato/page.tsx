@@ -107,9 +107,9 @@ export default function CertificatoPage() {
     setNameInput(name);
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!certificate) return;
-    generateCertificatePdf(certificate, locale as 'it' | 'en');
+    await generateCertificatePdf(certificate, locale as 'it' | 'en');
   };
 
   const verifyUrl = certificate ? buildVerifyUrl(certificate, siteUrl) : '';
