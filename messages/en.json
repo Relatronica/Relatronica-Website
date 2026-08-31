@@ -204,24 +204,17 @@
       "linkedin": "Follow Relatronica on LinkedIn"
     },
     "support": {
-      "title": "Support the Open Future",
-      "description": "Relatronica is an independent, open-source project. We don't sell data, show ads, or seek investors who might steer our choices. Our work exists because people believe that tools for understanding the future should remain free, accessible, and belong to everyone.",
-      "impact": "Supporting Relatronica isn't a donation -- it's an act of civic participation. Every contribution allows us to keep developing open tools, independent research, and educational resources for communities.",
-      "tiers": {
-        "observer": {
-          "name": "The Observer",
-          "description": "Your name among the project's Civic Heroes"
-        },
-        "explorer": {
-          "name": "The Explorer",
-          "description": "Early access to prototypes and knowledge maps"
-        },
-        "architect": {
-          "name": "The Future Architect",
-          "description": "Direct dialogue with the team on design, ethics, and the future"
-        }
+      "title": "Support Relatronica",
+      "description": "We build open source tools to understand and design the future. Relatronica is an independent project: your contribution supports research, development and infrastructure, keeping our tools and Academy free for everyone.",
+      "pizza": {
+        "title": "Buy us a pizza",
+        "description": "A friendly metaphor — each pizza is €5 and you can buy as many as you like."
       },
-      "cta": "Become part of the project"
+      "membership": {
+        "title": "Monthly support",
+        "description": "€5/month to be part of Relatronica's creative journey. Exclusive posts and messages for supporters. Cancel anytime."
+      },
+      "cta": "Support on Buy Me a Coffee"
     }
   },
   "projects": {
@@ -1394,8 +1387,8 @@
     "ways": {
       "pizza": {
         "title": "Buy us a pizza",
-        "description": "If you believe in the cause but don't have time to contribute actively, a small donation (even just the price of a pizza!) helps fund servers and infrastructure.",
-        "cta": "Donate now"
+        "description": "A friendly metaphor — each pizza is €5. Buy as many as you like, whenever you like.",
+        "cta": "Go to Buy Me a Coffee"
       },
       "code": {
         "title": "Contribute code & ideas",

@@ -1,6 +1,6 @@
 'use client';
 
-import { Sparkles, Users, Network, Lightbulb, Target, Globe, Info, Shield, Heart, Zap, BookOpen, Code2, Instagram, Linkedin, HandHeart, ExternalLink } from 'lucide-react';
+import { Sparkles, Users, Network, Lightbulb, Target, Globe, Info, Heart, HandHeart, ExternalLink, Pizza, Instagram, Linkedin } from 'lucide-react';
 import { DotBoard } from '@/components/DotBoard';
 import { StructuredData } from '@/components/StructuredData';
 import { FadeIn, StaggerChildren, StaggerItem } from '@/components/motion';
@@ -80,7 +80,7 @@ export default function AboutPage() {
             </p>
           </FadeIn>
 
-          <div className="space-y-6">
+          <div className="space-y-6 md:space-y-8">
             {/* Bento Grid Row 1: Mission & Origins */}
             <div className="grid md:grid-cols-2 gap-5">
               <FadeIn className="h-full">
@@ -195,80 +195,86 @@ export default function AboutPage() {
                 </section>
               </FadeIn>
             </div>
-          </div>
 
+            <FadeIn>
+              <section className={`${cardBase} p-10`}>
+                <div className="flex items-start gap-5">
+                  <div className={`${iconBoxBase} bg-rose-50 dark:bg-rose-950/50`}>
+                    <Globe className="w-6 h-6 text-rose-600 dark:text-rose-400" />
+                  </div>
+                  <div>
+                    <h2 className={headingBase}>{t('about.nexthuman.title')}</h2>
+                    <p className={`${textBase} mb-4`}>{t('about.nexthuman.paragraph1')}</p>
+                    <p className={textBase}>{t('about.nexthuman.paragraph2')}</p>
+                  </div>
+                </div>
+              </section>
+            </FadeIn>
 
-          <FadeIn>
-            <section className={`${cardBase} p-10`}>
-              <div className="flex items-start gap-5">
-                <div className={`${iconBoxBase} bg-rose-50 dark:bg-rose-950/50`}>
-                  <Globe className="w-6 h-6 text-rose-600 dark:text-rose-400" />
+            <FadeIn>
+              <section className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 p-10 shadow-sm">
+                <div className="text-center max-w-2xl mx-auto">
+                  <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">{t('about.collaborate.title')}</h2>
+                  <p className={`${textBase} mb-6`}>{t('about.collaborate.description')}</p>
+                  <div className="flex flex-wrap justify-center gap-4 text-sm mb-6">
+                    {['collaborative', 'research', 'workshops', 'consulting'].map(tag => (
+                      <span key={tag} className="px-4 py-2 rounded-full bg-white/80 dark:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300">
+                        {t(`about.collaborate.tags.${tag}`)}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex justify-center gap-3">
+                    <a href="https://www.instagram.com/relatronica" target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 dark:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-white/20 hover:shadow-md transition-all duration-200 font-medium text-sm"
+                      aria-label={t('about.collaborate.instagram')}>
+                      <Instagram className="w-4 h-4 text-pink-600 dark:text-pink-400" />
+                      <span>Instagram</span>
+                    </a>
+                    <a href="https://www.linkedin.com/company/relatronica/" target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 dark:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-white/20 hover:shadow-md transition-all duration-200 font-medium text-sm"
+                      aria-label={t('about.collaborate.linkedin')}>
+                      <Linkedin className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                      <span>LinkedIn</span>
+                    </a>
+                  </div>
                 </div>
-                <div>
-                  <h2 className={headingBase}>{t('about.nexthuman.title')}</h2>
-                  <p className={`${textBase} mb-4`}>{t('about.nexthuman.paragraph1')}</p>
-                  <p className={textBase}>{t('about.nexthuman.paragraph2')}</p>
-                </div>
-              </div>
-            </section>
-          </FadeIn>
+              </section>
+            </FadeIn>
 
-          <FadeIn>
-            <section className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 p-10 shadow-sm">
-              <div className="text-center max-w-2xl mx-auto">
-                <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">{t('about.collaborate.title')}</h2>
-                <p className={`${textBase} mb-6`}>{t('about.collaborate.description')}</p>
-                <div className="flex flex-wrap justify-center gap-4 text-sm mb-6">
-                  {['collaborative', 'research', 'workshops', 'consulting'].map(tag => (
-                    <span key={tag} className="px-4 py-2 rounded-full bg-white/80 dark:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300">
-                      {t(`about.collaborate.tags.${tag}`)}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex justify-center gap-3">
-                  <a href="https://www.instagram.com/relatronica" target="_blank" rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 dark:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-white/20 hover:shadow-md transition-all duration-200 font-medium text-sm"
-                    aria-label={t('about.collaborate.instagram')}>
-                    <Instagram className="w-4 h-4 text-pink-600 dark:text-pink-400" />
-                    <span>Instagram</span>
-                  </a>
-                  <a href="https://www.linkedin.com/company/relatronica/" target="_blank" rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 dark:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-white/20 hover:shadow-md transition-all duration-200 font-medium text-sm"
-                    aria-label={t('about.collaborate.linkedin')}>
-                    <Linkedin className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                    <span>LinkedIn</span>
-                  </a>
-                </div>
-              </div>
-            </section>
-          </FadeIn>
-
-          <FadeIn>
-            <section className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 p-10 shadow-sm">
-              <div className="text-center max-w-2xl mx-auto">
-                <div className="p-3 rounded-xl bg-white/60 dark:bg-white/10 w-fit mx-auto mb-5">
-                  <HandHeart className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
-                </div>
-                <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">{t('about.support.title')}</h2>
-                <p className={`${textBase} mb-3`}>{t('about.support.description')}</p>
-                <p className={`${textBase} mb-8`}>{t('about.support.impact')}</p>
-                <div className="grid sm:grid-cols-3 gap-4 mb-8">
-                  {['observer', 'explorer', 'architect'].map(tier => (
-                    <div key={tier} className="p-4 rounded-xl bg-white/70 dark:bg-white/10 border border-slate-200/60 dark:border-white/10">
-                      <p className="font-semibold text-slate-900 dark:text-white text-sm mb-1">{t(`about.support.tiers.${tier}.name`)}</p>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs">{t(`about.support.tiers.${tier}.description`)}</p>
+            <FadeIn>
+              <section className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 p-10 shadow-sm">
+                <div className="text-center max-w-2xl mx-auto">
+                  <div className="p-3 rounded-xl bg-white/60 dark:bg-white/10 w-fit mx-auto mb-5">
+                    <HandHeart className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+                  </div>
+                  <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">{t('about.support.title')}</h2>
+                  <p className={`${textBase} mb-8`}>{t('about.support.description')}</p>
+                  <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mb-8 text-left">
+                    <div className="p-5 rounded-xl bg-white/70 dark:bg-white/10 border border-slate-200/60 dark:border-white/10">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Pizza className="w-4 h-4 text-orange-600 dark:text-orange-400" />
+                        <p className="font-semibold text-slate-900 dark:text-white text-sm">{t('about.support.pizza.title')}</p>
+                      </div>
+                      <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">{t('about.support.pizza.description')}</p>
                     </div>
-                  ))}
+                    <div className="p-5 rounded-xl bg-white/70 dark:bg-white/10 border border-slate-200/60 dark:border-white/10">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Heart className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                        <p className="font-semibold text-slate-900 dark:text-white text-sm">{t('about.support.membership.title')}</p>
+                      </div>
+                      <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">{t('about.support.membership.description')}</p>
+                    </div>
+                  </div>
+                  <a href="https://buymeacoffee.com/relatronica" target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-600 text-white hover:bg-emerald-700 hover:shadow-lg transition-all duration-200 font-medium text-sm"
+                    aria-label={t('about.support.cta')}>
+                    <span>{t('about.support.cta')}</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
                 </div>
-                <a href="https://buymeacoffee.com/relatronica" target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-600 text-white hover:bg-emerald-700 hover:shadow-lg transition-all duration-200 font-medium text-sm"
-                  aria-label={t('about.support.cta')}>
-                  <span>{t('about.support.cta')}</span>
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </div>
-            </section>
-          </FadeIn>
+              </section>
+            </FadeIn>
+          </div>
         </div>
       </div>
     </DotBoard>
