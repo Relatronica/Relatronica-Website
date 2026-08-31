@@ -52,7 +52,7 @@ export function parseCertificateLocale(value?: string | null): CertificateLocale
 export function buildCertificateOgImageUrl(encoded: string, locale: CertificateLocale = 'it'): string {
   const params = new URLSearchParams({ d: encoded });
   if (locale !== 'it') params.set('locale', locale);
-  return `${siteUrl}/api/og/certificate?${params.toString()}`;
+  return `${siteUrl}/learn/certificato/og?${params.toString()}`;
 }
 
 export function buildCertificateVerifyUrl(encoded: string, locale: CertificateLocale = 'it'): string {

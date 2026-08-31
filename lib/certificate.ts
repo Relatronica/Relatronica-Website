@@ -74,10 +74,10 @@ export function buildVerifyUrl(
   return `${siteUrl}/learn/certificato/verifica?${params.toString()}`;
 }
 
-export function buildLinkedInShareUrl(shareUrl: string, text: string): string {
+export function buildLinkedInShareUrl(shareUrl: string, _text?: string): string {
   const params = new URLSearchParams({ url: shareUrl });
-  // LinkedIn opens share dialog; summary is often pulled from OG tags on the URL
-  return `https://www.linkedin.com/sharing/share-offsite/?${params.toString()}&text=${encodeURIComponent(text)}`;
+  // LinkedIn reads title/description/image from OG tags on shareUrl
+  return `https://www.linkedin.com/sharing/share-offsite/?${params.toString()}`;
 }
 
 export function formatCertificateDate(isoDate: string, locale: 'it' | 'en'): string {

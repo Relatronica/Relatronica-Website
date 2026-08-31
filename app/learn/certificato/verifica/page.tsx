@@ -45,8 +45,10 @@ export function generateMetadata({ searchParams }: PageProps): Metadata {
       images: [
         {
           url: ogImageUrl,
+          secureUrl: ogImageUrl,
           width: 1200,
           height: 630,
+          type: 'image/png',
           alt: `${payload.recipientName} — ${courseTitle}`,
         },
       ],
