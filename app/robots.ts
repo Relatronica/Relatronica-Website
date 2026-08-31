@@ -11,6 +11,11 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/_next/'],
       },
       {
+        userAgent: 'LinkedInBot',
+        allow: ['/', '/learn/certificato/og', '/learn/certificato/verifica'],
+        disallow: ['/api/', '/_next/'],
+      },
+      {
         userAgent: 'Googlebot',
         allow: '/',
         disallow: ['/api/', '/_next/'],

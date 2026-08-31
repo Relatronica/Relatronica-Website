@@ -50,14 +50,19 @@ export function parseCertificateLocale(value?: string | null): CertificateLocale
 }
 
 export function buildCertificateOgImageUrl(encoded: string, locale: CertificateLocale = 'it'): string {
-  const params = new URLSearchParams({ d: encoded });
-  if (locale !== 'it') params.set('locale', locale);
-  return `${siteUrl}/learn/certificato/og?${params.toString()}`;
+  // Static-looking path (no query string) — LinkedIn handles this more reliably
+  const suffix = locale === 'en' ? '-en.png' : '.png';
+  return `${siteUrl}/learn/certificato/og/${encoded}${suffix}`;
 }
 
-export function buildCertificateVerifyUrl(encoded: string, locale: CertificateLocale = 'it'): string {
+export function buildCertificateVerifyUrl(
+  encoded: string,
+  locale: CertificateLocale = 'it',
+  cacheBust?: string
+): string {
   const params = new URLSearchParams({ d: encoded });
   if (locale !== 'it') params.set('locale', locale);
+  if (cacheBust) params.set('v', cacheBust);
   return `${siteUrl}/learn/certificato/verifica?${params.toString()}`;
 }
 

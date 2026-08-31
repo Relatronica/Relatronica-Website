@@ -66,11 +66,13 @@ export function saveStoredCertificate(payload: CertificatePayload): void {
 export function buildVerifyUrl(
   payload: CertificatePayload,
   siteUrl: string,
-  locale: 'it' | 'en' = 'it'
+  locale: 'it' | 'en' = 'it',
+  options?: { cacheBust?: string }
 ): string {
   const encoded = encodeCertificatePayload(payload);
   const params = new URLSearchParams({ d: encoded });
   if (locale !== 'it') params.set('locale', locale);
+  if (options?.cacheBust) params.set('v', options.cacheBust);
   return `${siteUrl}/learn/certificato/verifica?${params.toString()}`;
 }
 

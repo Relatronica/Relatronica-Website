@@ -112,7 +112,7 @@ export default function CertificatoPage() {
     await generateCertificatePdf(certificate, locale as 'it' | 'en');
   };
 
-  const verifyUrl = certificate ? buildVerifyUrl(certificate, siteUrl, locale as 'it' | 'en') : '';
+  const verifyUrl = certificate ? buildVerifyUrl(certificate, siteUrl, locale as 'it' | 'en', { cacheBust: '2' }) : '';
 
   const linkedInText =
     locale === 'it'
