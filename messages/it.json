@@ -227,9 +227,14 @@
       "description": "Una piattaforma interattiva che visualizza le scadenze probabilistiche che attendono l'umanità, combinando knowledge mapping, scenari speculativi e visualizzazioni temporali."
     },
     "segno": {
-      "title": "SEGNO",
-      "subtitle": "Sovranità digitale",
-      "description": "Una piattaforma per riprendere il controllo della propria vita digitale. Offre percorsi formativi su privacy, diritti digitali e GDPR, strumenti pratici per la protezione dei dati, una mappa della propria impronta digitale e uno stack etico per valutare la sovranità dei servizi che usiamo ogni giorno."
+      "title": "Segno",
+      "subtitle": "Il tono pubblico sull'IA, con fonti",
+      "description": "Una timeline civica che segue entusiasmo e timore nelle dichiarazioni dei leader sull'intelligenza artificiale — e sullo stesso asse le regole digitali europee. Ogni punto ha citazioni e fonti."
+    },
+    "substrato": {
+      "title": "Substrato",
+      "subtitle": "L'infrastruttura invisibile",
+      "description": "Una mappa civica dell'infrastruttura fisica dietro cloud e IA: data center, energia, materiali e collegamenti documentati. Uno strumento open data per rendere visibile ciò che di solito resta fuori dal campo."
     },
     "404human": {
       "title": "404human",
@@ -272,6 +277,8 @@
       "status": "In sviluppo"
     },
     "exploreProject": "Esplora progetto",
+    "github": "GitHub",
+    "visitProject": "Apri progetto",
     "filterByTag": "Filtra per tema",
     "filterByStatus": "Filtra per stato",
     "clearFilters": "Rimuovi filtri",

@@ -17,14 +17,24 @@ Relatronica è uno studio di progettazione nato in Svizzera nel 2024 da un team 
 Un calendario delle scadenze probabilistiche per l'umanità. Piattaforma interattiva che visualizza scenari futuri attraverso knowledge mapping, design speculativo e visualizzazioni temporali.
 URL: https://relatronica.com/nexthuman
 
-### SEGNO
-Piattaforma interattiva per costruire scenari personalizzati sull'uso dell'IA e scoprire l'impatto. Aiuta persone e imprese a comprendere rischi e opportunità con riferimenti normativi e best practices.
+### Segno
+Timeline civica sul tono pubblico sull'IA: segue entusiasmo e timore nelle dichiarazioni dei leader, e sullo stesso asse le regole digitali europee. Ogni punto ha citazioni e fonti.
+URL: https://segno.app/
+
+### Substrato
+Mappa civica dell'infrastruttura fisica dietro cloud e IA: data center, energia, materiali e collegamenti documentati. Open data per rendere visibile ciò che di solito resta fuori dal campo.
+URL: https://substrato.eu/
+
+### 404human
+Simulatore sociale in cui una popolazione sintetica reagisce a regole, crisi e riforme.
+URL: https://404human.org/
 
 ### Civica
 Configuratore di sistemi politici: piattaforma interattiva per esplorare, confrontare e configurare diversi sistemi politici.
 
 ### Neuralforming
 Gioco ibrido da tavolo per le scuole. Trasforma la classe in un parlamento democratico dove gli studenti propongono leggi e dibattono implicazioni etiche dell'IA.
+URL: https://neuralforming.org/
 
 ### Progetto Argo
 App per prendere note basata su crittografia end-to-end, zero knowledge e privacy by design.

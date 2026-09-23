@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Network, Gamepad2, Lock, ExternalLink } from 'lucide-react';
+import { ArrowRight, Network, Map, Activity, ExternalLink } from 'lucide-react';
 import { FadeIn, StaggerChildren, StaggerItem } from '@/components/motion';
 import { useI18n } from '@/lib/i18n';
 import { motion } from 'framer-motion';
@@ -16,23 +16,29 @@ export function ProjectsBento() {
       subtitle: t('projects.404human.subtitle'),
       description: t('projects.404human.description'),
       href: 'https://404human.org/',
+      external: true,
       color: 'orange',
+      cta: 'Visita 404human.org',
     },
     {
-      icon: Lock,
+      icon: Activity,
       title: t('projects.segno.title'),
       subtitle: t('projects.segno.subtitle'),
       description: t('projects.segno.description'),
-      href: '/progetti',
+      href: 'https://segno.app/',
+      external: true,
       color: 'emerald',
+      cta: 'Visita segno.app',
     },
     {
-      icon: Gamepad2,
-      title: t('projects.neuralforming.title'),
-      subtitle: t('projects.neuralforming.subtitle'),
-      description: t('projects.neuralforming.description'),
-      href: '/progetti',
+      icon: Map,
+      title: t('projects.substrato.title'),
+      subtitle: t('projects.substrato.subtitle'),
+      description: t('projects.substrato.description'),
+      href: 'https://substrato.eu/',
+      external: true,
       color: 'purple',
+      cta: 'Visita substrato.eu',
     },
   ];
 
@@ -83,16 +89,16 @@ export function ProjectsBento() {
               </div>
 
               <div className="mt-8 flex items-center gap-2 text-sm font-semibold nordic-terracotta-text">
-                <span>Visita 404human.org</span>
+                <span>{projects[0].cta}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </div>
             </motion.div>
           </a>
         </StaggerItem>
 
-        {/* Project 2: SEGNO */}
+        {/* Project 2: Segno */}
         <StaggerItem className="md:col-span-1">
-          <Link href={projects[1].href} className="block h-full group">
+          <a href={projects[1].href} target="_blank" rel="noopener noreferrer" className="block h-full group">
             <motion.div
               whileHover={{ y: -3 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -101,9 +107,9 @@ export function ProjectsBento() {
               <div>
                 <div className="flex items-center justify-between mb-6">
                   <div className="p-3 rounded-xl nordic-sage-bg nordic-sage-text border border-green-900/10 dark:border-green-100/10">
-                    <Lock className="w-5 h-5" />
+                    <Activity className="w-5 h-5" />
                   </div>
-                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white group-hover:translate-x-1 transition-all" />
+                  <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-all" />
                 </div>
                 <div className="text-xs font-semibold nordic-sage-text uppercase tracking-wider mb-1">
                   {projects[1].subtitle}
@@ -116,12 +122,12 @@ export function ProjectsBento() {
                 </p>
               </div>
             </motion.div>
-          </Link>
+          </a>
         </StaggerItem>
 
-        {/* Project 3: Neuralforming */}
+        {/* Project 3: Substrato */}
         <StaggerItem className="md:col-span-3">
-          <Link href={projects[2].href} className="block h-full group">
+          <a href={projects[2].href} target="_blank" rel="noopener noreferrer" className="block h-full group">
             <motion.div
               whileHover={{ y: -3 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
@@ -129,7 +135,7 @@ export function ProjectsBento() {
             >
               <div className="flex items-start gap-4 max-w-2xl">
                 <div className="p-3.5 rounded-2xl nordic-moss-bg nordic-moss-text border border-emerald-900/10 dark:border-emerald-100/10 shrink-0">
-                  <Gamepad2 className="w-6 h-6" />
+                  <Map className="w-6 h-6" />
                 </div>
                 <div>
                   <div className="text-xs font-semibold nordic-moss-text uppercase tracking-wider mb-1">
@@ -145,11 +151,11 @@ export function ProjectsBento() {
               </div>
 
               <div className="flex items-center gap-2 text-sm font-semibold nordic-moss-text shrink-0">
-                <span>{"Scopri l'esperimento"}</span>
+                <span>{projects[2].cta}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </div>
             </motion.div>
-          </Link>
+          </a>
         </StaggerItem>
       </StaggerChildren>
 

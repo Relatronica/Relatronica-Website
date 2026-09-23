@@ -188,9 +188,14 @@
       "description": "An interactive platform that visualizes the probabilistic deadlines awaiting humanity, combining knowledge mapping, speculative scenarios and temporal visualizations."
     },
     "segno": {
-      "title": "SEGNO",
-      "subtitle": "Digital sovereignty",
-      "description": "A platform to take back control of your digital life. It offers learning paths on privacy, digital rights and GDPR, practical tools for data protection, a map of your digital footprint, and an ethical stack to evaluate the sovereignty of the services we use every day."
+      "title": "Segno",
+      "subtitle": "Public AI tone, with sources",
+      "description": "A civic timeline that charts enthusiasm and fear in leaders' public statements on AI — alongside European digital rules on the same axis. Every entry comes with citations and sources."
+    },
+    "substrato": {
+      "title": "Substrato",
+      "subtitle": "The invisible infrastructure",
+      "description": "A civic map of the physical stack behind cloud and AI: data centers, energy, materials, and documented links. An open-data tool to make visible what usually stays out of sight."
     },
     "rebica": {
       "title": "Rebica",
@@ -228,6 +233,8 @@
       "status": "In development"
     },
     "exploreProject": "Explore project",
+    "github": "GitHub",
+    "visitProject": "Open project",
     "filterByTag": "Filter by topic",
     "filterByStatus": "Filter by status",
     "clearFilters": "Clear filters",
