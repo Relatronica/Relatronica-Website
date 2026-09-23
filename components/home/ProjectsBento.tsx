@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ArrowRight, Network, Map, Activity, ExternalLink } from 'lucide-react';
 import { FadeIn, StaggerChildren, StaggerItem } from '@/components/motion';
 import { useI18n } from '@/lib/i18n';

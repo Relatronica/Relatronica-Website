@@ -1,11 +1,11 @@
 'use client';
 
-import Link from 'next/link';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useI18n } from '@/lib/i18n';
 import { useTheme } from '@/lib/theme';
+import type { Locale } from '@/i18n';
 import { ChevronDown, Globe, Menu, X, Sun, Moon, HeartHandshake } from 'lucide-react';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -15,7 +15,8 @@ const WORK_HREFS = ['/nexthuman', '/observatory', '/progetti'] as const;
 
 export function Toolbar() {
   const pathname = usePathname();
-  const { locale, setLocale, t } = useI18n();
+  const router = useRouter();
+  const { locale, t } = useI18n();
   const { theme, toggleTheme } = useTheme();
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const [isWorkMenuOpen, setIsWorkMenuOpen] = useState(false);
@@ -173,6 +174,14 @@ export function Toolbar() {
     setIsLanguageMenuOpen((prev) => !prev);
     setIsWorkMenuOpen(false);
   }, []);
+
+  const switchLocale = useCallback(
+    (next: Locale) => {
+      router.replace(pathname, { locale: next });
+      setIsLanguageMenuOpen(false);
+    },
+    [router, pathname]
+  );
 
   return (
     <>
@@ -340,10 +349,7 @@ export function Toolbar() {
                       className="absolute top-full right-0 mt-2 w-40 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg overflow-hidden z-50"
                     >
                       <button
-                        onClick={() => {
-                          setLocale('it');
-                          setIsLanguageMenuOpen(false);
-                        }}
+                        onClick={() => switchLocale('it')}
                         className={cn(
                           'w-full text-left px-4 py-2 text-sm transition-colors',
                           locale === 'it'
@@ -354,10 +360,7 @@ export function Toolbar() {
                         {t('common.italian')}
                       </button>
                       <button
-                        onClick={() => {
-                          setLocale('en');
-                          setIsLanguageMenuOpen(false);
-                        }}
+                        onClick={() => switchLocale('en')}
                         className={cn(
                           'w-full text-left px-4 py-2 text-sm transition-colors',
                           locale === 'en'
@@ -424,9 +427,7 @@ export function Toolbar() {
               </button>
 
               <button
-                onClick={() => {
-                  setLocale(locale === 'it' ? 'en' : 'it');
-                }}
+                onClick={() => switchLocale(locale === 'it' ? 'en' : 'it')}
                 className="p-1.5 rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-all"
                 aria-label={t('common.language')}
               >

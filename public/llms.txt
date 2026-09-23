@@ -65,8 +65,15 @@ URL: https://relatronica.com/observatory
 - LinkedIn: https://www.linkedin.com/company/relatronica/
 - Instagram: https://www.instagram.com/relatronica
 
+## Geografia e lingua
+- Sede / origini: Svizzera (CERN, Ginevra), fondato nel 2024
+- Area servita: Svizzera, Italia, Unione Europea (studio digitale, non retail locale)
+- Lingue: Italiano (default, URL senza prefisso) e Inglese (`/en/...`)
+- Esempi: https://relatronica.com/about · https://relatronica.com/en/about
+
 ## Informazioni tecniche
-- Sito costruito con Next.js 14 (App Router)
-- Lingua principale: Italiano (disponibile anche in Inglese)
+- Sito costruito con Next.js 14 (App Router) + next-intl (`localePrefix: as-needed`)
 - Contenuti strutturati con Schema.org JSON-LD
+- Open Graph brand: /opengraph-image (1200×630)
+- Sitemap bilingue con hreflang
 - Tutti i contenuti sono open source e accessibili

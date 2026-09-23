@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ArrowRight, Quote } from 'lucide-react';
 import { FadeIn } from '@/components/motion';
 import { useI18n } from '@/lib/i18n';

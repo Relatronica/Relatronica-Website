@@ -1,85 +1,91 @@
 import { MetadataRoute } from 'next';
 import { activeCourses } from '@/data/course/index';
+import { locales, type Locale } from '@/i18n';
+import { absoluteUrl, getSiteUrl } from '@/lib/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://relatronica.com';
   const currentDate = new Date();
+  const siteUrl = getSiteUrl();
 
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: siteUrl,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${siteUrl}/observatory`,
-      lastModified: currentDate,
-      changeFrequency: 'hourly',
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/nexthuman`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/learn`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/manifesto`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/about`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/progetti`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
+  const staticPaths = [
+    { path: '/', changeFrequency: 'weekly' as const, priority: 1 },
+    { path: '/observatory', changeFrequency: 'hourly' as const, priority: 0.9 },
+    { path: '/nexthuman', changeFrequency: 'weekly' as const, priority: 0.9 },
+    { path: '/learn', changeFrequency: 'weekly' as const, priority: 0.9 },
+    { path: '/manifesto', changeFrequency: 'monthly' as const, priority: 0.8 },
+    { path: '/about', changeFrequency: 'monthly' as const, priority: 0.8 },
+    { path: '/progetti', changeFrequency: 'weekly' as const, priority: 0.9 },
   ];
 
-  const coursePages: MetadataRoute.Sitemap = activeCourses.flatMap((course) => {
-    const courseEntry: MetadataRoute.Sitemap = [
-      {
-        url: `${siteUrl}/learn/${course.slug}`,
-        lastModified: currentDate,
-        changeFrequency: 'weekly',
-        priority: 0.8,
+  const staticEntries: MetadataRoute.Sitemap = staticPaths.flatMap(({ path, changeFrequency, priority }) =>
+    locales.map((locale: Locale) => ({
+      url: absoluteUrl(locale, path),
+      lastModified: currentDate,
+      changeFrequency,
+      priority,
+      alternates: {
+        languages: {
+          it: absoluteUrl('it', path),
+          en: absoluteUrl('en', path),
+        },
       },
-    ];
+    }))
+  );
 
-    const moduleAndLessonEntries: MetadataRoute.Sitemap = course.modules.flatMap((mod) => {
-      const moduleEntry = {
-        url: `${siteUrl}/learn/${course.slug}/${mod.slug}`,
+  const courseEntries: MetadataRoute.Sitemap = activeCourses.flatMap((course) => {
+    const coursePath = `/learn/${course.slug}`;
+    const courseSitemap = locales.map((locale: Locale) => ({
+      url: absoluteUrl(locale, coursePath),
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+      alternates: {
+        languages: {
+          it: absoluteUrl('it', coursePath),
+          en: absoluteUrl('en', coursePath),
+        },
+      },
+    }));
+
+    const nested = course.modules.flatMap((mod) => {
+      const modulePath = `/learn/${course.slug}/${mod.slug}`;
+      const moduleEntries = locales.map((locale: Locale) => ({
+        url: absoluteUrl(locale, modulePath),
         lastModified: currentDate,
         changeFrequency: 'monthly' as const,
         priority: 0.7,
-      };
-
-      const lessonEntries = mod.lessons.map((lesson) => ({
-        url: `${siteUrl}/learn/${course.slug}/${mod.slug}/${lesson.slug}`,
-        lastModified: currentDate,
-        changeFrequency: 'monthly' as const,
-        priority: 0.6,
+        alternates: {
+          languages: {
+            it: absoluteUrl('it', modulePath),
+            en: absoluteUrl('en', modulePath),
+          },
+        },
       }));
 
-      return [moduleEntry, ...lessonEntries];
+      const lessonEntries = mod.lessons.flatMap((lesson) => {
+        const lessonPath = `/learn/${course.slug}/${mod.slug}/${lesson.slug}`;
+        return locales.map((locale: Locale) => ({
+          url: absoluteUrl(locale, lessonPath),
+          lastModified: currentDate,
+          changeFrequency: 'monthly' as const,
+          priority: 0.6,
+          alternates: {
+            languages: {
+              it: absoluteUrl('it', lessonPath),
+              en: absoluteUrl('en', lessonPath),
+            },
+          },
+        }));
+      });
+
+      return [...moduleEntries, ...lessonEntries];
     });
 
-    return [...courseEntry, ...moduleAndLessonEntries];
+    return [...courseSitemap, ...nested];
   });
 
-  return [...staticPages, ...coursePages];
+  // Avoid unused import noise if tree-shaken later
+  void siteUrl;
+
+  return [...staticEntries, ...courseEntries];
 }

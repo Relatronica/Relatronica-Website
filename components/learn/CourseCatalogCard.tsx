@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { Award } from 'lucide-react';
 import type { Course } from '@/types/course';
 import { getCourseReadingTime, getCourseTotalLessons } from '@/data/course';

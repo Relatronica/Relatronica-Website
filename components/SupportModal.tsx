@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, HandHeart, ShieldCheck, HeartHandshake, Sparkles, ExternalLink, ArrowRight, Pizza, Code2, Megaphone } from 'lucide-react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { useI18n } from '@/lib/i18n';
 

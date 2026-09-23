@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Hero3DWrapper } from '@/components/hero/Hero3DWrapper';
 import { FadeIn, TextReveal } from '@/components/motion';

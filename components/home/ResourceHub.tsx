@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ArrowRight, BookOpen, Radio } from 'lucide-react';
 import { StaggerChildren, StaggerItem } from '@/components/motion';
 import { useI18n } from '@/lib/i18n';

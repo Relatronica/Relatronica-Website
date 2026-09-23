@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
+const createNextIntlPlugin = require('next-intl/plugin');
+
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+
 const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion', '@react-three/drei', '@react-three/fiber', 'three'],
@@ -51,5 +55,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
-
+module.exports = withNextIntl(nextConfig);
