@@ -1,7 +1,7 @@
 'use client';
 
 import { Link } from '@/i18n/navigation';
-import { ArrowRight, Network, Map, Activity, ExternalLink } from 'lucide-react';
+import { ArrowRight, UserCheck, Map, Activity, ExternalLink } from 'lucide-react';
 import { FadeIn, StaggerChildren, StaggerItem } from '@/components/motion';
 import { useI18n } from '@/lib/i18n';
 import { motion } from 'framer-motion';
@@ -11,14 +11,14 @@ export function ProjectsBento() {
 
   const projects = [
     {
-      icon: Network,
-      title: t('projects.404human.title'),
-      subtitle: t('projects.404human.subtitle'),
-      description: t('projects.404human.description'),
-      href: 'https://404human.org/',
+      icon: UserCheck,
+      title: t('projects.dubitor.title'),
+      subtitle: t('projects.dubitor.subtitle'),
+      description: t('projects.dubitor.description'),
+      href: 'https://www.dubitor.com/',
       external: true,
-      color: 'orange',
-      cta: 'Visita 404human.org',
+      color: 'purple',
+      cta: 'Visita dubitor.com',
     },
     {
       icon: Activity,
@@ -57,7 +57,7 @@ export function ProjectsBento() {
       </FadeIn>
 
       <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-5" staggerDelay={0.1}>
-        {/* Project 1: 404 Human (Featured Flagship Project - col-span-2) */}
+        {/* Project 1: Dubitor (Featured Flagship Project - col-span-2) */}
         <StaggerItem className="md:col-span-2">
           <a href={projects[0].href} target="_blank" rel="noopener noreferrer" className="block h-full group">
             <motion.div
@@ -69,7 +69,7 @@ export function ProjectsBento() {
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
                     <div className="p-3.5 rounded-2xl nordic-terracotta-bg nordic-terracotta-text border border-orange-900/10 dark:border-orange-100/10">
-                      <Network className="w-6 h-6" />
+                      <UserCheck className="w-6 h-6" />
                     </div>
                     <span className="text-xs font-semibold tracking-wider nordic-terracotta-text uppercase">
                       {projects[0].subtitle}

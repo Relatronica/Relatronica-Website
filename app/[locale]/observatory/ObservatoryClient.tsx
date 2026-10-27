@@ -442,10 +442,10 @@ export default function ObservatoryClient() {
       <StructuredData data={pulseSchema} />
       <DotBoard>
         <div className="min-h-screen pt-32 pb-24 px-6">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-7xl mx-auto">
 
             {/* Hero */}
-            <FadeIn className="text-center mb-10">
+            <FadeIn className="mb-10">
               <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-950/50 border border-blue-100 dark:border-blue-900/50 text-blue-600 dark:text-blue-400 text-sm font-medium mb-6">
                 <PulseIcon />
                 <span>{t('pulse.badge')}</span>
@@ -453,7 +453,7 @@ export default function ObservatoryClient() {
               <h1 className="text-5xl md:text-6xl font-bold mb-4 text-slate-900 dark:text-white">
                 {t('pulse.title')}
               </h1>
-              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
                 {t('pulse.subtitle')}
               </p>
             </FadeIn>
@@ -679,7 +679,7 @@ export default function ObservatoryClient() {
               </div>
             ) : (
               <>
-                <StaggerChildren className="grid gap-4 sm:grid-cols-1 md:grid-cols-2" staggerDelay={0.05}>
+                <StaggerChildren className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3" staggerDelay={0.05}>
                   {visibleArticles.map((article) => (
                     <StaggerItem key={article.id}>
                       <ArticleCard

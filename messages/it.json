@@ -1,16 +1,11 @@
 {
   "common": {
     "home": "Home",
-    "nexthuman": "NextHuman",
     "observatory": "Pulse",
     "projects": "Progetti",
     "about": "About",
     "manifesto": "Manifesto",
     "learn": "Academy",
-    "work": "Lavori",
-    "navWorkNextHumanDesc": "Mappa interattiva dei futuri probabilistici dell'umanità",
-    "navWorkPulseDesc": "Segnali di notizie live collegati agli scenari NextHuman",
-    "navWorkProjectsDesc": "Lavori dello studio e collaborazioni",
     "explore": "Esplora",
     "learnMore": "Scopri di più",
     "comingSoon": "Prossimamente",
@@ -241,10 +236,15 @@
       "subtitle": "Simulatore sociale",
       "description": "Un laboratorio in cui una popolazione sintetica reagisce a regole, crisi e riforme. Cambia le leve del potere, dei diritti, dell'economia e della sicurezza — e osserva come emergono tensione, esclusione e legittimità sul territorio."
     },
-    "rebica": {
-      "title": "Rebica",
-      "subtitle": "SDL Citizen Lab",
-      "description": "Trasforma scenari futuri in codice eseguibile. Invece di slide statiche, ogni ipotesi viene simulata con migliaia di run Monte Carlo su dati reali e fonti citate. Parametri interattivi, risultati verificabili, tutto nel browser senza inviare dati. Scenari su AI e lavoro, consumo energetico, scoperta farmaci, euro digitale."
+    "weltform": {
+      "title": "Weltform",
+      "subtitle": "Decision Intelligence e scenario planning",
+      "description": "Sistemi di supporto alle decisioni per trasformare la complessità in scelta. Attraverso il motore Vektor OS, Weltform costruisce modelli di scenario che rendono esplicite le assunzioni e tracciabili i risultati, così da testare ipotesi e misurarne l'impatto prima di agire. Ogni modello è spiegabile e allineato ai requisiti di governance, privacy e conformità all'EU AI Act."
+    },
+    "dubitor": {
+      "title": "Dubitor",
+      "subtitle": "Red team umano sulle decisioni IA",
+      "description": "Prima che una decisione basata sull'IA diventi policy, un red team di esperti umani esterni la revisiona e ne annota a nome proprio rischi, punti ciechi e domande non poste. Dubitor documenta la scelta, raccoglie il giudizio firmato di filosofi, ethics officer, risk e legal, e mantiene attivi i limiti: quando un agente prova a superarli, il guardiano risponde. Human-in-the-loop fuori dal perimetro aziendale, non un altro modello che si auto-approva."
     },
     "civica": {
       "title": "Civica",
@@ -281,6 +281,7 @@
     "visitProject": "Apri progetto",
     "filterByTag": "Filtra per tema",
     "filterByStatus": "Filtra per stato",
+    "filters": "Filtri",
     "clearFilters": "Rimuovi filtri",
     "statusActive": "Attivo",
     "allTags": "Tutti i temi",

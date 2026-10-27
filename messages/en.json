@@ -1,16 +1,11 @@
 {
   "common": {
     "home": "Home",
-    "nexthuman": "NextHuman",
     "observatory": "Pulse",
     "projects": "Projects",
     "about": "About",
     "manifesto": "Manifesto",
     "learn": "Academy",
-    "work": "Work",
-    "navWorkNextHumanDesc": "Interactive map of humanity's probabilistic futures",
-    "navWorkPulseDesc": "Live news signals linked to NextHuman scenarios",
-    "navWorkProjectsDesc": "Studio work and collaborations",
     "explore": "Explore",
     "learnMore": "Learn more",
     "comingSoon": "Coming soon",
@@ -241,10 +236,15 @@
       "subtitle": "Social simulator",
       "description": "A lab where a synthetic population reacts to rules, crises, and reforms. Change the levers of power, rights, economy, and security — and watch tension, exclusion, and legitimacy emerge across the territory."
     },
-    "rebica": {
-      "title": "Rebica",
-      "subtitle": "SDL Citizen Lab",
-      "description": "Turns future scenarios into executable code. Instead of static slides, every hypothesis is simulated with thousands of Monte Carlo runs on real data and cited sources. Interactive parameters, verifiable results, all in the browser without sending any data. Scenarios on AI and employment, energy consumption, drug discovery, digital euro."
+    "weltform": {
+      "title": "Weltform",
+      "subtitle": "Decision intelligence and scenario planning",
+      "description": "Decision-support systems that turn complexity into a choice. Through its Vektor OS engine, Weltform builds scenario models that make assumptions explicit and outcomes traceable, so hypotheses can be tested and their impact measured before acting. Every model is explainable and aligned with the governance, privacy and EU AI Act compliance requirements."
+    },
+    "dubitor": {
+      "title": "Dubitor",
+      "subtitle": "Human red team on AI decisions",
+      "description": "Before an AI-driven decision becomes policy, a red team of external human experts reviews it and flags risks, blind spots and unasked questions in their own name. Dubitor documents the choice, collects the signed judgment of philosophers, ethics officers, risk and legal professionals, and keeps the limits active: when an agent tries to cross them, the guardian answers. Human-in-the-loop outside the company perimeter, not another model approving itself."
     },
     "civica": {
       "title": "Civica",
@@ -281,6 +281,7 @@
     "visitProject": "Open project",
     "filterByTag": "Filter by topic",
     "filterByStatus": "Filter by status",
+    "filters": "Filters",
     "clearFilters": "Clear filters",
     "statusActive": "Active",
     "allTags": "All topics",

@@ -87,10 +87,10 @@ export default function AboutPage() {
       <StructuredData data={aboutPageSchema} />
       <DotBoard>
       <div className="min-h-screen pt-32 pb-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <FadeIn className="text-center mb-24">
+        <div className="max-w-7xl mx-auto">
+          <FadeIn className="mb-24">
             <h1 className="text-6xl font-bold mb-6 text-slate-900 dark:text-white">{t('about.title')}</h1>
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
               {t('about.tagline')}
             </p>
           </FadeIn>
@@ -217,7 +217,7 @@ export default function AboutPage() {
                   <div className={`${iconBoxBase} bg-rose-50 dark:bg-rose-950/50`}>
                     <Globe className="w-6 h-6 text-rose-600 dark:text-rose-400" />
                   </div>
-                  <div>
+                  <div className="max-w-3xl">
                     <h2 className={headingBase}>{t('about.nexthuman.title')}</h2>
                     <p className={`${textBase} mb-4`}>{t('about.nexthuman.paragraph1')}</p>
                     <p className={textBase}>{t('about.nexthuman.paragraph2')}</p>

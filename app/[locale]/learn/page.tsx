@@ -60,17 +60,17 @@ export default function AcademyPage() {
         <div className="min-h-screen pt-32 pb-24 px-6">
           <div className="max-w-7xl mx-auto">
 
-            <FadeIn className="text-center mb-16 md:mb-20">
+            <FadeIn className="mb-16 md:mb-20">
               <span className="inline-block px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold tracking-wider uppercase mb-6">
                 {t('learn.badge')}
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight mb-5">
                 {t('learn.home.welcomeTitle')}
               </h1>
-              <p className="text-base md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto mb-8">
+              <p className="text-base md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mb-8">
                 {t('learn.home.welcomeSubtitle')}
               </p>
-              <div className="flex flex-wrap justify-center gap-3">
+              <div className="flex flex-wrap gap-3">
                 <Link
                   href={`/learn/${getStartedSlug}`}
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-sm font-semibold hover:bg-slate-800 dark:hover:bg-gray-100 transition-colors"

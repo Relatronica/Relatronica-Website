@@ -51,23 +51,23 @@ export default function ManifestoPage() {
       <StructuredData data={manifestoSchema} />
       <DotBoard>
         <div className="min-h-screen pt-32 pb-24 px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
 
-            <FadeIn className="text-center mb-20">
+            <FadeIn className="mb-20">
               <span className="inline-block px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold tracking-wider uppercase mb-8">
                 {t('manifesto.badge')}
               </span>
               <h1 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white leading-[1.1] mb-8">
                 {t('manifesto.title')}
               </h1>
-              <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">
                 {t('manifesto.opening')}
               </p>
             </FadeIn>
 
             <FadeIn>
               <section className={`${cardBase} border-slate-200 dark:border-slate-800 p-8 md:p-12 mb-16`}>
-                <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed">
+                <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed max-w-3xl">
                   {t('manifesto.preamble')}
                 </p>
               </section>
@@ -91,7 +91,7 @@ export default function ManifestoPage() {
                           </h2>
                         </div>
                       </div>
-                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-[15px]">
+                      <p className={`text-slate-600 dark:text-slate-400 leading-relaxed text-[15px] ${isFeatured ? 'max-w-3xl' : ''}`}>
                         {principle.body}
                       </p>
                     </article>
