@@ -46,32 +46,34 @@ function randomToken(bytes = 6): string {
     .toUpperCase();
 }
 
-export function generateCertificateId(courseSlug: string): string {
-  const year = new Date().getFullYear();
-  const prefix = courseSlug
+/** Course prefix baked into the certificate id, e.g. `fondamenti` → `FOND`. */
+export function certificateIdPrefix(courseSlug: string): string {
+  return courseSlug
     .replace(/[^a-z0-9]/gi, '')
     .slice(0, 4)
     .toUpperCase()
     .padEnd(4, 'X');
-  return `REL-${year}-${prefix}-${randomToken()}`;
 }
 
-export async function createCertificate(input: {
-  courseSlug: string;
-  courseTitleIt: string;
-  courseTitleEn: string;
-  recipientName: string;
-}): Promise<CertificatePayload | null> {
-  if (!isCertificateStoreConfigured()) return null;
+/**
+ * Matches both id shapes: the current one (12 hex chars) and the legacy one
+ * issued in the browser before the registry existed (6 base36 chars).
+ */
+export function isCertificateIdFormat(id: string): boolean {
+  return /^REL-\d{4}-[A-Z0-9]{4}-[A-Z0-9]{6,12}$/.test(id);
+}
 
-  const row: CertificateRow = {
-    certificate_id: generateCertificateId(input.courseSlug),
-    course_slug: input.courseSlug,
-    course_title_it: input.courseTitleIt,
-    course_title_en: input.courseTitleEn,
-    recipient_name: input.recipientName,
-    completed_at: new Date().toISOString(),
-  };
+export function generateCertificateId(courseSlug: string): string {
+  return `REL-${new Date().getFullYear()}-${certificateIdPrefix(courseSlug)}-${randomToken()}`;
+}
+
+export type InsertCertificateResult =
+  | { status: 'created'; certificate: CertificatePayload }
+  | { status: 'conflict' }
+  | { status: 'failed' };
+
+async function insertRow(row: CertificateRow): Promise<InsertCertificateResult> {
+  if (!isCertificateStoreConfigured()) return { status: 'failed' };
 
   const response = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}`, {
     method: 'POST',
@@ -80,10 +82,55 @@ export async function createCertificate(input: {
     cache: 'no-store',
   });
 
-  if (!response.ok) return null;
+  // unique index on certificate_id — the id is already taken
+  if (response.status === 409) return { status: 'conflict' };
+  if (!response.ok) return { status: 'failed' };
 
   const created = (await response.json()) as CertificateRow[];
-  return created.length > 0 ? rowToPayload(created[0]) : null;
+  return created.length > 0
+    ? { status: 'created', certificate: rowToPayload(created[0]) }
+    : { status: 'failed' };
+}
+
+export async function createCertificate(input: {
+  courseSlug: string;
+  courseTitleIt: string;
+  courseTitleEn: string;
+  recipientName: string;
+}): Promise<CertificatePayload | null> {
+  const result = await insertRow({
+    certificate_id: generateCertificateId(input.courseSlug),
+    course_slug: input.courseSlug,
+    course_title_it: input.courseTitleIt,
+    course_title_en: input.courseTitleEn,
+    recipient_name: input.recipientName,
+    completed_at: new Date().toISOString(),
+  });
+
+  return result.status === 'created' ? result.certificate : null;
+}
+
+/**
+ * Registers a certificate that was issued in the browser before the registry
+ * existed, keeping its original id and completion date so links already shared
+ * (and the credential id stored elsewhere) stay valid.
+ */
+export async function importCertificate(input: {
+  certificateId: string;
+  courseSlug: string;
+  courseTitleIt: string;
+  courseTitleEn: string;
+  recipientName: string;
+  completedAt: string;
+}): Promise<InsertCertificateResult> {
+  return insertRow({
+    certificate_id: input.certificateId,
+    course_slug: input.courseSlug,
+    course_title_it: input.courseTitleIt,
+    course_title_en: input.courseTitleEn,
+    recipient_name: input.recipientName,
+    completed_at: input.completedAt,
+  });
 }
 
 export async function getRegisteredCertificate(id: string): Promise<CertificatePayload | null> {

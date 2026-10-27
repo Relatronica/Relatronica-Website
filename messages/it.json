@@ -752,6 +752,7 @@
       "namePlaceholder": "Es. Maria Rossi",
       "generate": "Genera attestato",
       "issuing": "Generazione in corso...",
+      "registering": "Stiamo registrando il tuo attestato nell'archivio: qualche istante.",
       "issueError": "Non è stato possibile generare l'attestato. Riprova tra qualche istante.",
       "downloadPdf": "Scarica PDF",
       "shareLinkedIn": "Condividi su LinkedIn",

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { Link } from '@/i18n/navigation';
 import { useParams } from 'next/navigation';
 import {
@@ -23,6 +23,7 @@ import {
   CertificatePayload,
   getStoredCertificate,
   saveStoredCertificate,
+  requestCertificate,
   buildCertificateVerifyUrl,
   buildLinkedInShareUrl,
 } from '@/lib/certificate';
@@ -39,8 +40,12 @@ export default function CertificatoPage() {
   const [certificate, setCertificate] = useState<CertificatePayload | null>(null);
   const [copied, setCopied] = useState(false);
   const [issuing, setIssuing] = useState(false);
+  const [registering, setRegistering] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
+
+  const restored = useRef(false);
+  const legacyCertificate = useRef<CertificatePayload | null>(null);
 
   const complete = useMemo(() => {
     if (!course) return false;
@@ -52,13 +57,40 @@ export default function CertificatoPage() {
   }, []);
 
   useEffect(() => {
-    if (!course || !complete || !mounted) return;
+    if (!course || !complete || !mounted || restored.current) return;
+
     const stored = getStoredCertificate(courseSlug);
     if (!stored) return;
+
+    restored.current = true;
     setNameInput(stored.recipientName);
-    // Certificates issued before the server-side registry existed are not
-    // verifiable: they are kept only to prefill the name, then reissued.
-    if (stored.registered) setCertificate(stored);
+
+    if (stored.registered) {
+      setCertificate(stored);
+      return;
+    }
+
+    // Certificates issued before the registry existed live only in this browser.
+    // Register them server-side keeping the original id, so the link already
+    // shared (and the credential id) stay valid.
+    legacyCertificate.current = stored;
+    setRegistering(true);
+
+    void (async () => {
+      try {
+        const registered = await requestCertificate({
+          courseSlug,
+          recipientName: stored.recipientName,
+          legacy: stored,
+        });
+        saveStoredCertificate(registered);
+        setCertificate(registered);
+      } catch {
+        // the legacy certificate stays available for a manual retry
+      } finally {
+        setRegistering(false);
+      }
+    })();
   }, [course, complete, courseSlug, mounted]);
 
   if (!course || course.status === 'coming-soon') {
@@ -93,15 +125,11 @@ export default function CertificatoPage() {
     setError(null);
 
     try {
-      const response = await fetch('/api/certificate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ courseSlug, recipientName: name }),
+      const issued = await requestCertificate({
+        courseSlug,
+        recipientName: name,
+        legacy: legacyCertificate.current,
       });
-
-      if (!response.ok) throw new Error('certificate_issue_failed');
-
-      const issued = (await response.json()) as CertificatePayload;
       saveStoredCertificate(issued);
       setCertificate(issued);
       setNameInput(name);
@@ -199,6 +227,12 @@ export default function CertificatoPage() {
             </p>
           </div>
 
+          {registering ? (
+            <div className="mb-6 rounded-2xl border border-emerald-200 dark:border-emerald-900 bg-emerald-50/70 dark:bg-emerald-950/30 px-5 py-4 text-sm text-emerald-800 dark:text-emerald-300">
+              {t('learn.certificate.registering')}
+            </div>
+          ) : null}
+
           {!certificate ? (
             <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 backdrop-blur-xl p-8 mb-10 shadow-sm">
               <label htmlFor="cert-name" className="block text-sm font-semibold text-slate-900 dark:text-white mb-2">
@@ -226,7 +260,7 @@ export default function CertificatoPage() {
               ) : null}
               <button
                 onClick={() => void handleGenerate()}
-                disabled={!nameInput.trim() || issuing}
+                disabled={!nameInput.trim() || issuing || registering}
                 className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-emerald-700 hover:bg-emerald-800 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-sm transition-all shadow-sm"
               >
                 <CheckCircle2 className="w-4 h-4" />

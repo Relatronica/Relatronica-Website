@@ -51,6 +51,33 @@ export function saveStoredCertificate(payload: CertificatePayload): void {
 }
 
 /**
+ * Asks the server to issue (or register) the certificate for a course.
+ * Passing `legacy` imports a certificate issued before the registry existed,
+ * keeping its original id and completion date.
+ */
+export async function requestCertificate(input: {
+  courseSlug: string;
+  recipientName: string;
+  legacy?: Pick<CertificatePayload, 'id' | 'completedAt'> | null;
+}): Promise<CertificatePayload> {
+  const response = await fetch('/api/certificate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      courseSlug: input.courseSlug,
+      recipientName: input.recipientName,
+      ...(input.legacy
+        ? { legacy: { id: input.legacy.id, completedAt: input.legacy.completedAt } }
+        : {}),
+    }),
+  });
+
+  if (!response.ok) throw new Error('certificate_request_failed');
+
+  return (await response.json()) as CertificatePayload;
+}
+
+/**
  * Builds the public verification link.
  * `registered` links point at the server-side registry by certificate id,
  * `legacy` links carry the old self-contained base64 payload.

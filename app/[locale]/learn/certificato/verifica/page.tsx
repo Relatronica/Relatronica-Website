@@ -26,8 +26,17 @@ const resolveCertificate = cache(async (id?: string, d?: string): Promise<Resolv
   }
 
   if (d) {
-    const payload = decodeCertificatePayload(d);
-    return { state: payload ? 'legacy' : 'invalid', payload, token: d, mode: 'legacy' };
+    const decoded = decodeCertificatePayload(d);
+    if (!decoded) return { state: 'invalid', payload: null, token: d, mode: 'legacy' };
+
+    // Old self-contained links carry the certificate id: once that id has been
+    // registered, the link resolves to the registry record and turns verified.
+    const registered = await getRegisteredCertificate(decoded.id);
+    if (registered) {
+      return { state: 'registered', payload: registered, token: registered.id, mode: 'registered' };
+    }
+
+    return { state: 'legacy', payload: decoded, token: d, mode: 'legacy' };
   }
 
   return { state: 'invalid', payload: null, token: '', mode: 'registered' };

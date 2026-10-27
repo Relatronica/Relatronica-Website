@@ -752,6 +752,7 @@
       "namePlaceholder": "E.g. Jane Smith",
       "generate": "Generate certificate",
       "issuing": "Generating...",
+      "registering": "We're registering your certificate in the registry: one moment.",
       "issueError": "We couldn't generate your certificate. Please try again in a moment.",
       "downloadPdf": "Download PDF",
       "shareLinkedIn": "Share on LinkedIn",
