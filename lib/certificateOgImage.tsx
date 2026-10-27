@@ -1,6 +1,10 @@
 import { ImageResponse } from 'next/og';
 import type { CertificatePayload } from './certificate';
-import { getCertificateOgMetadata, type CertificateLocale } from './certificateOg';
+import {
+  getCertificateOgMetadata,
+  type CertificateLinkMode,
+  type CertificateLocale,
+} from './certificateOg';
 
 function arrayBufferToBase64(buffer: ArrayBuffer): string {
   const bytes = new Uint8Array(buffer);
@@ -18,11 +22,12 @@ function truncate(text: string, max: number): string {
 
 export async function renderCertificateOgImage(
   payload: CertificatePayload,
-  encoded: string,
+  token: string,
   locale: CertificateLocale,
-  siteUrl: string
+  siteUrl: string,
+  mode: CertificateLinkMode = 'registered'
 ): Promise<ImageResponse> {
-  const { labels, courseTitle, dateStr } = getCertificateOgMetadata(payload, encoded, locale);
+  const { labels, courseTitle, dateStr } = getCertificateOgMetadata(payload, token, locale, mode);
 
   let logoSrc: string | null = null;
   try {

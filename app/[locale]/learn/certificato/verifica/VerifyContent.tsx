@@ -1,17 +1,20 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import { DotBoard } from '@/components/DotBoard';
 import { CertificatePreview } from '@/components/learn/CertificatePreview';
 import { useI18n } from '@/lib/i18n';
-import { decodeCertificatePayload } from '@/lib/certificate';
+import type { CertificatePayload } from '@/lib/certificate';
 
-export function VerifyContent() {
-  const searchParams = useSearchParams();
+export type CertificateVerifyState = 'registered' | 'legacy' | 'invalid';
+
+interface VerifyContentProps {
+  state: CertificateVerifyState;
+  payload: CertificatePayload | null;
+}
+
+export function VerifyContent({ state, payload }: VerifyContentProps) {
   const { t, locale } = useI18n();
-  const encoded = searchParams.get('d');
-  const payload = encoded ? decodeCertificatePayload(encoded) : null;
 
   const labels = {
     badge: t('learn.certificate.badge'),
@@ -24,7 +27,7 @@ export function VerifyContent() {
     footer: t('learn.certificate.footer'),
   };
 
-  if (!payload) {
+  if (state === 'invalid' || !payload) {
     return (
       <div className="max-w-lg mx-auto text-center">
         <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
@@ -43,17 +46,29 @@ export function VerifyContent() {
     );
   }
 
+  const registered = state === 'registered';
+
   return (
     <div className="max-w-3xl mx-auto">
       <div className="text-center mb-8">
-        <span className="inline-block px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
-          {t('learn.certificate.verifyBadge')}
+        <span
+          className={`inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 ${
+            registered
+              ? 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400'
+              : 'bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-400'
+          }`}
+        >
+          {t(registered ? 'learn.certificate.verifyBadge' : 'learn.certificate.verifyUnregisteredBadge')}
         </span>
         <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
           {t('learn.certificate.verifyTitle')}
         </h1>
         <p className="text-sm text-slate-500 dark:text-slate-400">
-          {t('learn.certificate.verifyDescription')}
+          {t(
+            registered
+              ? 'learn.certificate.verifyDescription'
+              : 'learn.certificate.verifyUnregisteredDescription'
+          )}
         </p>
       </div>
 
@@ -69,11 +84,6 @@ export function VerifyContent() {
       </div>
     </div>
   );
-}
-
-export function VerifyLoadingFallback() {
-  const { t } = useI18n();
-  return <div className="text-center text-slate-400">{t('learn.certificate.loading')}</div>;
 }
 
 export function VerifyPageShell({ children }: { children: React.ReactNode }) {

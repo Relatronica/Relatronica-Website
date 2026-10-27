@@ -21,10 +21,9 @@ import { useCourseProgress } from '@/lib/courseProgress';
 import { isCourseComplete } from '@/lib/courseCompletion';
 import {
   CertificatePayload,
-  generateCertificateId,
   getStoredCertificate,
   saveStoredCertificate,
-  buildVerifyUrl,
+  buildCertificateVerifyUrl,
   buildLinkedInShareUrl,
 } from '@/lib/certificate';
 import { generateCertificatePdf } from '@/lib/generateCertificatePdf';
@@ -35,11 +34,12 @@ export default function CertificatoPage() {
   const { completedLessons, isQuizPassed } = useCourseProgress();
   const courseSlug = params.courseSlug as string;
   const course = getCourse(courseSlug);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://relatronica.com';
 
   const [nameInput, setNameInput] = useState('');
   const [certificate, setCertificate] = useState<CertificatePayload | null>(null);
   const [copied, setCopied] = useState(false);
+  const [issuing, setIssuing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
 
   const complete = useMemo(() => {
@@ -54,10 +54,11 @@ export default function CertificatoPage() {
   useEffect(() => {
     if (!course || !complete || !mounted) return;
     const stored = getStoredCertificate(courseSlug);
-    if (stored) {
-      setCertificate(stored);
-      setNameInput(stored.recipientName);
-    }
+    if (!stored) return;
+    setNameInput(stored.recipientName);
+    // Certificates issued before the server-side registry existed are not
+    // verifiable: they are kept only to prefill the name, then reissued.
+    if (stored.registered) setCertificate(stored);
   }, [course, complete, courseSlug, mounted]);
 
   if (!course || course.status === 'coming-soon') {
@@ -84,27 +85,31 @@ export default function CertificatoPage() {
     footer: t('learn.certificate.footer'),
   };
 
-  const handleGenerate = () => {
+  const handleGenerate = async () => {
     const name = nameInput.trim();
-    if (!name) return;
+    if (!name || issuing) return;
 
-    const existing = getStoredCertificate(courseSlug);
-    const payload: CertificatePayload = existing ?? {
-      id: generateCertificateId(courseSlug),
-      courseSlug,
-      courseTitleIt: course.content.it.title,
-      courseTitleEn: course.content.en.title,
-      recipientName: name,
-      completedAt: new Date().toISOString(),
-    };
+    setIssuing(true);
+    setError(null);
 
-    if (existing && existing.recipientName !== name) {
-      payload.recipientName = name;
+    try {
+      const response = await fetch('/api/certificate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ courseSlug, recipientName: name }),
+      });
+
+      if (!response.ok) throw new Error('certificate_issue_failed');
+
+      const issued = (await response.json()) as CertificatePayload;
+      saveStoredCertificate(issued);
+      setCertificate(issued);
+      setNameInput(name);
+    } catch {
+      setError(t('learn.certificate.issueError'));
+    } finally {
+      setIssuing(false);
     }
-
-    saveStoredCertificate(payload);
-    setCertificate(payload);
-    setNameInput(name);
   };
 
   const handleDownload = async () => {
@@ -112,7 +117,9 @@ export default function CertificatoPage() {
     await generateCertificatePdf(certificate, locale as 'it' | 'en');
   };
 
-  const verifyUrl = certificate ? buildVerifyUrl(certificate, siteUrl, locale as 'it' | 'en', { cacheBust: '2' }) : '';
+  const verifyUrl = certificate
+    ? buildCertificateVerifyUrl(certificate.id, 'registered', locale as 'it' | 'en')
+    : '';
 
   const linkedInText =
     locale === 'it'
@@ -205,18 +212,25 @@ export default function CertificatoPage() {
                 type="text"
                 value={nameInput}
                 onChange={(e) => setNameInput(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleGenerate()}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') void handleGenerate();
+                }}
                 placeholder={t('learn.certificate.namePlaceholder')}
                 className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-base focus:outline-none focus:ring-2 focus:ring-emerald-500/50 mb-6"
                 maxLength={80}
               />
+              {error ? (
+                <p className="text-sm text-red-600 dark:text-red-400 mb-4" role="alert">
+                  {error}
+                </p>
+              ) : null}
               <button
-                onClick={handleGenerate}
-                disabled={!nameInput.trim()}
+                onClick={() => void handleGenerate()}
+                disabled={!nameInput.trim() || issuing}
                 className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-emerald-700 hover:bg-emerald-800 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-sm transition-all shadow-sm"
               >
                 <CheckCircle2 className="w-4 h-4" />
-                {t('learn.certificate.generate')}
+                {issuing ? t('learn.certificate.issuing') : t('learn.certificate.generate')}
               </button>
             </div>
           ) : (

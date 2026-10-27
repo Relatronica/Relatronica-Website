@@ -1,21 +1,47 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
+import { cache } from 'react';
+import type { CertificatePayload } from '@/lib/certificate';
 import { decodeCertificatePayload } from '@/lib/certificate';
-import { getCertificateOgMetadata, parseCertificateLocale } from '@/lib/certificateOg';
-import { VerifyContent, VerifyLoadingFallback, VerifyPageShell } from './VerifyContent';
+import { getRegisteredCertificate } from '@/lib/certificateStore';
+import {
+  getCertificateOgMetadata,
+  parseCertificateLocale,
+  type CertificateLinkMode,
+} from '@/lib/certificateOg';
+import { VerifyContent, VerifyPageShell, type CertificateVerifyState } from './VerifyContent';
 
 export const dynamic = 'force-dynamic';
 
+interface ResolvedCertificate {
+  state: CertificateVerifyState;
+  payload: CertificatePayload | null;
+  token: string;
+  mode: CertificateLinkMode;
+}
+
+const resolveCertificate = cache(async (id?: string, d?: string): Promise<ResolvedCertificate> => {
+  if (id) {
+    const payload = await getRegisteredCertificate(id);
+    return { state: payload ? 'registered' : 'invalid', payload, token: id, mode: 'registered' };
+  }
+
+  if (d) {
+    const payload = decodeCertificatePayload(d);
+    return { state: payload ? 'legacy' : 'invalid', payload, token: d, mode: 'legacy' };
+  }
+
+  return { state: 'invalid', payload: null, token: '', mode: 'registered' };
+});
+
 type PageProps = {
-  searchParams: { d?: string; locale?: string };
+  searchParams: { d?: string; id?: string; locale?: string };
 };
 
-export function generateMetadata({ searchParams }: PageProps): Metadata {
-  const encoded = searchParams.d;
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
   const locale = parseCertificateLocale(searchParams.locale);
-  const payload = encoded ? decodeCertificatePayload(encoded) : null;
+  const { payload, token, mode } = await resolveCertificate(searchParams.id, searchParams.d);
 
-  if (!payload || !encoded) {
+  if (!payload) {
     return {
       title: 'Attestato | Relatronica Academy',
       description: 'Verifica un attestato Relatronica Academy.',
@@ -29,8 +55,9 @@ export function generateMetadata({ searchParams }: PageProps): Metadata {
 
   const { title, ogTitle, description, verifyUrl, ogImageUrl, courseTitle } = getCertificateOgMetadata(
     payload,
-    encoded,
-    locale
+    token,
+    locale,
+    mode
   );
 
   return {
@@ -65,12 +92,12 @@ export function generateMetadata({ searchParams }: PageProps): Metadata {
   };
 }
 
-export default function VerifyCertificatoPage() {
+export default async function VerifyCertificatoPage({ searchParams }: PageProps) {
+  const { state, payload } = await resolveCertificate(searchParams.id, searchParams.d);
+
   return (
     <VerifyPageShell>
-      <Suspense fallback={<VerifyLoadingFallback />}>
-        <VerifyContent />
-      </Suspense>
+      <VerifyContent state={state} payload={payload} />
     </VerifyPageShell>
   );
 }

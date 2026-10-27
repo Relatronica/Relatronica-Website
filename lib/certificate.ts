@@ -5,26 +5,13 @@ export interface CertificatePayload {
   courseTitleEn: string;
   recipientName: string;
   completedAt: string;
+  /** True when the certificate is stored in the server-side registry. */
+  registered?: boolean;
 }
 
 const CERT_STORAGE_KEY = 'relatronica-certificates';
 
-export function generateCertificateId(courseSlug: string): string {
-  const year = new Date().getFullYear();
-  const prefix = courseSlug
-    .replace(/[^a-z0-9]/gi, '')
-    .slice(0, 4)
-    .toUpperCase()
-    .padEnd(4, 'X');
-  const rand = Math.random().toString(36).slice(2, 8).toUpperCase();
-  return `REL-${year}-${prefix}-${rand}`;
-}
-
-export function encodeCertificatePayload(payload: CertificatePayload): string {
-  const json = JSON.stringify(payload);
-  const base64 = btoa(unescape(encodeURIComponent(json)));
-  return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-}
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://relatronica.com';
 
 export function decodeCertificatePayload(encoded: string): CertificatePayload | null {
   try {
@@ -63,14 +50,18 @@ export function saveStoredCertificate(payload: CertificatePayload): void {
   }
 }
 
-export function buildVerifyUrl(
-  payload: CertificatePayload,
-  siteUrl: string,
+/**
+ * Builds the public verification link.
+ * `registered` links point at the server-side registry by certificate id,
+ * `legacy` links carry the old self-contained base64 payload.
+ */
+export function buildCertificateVerifyUrl(
+  token: string,
+  mode: 'registered' | 'legacy' = 'registered',
   locale: 'it' | 'en' = 'it',
   options?: { cacheBust?: string }
 ): string {
-  const encoded = encodeCertificatePayload(payload);
-  const params = new URLSearchParams({ d: encoded });
+  const params = new URLSearchParams(mode === 'registered' ? { id: token } : { d: token });
   if (locale !== 'it') params.set('locale', locale);
   if (options?.cacheBust) params.set('v', options.cacheBust);
   return `${siteUrl}/learn/certificato/verifica?${params.toString()}`;

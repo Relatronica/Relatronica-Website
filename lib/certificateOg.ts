@@ -1,5 +1,7 @@
 import type { CertificatePayload } from './certificate';
-import { formatCertificateDate } from './certificate';
+import { buildCertificateVerifyUrl, formatCertificateDate } from './certificate';
+
+export type CertificateLinkMode = 'registered' | 'legacy';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://relatronica.com';
 
@@ -49,32 +51,22 @@ export function parseCertificateLocale(value?: string | null): CertificateLocale
   return value === 'en' ? 'en' : 'it';
 }
 
-export function buildCertificateOgImageUrl(encoded: string, locale: CertificateLocale = 'it'): string {
+export function buildCertificateOgImageUrl(token: string, locale: CertificateLocale = 'it'): string {
   // Static-looking path (no query string) — LinkedIn handles this more reliably
   const suffix = locale === 'en' ? '-en.png' : '.png';
-  return `${siteUrl}/learn/certificato/og/${encoded}${suffix}`;
-}
-
-export function buildCertificateVerifyUrl(
-  encoded: string,
-  locale: CertificateLocale = 'it',
-  cacheBust?: string
-): string {
-  const params = new URLSearchParams({ d: encoded });
-  if (locale !== 'it') params.set('locale', locale);
-  if (cacheBust) params.set('v', cacheBust);
-  return `${siteUrl}/learn/certificato/verifica?${params.toString()}`;
+  return `${siteUrl}/learn/certificato/og/${token}${suffix}`;
 }
 
 export function getCertificateOgMetadata(
   payload: CertificatePayload,
-  encoded: string,
-  locale: CertificateLocale = 'it'
+  token: string,
+  locale: CertificateLocale = 'it',
+  mode: CertificateLinkMode = 'registered'
 ) {
   const labels = OG_LABELS[locale];
   const courseTitle = locale === 'it' ? payload.courseTitleIt : payload.courseTitleEn;
-  const verifyUrl = buildCertificateVerifyUrl(encoded, locale);
-  const ogImageUrl = buildCertificateOgImageUrl(encoded, locale);
+  const verifyUrl = buildCertificateVerifyUrl(token, mode, locale);
+  const ogImageUrl = buildCertificateOgImageUrl(token, locale);
 
   return {
     courseTitle,
