@@ -95,100 +95,90 @@
     }
   },
   "about": {
+    "eyebrow": "Design studio",
     "title": "Relatronica",
-    "tagline": "We imagine possible futures and create tools that help communities understand, discuss and shape them, empowering civic participation on fundamental issues for our collective future.",
+    "tagline": "We imagine possible futures and build tools that allow communities to understand them, discuss them and help shape them.",
+    "chapters": "Chapters",
+    "nav": {
+      "mission": "Mission",
+      "origins": "Origins",
+      "pillars": "Disciplines",
+      "approach": "Approach",
+      "values": "Values",
+      "nexthuman": "NextHuman",
+      "collaborate": "Collaborate",
+      "support": "Support"
+    },
     "mission": {
       "title": "Our Mission",
-      "description": "Relatronica is a design studio born in Switzerland in 2024 from a team of designers and researchers who met at CERN, the European Organization for Nuclear Research. It combines {speculativeDesign}, {civicTech} and {knowledgeMapping} to explore future scenarios and create tools that help communities understand, discuss and navigate the complexities of the contemporary world, fostering informed participation in decisions affecting humanity.",
+      "description": "We combine {speculativeDesign}, {civicTech} and {knowledgeMapping} into a single way of working. We turn complex topics — climate, energy, research, infrastructure — into clear paths that make public decisions more understandable and more open to participation.",
       "speculativeDesign": "speculative design",
       "civicTech": "civic tech",
       "knowledgeMapping": "knowledge mapping",
-      "speculativeDesignTooltip": "A creative approach that imagines possible future scenarios to stimulate critical reflections on how today's technologies and choices might shape tomorrow.",
-      "civicTechTooltip": "Digital technologies created to improve community life, facilitate civic participation and make public information more accessible to everyone.",
-      "knowledgeMappingTooltip": "The visualization of connections between ideas, concepts and data to make knowledge more understandable and help identify relationships that would otherwise remain hidden."
+      "speculativeDesignTooltip": "A design approach that imagines alternative scenarios to explore their implications before they become reality.",
+      "civicTechTooltip": "Digital technologies designed for civic participation and access to public information.",
+      "knowledgeMappingTooltip": "The graphic representation of the connections between ideas, data and concepts."
     },
     "origins": {
       "title": "Our Origins at CERN",
-      "paragraph1": "Relatronica was born in Switzerland in 2024 from the meeting, at CERN, between designers and researchers who share the same question: how can we use technologies and data to truly engage people in choices concerning humanity's future?",
-      "paragraph2": "CERN is one of the symbols of international scientific collaboration. It was here, in 1991, that the World Wide Web was born, conceived as an open space to share knowledge and make information accessible to everyone. Since then, the Web has revolutionized our lives, but many crucial decisions – on climate, energy, research, infrastructure – are still perceived as distant, technical, poorly participated.",
-      "paragraph3": "With Relatronica we want to carry forward and expand that original spirit: not just a Web where you read and inform yourself, but spaces and tools where people can understand, discuss and contribute. We transform complex topics into clear paths of participation, to bring citizens, institutions and scientific communities closer together."
+      "paragraph1": "Relatronica was born in Switzerland in 2024 from the meeting, at CERN, of designers and researchers united by a common question: how can we use technologies and data to truly involve people in the choices that concern everyone?",
+      "paragraph2": "CERN is one of the symbols of international scientific collaboration: it was here, in 1991, that the World Wide Web was born, conceived as an open space to share knowledge. Since then the Web has transformed our lives, but many crucial decisions — on climate, energy, research, infrastructure — are still perceived as distant, technical, poorly participated. We work to close that gap."
     },
     "pillars": {
+      "title": "The Three Disciplines",
       "speculativeDesign": {
         "title": "Speculative Design",
-        "description": "We design alternative future scenarios to stimulate critical thinking and open conversations about possible futures. Through prototypes and narratives, we explore the ethical, social and technological implications of possible developments."
+        "description": "We design alternative scenarios through prototypes and narratives, to make the consequences of today's choices tangible before they unfold."
       },
       "civicTech": {
         "title": "Civic Tech",
-        "description": "We develop digital technologies that empower communities and improve access to public information. We create tools that facilitate civic participation and democratic transparency."
+        "description": "We build digital tools that put public information in the hands of those who live it, to make institutions more legible and verifiable."
       },
       "knowledgeMapping": {
         "title": "Knowledge Mapping",
-        "description": "We visualize relationships between concepts, data and ideas to make knowledge more accessible and understandable. Our mapping tools help navigate complexity and identify hidden connections."
+        "description": "We map the relationships between events, sources and decisions, to restore the context that separates a data point from its meaning."
       }
     },
     "approach": {
       "title": "Our Approach",
-      "intro": "We combine research, design and technology to create projects that:",
+      "intro": "We combine research, design and technology. Every project follows the same path:",
       "points": {
-        "critical": "Stimulate critical thinking about possible futures",
-        "accessible": "Make complex information accessible",
-        "participation": "Foster participation and civic engagement",
-        "ethics": "Explore the ethical implications of emerging technologies"
-      }
-    },
-    "activism": {
-      "title": "Activism for Responsible Technologies",
-      "intro": "We firmly believe that technology must be designed and developed responsibly, ethically and oriented towards collective well-being. Our commitment goes beyond design: we are active in promoting a more aware and critical technological culture.",
-      "ethics": {
-        "title": "Ethics and Humanity",
-        "description": "We promote technologies that put people at the center, respect human rights and foster inclusion and social equity."
-      },
-      "transparency": {
-        "title": "Transparency and Control",
-        "description": "We support transparent, open source and decentralized systems that restore control and autonomy to communities and individuals."
-      },
-      "education": {
-        "title": "Critical Education",
-        "description": "We create tools and resources that help understand the implications of emerging technologies and develop informed critical thinking."
-      },
-      "sustainability": {
-        "title": "Digital Sustainability",
-        "description": "We design solutions that consider environmental impact, energy efficiency and the longevity of digital systems."
+        "research": "Research: we start from primary sources and verifiable data.",
+        "design": "Design: we prototype scenarios and tools, not just concepts.",
+        "technology": "Technology: we build concrete tools, tested in the field."
       }
     },
     "values": {
       "title": "Our Values",
-      "intro": "The principles that guide our work and our design choices:",
       "accessibility": {
         "title": "Accessibility",
-        "description": "We believe that information and tools must be accessible to everyone, regardless of technical background or available resources."
+        "description": "Information and tools must remain within everyone's reach, without technical or economic barriers."
       },
       "participation": {
         "title": "Participation",
-        "description": "We promote collaborative and inclusive processes that involve communities in defining their own future."
+        "description": "We involve communities in defining their own choices, instead of deciding for them."
       },
       "critical": {
         "title": "Critical Thinking",
-        "description": "We stimulate deep reflections and uncomfortable questions, avoiding simplistic solutions to complex problems."
+        "description": "We ask uncomfortable questions and reject simplistic solutions to complex problems."
       },
       "responsibility": {
         "title": "Responsibility",
-        "description": "We take responsibility for the ethical, social and environmental implications of our creations."
+        "description": "We take on the ethical, social and environmental consequences of what we design."
       },
       "openness": {
         "title": "Openness",
-        "description": "We favor open source, transparent and reproducible approaches that promote knowledge sharing."
+        "description": "We favour open, transparent and reproducible code and data, so that knowledge can circulate."
       }
     },
     "nexthuman": {
       "title": "NextHuman",
-      "paragraph1": "This project represents an example of our work: a calendar of probabilistic deadlines for humanity. Through interactive visualizations and speculative scenarios, we explore the challenges and opportunities awaiting our collective future, combining knowledge mapping to show relationships between events and civic tech to make this information accessible to everyone.",
-      "paragraph2": "NextHuman is also a manifesto of our approach: we use technology to stimulate awareness, foster public debate and encourage concrete actions towards more desirable futures. Every visualization, every scenario, every mapped connection is an invitation to reflect, discuss and act responsibly."
+      "paragraph1": "NextHuman is a calendar of probabilistic deadlines for humanity: interactive visualizations that make the major transitions under way — climate, energy, demography, technology — legible, along with the times at which they may occur.",
+      "paragraph2": "It is also a manifesto of our method: visualization is not meant to give answers, but to make public debate more informed. Every scenario is an invitation to reflect, discuss and act."
     },
     "collaborate": {
       "title": "Want to Collaborate?",
-      "description": "We are always interested in collaborations, projects and conversations about speculative design, civic tech, knowledge mapping and responsible technologies. If you share our values and want to explore possible futures together, don't hesitate to contact us.",
+      "description": "We are always interested in collaborations, projects and conversations with those who share our way of working. If you want to explore new possibilities together, write to us.",
       "tags": {
         "collaborative": "Collaborative Projects",
         "research": "Research & Development",
@@ -200,7 +190,7 @@
     },
     "support": {
       "title": "Support Relatronica",
-      "description": "We build open source tools to understand and design the future. Relatronica is an independent project: your contribution supports research, development and infrastructure, keeping our tools and Academy free for everyone.",
+      "description": "Relatronica is an independent project. Your contribution supports research, development and infrastructure, and keeps our tools and Academy free for everyone.",
       "pizza": {
         "title": "Buy us a pizza",
         "description": "A friendly metaphor — each pizza is €5 and you can buy as many as you like."
@@ -223,8 +213,8 @@
     },
     "segno": {
       "title": "Segno",
-      "subtitle": "Public AI tone, with sources",
-      "description": "A civic timeline that charts enthusiasm and fear in leaders' public statements on AI — alongside European digital rules on the same axis. Every entry comes with citations and sources."
+      "subtitle": "Six lenses on AI, from 2013 to today",
+      "description": "The evolution of AI on a single timeline: models, research, capabilities, market, culture and policy. Every point is a verifiable event with its citable source."
     },
     "substrato": {
       "title": "Substrato",
