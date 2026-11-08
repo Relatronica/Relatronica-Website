@@ -215,7 +215,7 @@
   "projects": {
     "title": "Projects",
     "subtitle": "Explorations at the intersection of speculative design, civic tech and knowledge mapping",
-    "inDevelopment": "In Development",
+    "eyebrow": "Initiatives and experiments",
     "nexthuman": {
       "title": "NextHuman",
       "subtitle": "Calendar of Deadlines for Humanity",
@@ -276,17 +276,17 @@
       "description": "A volunteer computing network inspired by the gift: participants donate unused device cycles to open research projects. No centralized data centers, no access barriers — just a colony of nodes that together put computational power at the service of public science.",
       "status": "In development"
     },
-    "exploreProject": "Explore project",
     "github": "GitHub",
     "visitProject": "Open project",
-    "filterByTag": "Filter by topic",
-    "filterByStatus": "Filter by status",
-    "filters": "Filters",
     "clearFilters": "Clear filters",
     "statusActive": "Active",
-    "allTags": "All topics",
-    "allStatuses": "All statuses",
     "noResults": "No projects match the selected filters.",
+    "areas": "Areas",
+    "searchPlaceholder": "Search a project",
+    "statusLabel": "Status",
+    "filterAll": "All",
+    "filterActive": "Active",
+    "filterUpcoming": "Upcoming",
     "contact": {
       "title": "Have a project in mind?",
       "description": "We are always interested in collaborating on projects that explore the future through speculative design, civic tech and knowledge mapping.",

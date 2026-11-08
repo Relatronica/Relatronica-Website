@@ -215,7 +215,7 @@
   "projects": {
     "title": "Progetti",
     "subtitle": "Esplorazioni al confine tra design speculativo, civic tech e knowledge mapping",
-    "inDevelopment": "In Sviluppo",
+    "eyebrow": "Iniziative ed esperimenti",
     "nexthuman": {
       "title": "NextHuman",
       "subtitle": "Calendario delle Scadenze per l'Umanità",
@@ -276,17 +276,17 @@
       "description": "Una rete di volunteer computing ispirata al dono: chi partecipa offre i cicli inutilizzati del proprio dispositivo a progetti di ricerca aperti. Niente data center centralizzati, niente barriere di accesso — solo una colonia di nodi che insieme mettono potenza computazionale al servizio della scienza pubblica.",
       "status": "In sviluppo"
     },
-    "exploreProject": "Esplora progetto",
     "github": "GitHub",
     "visitProject": "Apri progetto",
-    "filterByTag": "Filtra per tema",
-    "filterByStatus": "Filtra per stato",
-    "filters": "Filtri",
     "clearFilters": "Rimuovi filtri",
     "statusActive": "Attivo",
-    "allTags": "Tutti i temi",
-    "allStatuses": "Tutti gli stati",
     "noResults": "Nessun progetto corrisponde ai filtri selezionati.",
+    "areas": "Aree",
+    "searchPlaceholder": "Cerca un progetto",
+    "statusLabel": "Stato",
+    "filterAll": "Tutti",
+    "filterActive": "Attivi",
+    "filterUpcoming": "In arrivo",
     "contact": {
       "title": "Hai un progetto in mente?",
       "description": "Siamo sempre interessati a collaborare su progetti che esplorano il futuro attraverso design speculativo, civic tech e knowledge mapping.",
