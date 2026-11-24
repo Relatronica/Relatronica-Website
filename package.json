@@ -1,7 +1,14 @@
 {
-  "name": "relatronica-2.0",
+  "name": "relatronica",
   "version": "0.1.0",
   "private": true,
+  "description": "Speculative design, civic tech, and open knowledge platform.",
+  "license": "AGPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Relatronica/Relatronica-Website.git"
+  },
+  "homepage": "https://relatronica.com",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

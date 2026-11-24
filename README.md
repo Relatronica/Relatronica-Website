@@ -1,60 +1,117 @@
-# Relatronica 2.0
+# Relatronica
 
-Un calendario innovativo e moderno per visualizzare le scadenze probabilistiche che attendono l'umanità. Un progetto che combina speculative design, civic tech e knowledge mapping.
+Relatronica is an open-source platform combining speculative design, civic technology, and knowledge mapping. Born at CERN in 2024, the project develops tools and curricula to anticipate technological transformations, assess systemic risks, and foster civic empowerment.
 
-## Caratteristiche
+## Overview
 
-- 📅 **Vista Calendario**: Visualizzazione mensile tradizionale con indicazione delle scadenze
-- 📊 **Vista Timeline**: Timeline interattiva che mostra le scadenze organizzate per anno
-- 🎯 **Filtri Avanzati**: Filtra per temi e probabilità
-- 🎨 **Design Moderno**: Interfaccia pulita e moderna con supporto dark mode
-- 📱 **Responsive**: Ottimizzato per tutti i dispositivi
+The platform provides a comprehensive suite of civic tech tools and educational modules:
 
-## Tecnologie
+- **Relatronica Academy**: Interactive courses covering speculative design, artificial intelligence ethics, systemic futures, and civic technology. Includes interactive exercises, module assessments, and verifiable cryptographic certificates.
+- **Civic Observatory**: Curated intelligence aggregating independent research, digital rights reports, and policy updates across technology and society.
+- **NextHuman Exploration**: Interactive 3D data visualization and exploratory models built with Three.js and React Three Fiber.
+- **Probabilistic Forecasting & Deadlines**: Timeline mapping and scenario generation tools for civic foresight.
+- **Multilingual Support**: First-class internationalization (English and Italian) powered by `next-intl`.
 
-- **Next.js 14** con App Router
-- **TypeScript** per type safety
-- **Tailwind CSS** per lo styling
-- **date-fns** per la gestione delle date
-- **Lucide React** per le icone
+## Tech Stack
 
-## Installazione
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **3D & Visualizations**: Three.js, React Three Fiber, React Three Drei, D3 Force
+- **Animation**: Framer Motion
+- **Internationalization**: next-intl
+- **Certificate Verification**: Supabase (server-side cryptographic verification)
+- **PDF Generation**: jsPDF
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18.17.0 or higher
+- npm 9.0.0 or higher
+
+### Installation
+
+Clone the repository and install dependencies:
 
 ```bash
+git clone https://github.com/Relatronica/Relatronica-Website.git
+cd Relatronica-Website
 npm install
 ```
 
-## Sviluppo
+### Environment Variables
+
+Copy the example environment configuration file:
+
+```bash
+cp .env.example .env.local
+```
+
+Configure the following variables in `.env.local` according to your deployment needs:
+
+- `NEXT_PUBLIC_SITE_URL`: Canonical site URL (e.g., `https://relatronica.com` or `http://localhost:3000`).
+- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`: Optional Google Search Console verification token.
+- `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`: Optional privacy-first analytics domain.
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID`: Optional Google Analytics measurement ID.
+- `NEXT_PUBLIC_SUPABASE_URL`: Supabase project URL for certificate issuance and validation.
+- `SUPABASE_SERVICE_ROLE_KEY`: Supabase service role key (server-side only; never expose to the client).
+
+### Development Server
+
+Run the development server:
 
 ```bash
 npm run dev
 ```
 
-Apri [http://localhost:3000](http://localhost:3000) nel browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Struttura del Progetto
+### Quality Checks and Build
+
+Run static analysis and build production bundles:
+
+```bash
+# Run ESLint checks
+npm run lint
+
+# Compile production build
+npm run build
+
+# Start production server
+npm run start
+```
+
+## Project Structure
 
 ```
-├── app/              # App Router di Next.js
-├── components/       # Componenti React
-├── data/            # Dati delle scadenze
-├── lib/             # Utility functions
-└── types/           # TypeScript types
+├── app/                  # Next.js App Router pages, APIs, and metadata routes
+├── components/           # Reusable React UI components and layouts
+│   ├── academy/          # Academy, lesson viewer, quiz, and certificate components
+│   ├── home/             # Homepage sections and bento grids
+│   ├── nexthuman/        # 3D interactive canvas components
+│   └── ui/               # Core atomic design components
+├── data/                 # Course curricula, timelines, and static datasets
+├── docs/                 # Extended documentation and architecture notes
+├── i18n/                 # Localization configuration and routing
+├── lib/                  # Helper utilities, certificate generators, and clients
+├── messages/             # Translation dictionaries (it.json, en.json)
+├── public/               # Static assets, icons, and logos
+└── types/                # Shared TypeScript definitions
 ```
 
-## Aggiungere Nuove Scadenze
+## Contributing
 
-Modifica il file `data/deadlines.ts` per aggiungere nuove scadenze. Ogni scadenza deve includere:
+We welcome contributions from designers, researchers, educators, and developers. Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines, coding conventions, and pull request workflows.
 
-- Titolo e descrizione
-- Data
-- Probabilità (low, medium, high, very-high)
-- Temi (clima, tecnologia, demografia, etc.)
-- Impatto (locale, regionale, globale)
-- Categoria (milestone, threshold, tipping-point, transformation)
-- Fonti (opzionale)
+All contributors must respect our [Code of Conduct](CODE_OF_CONDUCT.md).
 
-## Licenza
+## Security
 
-MIT
+For vulnerability disclosures and reporting procedures, consult [SECURITY.md](SECURITY.md).
 
+## License
+
+This project is licensed under the **GNU Affero General Public License v3.0 or later** (AGPL-3.0-or-later). See the [LICENSE](LICENSE) file for complete details.
+
+Under the terms of the AGPLv3, any modifications hosted or deployed across a network must make their complete source code publicly available under the same license terms.
